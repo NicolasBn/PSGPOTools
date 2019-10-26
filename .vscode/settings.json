@@ -1,0 +1,45 @@
+{
+  //
+  // Custom Settings for Project
+  //
+  // These are here so that anyone potentially modifying the code base has the same editor experience, this ensures that the code will follow the same structure.
+  // Controls how the editor should render whitespace characters, possibilities are 'none', 'boundary', and 'all'. The 'boundary' option does not render single spaces between words.
+  "editor.renderWhitespace": "all", // Default: none
+  // Controls whether the editor should render control characters
+  "editor.renderControlCharacters": true, // Default: false
+  // Number of spaces for tabs
+  "editor.tabSize": 4, // Default: 4
+  // Use spaces not tabs
+  "editor.insertSpaces": true, // Default: true
+  // When enabled, will trim trailing whitespace when you save a file.
+  "files.trimTrailingWhitespace": true, // Default: false
+  // Does not reformat one-line code blocks, such as "if (...) {...} else {...}".
+  "powershell.codeFormatting.ignoreOneLineBlock": false, // Default: True
+  // Adds a newline (line break) after a closing brace.
+  "powershell.codeFormatting.newLineAfterCloseBrace": true, // Default: True
+  // Adds a newline (line break) after an open brace.
+  "powershell.codeFormatting.newLineAfterOpenBrace": true, // Default: True
+  // Places open brace on the same line as its associated statement.
+  "powershell.codeFormatting.openBraceOnSameLine": true, // Default: True
+  // Adds a space after a separator (',' and ';').
+  "powershell.codeFormatting.whitespaceAfterSeparator": false, // Default: True
+  // Adds spaces before and after an operator ('=', '+', '-', etc.).
+  "powershell.codeFormatting.whitespaceAroundOperator": true, // Default: True
+  // Adds a space between a keyword and its associated scriptblock expression.
+  "powershell.codeFormatting.whitespaceBeforeOpenBrace": true, // Default: True
+  // Adds a space between a keyword (if, elseif, while, switch, etc) and its associated conditional expression.
+  "powershell.codeFormatting.whitespaceBeforeOpenParen": true, // Default: True
+  // Align assignment statements in a hashtable or a DSC Configuration.
+  "powershell.codeFormatting.alignPropertyValuePairs": true, // Default: True
+  //Sets the codeformatting options to follow the given indent style in a way that is compatible with PowerShell syntax. For more information about the brace styles please refer to https://github.com/PoshCode/PowerShellPracticeAndStyle/issues/81.
+  "powershell.codeFormatting.preset": "OTBS", // Default: Custom
+  // Format a file on save. A formatter must be available, the file must not be saved after delay, and the editor must not be shutting down.
+  "editor.formatOnSave": false, // Default: False
+  // Langage specific settings
+  "[json]": {
+    // Number of spaces for tabs
+    "editor.tabSize": 2
+  },
+  //Specifies the path to a PowerShell Script Analyzer settings file. To override the default settings for all projects, enter an absolute path, or enter a path relative to your workspace.
+  "powershell.scriptAnalysis.settingsPath": ".vscode/PSScriptAnalyzerSettings.psd1"
+}
