@@ -1,15 +1,20 @@
+function Get-PSGPOLocal {
+    [cmdletbinding()]
+    Param(
+        [ValidateScript( { Test-Path -Path $_ })]
+        [String]$Path = "$Env:windir\PolicyDefinitions\",
 
-Param(
-    [ValidateScript( { Test-Path -Path $_ })]
-    [String]$Path = "$Env:windir\PolicyDefinitions\",
+        [cultureinfo]$UICulture = [cultureinfo]::CurrentUICulture
+    )
 
-    [cultureinfo]$UICulture = [cultureinfo]::CurrentUICulture
-)
+    ### VAR ###
+    $ADMLPath = "$Path\$UICulture"
 
-### VAR ###
-$ADMLPath = "$Path\$UICulture"
+    $ADMX = [GpoToolsAdmx]::ImportFromFolder($Path)
+    $ADML = [GpoToolsAdml]::ImportFromFolder($ADMLPath)
 
-$ADMXFiles = Get-ChildItem -Path $Path -Filter *.admx
-$ADMLFiles = Get-ChildItem -Path $ADMLPath -Filter *.admx
+    ### MAIN ###
+    $Policy = [GpoToolsPolicy]::ReadAdmxAdmlFiles($ADMX,$ADML)
 
-### MAIN ###
+    return $Policy
+}

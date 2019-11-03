@@ -1,0 +1,145 @@
+# Explication du fonctionnement des classes
+
+## Classe [GPOToolsADMX]
+Cette classe va récupérer les informations des fichiers admx basés sur un format XML.
+Les éléments font appel à des variables qui permettent une jonction avec les éléments contenus dans le fichier ADML correspondant.
+Section que l'on retrouve dans un fichier Admx :
+  - policyDefinitions
+    - policyNamespaces
+        - Target : Namespace que ce fichier définit
+            - namespaces
+            - prefix
+        - Using : Namespace dont dépend le fichier admx
+            - namespaces
+            - prefix
+    - supersededAdm
+        - fileName :
+    - resources
+        - minRequiredRevision
+    - supportedOn : Liste des classes avec la définition des os supportés
+        - definitions : Liste des définitions que le fichier contient
+            - definition : Objet définition
+                - name : Nom de la définition
+                - displayname : Nom à afficher dans la console qui est contenu dans le fichier AMDL
+                - [or]
+                    - reference
+                    - range
+                        - ref
+                        - minVersionIndex
+                        - maxversionIndex
+    - categories
+        - category
+            - name
+            - displayname
+            - [explainText]
+            - parentCategory
+                - ref
+    - policies
+        - policy
+            - name
+            - class : User/Computer
+            - displayName
+            - explainText
+            - key
+            - [valueName]
+            - [presentation] : presentation="$(presentation.ProfileDlgTimeOut)"
+            - parentCategory
+                - ref
+            - supportedOn
+                - ref
+            - [enabledValue]
+                - decimal
+                    - value
+            - [disabledValue]
+                - decimal
+                    - value
+            - [presentation] : Variable (presentation.[..]) sans doute quelque chose en rapport avec l'affichage
+            - [clientExtension] : GUID
+            - [elements]
+                - [list]
+                    - [additive]
+                    - [explicitValue]
+                    - id
+                    - [key]
+                    - [valuePrefix]
+                    - [valueName]
+                - [text]
+                    - id
+                    - valueName
+                    - [required]
+                    - [expandable]
+                    - [maxLength]
+                    - [key]
+                - [decimal]
+                    - id
+                    - valueName
+                    - [required]
+                    - [minValue]
+                    - [maxValue]
+                    - [storeAsText]
+                    - [clientExtension]
+                    - [key]
+                - [enum]
+                    - id
+                    - valueName
+                    - [required]
+                    - [clientExtension]
+                    - [key]
+                - [multiText]
+                    - id
+                    - valueName
+                    - [required]
+                    - [maxLength]
+                    - [maxStrings]
+                - [boolean]
+                    - id
+                    - valueName
+                    - [key]
+                    - [falseValue]
+                        - decimal
+                            - value
+                        - [delete]
+                    - [trueValue]
+                        - decimal
+                            - value
+                    - [key]
+
+## Classe [GPOToolsADML]
+Cette classe va récupérer les informations des fichiers adml basés sur un format XML.
+Section que l'on retrouve dans un fichier Adml :
+- PolicyDefinitionResources
+    - displayName
+    - description
+    - resources
+        - stringTable
+            - string
+                - id
+                - #text
+        - [presentationTable]
+            - presentation
+                - id
+                - [checkbox] (Object[] ou XmlElement)
+                    - #text
+                    - [defaultchecked] : valeur true/false
+                    - refid
+                - [dropdownlist] (Object[] ou XmlElement)
+                    - #text
+                    - refid
+                    - [defaultItem]
+                    - [noSort] : valeur true/false
+                    - [oSort] : valeur true/false
+                    - [Sort] : valeur true/false
+                - [text] ( string ou Object[])
+                - [textbox] (Object[] ou XmlElement)
+                    - label
+                    - refId
+                    - [defaultValue]
+                - [decimalTextBox] (Object[] ou XmlElement)
+                    - [#cdata-section]
+                - [multitextbox] (Object[] ou XmlElement)
+                    - refId
+                    - #text
+                - [listbox]
+                    - refId
+                    - #text
+                    - [required] valeur true/false

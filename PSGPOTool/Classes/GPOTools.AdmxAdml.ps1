@@ -2,7 +2,45 @@ enum ScopePolicy {
     User
     Machine
 }
+#Classe de récupération des informations contenues dans les fichiers admx
+class GpoToolsAdml {
+    [string]$FilePath
+    [string]$BaseName
+    [Hashtable]$StringTable
 
+    #presentationTable
+
+    GpoToolsAdml ([string]$AdmlPath) {
+        $File = Get-Item -Path $AdmlPath
+        [xml]$Xml = Get-Content -Path $File.FullName -Encoding UTF8
+
+        $This.FilePath = $File.FullName
+        $This.BaseName = $File.BaseName
+        $this.StringTable = @{}
+
+        $xml.policyDefinitionResources.resources.StringTable.string | Foreach-Object {
+            $this.StringTable.Add($_.id,$_.'#Text')
+        }
+    }
+
+    static [System.Collections.Generic.List[GpoToolsAdml]]ImportFromFolder([string]$FolderPath) {
+        [System.Collections.Generic.List[GpoToolsAdml]]$Tab = @()
+
+
+        if (!(Test-Path -Path $FolderPath)) {
+            Throw 'This folder does not exist'
+        }
+        $Files = Get-ChildItem -Path $FolderPath -Filter *.adml
+
+        foreach ($File in $Files) {
+            $Tab.Add([GpoToolsAdml]::New($File.FullName))
+        }
+
+        return $Tab
+    }
+
+}
+#Classe de récupération des informations contenues dans les fichiers amdl
 class GpoToolsAdmx {
     [string]$FilePath
     [string]$BaseName
@@ -64,10 +102,10 @@ class GpoToolsAdmx {
     }
 
 }
-
+#Classe utilisée dans GPOToolsAdmx  pour lire les policy
 class AdmxPolicy {
     $Name
-    $Scope
+    $Class
     $DisplayNameVar
     $explainText
     $RegKey
@@ -80,7 +118,7 @@ class AdmxPolicy {
 
     AdmxPolicy ($Policy){
         $this.Name = $policy.Name
-        $this.Scope = $policy.Scope
+        $this.Class = $policy.Class
         $this.DisplayNameVar = $policy.DisplayName -replace '\$\(string\.(.*)\)', '$1'
         $this.explainText = $policy.explainText -replace '\$\(string\.(.*)\)', '$1'
         $this.RegKey = $policy.RegKey
@@ -89,13 +127,13 @@ class AdmxPolicy {
         $this.SupportedOn = $policy.SupportedOn
         $this.enableValue = $policy.enabledValue.decimal.Value
         $this.disableValue = $policy.enabledValue.decimal.Value
-        #EnableList
         #$this.elements = $policy.elements
 
 
     }
 }
 
+#Classe utilisé dans GPOToolsAdmx pour les catégories des fichiers admx
 class AdmxCategory {
     [string]$Name
     [string]$DisplayNameVAR
@@ -109,7 +147,7 @@ class AdmxCategory {
         $this.ParentCategoryName = $Category.parentcategory.ref
     }
 }
-
+# Class pour les ressources SupportedOn (Exemple Windows.admx)
 class AdmxSupportedOn {
     $Name
     $DisplayNameVar
@@ -139,43 +177,4 @@ class AdmxElement {
     #enum
     #decimal
     #list
-}
-
-class GpoToolsAdml {
-    [string]$FilePath
-    [string]$BaseName
-    [Hashtable]$StringTable
-
-    #stringtable
-    #presentationTable
-
-    GpoToolsAdml ([string]$AdmlPath) {
-        $File = Get-Item -Path $AdmlPath
-        [xml]$Xml = Get-Content -Path $File.FullName -Encoding UTF8
-
-        $This.FilePath = $File.FullName
-        $This.BaseName = $File.BaseName
-        $this.StringTable = @{}
-
-        $xml.policyDefinitionResources.resources.StringTable.string | Foreach-Object {
-            $this.StringTable.Add($_.id,$_.'#Text')
-        }
-    }
-
-    static [System.Collections.Generic.List[GpoToolsAdml]]ImportFromFolder([string]$FolderPath) {
-        [System.Collections.Generic.List[GpoToolsAdml]]$Tab = @()
-
-
-        if (!(Test-Path -Path $FolderPath)) {
-            Throw 'This folder does not exist'
-        }
-        $Files = Get-ChildItem -Path $FolderPath -Filter *.adml
-
-        foreach ($File in $Files) {
-            $Tab.Add([GpoToolsAdml]::New($File.FullName))
-        }
-
-        return $Tab
-    }
-
 }
