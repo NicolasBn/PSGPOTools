@@ -40,7 +40,7 @@ class GpoToolsAdml {
     }
 
 }
-#Classe de récupération des informations contenues dans les fichiers amdl
+#Classe de récupération des informations contenues dans les fichiers amdx
 class GpoToolsAdmx {
     [string]$FilePath
     [string]$BaseName
@@ -136,13 +136,13 @@ class AdmxPolicy {
 #Classe utilisé dans GPOToolsAdmx pour les catégories des fichiers admx
 class AdmxCategory {
     [string]$Name
-    [string]$DisplayNameVAR
+    [string]$DisplayName
     [string]$explainText
     [string]$ParentCategoryName
 
     AdmxCategory ($Category){
         $this.Name = $Category.Name
-        $this.DisplayNameVar = $Category.DisplayName -replace '\$\(string\.(.*)\)', '$1'
+        $this.DisplayName = $Category.DisplayName -replace '\$\(string\.(.*)\)', '$1'
         $this.explainText = $Category.explainText -replace '\$\(string\.(.*)\)', '$1'
         $this.ParentCategoryName = $Category.parentcategory.ref
     }
@@ -150,11 +150,11 @@ class AdmxCategory {
 # Class pour les ressources SupportedOn (Exemple Windows.admx)
 class AdmxSupportedOn {
     $Name
-    $DisplayNameVar
+    $DisplayNames
 
     AdmxSupportedOn ($SupportedOn) {
         $This.Name = $SupportedOn.Name
-        $THis.DisplayNameVar = $SupportedOn.DisplayName -replace '\$\(string\.(.*)\)', '$1'
+        $THis.DisplayName = $SupportedOn.DisplayName -replace '\$\(string\.(.*)\)', '$1'
     }
 }
 

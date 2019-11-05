@@ -21,12 +21,27 @@ Section que l'on retrouve dans un fichier Admx :
             - definition : Objet définition
                 - name : Nom de la définition
                 - displayname : Nom à afficher dans la console qui est contenu dans le fichier AMDL
-                - [or]
+                - [or] : Référence contenu dans l'admx WindowsProduct
                     - reference
                     - range
                         - ref
                         - minVersionIndex
                         - maxversionIndex
+                - [and] : definition speciale
+                    - reference
+                        - ref
+        - Products
+            - Product
+                - Name
+                - displayName
+                - majorVersion
+                    - name
+                    - displayName (Variable)
+                    - VersionIndex
+                    - minorVersion
+                        - Name
+                        - displayName
+                        - versionIndex
     - categories
         - category
             - name

@@ -68,13 +68,19 @@ Cette classe est utilisée pour joindre les information des classes GPOToolsAdmx
 ### On casse tous et on recommence
 * [ ]  On créé un classe GPOToolsUtility à peu prês semblable à GPOToolsPolicy
     * [ ]  Cette classe contiendra des membres static qui auront pour but :
-        * [ ]  Méthode de chargement à partir d'un dossier comme PolicyDefinitions
-        * [ ]  Méthode de chargement à parti d'un fichier seul avec prise en compte des dépendance
-        * [ ]  Méthode de vérification des dépendances et de chargement si jamais elles existent
-        * [ ]  La classe disposera de l'ensemble des catégories dans une propriété statique et invisible
-        * [ ]  La classe disposera de l'ensemble des SupportedOn dans une propriété statique et invisible
-        * [ ]  La classe disposera de l'ensemble des Policy dans une propriété statique et invisible
+        * [x]  Méthode de chargement à partir d'un dossier comme PolicyDefinitions
+        * [x]  Méthode de chargement à parti d'un fichier seul avec prise en compte des dépendance
+        * [x]  Méthode de vérification des dépendances et de chargement si jamais elles existent
+        * [x]  La classe disposera de l'ensemble des catégories dans une propriété statique et invisible
+        * [x]  La classe disposera de l'ensemble des SupportedOn dans une propriété statique et invisible
+        * [x]  La classe disposera de l'ensemble des Policy dans une propriété statique et invisible
         * [ ]  La classe pourra recharger un ou plusieurs fichier et donc écraser ses données
+* [ ] Mise en place de script de test pour valider les différentes méthodes
+    * [ ] InitiateAdmxAdml Folder/File
+    * [ ] GetADMLPathFromADMX
+    * [ ] CheckAndInitiateDependency
+    * [ ] FindDependancyFile
+    * [ ]
 
 * [ ]  Créer une classe enum pour chaque option de chaque élément ?
 
