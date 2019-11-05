@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Windows Defender Application Guard</displayName>
+  <description>Windows Defender Application Guard を管理モードで有効にします</description>
+  <resources>
+    <stringTable>
+        <string id="AppHVSICat_DisplayName">Windows Defender Application Guard</string>
+        <string id="AppHVSI_AllowAppHVSI_DisplayName">Windows Defender Application Guard を管理モードで有効にします</string>
+        <string id="AppHVSI_AllowAppHVSI_Explain">このポリシーは、Windows Defender Application Guard (Application Guard) を使用したアプリケーション分離を有効にします。
+
+Application Guard は、Windows ハイパーバイザーを使用して、仮想化ベースのセキュリティ分離を使用するように構成されたアプリ用に仮想化環境を作成します。分離されていれば、不適切なユーザー操作やアプリケーションの脆弱性によって、仮想化環境の外部で実行されているカーネルやその他のアプリケーションが侵害されることはありません。
+
+この設定を有効にする場合、Application Guard は組織に対して有効になります。
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DisplayName">Windows Defender Application Guard のクリップボード設定を構成します</string>
+        <string id="AppHVSI_ClipboardSettings_Explain">このポリシー設定では、Windows Defender Application Guard (Application Guard) 内でのクリップボードの動作を決定できます。
+
+この設定を有効にした場合、以下の動作から選択する必要があります。
+
+- ホストと Application Guard の間のクリップボード機能を完全に無効にする。
+
+- Application Guard からホストに内容をコピーできるようにクリップボードを有効にする。
+
+- ホストから Application Guard に内容をコピーできるようにクリップボードを有効にする。
+
+注:
+ホストから Application Guard へのコピーは有効にしないことをお勧めします。この機能を有効にすると、侵害を受けた可能性のある Application Guard セッションがホスト デバイスのクリップボードとその内容にアクセスできることになります。
+
+コピーを有効にする場合は、次の内容オプションを使用して、コピーできる内容の種類も選択する必要があります。
+
+- 1. テキストのコピーを許可する。
+
+- 2. イメージのコピーを許可する。
+
+- 3. テキストとイメージの両方のコピーを許可する。
+
+この設定を無効にした場合、または構成しなかった場合、すべてのクリップボード機能は Application Guard で無効です。
+        </string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_OperationDisabled">クリップボードの操作をブロックする (既定)</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_ContainerToHostEnabled">分離セッションからホストへのクリップボード操作を有効にする</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_HostToContainerEnabled">ホストから分離セッションへのクリップボード操作を有効にする</string>
+        <string id="AppHVSI_ClipboardSettings_DropdownList_Option_BothDirectionsEnabled">双方向のクリップボード操作を有効にする</string>
+        <string id="AppHVSI_PrintingSettings_DisplayName">Windows Defender Application Guard の印刷設定を構成します</string>
+        <string id="AppHVSI_PrintingSettings_Explain">このポリシー設定では、Windows Defender Application Guard (Application Guard) 内での印刷機能の動作を決定できます。
+
+この設定を有効にした場合、以下の動作から 1 つ以上選択する必要があります。
+
+- Application Guard のすべての印刷機能を無効にする。
+
+- 既存のネットワーク プリンターでの印刷を有効にする。
+
+- ローカル プリンターでの印刷を有効にする。
+
+- PDF への印刷を有効にする。ユーザーが PDF として印刷し、結果のファイルをホストに保存できるようにする。
+
+- XPS への印刷を有効にする。ユーザーが XPS として印刷し、結果のファイルをホストに保存できるようにする。
+
+この設定を無効にした場合、または構成しなかった場合、すべての印刷機能は Application Guard で無効です。
+        </string>
+
+        <string id="AppHVSI_CertificateThumbprints_DisplayName">Windows Defender Application Guard がユーザーのデバイスからルート証明機関を使用できるようにする</string>
+        <string id="AppHVSI_CertificateThumbprints_Explain">このポリシー設定を使用すると、特定のルート証明書を Windows Defender Application Guard コンテナーと共有できます。
+
+この設定を有効にすると、サムプリントが指定のものと一致する証明書がコンテナーに転送されます。転送する各証明書のサムプリントをコンマを使用して区切り、複数の証明書を指定できます。
+
+この設定を無効にするか、未構成にした場合、証明書は Windows Defender Application Guard コンテナーと共有されません。
+
+例: b4e72779a8a362c860c36a6461f31e3aa7e58c14、1b1d49f06d2a697a544a1059bd59a7b058cda924
+        </string>
+
+        <string id="AppHVSI_BlockNonEnterpriseContent_DisplayName">Microsoft Edge および Internet Explorer でエンタープライズ Web サイトが非エンタープライズ コンテンツを読み込まないようにする</string>
+        <string id="AppHVSI_BlockNonEnterpriseContent_Explain">このポリシー設定では、Microsoft Edge および Internet Explorer で Web サイトが非エンタープライズ コンテンツを読み込むことができるかどうかを決定できます。
+
+この設定を有効にした場合、エンタープライズ サイトに埋め込まれた非エンタープライズ コンテンツは Windows Defender Application Guard 外部の Internet Explorer または Microsoft Edge で開きません。
+
+この設定を無効にした場合、または構成しなかった場合、非エンタープライズ サイトは Windows Defender Application Guard コンテナーの外部の Internet Explorer および Microsoft Edge で直接開くことができます。
+        </string>
+        <string id="AppHVSI_AllowCameraMicrophoneRedirection_DisplayName">Windows Defender Application Guard でカメラとマイクへのアクセスを許可する</string>
+        <string id="AppHVSI_AllowCameraMicrophoneRedirection_Explain">このポリシーを使用すると、ユーザーのデバイスでカメラとマイクの設定が有効になっている場合に、Windows Defender Application Guard で開かれているアプリケーションがデバイスのカメラとマイクにアクセスできるかどうかを決定できます。
+
+このポリシーを有効にすると、Windows Defender Application Guard 内のアプリケーションは、ユーザーのデバイスのカメラとマイクにアクセスできるようになります。
+
+このポリシーを無効にするか、未構成にした場合、Windows Defender Application Guard 内のアプリケーションは、ユーザーのデバイスのカメラとマイクにアクセスできなくなります。
+
+重要: このポリシーを有効にすると、セキュリティが侵害されたコンテナーはカメラとマイクのアクセス許可をバイパスし、ユーザーが知らないうちにカメラとマイクにアクセスできます。不正なアクセスを防ぐため、カメラとマイクのプライバシー設定は、ユーザーのデバイスで不要になったときにオフにすることをお勧めします。
+        </string>
+        <string id="AppHVSI_AllowPersistence_DisplayName">Windows Defender Application Guard のデータ永続化を許可する</string>
+        <string id="AppHVSI_AllowPersistence_Explain">このポリシー設定では、Windows Defender Application Guard (Application Guard) の異なるセッション間でデータを永続化するかどうかを決定できます。
+
+この設定を有効にした場合、Application Guard では、ユーザーがダウンロードしたファイルやその他の項目 (Cookie、お気に入りなど) を今後の Application Guard セッションで使用するために保存します。
+
+注:
+を有効にした場合でも、Reset-ApplicationGuard PowerShell コマンドを使用して、特定のデバイスからユーザーのデータを削除することができます。このコマンドを実行すると、構成に関係なくすべての従業員データが削除され、従業員のデータ損失につながる可能性があります。
+
+この設定を無効にした場合、または構成しなかった場合、Application Guard は Application Guard コンテナー内のすべてのユーザー データを削除します。
+        </string>
+        <string id="AppHVSI_AllowVirtualGPU_DisplayName">Windows Defender Application Guard のハードウェア アクセラレータによるレンダリングを許可する</string>
+        <string id="AppHVSI_AllowVirtualGPU_Explain">このポリシー設定は、Windows Defender Application Guard がハードウェアまたはソフトウェアのアクセラレータを使ってグラフィックを表示するかどうかを決定します。
+
+この設定を有効にすると、Windows Defender Application Guard は Hyper-V を使用して、サポートされている高セキュリティのレンダリング グラフィック ハードウェア (GPU) にアクセスします。これらの GPU は、Windows Defender Application Guard の使用時のレンダリングのパフォーマンスを高め、バッテリの寿命を延ばします。特にビデオの再生やその他のグラフィックスを集中的に使用する操作で有効です。高セキュリティのレンダリング グラフィックス ハードウェアが接続されていない状態で、この設定を有効にすると、Windows Defender Application Guard は自動的にソフトウェア ベース (CPU) のレンダリングに戻ります。
+
+メモ:
+侵害されている可能性があるグラフィックス デバイスやドライバーがある状態でこの設定を有効にすると、ホスト デバイスにリスクが及ぶ可能性があることに注意してください。
+
+この設定を無効にするか構成しないと、Windows Defender Application Guard はソフトウェア ベース (CPU) のレンダリングを使います。サード パーティのグラフィックス ドライバーを読み込むことや、接続されているグラフィックス ハードウェアと通信することはありません。
+        </string>
+        <string id="AppHVSI_AuditApplicationGuard_DisplayName">Windows Defender Application Guard の監査イベントを許可する</string>
+        <string id="AppHVSI_AuditApplicationGuard_Explain">このポリシー設定では、Windows Defender Application Guard から監査イベントを収集できるかどうかを決定できます。
+
+この設定を有効にした場合、Application Guard はデバイスから監査ポリシーを継承し、Application Guard コンテナーからホストにシステム イベントを記録します。
+
+この設定を無効にした場合、または構成しなかった場合、Application Guard コンテナーからイベント ログが収集されません。
+        </string>
+
+        <string id="AppHVSI_SaveFilesToHost_DisplayName">Windows Defender Application Guard からのファイルのダウンロードとホスト オペレーティング システムへの保存を許可する</string>
+        <string id="AppHVSI_SaveFilesToHost_Explain">このポリシー設定では、ダウンロードしたファイルを Windows Defender Application Guard コンテナーからホスト オペレーティング システムに保存するかどうかを決定します。
+
+この設定を有効にすると、ダウンロードしたファイルを Windows Defender Application Guard コンテナーからホスト オペレーティング システムに保存できます。
+
+この設定を無効にするか、未構成にした場合、ダウンロードしたファイルを Windows Defender Application Guard コンテナーからホスト オペレーティング システムに保存できません。
+        </string>
+        <string id="AppHVSI_FileTrustCriteria_DisplayName">ユーザーが Windows Defender Application Guard で開くファイルを信頼できるようにする</string>
+        <string id="AppHVSI_FileTrustCriteria_Explain">このポリシー設定を使用すると、ユーザーが Application Guard で開くファイルを信頼できるようにするために必要なアクションと検証を構成できます。正常に完了すると、ファイルはホスト上で開かれます。
+
+この設定を有効にした場合は、次のうち 1 つ以上を選択する必要があります。
+0. ユーザーが手動でファイルを信頼することを許可しない: ユーザーには、ファイルを信頼するオプションが与えられません。
+1. ユーザーがファイルを手動で信頼できるようにする: ユーザーは、選択したファイルを明示的に信頼できる UI を Windows で開くことができます。
+2. ウイルス チェック後にユーザーが手動で信頼できるようにする: ユーザーは、選択したファイルを明示的に信頼できる UI を Windows で開くことができます。ファイルは、ユーザーのデバイスにインストールされているウイルス対策プログラムによってクリアされた後にのみ信頼されます。
+
+この設定を無効にするか、未構成にした場合、ユーザーは Application Guard で開くファイルを信頼できなくなります。
+</string>
+
+        <string id="AppHVSI_FileTrustOrigin_DisplayName">Windows Defender Application Guard で、信頼されていないファイルの追加ソースを構成します。</string>
+        <string id="AppHVSI_FileTrustOrigin_Explain">このポリシー設定を使用すると、信頼されていないファイルの追加ソースを構成できます。
+この設定を有効にした場合は、次のうち 1 つ以上を選択する必要があります。
+1. リムーバブル メディア: リムーバブル メディアから開くかコピーしたファイルは、常に Windows Defender Application Guard で開かれます。
+
+2. ネットワーク共有: ネットワーク共有から開くかコピーしたファイルは、常に Windows Defender Application Guard で開かれます。ネットワークの場所を明示的に信頼し、その場所にあるファイルは Application Guard で開かないようにするには、いずれかのネットワーク分離ポリシーを使用します。
+
+3. MotW (Mark of the Web) が付いているファイル: MotW が付いているファイルは常に Windows Defender Application Guard で開かれます。
+
+この設定を無効にするか、未構成にした場合、Application Guard for Microsoft Edge からダウンロードしたファイルのみが、Microsoft Word、Excel、または PowerPoint 用の Application Guard で開かれます。
+</string>
+
+    </stringTable>
+    <presentationTable>
+      <presentation id="AppHVSI_AllowAppHVSI_Presentation">
+        <decimalTextBox refId="AppHVSI_AllowAppHVSI_TextBox" defaultValue="1"></decimalTextBox>
+        <text>
+オプション:
+0. Windows Defender Application Guard を無効にする
+1. Windows Defender Application Guard を Microsoft Edge のみに対して有効にする
+2. Windows Defender Application Guard を Microsoft Office のみに対して有効にする
+3. Windows Defender Application Guard を Microsoft Edge と Microsoft Office に対して有効にする
+        </text>
+      </presentation>
+    <presentation id="AppHVSIClipboardSettings_Presentation">
+        <dropdownList refId="AppHVSIClipboardSettings_CopyPasteDirection_DropdownList" noSort="true" defaultItem="0">クリップボードの動作の設定。</dropdownList>
+        <decimalTextBox refId="AppHVSIClipboardFileType_AllowedFileType_TextBox" defaultValue="1">クリップボードの内容のオプション。
+        </decimalTextBox>
+      </presentation>
+      <presentation id="AppHVSIPrintingSettings_Presentation">
+        <decimalTextBox refId="AppHVSIPrintingSettings_TextBox" defaultValue="0">許可されている Application Guard の印刷の種類。
+        </decimalTextBox>
+        <text>許可する印刷の種類を決定するには、以下を選択する必要があります。
+     - 0. すべての印刷機能を無効にする。
+     - 1. XPS 印刷のみを有効にする。
+     - 2. PDF 印刷のみを有効にする。
+     - 3. PDF 印刷と XPS 印刷の両方を有効にする。
+     - 4. ローカル印刷のみを有効にする。
+     - 5. ローカル印刷と XPS 印刷の両方を有効にする。
+     - 6. ローカル印刷と PDF 印刷の両方を有効にする。
+     - 7. ローカル印刷、PDF 印刷、および XPS 印刷を有効にする。
+     - 8. ネットワーク印刷のみを有効にする。
+     - 9. ネットワーク印刷と XPS 印刷の両方を有効にする。
+     - 10. ネットワーク印刷と PDF 印刷の両方を有効にする。
+     - 11. ネットワーク印刷、PDF 印刷、および XPS 印刷を有効にする。
+     - 12. ネットワーク印刷とローカル印刷の両方を有効にする。
+     - 13. ネットワーク印刷、ローカル印刷、および XPS 印刷を有効にする。
+     - 14. ネットワーク印刷、ローカル印刷、および PDF 印刷を有効にする。
+     - 15. すべての印刷を有効にする。
+        </text>
+      </presentation>
+      <presentation id="AppHVSI_FileTrustCriteria_Presentation">
+        <decimalTextBox refId="AppHVSI_FileTrustCriteria_TextBox" defaultValue="0"></decimalTextBox>
+        <text>信頼されていないファイルを昇格させてデバイスで開いたり、表示したり、編集したりするために、エンド ユーザーが完了しなければならない必要なアクションと検証を構成します。
+0. ユーザーが手動でファイルを信頼することを許可しない
+1. ユーザーがファイルを手動で信頼できるようにする
+2. ウイルス対策チェック後にユーザーが手動でファイルを信頼できるようにする</text>
+      </presentation>
+      <presentation id="AppHVSI_FileTrustOrigin_Presentation">
+         <checkBox refId="AppHVSI_FileTrustOrigin_RemovableMedia_Checkbox" defaultChecked="true">リムーバブル メディア</checkBox>
+         <checkBox refId="AppHVSI_FileTrustOrigin_NetworkShares_Checkbox" defaultChecked="true">ネットワーク共有</checkBox>
+         <checkBox refId="AppHVSI_FileTrustOrigin_MOTW_Checkbox" defaultChecked="true">MotW (Mark of the Web) が付いたファイル</checkBox>
+      </presentation>
+
+      <presentation id="AppHVSICertificateThumbprints_Presentation">
+        <textBox refId="AppHVSICertificateThumbprints_TextBox">
+          <label>共有する証明書の拇印</label>
+        </textBox>
+      </presentation>
+  </presentationTable>
+  </resources>
+</policyDefinitionResources>

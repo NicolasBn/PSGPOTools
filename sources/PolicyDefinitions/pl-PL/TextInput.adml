@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Zasady TextInput</displayName>
+  <description>Zasady związane z operacją TextInput.</description>
+  <resources>
+    <stringTable>
+      <string id="TextInput">Wprowadzanie tekstu</string>
+      <string id="TextInput_AllowLanguageFeaturesUninstall_Help">To ustawienie zasad kontroluje, czy niektóre funkcje języka (na przykład sprawdzania pisowni słowników, aparaty rozpoznawania pisma ręcznego) można usunąć z komputera. </string>
+      <string id="TextInput_AllowLanguageFeaturesUninstall">Umożliwia odinstalowanie funkcji języka</string>  
+      <string id="TextInput_AllowLinguisticDataCollection_Help">To ustawienie zasad określa, czy można wysyłać do firmy Microsoft dane dotyczące pisma odręcznego i wpisywania, aby zwiększyć możliwości aplikacji i usług, które działają w systemie Windows, w zakresie rozpoznawania języka i tworzenia sugestii. </string>
+      <string id="TextInput_AllowLinguisticDataCollection">Ulepsz rozpoznawanie pisma odręcznego i wpisywania</string>  
+    </stringTable>
+  </resources>
+</policyDefinitionResources>

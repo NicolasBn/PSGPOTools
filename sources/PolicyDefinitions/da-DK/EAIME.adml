@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>indtast det viste navn her</displayName>
+  <description>indtast beskrivelsen her</description>
+  <resources>
+    <stringTable>
+      <string id="L_IME">IME</string>
+      <string id="L_TurnOnMisconversionLoggingForMisconversionReport">Slå logføring af fejlkonvertering til for fejlkonverteringsrapport</string>
+      <string id="L_TurnOnMisconversionLoggingForMisconversionReportExplain">Denne politikindstilling giver dig mulighed for at aktivere logføring af miskonvertering for miskonverterings rapporten.
+
+Hvis du aktiverer denne politikindstilling, er logføring af miskonvertering slået til.
+
+Hvis du deaktiverer eller ikke konfigurerer denne politikindstilling, er logføring af forkert konvertering slået fra.
+
+Denne politikindstilling gælder for japansk Microsoft IME.</string>
+      <string id="L_TurnOffSavingAutoTuningDataToFile">Deaktiver lagring af automatiske justeringsdata i fil</string>
+      <string id="L_TurnOffSavingAutoTuningDataToFileExplain">Med denne politikindstilling kan du slå lagring af resultatet af automatisk justering til fil fra.
+
+Hvis du aktiverer denne politikindstilling, gemmes de automatiske justeringsdata ikke i filen.
+
+Hvis du deaktiverer eller ikke konfigurerer denne politikindstilling, gemmes automatisk justeringsdata som standard i filen.
+
+Denne politikindstilling gælder kun for japansk Microsoft IME.</string>
+      <string id="L_TurnOffHistorybasedPredictiveInput">Deaktiver historikbaseret forudsigeligt input</string>
+      <string id="L_TurnOffHistorybasedPredictiveInputExplain">Med denne politikindstilling kan du slå historikbaseret forudsigende input fra.
+
+Hvis du aktiverer denne politikindstilling, slås historikbaseret forudsigende input fra.
+
+Hvis du deaktiverer eller ikke konfigurerer denne politikindstilling, er historikbaseret forudsigende input som standard slået til.
+
+Denne politikindstilling gælder kun for japansk Microsoft IME.
+
+Bemærk: Ændringer i denne indstilling træder først i kraft, når brugeren logger af.</string>
+      <string id="L_TurnOffOpenExtendedDictionary">Deaktiver Open Extended Dictionary</string>
+      <string id="L_TurnOffOpenExtendedDictionaryExplain">Denne politikindstilling tillader dig at slå Åbn udvidet ordbog fra.
+
+Hvis du aktiverer denne politikindstilling, slås Åbn udvidet ordbog fra. Du kan ikke tilføje en ny åben udvidet ordbog.
+
+For japansk Microsoft IME bruges en åben udvidet ordbog, der tilføjes, før denne politikindstilling aktiveres, til konvertering.
+
+Hvis du deaktiverer eller ikke konfigurerer denne politikindstilling, kan du som standard tilføje og bruge Åbn udvidet ordbog.
+
+Denne politikindstilling anvendes på japansk Microsoft IME.</string>
+      <string id="L_TurnOffInternetSearchIntegration">Deaktiver integration af internetsøgning</string>
+      <string id="L_TurnOffInternetSearchIntegrationExplain">Denne politikindstilling tillader dig at deaktivere integration af internetsøgning.
+
+Integration af søgning omfatter både brug af søgemaskine (japansk Microsoft IME) og udførelse af Bing-søgning fra prædiktivt input til japansk Microsoft IME.
+
+Hvis du aktiverer denne politikindstilling, kan du ikke bruge integration af søgning.
+
+Hvis du deaktiverer eller ikke konfigurerer denne politikindstilling, kan funktionen til integration af søgning bruges som standard.
+
+Denne politikindstilling gælder for japansk Microsoft IME.
+
+Bemærk: Ændringer i denne indstilling træder først i kraft, når brugeren logger af.</string>
+      <string id="L_TurnOffCustomDictionary">Deaktiver brugerordbog</string>
+      <string id="L_TurnOffCustomDictionaryExplain">Med denne politikindstilling kan du deaktivere muligheden for at benytte en brugerordbog.
+
+Hvis du aktiverer politikindstillingen, kan du ikke tilføje, redigere eller slette ord i brugerordbogen, hverken med GUI-værktøjer eller API'er. Ord, som registreres i en brugerordbog, inden politikindstillingen aktiveres, kan fortsat anvendes ved konvertering.
+
+Hvis du deaktiverer eller undlader at konfigurere politikindstillingen, kan brugerordbogen anvendes som standard.
+
+Til japansk Microsoft IME fungerer [Ryd oplysninger om automatisk justering], selvom denne politikindstilling er aktiveret, og selvjusterede ord fjernes fra brugerordbogen.
+
+Denne politikindstilling gælder for japansk Microsoft IME.
+
+Bemærk! Ændringer i denne indstilling træder først i kraft, når brugeren logger af.</string>
+      <string id="L_RestrictCharacterCodeRangeOfConversion">Begræns tegnkodeinterval for konvertering</string>
+      <string id="L_RestrictCharacterCodeRangeOfConversionExplain">Du kan bruge denne politikindstilling til at begrænse tegnkodeintervallet for konvertering ved at angive tegnfilter.
+
+Hvis du aktiverer denne politikindstilling, bruges kun de tegnkodeintervaller, der er angivet af denne politikindstilling, til konvertering af IME.  Du kan angive flere intervaller ved at indstille en værdi sammen med bitvis ELLER af følgende værdier:
+
+0x0001 // JIS208-område
+0x0002 // NEC-specialtegnkode
+0x0004 // NEC-valgt IBM-udvidet kode
+0x0008 // IBM-udvidet kode
+0x0010 // Katakana-kode af halv bredde
+0x0100 // EUDC(GAIJI)
+0x0200 // S-JIS-ikke-tilknyttet område
+0x0400 // Unicode-tegn
+0x0800 // erstatningstegn
+0x1000 // IVS-tegn
+0xFFFF // ingen definition.
+
+Hvis du deaktiverer eller ikke konfigurerer denne politikindstilling, filtreres ingen tegnintervaller som standard.
+
+Denne politikindstilling gælder kun for japansk Microsoft IME.
+
+Bemærk! Ændringer af denne indstilling træder først i kraft, når brugeren logger af.</string>
+      <string id="L_DoNotIncludeNonPublishingStandardGlyphInTheCandidateList">Medtag ikke standardspecialtegn, der ikke udgives, på kandidatlisten</string>
+      <string id="L_DoNotIncludeNonPublishingStandardGlyphInTheCandidateListExplain">Du kan bruge denne politikindstilling til at medtage standardspecialtegn, der ikke udgives, på kandidatlisten, når der findes standardspecialtegn, der udgives, for ordet.
+
+Hvis du aktiverer denne politikindstilling, medtages standardspecialtegn, der ikke udgives, ikke på kandidatlisten, når der findes standardspecialtegn, der udgives, for ordet.
+
+Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, medtages både standardspecialtegn, der udgives, og standardspecialtegn, der ikke udgives. på kandidatlisten.
+
+Denne politikindstilling gælder kun for japansk Microsoft IME.
+
+Bemærk! Ændringer af denne indstilling træder først i kraft, når brugeren logger af.</string>
+      <string id="L_TurnOnCloudCandidate">Slå Cloud Candidate til</string>
+      <string id="L_TurnOnCloudCandidateExplain">Denne politikindstilling styrer funktionen Cloud candidates, som bruger en onlinetjeneste til at levere inputforslag, der ikke findes i en pc's lokale ordbog.
+
+Hvis du aktiverer denne politikindstilling, slås de funktioner, der er knyttet til denne funktion, til, brugerens tastaturinput sendes til Microsoft for at generere forslagene, og brugeren kan ikke slå den fra.
+
+Hvis du deaktiverer denne politikindstilling, er de funktioner, der er knyttet til denne funktion, slået fra, og brugeren kan ikke slå den til.
+
+Hvis du ikke konfigurerer denne politikindstilling, vil den som standard være slået fra, og brugeren kan slå funktionen Cloud candidates til eller fra.
+
+Denne politikindstilling gælder for Microsoft CHS pinyin IME og JPN IME.</string>
+      <string id="L_TurnOnCloudCandidateCHS">Slå Cloud Candidate til for CHS</string>
+      <string id="L_TurnOnCloudCandidateCHSExplain">Denne politikindstilling styrer funktionen Cloud candidates, som bruger en onlinetjeneste til at levere inputforslag, der ikke findes i en pc's lokale ordbog.
+
+Hvis du aktiverer denne politikindstilling, slås de funktioner, der er knyttet til denne funktion, til, brugerens tastaturinput sendes til Microsoft for at generere forslagene, og brugeren kan ikke slå den fra.
+
+Hvis du deaktiverer denne politikindstilling, er de funktioner, der er knyttet til denne funktion, slået fra, og brugeren kan ikke slå den til.
+
+Hvis du ikke konfigurerer denne politikindstilling, vil den som standard være slået fra, og brugeren kan slå funktionen Cloud candidates til eller fra.
+
+Denne politikindstilling gælder kun for Microsoft CHS pinyin IME.</string>
+      <string id="L_TurnOnLiveSticker">Slå Live Sticker til</string>
+      <string id="L_TurnOnLiveStickerExplain">Denne politikindstilling styrer Live sticker-funktionen, som bruger en onlinetjeneste til at sende klistermærker online.
+
+Hvis du aktiverer denne politikindstilling, slås de funktioner, der er knyttet til denne funktion, til, brugerens tastaturinput sendes til Microsoft for at oprette Live-klistermærker, og brugeren kan ikke slå den fra.
+
+Hvis du deaktiverer denne politikindstilling, er de funktioner, der er knyttet til denne funktion, slået fra, og brugeren kan ikke slå den til.
+
+Hvis du ikke konfigurerer denne politikindstilling, vil den som standard være slået fra, og brugeren kan slå funktionen Live sticker til og fra.
+
+Denne politikindstilling gælder kun for Microsoft CHS pinyin IME.</string>
+      <string id="L_TurnOnLexiconUpdate">Slå leksikonopdatering til</string>
+      <string id="L_TurnOnLexiconUpdateExplain">Denne politikindstilling styrer leksikonopdateringen, som henter hotte og populære ordleksikon til den lokale pc.
+
+Hvis du aktiverer denne politikindstilling, er de funktioner, der er knyttet til denne funktion, som kan downloades hotte og populære ordleksikon til den lokale pc, slået til, og brugeren kan slå den til eller fra i Indstillinger.
+
+Hvis du deaktiverer denne politikindstilling, er de funktioner, der er knyttet til denne funktion, slået fra, og brugeren kan ikke slå den til.
+
+Hvis du ikke konfigurerer denne politikindstilling, vil den som standard være slået til, og brugeren kan slå leksikonopdateringen til og fra.
+
+Denne politikindstilling gælder kun for Microsoft CHS pinyin IME.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="L_RestrictCharacterCodeRangeOfConversion">
+        <textBox refId="L_RestrictCharacterCodeRangeOfConversionID">
+          <label>Tegnkodeinterval:</label>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

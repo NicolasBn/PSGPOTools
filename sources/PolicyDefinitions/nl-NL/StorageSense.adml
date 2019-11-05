@@ -1,0 +1,106 @@
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+<displayName>Opslaginzicht</displayName>
+<description>ADMX-bestand voor Opslaginzicht</description>
+<resources>
+    <stringTable>
+    <string id="StorageSense">Opslaginzicht</string>
+    <string id="SS_AllowStorageSenseGlobal">Opslaginzicht toestaan</string>
+    <string id="SS_AllowStorageSenseGlobal_Explain">
+Opslaginzicht kan de bestanden van de gebruiker automatisch opschonen om schijfruimte vrij te maken. Opslaginzicht wordt standaard ingeschakeld wanneer er weinig schijfruimte op de computer beschikbaar is en wordt uitgevoerd wanneer de computer bijna geen opslagruimte meer heeft. U kunt de frequentie wijzigen in Opslaginstellingen of instellen met het groepsbeleid 'Frequentie Opslaginzicht configureren'.
+
+Ingeschakeld
+Opslaginzicht is ingeschakeld voor de computer met de standaardfrequentie 'bij onvoldoende vrije schijfruimte', maar gebruikers kunnen de frequentie aanpassen (tenzij u ook het groepsbeleid 'Frequentie Opslaginzicht configureren' configureert).
+
+Uitgeschakeld
+Opslaginzicht is uitgeschakeld voor de computer. Gebruikers kunnen Opslaginzicht niet inschakelen.
+
+Niet geconfigureerd:
+Opslaginzicht is standaard uitgeschakeld totdat de gebruiker weinig vrije schijfruimte heeft of de gebruiker deze functie handmatig inschakelt. Gebruikers kunnen deze instelling configureren in Opslaginstellingen.
+    </string>
+    <string id="SS_ConfigStorageSenseGlobalCadence">Frequentie Opslaginzicht configureren</string>
+    <string id="SS_ConfigStorageSenseGlobalCadence_Explain">
+Opslaginzicht kan de bestanden van de gebruiker automatisch opschonen om schijfruimte vrij te maken.
+
+Als het groepsbeleid 'Opslaginzicht toestaan' is uitgeschakeld, heeft dit beleid geen effect.
+
+Ingeschakeld
+U moet de gewenste frequentie voor Opslaginzicht opgeven. Ondersteunde opties zijn: elke dag, elke week, elke maand en bij onvoldoende vrije schijfruimte. De standaardwaarde is 0 (bij onvoldoende vrije schijfruimte).
+
+Uitgeschakeld of Niet geconfigureerd:
+De frequentie voor Opslaginzicht is standaard ingesteld op 'bij onvoldoende vrije schijfruimte'. Gebruikers kunnen deze instelling configureren in Opslaginstellingen.
+    </string>
+    <string id="SS_StorageSenseGlobalCadence_Daily">Elke dag</string>
+    <string id="SS_StorageSenseGlobalCadence_Weekly">Elke week</string>
+    <string id="SS_StorageSenseGlobalCadence_Monthly">Elke maand</string>
+    <string id="SS_StorageSenseGlobalCadence_DuringLowFreeDiskSpace">Bij onvoldoende vrije schijfruimte</string>
+    <string id="SS_AllowStorageSenseTemporaryFilesCleanup">Opschonen tijdelijke bestanden door Opslaginzicht toestaan</string>
+    <string id="SS_AllowStorageSenseTemporaryFilesCleanup_Explain">
+Wanneer Opslaginzicht wordt uitgevoerd, kunnen de tijdelijke bestanden van de gebruiker worden verwijderd wanneer deze niet in gebruik zijn.
+
+Als het groepsbeleid 'Opslaginzicht toestaan' is uitgeschakeld, heeft dit beleid geen effect.
+
+Ingeschakeld
+Opslaginzicht verwijdert tijdelijke bestanden van de gebruiker die niet in gebruik zijn. Gebruikers kunnen deze instelling niet uitschakelen in Opslaginstellingen.
+
+Uitgeschakeld
+Opslaginzicht verwijdert geen de tijdelijke bestanden van de gebruiker. Gebruikers kunnen deze instelling niet inschakelen in de Opslaginstellingen.
+
+Niet geconfigureerd:
+Opslaginzicht verwijdert standaard tijdelijke bestanden van de gebruiker. Gebruikers kunnen deze instelling configureren in Opslaginstellingen.
+    </string>
+    <string id="SS_ConfigStorageSenseRecycleBinCleanupThreshold">Drempelwaarde Opslaginzicht configureren voor opschoning prullenbak</string>
+    <string id="SS_ConfigStorageSenseRecycleBinCleanupThreshold_Explain">
+Wanneer Opslaginzicht wordt uitgevoerd, kunnen de bestanden in de prullenbak van de gebruiker worden verwijderd wanneer deze zich daar een bepaald aantal dagen bevinden.
+
+Als het groepsbeleid 'Opslaginzicht toestaan' is uitgeschakeld, heeft dit beleid geen effect.
+
+Ingeschakeld
+U moet een minimale leeftijdsdrempelwaarde (in dagen) opgeven voor bestanden in de prullenbak voordat Opslaginzicht deze verwijdert. Ondersteunde waarden zijn: 0–365.
+Als u deze waarde instelt op nul, verwijdert Opslaginzicht geen bestanden van de gebruiker in de prullenbak.
+
+Uitgeschakeld of Niet geconfigureerd
+Opslaginzicht verwijdert standaard bestanden in de prullenbak van de gebruiker die zich hier meer dan 30 dagen bevinden. Gebruikers kunnen deze instelling configureren in Opslaginstellingen.
+    </string>
+    <string id="SS_ConfigStorageSenseDownloadsCleanupThreshold">Drempelwaarde Opslaginzicht configureren voor opschoning downloads</string>
+    <string id="SS_ConfigStorageSenseDownloadsCleanupThreshold_Explain">
+Wanneer Opslaginzicht wordt uitgevoerd, kunnen de bestanden in de downloadmap van de gebruiker worden verwijderd wanneer deze zich daar een bepaald aantal dagen bevinden.
+
+Als het groepsbeleid 'Opslaginzicht toestaan' is uitgeschakeld, heeft dit beleid geen effect.
+
+Ingeschakeld
+U moet een minimale leeftijdsdrempelwaarde (in dagen) opgeven voor bestanden in de downloadmap voordat Opslaginzicht deze verwijdert. Ondersteunde waarden zijn: 0–365.
+Als u deze waarde instelt op nul, verwijdert Opslaginzicht geen bestanden van de gebruiker in de downloadmap. De standaardwaarde is 0, waarbij geen bestanden in de downloadmap worden verwijderd.
+
+Uitgeschakeld of Niet geconfigureerd
+Opslaginzicht verwijdert standaard geen bestanden in de downloadmap van de gebruiker. Gebruikers kunnen deze instelling configureren in Opslaginstellingen.
+    </string>
+    <string id="SS_ConfigStorageSenseCloudContentDehydrationThreshold">Drempelwaarde Opslaginzicht configureren voor dehydrateren cloudinhoud</string>
+    <string id="SS_ConfigStorageSenseCloudContentDehydrationThreshold_Explain">
+Wanneer Opslaginzicht wordt uitgevoerd, kan cloudinhoud worden gedehydrateerd die een bepaald aantal dagen niet is geopend.
+
+Als het groepsbeleid 'Opslaginzicht toestaan' is uitgeschakeld, heeft dit beleid geen effect.
+
+Ingeschakeld
+U moet het aantal dagen opgeven voor cloudbestanden voordat Opslaginzicht deze dehydrateert. Ondersteunde waarden zijn: 0–365.
+Als u deze waarde instelt op nul, dehydrateert Opslaginzicht geen cloudinhoud. De standaardwaarde is 0, waarbij cloudinhoud nooit wordt gedehydrateerd.
+
+Uitgeschakeld of Niet geconfigureerd
+Opslaginzicht dehydrateert standaard geen cloudinhoud. Gebruikers kunnen deze instelling configureren in Opslaginstellingen.
+    </string>
+    </stringTable>
+    <presentationTable>
+    <presentation id="SS_ConfigStorageSenseGlobalCadence_Presentation">
+        <dropdownList refId="StorageSenseGlobalCadence" noSort="true" defaultItem="3">Opslaginzicht uitvoeren:</dropdownList>
+    </presentation>
+    <presentation id="SS_ConfigStorageSenseRecycleBinCleanupThreshold_Presentation">
+        <decimalTextBox refId="StorageSenseRecycleBinCleanupThreshold" defaultValue="30">Minimale leeftijd (in dagen) van een bestand in de map Prullenbak voordat Opslaginzicht dit verwijdert (bij 0 worden nooit bestanden verwijderd):</decimalTextBox>
+    </presentation>
+    <presentation id="SS_ConfigStorageSenseDownloadsCleanupThreshold_Presentation">
+        <decimalTextBox refId="StorageSenseDownloadsCleanupThreshold" defaultValue="0">Minimale leeftijd (in dagen) van een bestand in de map Download voordat Opslaginzicht dit verwijdert (bij 0 worden nooit bestanden verwijderd):</decimalTextBox>
+    </presentation>
+    <presentation id="SS_ConfigStorageSenseCloudContentDehydrationThreshold_Presentation">
+        <decimalTextBox refId="StorageSenseCloudContentDehydrationThreshold" defaultValue="0">Het aantal dagen sinds een cloudbestand is geopend voordat Opslaginzicht dit dehydrateert (bij 0 worden nooit bestanden gedehydrateerd):</decimalTextBox>
+    </presentation>
+    </presentationTable>
+</resources>
+</policyDefinitionResources>

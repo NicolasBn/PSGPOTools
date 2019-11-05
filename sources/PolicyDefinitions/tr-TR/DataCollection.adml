@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2015 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>buraya görünen adı girin</displayName>
+  <description>buraya açıklamayı girin</description>
+  <resources>
+    <stringTable>
+      <string id="AllowTelemetry">Telemetriye izin ver</string>
+      <string id="AllowTelemetry_0">0 - Güvenlik [Sadece Kurum]</string>
+      <string id="AllowTelemetry_1">1 - Temel</string>
+      <string id="AllowTelemetry_2">2 - Geliştirilmiş</string>
+      <string id="AllowTelemetry_3">3 - Tam</string>
+      <string id="AllowTelemetry_Explain">Bu ilke ayarı, Microsoft'a gönderilen Windows tanılama verisinin en yüksek düzeyini belirler. Bu ayarı yapılandırarak kullanıcıların Telemetri Ayarları'nı değiştirmelerini engellemezsiniz ancak kuruluş için ayarladığınızdan daha yüksek bir düzey seçmelerini engellersiniz. Windows 10 tanılama verisi ayarları, yalnızca Windows işletim sistemi ve Windows ile birlikte gelen uygulamalar için geçerlidir. Bu ayarlar, Windows 10'da çalışan üçüncü taraf uygulamalar için geçerli değildir.
+
+Bu ayarı etkinleştirirseniz şunlar dâhil olmak üzere Microsoft'a gönderilecek tanılama verisinin düzeyine karar verebilirsiniz:
+
+  - 0 (Güvenlik). Microsoft'a yalnızca minimum miktarda veri gönderir, Windows'un güvenliğini sağlamak için gereklidir. Kötü Amaçlı Yazılımları Temizleme Aracı (MSRT) ve Windows Defender gibi Windows güvenliği bileşenleri etkinleştirilmişse bu düzeyde Microsoft'a veri gönderebilirler. 0 değerini ayarlama yalnızca Enterprise, Education, IoT veya Windows Server sürümlerini çalıştıran cihazlar için geçerlidir. Diğer sürümler için 0 değerini ayarlama, 1 değerini ayarlamaya eşdeğerdir.
+  - 1 (Temel). Aynı verileri 0 değeri olarak gönderir ve ek olarak temel cihaz bilgileri, kaliteyle ilgili veriler ve uygulama uyumluluğu bilgileri gibi çok sınırlı miktarda tanılama verisi gönderir. 0 veya 1 değerlerini ayarlamanın cihaz üzerinde bazı deneyimlerin performansını düşüreceğini unutmayın.
+  - 2 (Gelişmiş). Aynı verileri 1 değeri olarak gönderir ve ayrıca Windows, Windows Server, System Center ve uygulamalarının nasıl kullanıldığı, nasıl çalıştığına dair bilgiler ve gelişmiş güvenilirlik verileri gibi ek veriler gönderir.
+  - 3 (Tam). Aynı verileri 2 değeri olarak gönderir ve ayrıca cihazla ilgili bir soruna neden olabilecek dosyalar ve içerikler de dâhil olmak üzere cihazlarla ilgili sorunları tanılamak ve düzeltmek için kullanılan gelişmiş tanılama verisini gönderir.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız telemetri ayarları ayrı olarak Ayarlar'da yapılandırılabilir.
+      </string>
+
+      <string id="TelemetryProxy">Bağlı Kullanıcı Deneyimlerini ve Telemetriyi Yapılandır</string>
+      <string id="TelemetryProxy_Explain">Bu ilke ayarı ile Bağlı Kullanıcı Deneyimi ve Telemetrisi isteklerini bir ara sunucuya gönderebilirsiniz.
+
+Bu ilke ayarını etkinleştirirseniz, kuruluşunuzun ağı içerisindeki hedef cihazın FQDN veya IP adresini (ve isteğe bağlı olarak bir bağlantı noktası numarası) belirleyebilirsiniz. Bağlantı, Güvenli Yuva Katmanı (SSL) bağlantısı üzerinden yapılır. Belirtilen ara sunucu başarısız olursa ya da bu ilke ayarını devre dışı bırakır veya yapılandırmazsanız, Bağlı Kullanıcı Deneyimi ve Telemetrisi verileri varsayılan ara sunucu yapılandırmasını kullanarak Microsoft’a gönderilir.
+
+Bu ayarın biçimi &lt;server&gt;:&lt;port&gt; şeklindedir. 
+      </string>
+
+      <string id="CommercialId">Ticari Kimliği Yapılandır</string>
+      <string id="CommercialId_Explain">Bu ilke ayarı, bu cihazın telemetri verilerini benzersiz bir şekilde belirli bir kuruluşa ait olarak ilişkilendirmek için kullanılan tanımlayıcıyı tanımlar. Kuruluşunuz bu cihazın kuruluşunuza ait olarak tanımlanmasını gerektiren bir programa katılıyorsa, bu tanımlamayı sağlamak için bu ayarı kullanın. Bu ayarın değeri programın ekleme sürecinin bir parçası olarak Microsoft tarafından sağlanır. 
+
+Bu ilke ayarını devre dışı bırakır veya yapılandırmazsanız, o zaman Microsoft bu makineyi ve telemetri verilerini kuruluşunuzla ilişkilendirmek için bu tanımlayıcıyı kullanamaz.
+      </string>
+
+      <string id="DisableEnterpriseAuthProxy">Kimliği doğrulanmış ara sunucu kullanımını Bağlı Kullanıcı Deneyimi ve Telemetrisi hizmeti için yapılandır</string>
+      <string id="DisableEnterpriseAuthProxy_1">Kimliği Doğrulanmış Ara sunucu kullanımını etkinleştir</string>
+      <string id="DisableEnterpriseAuthProxy_2">Kimliği Doğrulanmış Ara sunucu kullanımını devre dışı bırak</string>
+      <string id="DisableEnterpriseAuthProxy_Explain">Bu ilke ayarı, Bağlı Kullanıcı Deneyimi ve Telemetrisi hizmetinin otomatik olarak kimliği doğrulanmış bir ara sunucuyu kullanarak Windows 10 üzerinden Microsoft'a veri göndermesini engeller. Eğer bu ilke ayarını devre dışı bırakı veya yapılandırmazsanız, Bağlı Kullanıcı Deneyimi ve Telemetrisi hizmeti kimliği doğrulanmış bir ara sunucuyu otomatik olarak kullanarak Microsoft'a veri gönderecektir. Bu ilkeyi etkinleştirmek, Bağlı Kullanıcı Deneyimi ve Telemetrisi hizmetinin otomatik olarak bir kimliği doğrulanmış ara sunucuyu kullanmasını engelleyecektir.</string>
+
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics">Gelişmiş tanılama verilerini Windows Analytics'in gerektirdiği minimum seviyeye getirin</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_1">Windows Analytics koleksiyonunu etkinleştir</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_2">Windows Analytics koleksiyonunu devre dışı bırak</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_Explain">Telemetriye İzin Ver ilke ayarıyla birlikte bu ilke ayarı, kuruluşların Windows Analytics hizmetleri aracılığıyla BT incelemeleri için Microsoft'a belirli bir tanılama verisi kümesi göndermesini sağlar. Bu ayarı yapılandırarak kullanıcıların Telemetri Ayarları'nı değiştirmelerini engellemezsiniz ancak kuruluş için ayarladığınızdan daha yüksek bir düzey seçmelerini engellersiniz.
+
+Bu davranışı etkinleştirmek için iki adımı tamamlamanız gerekir:
+
+    1. Bu ilke ayarını etkinleştirin
+    2. Telemetriye İzin Ver ayarını 2. düzeye (Gelişmiş) ayarlayın
+
+Bu ilke ayarlarını birlikte yapılandırırsanız tanılama verilerinin Temel düzeyini ve Windows Analytics için gerekli olan ek olayları Microsoft'a gönderirsiniz. Ek olaylar burada belgelenmiştir: https://go.Microsoft.com/fwlink/?linked=847594.
+
+Telemetriye İzin Ver ilke ayarında Gelişmiş tanılama verilerini etkinleştirirseniz ancak bu ilke ayarını yapılandırmazsanız Windows Analytics için gerekli olayları ve Gelişmiş düzey ek telemetri verilerini Microsoft'a gönderirsiniz. Tam, Temel veya Güvenlik düzeyi tanılama verilerini Microsoft'a göndermek üzere yapılandırılan bilgisayarlarda bu ayarın bir etkisi olmaz.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız Microsoft'a gönderilen tanılama verisi düzeyi Telemetriye İzin Ver ilke ayarına göre belirlenir.
+      </string>
+
+      <string id="AllowDeviceNameInDiagnosticData">Cihaz adının Windows tanılama verisinde gönderilmesine izin ver</string>
+      <string id="AllowDeviceNameInDiagnosticData_Explain">Bu ilke Windows tanılama verisinin bir parçası olarak Microsoft'a gönderilecek cihaz adını sağlar.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız cihaz adı Windows tanılama verisinin bir parçası olarak Microsoft'a gönderilmez.
+      </string>
+
+      <string id="ConfigureTelemetryOptInSettingsUx">Telemetri katılımı ayarı kullanıcı arabirimini yapılandırın.</string>
+      <string id="ConfigureTelemetryOptInSettingsUx_1">Telemetri katılımı Ayarlarını devre dışı bırak</string>
+      <string id="ConfigureTelemetryOptInSettingsUx_2">Telemetri katılım Ayarlarını etkinleştir</string>
+      <string id="ConfigureTelemetryOptInSettingsUx_Explain">Bu ilke ayarı, kişilerin Ayarlar'da kendi telemetri düzeylerini değiştirip değiştiremeyeceklerini belirler. Bu ayar, Telemetriye İzin Ver ayarlarıyla birlikte kullanılmalıdır.
+
+Bu ilke ayarını "Telemetri Katılım Ayarlarını Devre Dışı Bırak" olarak ayarlarsanız telemetri düzeyleri Ayarlar'da devre dışı bırakılır ve kullanıcıların bu ayarları değiştirmeleri engellenir.
+
+Bu ilke ayarını "Telemetri Katılım Ayarlarını Etkinleştir" olarak ayarlarsanız veya yapılandırmazsanız kullanıcılar, Ayarlar'da kendi telemetri düzeylerini değiştirebilirler.
+
+Not:
+Kullanıcıların kuruluşunuzun sınırını aşan tanılama verilerini Microsoft'a göndermelerini engellemek için Telemetriye İzin Ver ilke ayarını ayarlayın.
+      </string>
+
+      <string id="ConfigureTelemetryOptInChangeNotification">Telemetri katılımı değişikliği bildirimlerini yapılandırın.</string>
+      <string id="ConfigureTelemetryOptInChangeNotification_1">Telemetri değişiklik bildirimlerini devre dışı bırak</string>
+      <string id="ConfigureTelemetryOptInChangeNotification_2">Telemetri değişiklik bildirimlerini etkinleştir</string>
+      <string id="ConfigureTelemetryOptInChangeNotification_Explain">
+          Bu ilke ayarı, bir cihazın ilk oturum açmada veya Ayarlar'da değişiklik yapıldığında kişilere telemetri düzeyleri hakkında bildirim gösterip göstermeyeceğini denetler. 
+          Bu ilke ayarını "Telemetri değişikliği bildirimlerini devre dışı bırak" olarak ayarlarsanız telemetri düzeyi bildirimleri görünmeyi durdurur.
+          Bu ilke ayarını "Telemetri değişikliği bildirimlerini etkinleştir" olarak ayarlarsanız veya yapılandırmazsanız telemetri bildirimleri ilk oturum açmada ve Ayarlar'da değişiklik yapıldığında görünür.
+      </string>
+
+      <string id="DisableDeviceDelete">Tanılama verilerini silmeyi devre dışı bırak </string>
+      <string id="DisableDeviceDelete_Explain">
+          Bu ilke ayarı, Tanılama ve Geri Bildirim Ayarları sayfasında Tanılama verilerini sil düğmesinin etkin olup olmadığını denetler.
+          Bu ilke ayarını etkinleştirirseniz Tanılama verilerini sil düğmesi, Ayarlar sayfasında devre dışı bırakılır ve Microsoft tarafından cihazdan toplanan tanılama verilerinin silinmesi önlenir. 
+          Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız Tanılama verilerini sil düğmesi, Ayarlar sayfasında etkinleştirilir ve bu, kişilerin Microsoft tarafından bu cihazdan toplanan tüm tanılama verilerini silmelerine olanak sağlar.
+      </string>
+
+      <string id="DisableDiagnosticDataViewer">Tanılama veri görüntüleyicisini devre dışı bırakın. </string>
+      <string id="DisableDiagnosticDataViewer_Explain">
+          Bu ilke ayarı, kullanıcıların Tanılama ve Geri Bildirim Ayarları sayfasından Tanılama Veri Görüntüleyicisi'ni etkinleştirip başlatabilmelerini denetler.
+          Bu ilke ayarını etkinleştirirseniz Tanılama Veri Görüntüleyicisi, Ayarlar sayfasında etkinleştirilmez ve görüntüleyicinin Microsoft tarafından cihazdan toplanan tanılama verilerini göstermesini engeller.  
+          Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız Tanılama Veri Görüntüleyicisi Ayarlar sayfasında etkinleştirilir.
+      </string>
+
+      <string id="ConfigureMicrosoft365UploadEndpoint">Masaüstü Analizi için tanılama verileri karşıya yükleme uç noktasını yapılandır</string>
+      <string id="ConfigureMicrosoft365UploadEndpoint_Explain">
+          Bu ilke, Masaüstü Analizi programının bir parçası olarak bu cihazın tanılama verileri için karşıya yükleme bitiş noktasını ayarlar.
+          Kuruluşunuz programa katılıyorsa ve özel bir karşıya yükleme bitiş noktası yapılandırmak için talimat aldıysa bu bitiş noktasını tanımlamak için bu ayarı kullanın.
+          Bu ayarın değeri, program için katılım işleminin bir parçası olarak Microsoft tarafından sağlanır. 
+      </string>
+
+      <string id="AllowCommercialDataPipeline">Ticari veri ardışık düzenine izin ver</string>
+      <string id="AllowCommercialDataPipeline_Explain">
+          AllowCommercialDataPipeline, cihazı Windows kurumsal veri ardışık düzenine dahil eder.
+          Bu ayarı etkinleştirirseniz, cihazdan toplanan veriler Windows kurumsal veri ardışık düzenine dahil edilir.
+          Bu ayarı devre dışı bırakır veya yapılandırmazsanız, cihazdaki tüm veriler toplanıp Windows standart veri ardışık düzeni için ilkelerimizle uyumlu olarak işlenir.
+          Bu ayarın yapılandırılması, telemetri koleksiyonu düzeyini veya kullanıcının düzeyi değiştirme yeteneğini değiştirmez. Bu ayar yalnızca Windows işletim sistemi ve Windows'ta bulunan uygulamalar için geçerlidir, Windows 10 üzerinde çalışan üçüncü taraf uygulamalar veya hizmetler için geçerli değildir.
+      </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AllowTelemetry">
+        <dropdownList refId="AllowTelemetry" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="TelemetryProxy">
+        <textBox refId="TelemetryProxyName">
+          <label>Ara Sunucu Adı:</label>
+        </textBox>
+      </presentation>
+      <presentation id="CommercialID">
+        <textBox refId="CommercialIdValue">
+          <label>Ticari Kimlik:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DisableEnterpriseAuthProxy">
+        <dropdownList refId="DisableEnterpriseAuthProxy" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="LimitEnhancedDiagnosticDataWindowsAnalytics">
+        <dropdownList refId="LimitEnhancedDiagnosticDataWindowsAnalytics" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureTelemetryOptInSettingsUx">
+        <dropdownList refId="ConfigureTelemetryOptInSettingsUx" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureTelemetryOptInChangeNotification">
+        <dropdownList refId="ConfigureTelemetryOptInChangeNotification" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureMicrosoft365UploadEndpoint">
+        <textBox refId="ConfigureMicrosoft365UploadEndpointValue">
+          <label>Masaüstü Analizi Özel Karşıya Yükleme Uç Noktası:</label>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

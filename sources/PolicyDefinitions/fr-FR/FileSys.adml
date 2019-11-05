@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>tapez le nom complet ici</displayName>
+  <description>tapez la description ici</description>
+  <resources>
+    <stringTable>
+      <string id="Filesystem">Système de fichiers</string>
+      <string id="NTFS">NTFS</string>
+      <string id="SymlinkEvalExplain">Les liens symboliques peuvent introduire des vulnérabilités dans certaines applications. Pour pallier ce problème, vous pouvez activer ou désactiver l’évaluation des types de liens symboliques suivants :
+
+Lien local vers une cible locale
+Lien local vers une cible distante
+Lien distant vers une cible distante
+Lien distant vers une cible locale
+
+Pour plus d’informations, consultez la section d’aide de Windows.
+
+REMARQUE : si cette stratégie est désactivée ou n’est pas configurée, les administrateurs locaux peuvent sélectionner les types de liens symboliques à évaluer.</string>
+      <string id="SymlinkEvaluation">Autoriser l’évaluation d’un lien symbolique</string>
+      <string id="DisableCompression">N’autoriser la compression sur aucun volume NTFS</string>
+      <string id="DisableCompressionText">La compression peut s’ajouter au surdébit de traitement des opérations du système de fichiers.  L’activation de ce paramètre empêche de créer des fichiers compressés ou d’y accéder.  </string>
+      <string id="DisableEncryption">N’autoriser le chiffrement sur aucun volume NTFS</string>
+      <string id="DisableEncryptionText">Le chiffrement peut s’ajouter au surdébit de traitement des opérations du système de fichiers.  L’activation de ce paramètre empêche de créer des fichiers chiffrés ou d’y accéder.</string>
+      <string id="EnablePagefileEncryption">Autoriser le chiffrement du fichier d’échange NTFS</string>
+      <string id="EnablePagefileEncryptionText">Le chiffrement du fichier d’échange empêche les utilisateurs mal intentionnés de lire des données paginées sur le disque mais également d’ajouter un surdébit de traitement aux opérations du système de fichiers.  L’activation de ce paramètre génère le chiffrement des fichiers d’échange.</string>
+      <string id="LongPathsEnabled">Activer les noms de chemin d’accès Win32 longs</string>
+      <string id="LongPathsEnabledText">L’activation des noms de chemin d’accès Win32 longs permet aux applications du Windows Store et aux applications win32 incluant un manifeste d’accéder aux chemins d’accès dépassant la limite standard de 260 caractères par nœud sur les systèmes de fichier compatibles. Lorsque ce paramètre est activé, les noms de chemin d’accès longs sont accessibles au sein du processus.</string>
+      <string id="ShortNameCreationSettings">Options de création de noms courts</string>
+      <string id="ShortNameCreationSettingsText">Ces paramètres permettent de contrôler si les noms courts sont générés lors de la création des fichiers.  Certaines applications requièrent des noms courts pour des raisons de compatibilité, mais ces derniers ont un impact négatif sur les performances système.
+
+Si vous activez des noms courts sur tous les volumes, ils seront toujours générés.  Si vous les désactivez sur tous les volumes, ils ne seront jamais générés.  Si vous configurez la création des noms courts de sorte qu’ils soient configurables par volume, l’indicateur sur disque déterminera si les noms courts sont créés sur un volume particulier.  Si vous désactivez la création de noms courts sur tous les volumes de données, les noms courts seront uniquement générés pour les fichiers créés sur le volume système.</string>
+      <string id="ShortNameCreationSetting_0">Activer sur tous les volumes</string>
+      <string id="ShortNameCreationSetting_1">Désactiver sur tous les volumes</string>
+      <string id="ShortNameCreationSetting_2">Activer / Désactiver par volume</string>
+      <string id="ShortNameCreationSetting_3">Désactiver sur tous les volumes de données</string>
+      <string id="DisableDeleteNotification">Désactiver les notifications de suppression sur tous les volumes</string>
+      <string id="DisableDeleteNotificationText">La notification de suppression est une fonctionnalité qui signale au périphérique de stockage sous-jacent les clusters qui se libèrent en raison de la suppression d’un fichier.
+
+La valeur par défaut 0 active la notification de suppression sur tous les volumes. 
+La valeur 1 désactive la notification de suppression sur tous les volumes.</string>
+      <string id="TxfDeprecatedFunctionality">Activer / Désactiver les fonctionnalités TxF déconseillées</string>
+      <string id="TxfDeprecatedFunctionalityText">Les fonctionnalités TxF déconseillées incluent les points de sauvegarde, les gestionnaires de ressources secondaires, les miniversions et la restauration par progression. Activez ce paramètre de stratégie si vous souhaitez utiliser les API.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="SymlinkEvaluation">
+        <checkBox refId="SymLinkClassL2L">Lien local à une cible locale</checkBox>
+        <checkBox refId="SymLinkClassL2R">Lien local à une cible distante</checkBox>
+        <checkBox refId="SymLinkClassR2R">Lien distant à une cible distante</checkBox>
+        <checkBox refId="SymLinkClassR2L">Lien distant à une cible locale</checkBox>
+      </presentation>
+      <presentation id="CompressionOptions"/>
+      <presentation id="EncryptionOptions"/>
+      <presentation id="LongPathsEnabledOptions"/>
+      <presentation id="PagefileEncryptionOptions"/>
+      <presentation id="ShortNameCreationSettings">
+          <dropdownList refId="ShortNameCreationSetting_Levels" noSort="true" defaultItem="2">Options de création de noms courts</dropdownList>
+      </presentation>
+      <presentation id="DeleteNotificationOptions"/>
+      <presentation id="TxfDeprecatedFunctionalityOptions"/>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

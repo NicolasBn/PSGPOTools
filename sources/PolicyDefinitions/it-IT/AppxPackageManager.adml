@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  Copyright (C) Microsoft. All rights reserved.  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <!-- displayName and description are not used. Not supported by current Group Policy tools. -->
+  <displayName>Gestione di pacchetti appx</displayName> 
+  <description>Gestione di pacchetti appx</description>
+  <resources>
+    <stringTable>
+      <string id="AppxDeployment">Distribuzione di pacchetti di applicazioni</string>
+      <string id="AppxDeploymentAllowAllTrustedApps">Consenti l'installazione di tutte le applicazioni attendibili</string>
+      <string id="AppxDeploymentAllowAllTrustedAppsExplanation">Questa impostazione dei criteri consente di gestire l'installazione delle app di Windows Store line-of-business o firmate dallo sviluppatore attendibili.
+
+Se si abilita questa impostazione dei criteri, è possibile installare qualsiasi app di Windows Store line-of-business o firmata dallo sviluppatore. L'app deve essere firmata con una catena di certificati che possa essere correttamente convalidata dal computer locale.
+
+Se si disabilita o non si configura questa impostazione dei criteri, non è possibile installare app di Windows Store line-of-business o firmate dallo sviluppatore.</string>
+      <string id="AllowDeploymentInSpecialProfiles">Consenti operazioni di distribuzione in profili speciali</string>
+      <string id="AllowDeploymentInSpecialProfilesExplanation">Questa impostazione dei criteri consente di gestire la distribuzione di app di Windows Store quando l'utente esegue l'accesso con un profilo speciale. I profili speciali sono i profili utente seguenti, per i quali le modifiche vengono eliminate dopo la disconnessione dell'utente:
+
+Profili utente mobili a cui si applica l'impostazione di Criteri di gruppo "Elimina dalla cache le copie dei profili mobili"
+
+I profili utente bloccati e superbloccati, creati da un amministratore
+
+I profili utente temporanei, creati quando un errore impedisce il caricamento del profilo corretto
+
+I profili utente per l'account Guest e i membri del gruppo Guests
+
+
+Se si abilita questa impostazione dei criteri, Criteri di gruppo consente le operazioni di distribuzione (aggiunta, registrazione, gestione temporanea, aggiornamento o rimozione di un pacchetto di app) per le app di Windows Store quando si utilizza un profilo speciale.
+
+Se si disabilita o non si configura questa impostazione dei criteri, Criteri di gruppo blocca le operazioni di distribuzione di app di Windows Store quando si utilizza un profilo speciale.</string>
+      <string id="AllowDevelopmentWithoutDevLicense">Consenti lo sviluppo di app di Windows Store e la loro installazione da un ambiente di sviluppo integrato</string>
+      <string id="AllowDevelopmentWithoutDevLicenseExplanation">
+        Consente o impedisce lo sviluppo di applicazioni di Windows Store e la relativa installazione direttamente da un ambiente di sviluppo integrato.
+
+        Se si abilita questa impostazione dei criteri e si abilita l'impostazione di Criteri di gruppo "Consenti l'installazione di tutte le app attendibili", è possibile sviluppare app di Windows Store e installarle direttamente da un ambiente di sviluppo integrato.
+        
+        Se si disabilita o non si configura questa impostazione dei criteri, non è possibile sviluppare app di Windows Store o installarle direttamente da un ambiente di sviluppo integrato.
+      </string>
+      <string id="DisableDeploymentToNonSystemVolumes">Disabilita l'installazione di app di Windows in volumi non di sistema</string>
+      <string id="DisableDeploymentToNonSystemVolumesExplanation">
+        Questa impostazione dei criteri consente di gestire l'installazione di app di Windows in volumi aggiuntivi, come partizioni secondarie, unità USB o schede SD.
+
+Se si abilita questa impostazione, non è possibile spostare o installare le app di Windows in altri volumi diversi dal volume di sistema.
+
+Se si disabilita o non si configura questa impostazione, è possibile spostare o installare le app di Windows in altri volumi.
+      </string>
+      <string id="RestrictAppDataToSystemVolume">Impedisci l'archiviazione dei dati delle app degli utenti in volumi non di sistema</string>
+      <string id="RestrictAppDataToSystemVolumeExplanation">
+        Consente di impedire lo spostamento dei dati delle app degli utenti in un'altra posizione, quando un'app viene spostata o installata in un'altra posizione.
+
+Se si abilita questa impostazione, tutti i dati delle app degli utenti rimarranno nel volume di sistema a prescindere dalla posizione in cui viene installata l'app.
+
+Se si disabilita o non si configura questa impostazione, quando un'app viene spostata in un altro volume, anche i dati delle app degli utenti verranno spostati in tale volume.
+      </string>
+      <string id="AllowSharedLocalAppData">Consenti a un'app di Windows di condividere i dati dell'applicazione tra gli utenti</string>
+      <string id="AllowSharedLocalAppDataExplanation">Per un'app di Windows, gestisce la possibilità di condividere dati tra gli utenti che hanno installato l'app.
+        
+Se si abilita questa impostazione dei criteri, un'app di Windows può condividere i dati con altre istanze di tale app. I dati vengono condivisi tramite la cartella SharedLocal. La cartella è disponibile tramite l'API Windows.Storage.
+
+Se si disabilita questo criterio, un'app di Windows non può condividere i dati dell'app con altre istanze di tale app. Se questa impostazione dei criteri è stata abilitata in precedenza, tutti i dati dell'app condivisi in precedenza rimarranno nella cartella SharedLocal. 
+      </string>
+    </stringTable>
+  </resources>
+</policyDefinitionResources>

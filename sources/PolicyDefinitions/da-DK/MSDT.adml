@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>indtast det viste navn her</displayName>
+  <description>indtast beskrivelsen her</description>
+  <resources>
+    <stringTable>
+      <string id="WdiScenarioCategory">MSDT (Diagnosticeringsværktøj til Microsoft Support)</string>
+      <string id="WdiScenarioExecutionPolicy">Diagnosticeringsværktøj til Microsoft Support: Konfigurer udførselsniveau</string>
+      <string id="WdiScenarioExecutionPolicyExplain">Denne politikindstilling angiver udførselsniveauet for MSDT (Diagnosticeringsværktøj til Microsoft Support).
+
+Diagnosticeringsværktøj til Microsoft Support indsamler diagnosticeringsdata, som analyses af fagfolk.
+
+Hvis du aktiverer denne politikindstilling, kan administratorer bruge MSDT til at indsamle og sende diagnosticeringsdata til en supportmedarbejder for at få løst et problem.
+
+Hvis du deaktiverer denne politikindstilling, kan MSDT ikke indsamle diagnosticeringsdata.
+
+Hvis du undlader at konfigurere denne politikindstilling, er MSDT som standard slået til.
+
+Denne politikindstilling træder kun i kraft, hvis den diagnosticeringsdækkende politik for scenarieudførsel ikke er konfigureret.
+
+Du skal ikke genstarte computeren eller tjenesten, for at politikindstillingen kan træde i kraft. Ændringerne træder i kraft med det samme.
+
+Denne politikindstilling træder kun i kraft, når Diagnosticeringspolitik (DPS) kører. Når tjenesten er stoppet eller deaktiveret, udføres diagnosticeringsscenarier ikke. Diagnosticeringspolitik kan konfigureres med snap-in-programmet Tjenester til Microsoft Management Console.</string>
+
+      <string id="MsdtToolDownloadPolicy">MSDT (Diagnosticeringsværktøj til Microsoft Support): Begræns hentning af værktøjer</string>
+      <string id="MsdtToolDownloadPolicyExplain">Denne politikindstilling begrænser politikken for hentning af værktøjer for MSDT (Diagnosticeringsværktøj til Microsoft Support).
+
+Diagnosticeringsværktøj til Microsoft Support indsamler diagnosticeringsdata, som analyses af fagfolk.  Ved nogle problemer kan MSDT bed brugere om at hente yderligere værktøjer til fejlfinding.
+
+Disse værktøjer er nødvendige for at kunne foretage fuld fejlfinding på problemet.  Hvis hentning af værktøjer er begrænset, kan det vise sig umuligt at finde årsagen til problemet.
+
+Hvis du aktiverer denne politikindstilling for fjernfejlfinding, vil MSDT bede brugeren hente ekstra værktøjer til kun at diagnosticere problemer på fjerncomputere.  Hvis du aktiverer denne politikindstilling for lokal fejlfinding og fjernfejlfinding, vil MSDT altid bede om hentning af ekstra værktøjer.
+
+Hvis du deaktiverer denne politikindstilling, vil MSDT aldrig hente værktøjer, og det kan ikke diagnosticere problemer på fjerncomputere.
+
+Hvis du undlader at konfigurere denne politikindstilling, vil MSDT spørge brugeren, inden der hentes flere værktøjer.
+
+Du skal ikke genstarte computeren eller tjenesten, for at politikindstillingen kan træde i kraft. Ændringerne træder i kraft med det samme.
+
+Denne politikindstilling bruges kun, når MSDT er aktiveret.
+
+Denne politikindstilling træder kun i kraft, når Diagnosticeringspolitik (DPS) kører.  Når tjenesten er stoppet eller deaktiveret, udføres diagnosticeringsscenarier ikke.  Diagnosticeringspolitik kan konfigureres med snap-in-programmet Tjenester til Microsoft Management Console.</string>
+      <string id="MsdtToolDownloadPolicyLevelRemoteOnly">Kun fjernfejlfinding</string>
+      <string id="MsdtToolDownloadPolicyLevelAllowAll">Lokal fejlfinding og fjernfejlfinding</string>
+      <string id="MsdtSupportProvider">Diagnosticeringsværktøj til Microsoft Support: Slå interaktiv kommunikation med supportudbyderen til for MSDT</string>
+      <string id="MsdtSupportProviderExplain">Denne politikindstilling konfigurerer interaktiv kommunikation for MSDT (Diagnosticeringsværktøj til Microsoft Support) med supportudbyderen. MSDT indsamler diagnosticeringsdata for analyse med supportmedarbejdere.
+
+Hvis du aktiverer denne politikindstilling, kan brugerne bruge MSDT til at indsamle og sende diagnosticeringsdata til en supportmedarbejder for at få løst et problem.
+
+Supportudbyderen er som standard indstillet til Microsoft Corporation.
+
+Hvis du deaktiverer denne politikindstilling, kan MSDT ikke køre i supporttilstand, og data kan hverken indsamles eller sendes til supportudbyderen.
+
+Hvis du undlader at konfigurere denne politikindstilling, er supporttilstand i MSDT som standard slået til.
+
+Du skal ikke genstarte computeren eller tjenesten, for at politikindstillingen kan træde i kraft. Ændringerne træder i kraft med det samme.
+
+
+
+</string>
+<string id="TroubleshootingAllowRecommendations">Fejlfinding: Giv brugere adgang til anbefalet fejlfinding for kendte problemer</string>
+<string id="TroubleshootingAllowRecommendationsExplain">Denne politikindstilling anvender anbefalet fejlfinding for kendte problemer på enheden og giver administratorer mulighed for at konfigurere, hvordan den anvendes på deres domæner/it-miljøer.
+Hvis du ikke konfigurerer denne politikindstilling, kan brugeren konfigurere, om og hvordan anbefalet fejlfinding skal anvendes.
+
+Hvis du aktiverer denne politikindstilling, kan du konfigurere, hvordan anbefalet fejlfinding anvendes på brugerens enhed. Du kan vælge mellem følgende værdier:
+0 = Slå denne funktion fra.
+1 = Slå denne funktion fra, men anvend stadig kritisk fejlfinding.
+2 = Giv brugerne besked, når den anbefalede fejlfinding er tilgængelig, så brugeren kan køre eller ignorere den.
+3 = Kør den anbefalede fejlfinding automatisk, og giv brugeren besked, når den er blevet kørt korrekt.
+4 = Kør den anbefalede fejlfinding automatisk uden at give brugeren besked.
+5 = Gør det muligt for brugeren at vælge de anbefalede fejlfindingsindstillinger.
+
+Når du har angivet denne nye indstilling, skal du følge denne vejledning for at aktivere anbefalet fejlfinding for enheder i dit domæne:
+1. Opret et BAT-script med følgende indhold:
+rem Følgende batchscript udløser anbefalet fejlfinding
+C:\Windows\System32\mitigationscanner.exe
+
+2. Hvis du vil oprette en ny omgående opgave, skal du åbne editoren til administration af Gruppepolitik &gt; Computerkonfiguration &gt; Indstillinger og vælge Kontrolpanel. 
+3. Højreklik på Planlagte opgaver under Kontrolpanel, og vælg Ny. Vælg Omgående opgave (mindst Windows 7).
+4. Angiv det ønskede navn og den ønskede beskrivelse, og vælg derefter brugerkontoen under Sikkerhedsindstillinger, og markér afkrydsningsfeltet Kør med højeste rettigheder.
+5. Opret en ny handling under fanen Handlinger, Vælg Start et program som dens type, og skriv derefter den fil, der blev oprettet i trin 1.
+6. Konfigurer opgaven til at blive installeret på dit domæne.</string>
+<string id="RecommendationsDropDown_DoNothing">Slå denne funktion fra</string>
+<string id="RecommendationsDropDown_ApplyCoreSystemMitigationsOnly">Slå denne funktion fra, men anvend stadig kritisk fejlfinding.</string>
+<string id="RecommendationsDropDown_AskFirst">Giv brugerne besked, hvis den anbefalede fejlfinding er tilgængelig, så brugeren kan køre eller ignorere den.</string>
+<string id="RecommendationsDropDown_ApplyThenNotify">Kør den anbefalede fejlfinding automatisk, og giv brugeren besked, når den er blevet kørt korrekt.</string>
+<string id="RecommendationsDropDown_ApplySilently">Kør den anbefalede fejlfinding automatisk uden at give brugeren besked.</string>
+<string id="RecommendationsDropDown_DeferToUser">Giv brugeren mulighed for at vælge sine egne anbefalede fejlfindingsindstillinger.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="MsdtToolDownloadPolicy">
+        <dropdownList refId="MsdtToolDownloadPolicyLevel" noSort="true" defaultItem="1">Hentning af værktøjer tilladt</dropdownList>
+      </presentation>
+      <presentation id="TroubleshootingAllowRecommendations">
+        <dropdownList refId="TroubleshootingAllowRecommendations_Dropdown" noSort="true" defaultItem="0">Tillad anbefalet fejlfinding fra Microsoft for kendte problemer</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

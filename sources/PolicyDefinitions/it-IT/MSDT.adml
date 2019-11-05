@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>immettere qui il nome visualizzato</displayName>
+  <description>immettere qui la descrizione</description>
+  <resources>
+    <stringTable>
+      <string id="WdiScenarioCategory">Strumento di diagnostica Supporto tecnico Microsoft</string>
+      <string id="WdiScenarioExecutionPolicy">Strumento di diagnostica Supporto tecnico Microsoft: configurazione livello di esecuzione</string>
+      <string id="WdiScenarioExecutionPolicyExplain">Questa impostazione dei criteri determina il livello di esecuzione per Strumento di diagnostica Supporto tecnico Microsoft
+
+Strumento di diagnostica Supporto tecnico Microsoft raccoglie dati di diagnostica per consentire al personale di supporto di analizzarli.
+
+Se si abilita questa impostazione dei criteri, gli amministratori potranno utilizzare Strumento di diagnostica supporto tecnico Microsoft per raccogliere e inviare dati di diagnostica al personale di supporto al fine di risolvere un problema.
+
+Se si disabilita questa impostazione dei criteri, Strumento di diagnostica Supporto tecnico Microsoft non potrà raccogliere i dati di diagnostica.
+
+Se non si configura questa impostazione dei criteri, Strumento di diagnostica Supporto tecnico Microsoft verrà attivato per impostazione predefinita.
+
+Questa impostazione dei criteri ha effetto solo se non è configurato il criterio di esecuzione dello scenario a livello di diagnostica.
+
+Per rendere effettiva questa impostazione dei criteri non sono necessari riavvii del sistema o dei servizi. Le modifiche vengono applicate immediatamente.
+
+Questa impostazione dei criteri avrà effetto solo se il Servizio criteri di diagnostica è in esecuzione. Se il servizio viene arrestato o disabilitato, gli scenari di diagnostica non verranno eseguiti. Il Servizio criteri di diagnostica può essere configurato con lo snap-in Servizi di Microsoft Management Console.</string>
+
+      <string id="MsdtToolDownloadPolicy">Strumento di diagnostica Supporto tecnico Microsoft: limita download degli strumenti</string>
+      <string id="MsdtToolDownloadPolicyExplain">Questa impostazione dei criteri limita il download degli strumenti richiesti da Strumento di diagnostica Supporto tecnico Microsoft.
+
+Strumento di diagnostica Supporto tecnico Microsoft raccoglie dati di diagnostica per consentire al personale di supporto di analizzarli.  Per alcuni problemi, può venire richiesto all'utente di scaricare ulteriori strumenti di risoluzione dei problemi.
+
+Questi strumenti sono necessari per completare la risoluzione del problema.  Se il download degli strumenti è stato limitato, potrebbe non essere possibile identificare la causa radice del problema.
+
+Se si abilita questa impostazione dei criteri per la risoluzione dei problemi remota, Strumento di diagnostica Supporto tecnico Microsoft chiederà all'utente di scaricare ulteriori strumenti di diagnostica solo sui computer remoti.  Se si abilita questa impostazione per la risoluzione dei problemi locale e remota, Strumento di diagnostica Supporto tecnico Microsoft chiederà sempre di scaricare ulteriori strumenti.
+
+Se si disabilita questa impostazione dei criteri, non verranno mai scaricati altri strumenti di risoluzione dei problemi e non sarà possibile diagnosticare i problemi sui computer remoti.
+
+Se non si configura questa impostazione dei criteri, verrà chiesta conferma all'utente prima di scaricare ulteriori strumenti.
+
+Per rendere effettiva questa impostazione dei criteri non sono necessari riavvii del sistema o dei servizi. Le modifiche vengono applicate immediatamente.
+
+Questa impostazione dei criteri avrà effetto solo se Strumento di diagnostica Supporto tecnico Microsoft è abilitato.
+
+Questa impostazione avrà effetto solo se il Servizio criteri di diagnostica è in esecuzione.  Se il servizio viene arrestato o disabilitato, non verranno eseguiti scenari di diagnostica.  Il Servizio criteri di diagnostica può essere configurato con lo snap-in Servizi di Microsoft Management Console.</string>
+      <string id="MsdtToolDownloadPolicyLevelRemoteOnly">Solo risoluzione dei problemi remota</string>
+      <string id="MsdtToolDownloadPolicyLevelAllowAll">Risoluzione dei problemi locale e remota</string>
+      <string id="MsdtSupportProvider">Strumento di diagnostica Supporto tecnico Microsoft: attiva comunicazione interattiva con fornitore del supporto tecnico</string>
+      <string id="MsdtSupportProviderExplain">Questa impostazione dei criteri configura la comunicazione interattiva di Strumento di diagnostica Supporto tecnico Microsoft con il fornitore del supporto tecnico. Strumento di diagnostica Supporto tecnico Microsoft raccoglie dati di diagnostica per consentire al personale di supporto di analizzarli.
+
+Se si abilita questa impostazione dei criteri, gli utenti potranno utilizzare Strumento di diagnostica Supporto tecnico Microsoft per raccogliere e inviare dati di diagnostica al personale di supporto al fine di risolvere un problema.
+
+Per impostazione predefinita, il fornitore del supporto tecnico è impostato su Microsoft Corporation.
+
+Se si disabilita questa impostazione dei criteri, Strumento di diagnostica supporto tecnico Microsoft non potrà essere eseguito in modalità Supporto e i dati non potranno essere raccolti o inviati al fornitore del supporto tecnico.
+
+Se non si configura questa impostazione dei criteri, la modalità Supporto di Strumento di diagnostica Supporto tecnico Microsoft verrà abilitata per impostazione predefinita.
+
+Per rendere effettiva questa impostazione dei criteri non sono necessari riavvii del sistema o dei servizi. Le modifiche vengono applicate immediatamente.
+
+
+
+</string>
+<string id="TroubleshootingAllowRecommendations">Risoluzione dei problemi: consenti agli utenti di accedere alla risoluzione dei problemi consigliata per i problemi noti</string>
+<string id="TroubleshootingAllowRecommendationsExplain">Questa impostazione dei criteri si applica alle attività di risoluzione consigliate per i problemi noti del dispositivo e consente agli amministratori di configurare la modalità di applicazione ai domini/ambienti IT.
+Se questa impostazione dei criteri non viene configurata, l'utente potrà configurare la modalità e i tempi di applicazione delle attività di risoluzione dei problemi consigliate.
+
+Se questi criteri vengono abilitati, è possibile configurare il modo in cui le attività di risoluzione dei problemi consigliate vengono applicate al dispositivo. Puoi selezionare uno dei valori seguenti:
+0 = Disattiva questa funzionalità.
+1 = Disattiva questa funzionalità, ma applica comunque le attività di risoluzione dei problemi critici.
+2 = Comunica agli utenti la disponibilità di attività di risoluzione dei problemi consigliate, quindi consenti all'utente di eseguirle o ignorarle.
+3 = Esegui automaticamente le attività di risoluzione dei problemi consigliate e informa l'utente quando risultano completate correttamente.
+4 = Esegui automaticamente le attività di risoluzione dei problemi consigliate, senza inviare comunicazioni all'utente.
+5 = Consenti all'utente di scegliere le impostazioni delle attività di risoluzione dei problemi consigliate.
+
+Dopo aver configurato questa nuova impostazione, per attivare le attività di risoluzione dei problemi consigliate per i dispositivi nel dominio, segui queste istruzioni:
+1. Crea uno script bat con il seguente contenuto:
+rem Lo script batch seguente attiva Risoluzione dei problemi consigliata
+C:\Windows\System32\mitigationscanner.exe
+
+2. Per creare una nuova attività immediata, vai a Editor Gestione Criteri di gruppo &gt; Configurazione computer &gt; Preferenze e seleziona Impostazioni del Pannello di controllo. 
+3. In Impostazioni del Pannello di controllo fai clic con il pulsante destro del mouse su Attività pianificate e seleziona Nuovo. Seleziona Attività immediata (almeno Windows 7).
+4. Specifica nome e descrizione, quindi in Opzioni di sicurezza imposta l'account utente su Sistema e seleziona la casella di controllo Esegui con i privilegi più elevati.
+5. Nella scheda Azioni crea una nuova azione, seleziona Avvia un programma come tipo, quindi immetti il file creato nel passaggio 1.
+6. Configura l'attività per distribuire il dominio.</string>
+<string id="RecommendationsDropDown_DoNothing">Disattiva questa funzione</string>
+<string id="RecommendationsDropDown_ApplyCoreSystemMitigationsOnly">Disattiva questa funzionalità, ma applica comunque le attività di risoluzione dei problemi critici.</string>
+<string id="RecommendationsDropDown_AskFirst">Comunica agli utenti la disponibilità di attività di risoluzione dei problemi consigliate, quindi consenti all'utente di eseguirle o ignorarle.</string>
+<string id="RecommendationsDropDown_ApplyThenNotify">Esegui automaticamente le attività di risoluzione dei problemi consigliate e informa l'utente quando risultano completate correttamente.</string>
+<string id="RecommendationsDropDown_ApplySilently">Esegui automaticamente le attività di risoluzione dei problemi consigliate, senza inviare comunicazioni all'utente.</string>
+<string id="RecommendationsDropDown_DeferToUser">Consenti all'utente di scegliere le impostazioni delle attività di risoluzione dei problemi consigliate.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="MsdtToolDownloadPolicy">
+        <dropdownList refId="MsdtToolDownloadPolicyLevel" noSort="true" defaultItem="1">Download degli strumenti consentito</dropdownList>
+      </presentation>
+      <presentation id="TroubleshootingAllowRecommendations">
+        <dropdownList refId="TroubleshootingAllowRecommendations_Dropdown" noSort="true" defaultItem="0">Consenti la risoluzione dei problemi consigliata da Microsoft per i problemi noti</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

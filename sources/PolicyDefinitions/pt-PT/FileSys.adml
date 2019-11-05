@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>introduzir o nome a apresentar aqui</displayName>
+  <description>introduzir a descrição aqui</description>
+  <resources>
+    <stringTable>
+      <string id="Filesystem">Sistema de ficheiros</string>
+      <string id="NTFS">NTFS</string>
+      <string id="SymlinkEvalExplain">As ligações simbólicas podem introduzir vulnerabilidades em determinadas aplicações. Para atenuar este problema, pode ativar ou desativar seletivamente a avaliação deste tipo de ligações simbólicas:
+
+Ligação Local para Destino Local
+Ligação Local para um Destino Remoto
+Ligação Remota para Destino Remoto
+Ligação Remota para Destino Local
+
+Para informações adicionais, consulte a secção da Ajuda do Windows
+
+NOTA: se esta política estiver desativada ou Não Configurada, os administradores locais poderão selecionar os tipos de ligação simbólica a serem avaliados.</string>
+      <string id="SymlinkEvaluation">Permitir seletivamente a avaliação de uma ligação simbólica</string>
+      <string id="DisableCompression">Não permitir compressão em todos os volumes NTFS</string>
+      <string id="DisableCompressionText">A compressão pode sobrecarregar o processamento de operações de sistema de ficheiros.  A ativação desta definição impedirá o acesso e a criação de ficheiros comprimidos.  </string>
+      <string id="DisableEncryption">Não permitir encriptação em todos os volumes NTFS</string>
+      <string id="DisableEncryptionText">A encriptação pode sobrecarregar o processamento de operações de sistema de ficheiros.  A ativação desta definição impedirá o acesso e a criação de ficheiros encriptados</string>
+      <string id="EnablePagefileEncryption">Ativar encriptação de ficheiros de paginação NTFS</string>
+      <string id="EnablePagefileEncryptionText">A encriptação do ficheiro de paginação impede utilizadores mal intencionados de lerem dados que tenham sido paginados para o disco, mas também sobrecarrega o processamento de operações de sistema de ficheiros.  A ativação desta definição causará a encriptação dos ficheiros de paginação.</string>
+      <string id="LongPathsEnabled">Ativar caminhos longos Win32</string>
+      <string id="LongPathsEnabledText">Ativar caminhos longos de Win32 permitirá que as aplicações win32 e as aplicações da Loja Windows manifestadas acedam a caminhos além do limite normal de 260 carateres por nó em sistemas de ficheiros com suporte para tal. A ativação desta definição fará com que os caminhos longos estejam acessíveis durante o processo.</string>
+      <string id="ShortNameCreationSettings">Opções de criação de nomes abreviados</string>
+      <string id="ShortNameCreationSettingsText">Estas definições permitem controlar se são gerados nomes abreviados durante a criação de ficheiros.  Algumas aplicações requerem nomes abreviados para fins de compatibilidade, mas estes têm um impacto negativo no desempenho do sistema.
+
+Se ativar nomes abreviados em todos os volumes, estes serão sempre gerados.  Se desativar os nomes abreviados em todos os volumes, estes nunca serão gerados.  Se definir a criação de nomes abreviados para ser configurável com base em cada volume, um sinalizador no disco determinará se estes são criados num determinado volume.  Se desativar a criação de nomes abreviados em todos os volumes de dados, os nomes abreviados só serão gerados para ficheiros criados no volume de sistema.</string>
+      <string id="ShortNameCreationSetting_0">Ativar em todos os volumes</string>
+      <string id="ShortNameCreationSetting_1">Desativar em todos os volumes</string>
+      <string id="ShortNameCreationSetting_2">Ativar/desativar com base em cada volume</string>
+      <string id="ShortNameCreationSetting_3">Desativar em todos os volumes de dados</string>
+      <string id="DisableDeleteNotification">Desativar em todos os volumes</string>
+      <string id="DisableDeleteNotificationText">A notificação de eliminação é uma funcionalidade que notifica o dispositivo de armazenamento subjacente acerca de clusters libertados devido a uma operação de eliminação de ficheiros.
+
+Um valor de 0, a predefinição, ativará as notificações de eliminação para todos os volumes. 
+Um valor de 1 desativará notificações de eliminação para todos os volumes.</string>
+      <string id="TxfDeprecatedFunctionality">Ativar/desativar funcionalidades preteridas TXF</string>
+      <string id="TxfDeprecatedFunctionalityText">As funcionalidades preteridas TXF incluíam pontos de reposição, RM secundário, miniversão e efetuar rollforward. Ative-a se pretender utilizar as APIs.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="SymlinkEvaluation">
+        <checkBox refId="SymLinkClassL2L">Ligação Local para Destino Local</checkBox>
+        <checkBox refId="SymLinkClassL2R">Ligação Local para um Destino Remoto</checkBox>
+        <checkBox refId="SymLinkClassR2R">Ligação Remota para Destino Remoto</checkBox>
+        <checkBox refId="SymLinkClassR2L">Ligação Remota para Destino Local</checkBox>
+      </presentation>
+      <presentation id="CompressionOptions"/>
+      <presentation id="EncryptionOptions"/>
+      <presentation id="LongPathsEnabledOptions"/>
+      <presentation id="PagefileEncryptionOptions"/>
+      <presentation id="ShortNameCreationSettings">
+          <dropdownList refId="ShortNameCreationSetting_Levels" noSort="true" defaultItem="2">Opções de criação de nomes abreviados</dropdownList>
+      </presentation>
+      <presentation id="DeleteNotificationOptions"/>
+      <presentation id="TxfDeprecatedFunctionalityOptions"/>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

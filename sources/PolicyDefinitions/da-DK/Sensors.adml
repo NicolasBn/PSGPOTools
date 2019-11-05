@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>indtast det viste navn her</displayName>
+  <description>indtast beskrivelsen her</description>
+  <resources>
+    <stringTable>
+      <string id="DisableSensors">Slå sensorer fra</string>
+      <string id="DisableSensors_Explain">
+        
+        Denne politikindstilling slår sensorfunktionen fra for denne computer.
+
+        Hvis du aktiverer denne politikindstilling, er sensorfunktionen slået fra, og alle programmer på computeren forhindres i at bruge sensorfunktionen.
+
+        Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, kan alle programmer på denne computer bruge sensorfunktionen.
+      
+      </string>
+      <string id="DisableLocation">Slå placering fra</string>
+      <string id="DisableLocation_Explain">
+        
+        Denne politikindstilling slår placeringsfunktionen fra for denne computer.
+
+        Hvis du aktiverer denne politikindstilling, er placeringsfunktionen slået fra, og alle programmer på computeren forhindres i at bruge placeringsoplysningerne fra placeringsfunktionen.
+
+        Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, kan alle programmer på computeren bruge placeringsoplysningerne fra placeringsfunktionen.
+      
+      </string>
+      <string id="DisableLocationScripting">Slå placeringsscripting fra</string>
+      <string id="DisableLocationScripting_Explain">
+        
+        Denne politikindstilling slår scripting for placeringsfunktionen fra.
+
+        Hvis du aktiverer denne politikindstilling, kan scripts til placeringsfunktionen ikke køres.
+
+        Hvis du deaktiverer eller undlader at konfigurere denne politikindstilling, kan alle placeringsscripts køres.
+      
+      </string>
+      <string id="LocationAndSensors">Placering og sensorer</string>
+    </stringTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Politikker for TextInput</displayName>
+  <description>Relaterede politikker for TextInput.</description>
+  <resources>
+    <stringTable>
+      <string id="TextInput">Tekstinput</string>
+      <string id="TextInput_AllowLanguageFeaturesUninstall_Help">Denne politikindstilling styrer, om visse sprogfunktioner (for eksempel ordbøger til stavekontrol og håndskriftsgenkendelse) kan fjernes fra maskinen. </string>
+      <string id="TextInput_AllowLanguageFeaturesUninstall">Tillad fjernelse af sprogfunktioner</string>  
+      <string id="TextInput_AllowLinguisticDataCollection_Help">Denne politikindstilling styrer muligheden for at sende håndskrifts- og indtastningsdata til Microsoft for at forbedre sproggenkendelse og forslagsfunktioner i apps og tjenester, der kører på Windows. </string>
+      <string id="TextInput_AllowLinguisticDataCollection">Gør genkendelse af håndskrift og indtastning bedre</string>  
+    </stringTable>
+  </resources>
+</policyDefinitionResources>

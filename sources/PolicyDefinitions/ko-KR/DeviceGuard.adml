@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2015 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Microsoft Windows Device Guard</displayName>
+  <description>Windows Device Guard 보안</description>
+  <resources>
+    <stringTable>
+      <string id="DeviceGuard">Device Guard</string>
+      <string id="VirtualizationBasedSecurity">가상화 기반 보안 켜기</string>
+      <string id="VirtualizationBasedSecurityHelp">가상화 기반 보안의 사용 여부를 지정합니다.
+
+가상화 기반 보안은 Windows Hypervisor를 사용하여 보안 서비스를 지원합니다. 가상화 기반 보안은 보안 부팅이 필요하며, 필요에 따라 DMA 보호와 함께 사용할 수 있습니다. DMA 보호는 하드웨어 지원이 필요하며 올바르게 구성된 장치에서만 사용 가능합니다.
+
+코드 무결성의 가상화 기반 보호
+
+이 설정은 커널 모드 코드 무결성의 가상화 기반 보호를 사용하도록 설정합니다. 이 기능을 사용하도록 설정하면 커널 모드 메모리 보호가 적용되고 가상화 기반 보안 기능을 통해 코드 무결성 검증 경로가 보호됩니다.
+
+"사용 안 함" 옵션은 이전에 "잠금 없이 사용 가능" 옵션을 사용하여 켜진 경우 코드 무결성의 가상화 기반 보호를 원격으로 끕니다.
+ 
+"UEFI 잠금을 사용하여 설정" 옵션을 사용하면 코드 무결성에 대한 가상화 기반 보호를 원격으로 사용 중지할 수 없습니다. 이 기능을 사용하지 않도록 설정하려면 그룹 정책을 "사용 안 함"으로 설정해야 하며, UEFI에서 지속되는 설정을 지우기 위해 사용자가 실제로 있는 각 컴퓨터에서 보안 기능을 제거해야 합니다.
+
+"잠금 없이 사용" 옵션은 그룹 정책을 사용하여 코드 무결성에 대한 가상화 기반 보호를 원격으로 사용 중지할 수 있게 합니다.
+
+"구성되지 않음" 옵션은 정책 설정을 정의하지 않은 상태로 유지합니다. 그룹 정책은 정책 설정을 레지스트리에 쓰지 않으므로 컴퓨터나 사용자에게 영향을 미치지 않습니다. 레지스트리에 현재 설정이 있으면 수정되지 않습니다.
+
+"UEFI 메모리 특성 표 필요" 옵션은 UEFI 펌웨어에서 메모리 특성 표를 지원하는 장치에서만 코드 무결성의 가상화 기반 보호를 사용하도록 설정합니다. UEFI 메모리 특성 표가 없는 장치에는 코드 무결성의 가상화 기반 보호와 호환되지 않는 펌웨어가 있을 수 있습니다. 이로 인해 작동 중단이나 데이터 손실 또는 특정 플러그인 카드와 호환되지 않는 문제가 발생할 수 있습니다. 이 옵션을 설정하지 않으면 호환성을 보장하기 위해 대상 장치를 테스트해야 합니다.
+
+경고: 시스템의 모든 드라이버가 이 기능과 호환되어야 하며 그렇지 않으면 시스템 작동이 중단될 수 있습니다. 이 정책 설정은 호환성을 가진 컴퓨터에만 배포되어야 합니다.
+
+Credential Guard
+
+이 설정을 통해 사용자는 가상화 기반 보안이 포함된 Credential Guard를 켜서 자격 증명을 보호할 수 있습니다.
+
+"사용 안 함" 옵션은 Credential Guard가 "잠금 없이 사용" 옵션으로 켜져 있는 경우 원격으로 끌 수 있습니다.
+
+"UEFI 잠금을 사용하여 설정" 옵션을 선택하면 Credential Guard를 원격으로 사용 중지할 수 없습니다. 이 기능을 사용하지 않도록 설정하려면 그룹 정책을 "사용 안 함"으로 설정해야 하며, 사용자가 실제로 있는 각 컴퓨터에서 보안 기능을 제거해야 합니다.
+
+"잠금 없이 사용" 옵션은 그룹 설정을 사용하여 원격으로 Credential Guard를 사용 중지할 수 있게 합니다. 이 설정을 사용하는 장치는 Windows 10(버전 1511) 이상에서 실행해야 합니다.
+
+"구성되지 않음" 옵션은 정책 설정을 정의하지 않습니다. 그룹 정책은 레지스트리에 정책 설정을 쓰지 않으며 따라서 컴퓨터나 사용자에 영향을 미치지 않습니다. 레지스트리에 현재 설정이 있는 경우 수정되지 않습니다.
+      
+Secure Launch
+
+이 설정은 부팅 체인을 보호하게 하기 위한 Secure Launch의 구성을 설정합니다.
+
+"구성되지 않음" 설정이 기본값이며 관리자가 기능을 구성할 수 있게 해줍니다.
+
+"사용 가능" 옵션은 지원되는 하드웨어에서 Secure Launch를 켭니다.
+
+"사용 안 함" 옵션은 하드웨어 지원 여부에 관계 없이 Secure Launch를 끕니다.
+      </string>
+      <string id="SecureBoot">보안 부팅</string>
+      <string id="SecureBootAndDmaProtection">보안 부팅 및 DMA 보호</string>
+      <string id="Disabled">사용 안 함</string>
+      <string id="Enabled">사용</string>
+      <string id="EnabledWithoutLock">잠금 없이 설정</string>
+      <string id="EnabledWithUefiLock">UEFI 잠금을 사용하여 설정</string>
+      <string id="NotConfigured">구성되지 않음</string>
+      <string id="ConfigCIPolicy">Windows Defender Application Control 배포</string>
+      <string id="ConfigCIPolicyHelp">Windows Defender Application Control 배포
+
+이 정책 설정을 통해 컴퓨터에 코드 무결성 정책을 배포하여 해당 컴퓨터에서 무엇을 실행하도록 허용할지 제어할 수 있습니다.
+
+코드 무결성 정책을 배포하는 경우 Windows가 정책에 따라 두 커널 모드에서 그리고 Windows 데스크톱에서 실행할 수 있는 항목을 제한합니다. 이 정책을 사용하려면 컴퓨터를 다시 부팅해야 합니다. 
+
+파일 경로는 UNC 경로(예: \\ServerName\ShareName\SIPolicy.p7b) 또는 올바른 로컬 경로(예: C:\FolderName\SIPolicy.p7b)이어야 합니다. 로컬 컴퓨터 계정(LOCAL SYSTEM)에는 정책 파일에 대한 액세스 권한이 있어야 합니다.
+ 
+서명하고 보호된 정책을 사용하면 이 정책 설정을 사용하지 않아도 컴퓨터에서 기능을 제거하지 않습니다. 대신 다음 중 하나를 수행해야 합니다.
+
+   1) 먼저 비보호 정책으로 정책을 업데이트한 후 설정을 비활성화합니다. 또는
+   2) 설정을 비활성화한 후 실제 현재 사용자가 있는 각 컴퓨터에서 정책을 제거합니다.
+      </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="VirtualizationBasedSecurity">
+        <dropdownList refId="RequirePlatformSecurityFeaturesDrop" defaultItem="1">플랫폼 보안 수준 선택:</dropdownList>
+        <dropdownList refId="HypervisorEnforcedCodeIntegrityDrop" defaultItem="3">코드 무결성의 가상화 기반 보호:</dropdownList>        
+        <checkBox refId="CheckboxMAT">UEFI 메모리 특성 표 요구</checkBox>        
+        <dropdownList refId="CredentialIsolationDrop" defaultItem="3">Credential Guard 구성:</dropdownList>
+        <dropdownList refId="SystemGuardDrop" defaultItem="2">보안 시작 구성:</dropdownList>                
+      </presentation>
+      <presentation id="ConfigCIPolicy">
+        <textBox refId="ConfigCIPolicyFilePathText">
+          <label>코드 무결성 정책 파일 경로:</label>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

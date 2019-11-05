@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>tutaj wprowadź nazwę wyświetlaną</displayName>
+  <description>tutaj wprowadź opis</description>
+  <resources>
+    <stringTable>
+      <string id="DisableSensors">Wyłącz czujniki</string>
+      <string id="DisableSensors_Explain">
+        
+        To ustawienie zasad wyłącza funkcję czujników dla tego komputera.
+
+        Jeśli to ustawienie zasad zostanie włączone, funkcja czujników będzie wyłączona i żaden program na tym komputerze nie będzie mógł z niej korzystać.
+
+        Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, wszystkie programy na tym komputerze będą mogły używać funkcji czujników.
+      
+      </string>
+      <string id="DisableLocation">Wyłącz lokalizację</string>
+      <string id="DisableLocation_Explain">
+        
+        To ustawienie zasad wyłącza funkcję lokalizacji dla tego komputera.
+
+        Jeśli to ustawienie zasad zostanie włączone, funkcja lokalizacji będzie wyłączona i żaden program na tym komputerze nie będzie mógł korzystać z informacji o lokalizacji dostarczanych przez tę funkcję.
+
+        Jeśli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, wszystkie programy na tym komputerze będą mogły korzystać z informacji o lokalizacji dostarczanych przez funkcję lokalizacji.
+      
+      </string>
+      <string id="DisableLocationScripting">Wyłącz skrypty lokalizacji</string>
+      <string id="DisableLocationScripting_Explain">
+        
+        To ustawienie zasad wyłącza obsługę skryptów funkcji lokalizacji.
+
+        Jeżeli to ustawienie zasad zostanie włączone, skrypty funkcji lokalizacji nie będą uruchamiane.
+
+        Jeżeli to ustawienie zasad zostanie wyłączone lub nie zostanie skonfigurowane, wszystkie skrypty funkcji lokalizacji będą uruchamiane.
+      
+      </string>
+      <string id="LocationAndSensors">Lokalizacja i czujniki</string>
+    </stringTable>
+  </resources>
+</policyDefinitionResources>

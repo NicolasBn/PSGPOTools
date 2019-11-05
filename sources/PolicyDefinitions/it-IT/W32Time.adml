@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>immettere qui il nome visualizzato</displayName>
+  <description>immettere qui la descrizione</description>
+  <resources>
+    <stringTable>
+      <string id="W32TIME_CONFIG_EXPLAIN">Questa impostazione dei criteri consente di specificare la regolazione dell'orologio e i valori generali per il servizio Ora di Windows (W32time) per i controller di dominio inclusi i controller di dominio di sola lettura.
+
+Se questa impostazione dei criteri è abilitata, il servizio W32time sui computer di destinazione utilizza le impostazioni specificate qui. In caso contrario utilizza i valori delle impostazioni configurati localmente.
+
+Per ulteriori informazioni sui singoli parametri, sulle combinazioni di valori dei parametri e sulle definizioni dei flag, vedere https://go.microsoft.com/fwlink/?linkid=847809.
+
+        FrequencyCorrectRate
+Questo parametro controlla la frequenza con cui il W32time corregge la frequenza dell'orologio locale. Valori inferiori causano correzioni più lente; valori maggiori causano correzioni più frequenti. Impostazione predefinita: 4 (scalare).
+
+        HoldPeriod
+Questo parametro indica quanti esempi di ora coerenti deve ricevere il computer client in una serie prima che gli esempi di ora successivi vengano valutati come sovraccarichi potenziali. Impostazione predefinita: 5
+
+        LargePhaseOffset
+Se un esempio di ora è diverso dall'orologio locale del computer client di un valore superiore al LargePhaseOffset, lo scostamento dell'orologio locale viene considerato eccessivo o, in altre parole. sovraccarico. Predefinito: 50.000.000 unità di 100 nanosecondi (ns) o 5 secondi.
+
+        MaxAllowedPhaseOffset
+Se viene ricevuta una risposta che presenta uno scarto temporale che supera il valore del parametro, W32time imposta l'orologio locale del computer client immediatamente sull'ora accettata come corretta dal server di protocollo NTP (Network Time Protocol). Se lo scarto temporale risulta inferiore a questo valore, l'orologio locale del computer client viene corretto gradualmente. Impostazione predefinita: 300 secondi.
+
+        MaxNegPhaseCorrection
+Se viene ricevuto un esempio di ora che indica un riferimento temporale passato (rispetto all'orologio locale del computer client) che presenta una differenza di tempo maggiore del valore di MaxNegPhaseCorrection, l'esempio di ora viene ignorato. Predefinito: 172.800 secondi.
+
+        MaxPosPhaseCorrection
+Se viene ricevuto un esempio di ora che indica un'ora in futuro (rispetto all'orologio locale del computer client) che presenta una differenza di tempo maggiore del valore di MaxPosPhaseCorrection, l'esempio di ora viene ignorato. Predefinito: 172.800 secondi.
+
+        PhaseCorrectRate
+Questo parametro controlla quanto velocemente W32time corregge lo scarto dell'orologio locale del computer client in modo da far corrispondere gli esempi di ora che vengono accettati come accurati dal server NTP. Valori inferiori causano una correzione più lenta dell'orologio; valori maggiori una correzione più veloce. Impostazione predefinita: 7 (scalare).
+
+        PollAdjustFactor
+Questo parametro controlla quanto velocemente W32time modifica gli intervalli di polling. Quando le risposte vengono considerate corrette, l'intervallo di polling si allunga automaticamente. Quando le risposte vengono considerate non corrette, l'intervallo di polling si abbrevia automaticamente. Impostazione predefinita: 5 (scalare).
+
+        SpikeWatchPeriod
+Questo parametro specifica l'intervallo di tempo in cui gli esempi con una differenza di orario maggiore rispetto al LargePhaseOffset vengono ricevuti prima che questi esempi vengano accettati come corretti. SpikeWatchPeriod viene utilizzato insieme a HoldPeriod per eliminare gli esempi di ora non corretta sporadici che vengono restituiti da un peer. Impostazione predefinita: 900 secondi.
+
+        UpdateInterval
+Questo parametro specifica l'intervallo di tempo che W32time attende tra le correzioni quando l'orologio viene corretto gradualmente. Quando esegue una correzione graduale, il servizio regola leggermente l'orologio, attende l'intervallo di tempo e quindi verifica se è necessaria un'altra regolazione, fino al termine della correzione. Impostazione predefinita: 100 unità da 1/100 di secondo oppure 1 secondo.
+
+        Parametri generali:
+
+        AnnounceFlags
+Questo parametro è un valore di maschera di bit che controlla in che modo la disponibilità del servizio ora viene annunciata tramite NetLogon. Predefinito: 0x0un esadecimale
+
+        EventLogFlags
+Questo parametro controlla gli eventi speciali che possono essere registrati nel Visualizzatore eventi del Registro di sistema. Predefinito: maschera di bit 0x02 esadecimale.
+
+        LocalClockDispersion
+Questo parametro indica l'errore massimo espresso in secondi che viene segnalato dal server NTP ai client che richiedono un esempio di ora. (Si applica solo quando il server NTP utilizza l'ora dell'orologio CMOS locale). Impostazione predefinita: 10 secondi.
+
+        MaxPollInterval
+Questo parametro controlla l'intervallo di polling massimo che definisce la quantità massima di tempo tra i polling di un peer. Impostazione predefinita: 10 nel registro in base 2 oppure 1024 secondi. (Non deve essere impostato su un valore maggiore di 15.)
+
+        MinPollInterval
+Questo parametro controlla l'intervallo di polling minimo che definisce la quantità minima di tempo tra i polling di un peer. Impostazione predefinita: 6 nel registro in base 2 oppure 64 secondi.
+
+        ClockHoldoverPeriod
+Questo parametro indica il numero massimo di secondi per cui un orologio di sistema può mantenere la propria precisione senza sincronizzazione con un'origine ora. Se questo periodo di tempo trascorre senza che W32time ottenga nuovi esempi da uno qualsiasi dei suoi provider di input, W32time avvia una nuova individuazione di origini ora. Predefinito: 7800 secondi.
+
+        RequireSecureTimeSyncRequests
+Questo parametro controlla se il controller di dominio risponderà o meno alle richieste di sincronizzazione ora che utilizzano protocolli di autenticazione meno recenti. Se abilitato (impostato su 1), il controller di dominio non risponderà alle richieste tramite tali protocolli. Impostazione predefinita: 0 booleano.
+
+        UtilizeSslTimeData
+Questo parametro controlla se W32time utilizzerà i dati sull'ora calcolati dal traffico SSL sul computer come input aggiuntivo per correggere l'orologio locale.  Impostazione predefinita: 1 (abilitato) booleano
+
+        ClockAdjustmentAuditLimit
+Questo parametro specifica le regolazioni minime dell'orologio locale che possono essere registrate nel registro eventi del servizio W32time sul computer di destinazione. Impostazione predefinita: 800 parti per milione (PPM).
+
+        Parametri controller di dominio di sola lettura:
+
+        ChainEntryTimeout
+Questo parametro specifica la quantità massima di tempo in cui una voce può rimanere nella tabella di concatenamento prima che venga considerata scaduta. Le voci scadute possono essere rimosse quando viene elaborata la richiesta o risposta successiva. Impostazione predefinita: 16 secondi.
+
+        ChainMaxEntries
+Questo parametro controlla il numero massimo di voci consentite nella tabella di concatenamento. Se la tabella di concatenamento è piena e nessuna voce scaduta può essere rimossa, verranno eliminate eventuali richieste in ingresso. Impostazione predefinita: 128 voci.
+
+        ChainMaxHostEntries
+Questo parametro controlla il numero massimo di voci consentite nella tabella di concatenamento per un determinato host. Impostazione predefinita: 4 voci.
+
+        ChainDisable
+Questo parametro controlla se il meccanismo di concatenamento è disabilitato o meno. Se il concatenamento è disabilitato (impostato su 0),  il controller di dominio di sola lettura può sincronizzarsi con qualsiasi controller di dominio, ma gli host che non dispongono di password memorizzate nella cache sul controller di dominio di sola lettura non saranno in grado di sincronizzarsi con il  controller di dominio di sola lettura. Impostazione predefinita: 0 booleano.
+
+        ChainLoggingRate
+Questo parametro controlla la frequenza con cui un evento che indica il numero di tentativi di concatenamento con esito positivo e negativo viene registrato nel Visualizzatore eventi del Registro di sistema. Impostazione predefinita: 30 minuti.
+      </string>
+
+<string id="W32TIME_CONFIGURE_NTPCLIENT_EXPLAIN">. .
+Questa impostazione dei criteri specifica un insieme di parametri per il controllo del client Windows NTP.
+
+Se si abilita questa impostazione dei criteri, sarà possibile specificare i parametri seguenti per il client Windows NTP.
+
+Se si disabilita o non si configura questa impostazione dei criteri, il client Windows NTP utilizzerà i valori predefiniti di ognuno dei parametri seguenti.
+
+NtpServer
+Nome DNS (Domain Name System) o indirizzo IP di un'origine ora NTP. Il valore è espresso nel formato ""Nomedns,flag"", dove ""flag"" è una maschera di bit esadecimale dei flag per l'host. Per ulteriori informazioni, vedere la sezione NTP Client Group Policy Settings Associated with Windows Time dell'argomento Windows Time Service Group Policy Settings. Il valore predefinito è ""time.windows.com,0x09"". 
+
+Type
+Questo valore specifica il tipo di autenticazione utilizzato da W32time. Il valore predefinito è NT5DS.
+
+CrossSiteSyncFlags
+Questo valore, espresso sotto forma di maschera di bit, specifica in che modo W32time seleziona le origini ora esterne al proprio sito. I valori possibili sono 0, 1 e 2. L'impostazione del valore su 0 (None) indica che il client orario non deve tentare di sincronizzare l'ora all'esterno del proprio sito. L'impostazione del valore su 1 (PdcOnly) indica che solo i computer che fungono da master operazioni per l'emulatore del controller di dominio primario (PDC) in altri domini possono essere utilizzati come partner di sincronizzazione quando il client deve sincronizzare l'ora con un partner esterno al proprio sito. L'impostazione del valore su 2 (All) indica che è possibile utilizzare qualsiasi partner di sincronizzazione. Questo valore viene ignorato quando il valore NT5DS non è impostato. Il valore predefinito è 2 decimale (0x02 esadecimale).
+
+ResolvePeerBackoffMinutes
+Questo valore, espresso in minuti, specifica il tempo di attesa di W32time prima di tentare di risolvere un nome DNS quando il tentativo precedente non è riuscito. Il valore predefinito è 15 minuti.
+
+ResolvePeerBackoffMaxTimes
+Questo valore specifica il numero di tentativi di risolvere un nome DNS che devono essere effettuati da W32time prima che venga riavviato il processo di individuazione. Ogni volta che la risoluzione dei nomi DNS non riesce, il tempo di attesa prima che venga effettuato un nuovo tentativo raddoppia rispetto al precedente. Il valore predefinito è sette tentativi.
+
+SpecialPollInterval
+Questo valore del client NTP, espresso in secondi, specifica la frequenza con cui un'origine ora configurata manualmente viene sottoposta a polling quando è configurata per l'utilizzo di un intervallo di polling specifico. Se il flag SpecialInterval è abilitato sull'impostazione NTPServer, il client utilizzerà il valore impostato come SpecialPollInterval, anziché i valori MinPollInterval e MaxPollInterval, per determinare la frequenza di polling dell'origine ora. Il valore predefinito è 3600 secondi (1 ora).
+
+EventLogFlags
+Questo valore è una maschera di bit che specifica gli eventi che possono essere registrati nel registro di sistema del Visualizzatore eventi. L'impostazione di questo valore su 0x1 indica che W32time creerà un evento ogni volta che verrà rilevato un cambiamento di ora. L'impostazione di questo valore su 0x2 indica che W32time creerà un evento ogni volta che verrà effettuata una modifica dell'origine ora. Poiché è un valore maschera di bit, l'impostazione di questo valore su 0x3 (ossia la somma di 0x1 e 0x2) indica che verranno registrati sia i cambiamenti di ora che le modifiche dell'origine ora.
+      </string>
+      <string id="W32TIME_ENABLE_NTPCLIENT_EXPLAIN">Questa impostazione dei criteri specifica se il client Windows NTP è abilitato.
+
+L'abilitazione di tale client consente di sincronizzare l'orologio del computer con gli altri server NTP. Se si utilizza un provider di servizi orari di terze parti, è consigliabile disabilitare questo servizio.
+
+Se si abilita questa impostazione dei criteri, sarà possibile sincronizzare l'orologio del computer locale con i server NTP.
+
+Se si disabilita questa impostazione dei criteri, l'orologio del computer locale non verrà sincronizzato con i server NTP.
+      
+      </string>
+      <string id="W32TIME_ENABLE_NTPSERVER_EXPLAIN">Questa impostazione dei criteri consente di specificare se il server Windows NTP è abilitato.
+
+Se si abilita questa impostazione dei criteri per il server Windows NTP, il computer in uso sarà in grado di servire le richieste NTP di altri computer.
+
+
+Se si disabilita o non si configura questa impostazione dei criteri, il computer in uso non sarà in grado di servire le richieste NTP di altri computer.
+
+
+
+</string>
+      <string id="W32TIME_POLICY_CONFIG">Impostazioni di configurazione globali</string>
+      <string id="W32TIME_POLICY_CONFIGURE_NTPCLIENT">Configura client Windows NTP</string>
+      <string id="W32TIME_POLICY_ENABLE_NTPCLIENT">Abilita client Windows NTP</string>
+      <string id="W32TIME_POLICY_ENABLE_NTPSERVER">Abilita server Windows NTP</string>
+      <string id="W32TIME_ROOT">Servizio Ora di Windows</string>
+      <string id="W32TIME_TIMEPROVIDERS">Provider servizi orari</string>
+      <string id="W32TIME_Type_AllSync">AllSync</string>
+      <string id="W32TIME_Type_NoSync">NoSync</string>
+      <string id="W32TIME_Type_NT5DS">NT5DS</string>
+      <string id="W32TIME_Type_Ntp">NTP</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="W32TIME_POLICY_CONFIG">
+        <text>Parametri della regolazione dell'orologio</text>
+        <decimalTextBox refId="W32TIME_FrequencyCorrectRate" defaultValue="4">FrequencyCorrectRate</decimalTextBox>
+        <decimalTextBox refId="W32TIME_HoldPeriod" defaultValue="5">HoldPeriod</decimalTextBox>
+        <decimalTextBox refId="W32TIME_LargePhaseOffset" defaultValue="50000000">LargePhaseOffset</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MaxAllowedPhaseOffset" defaultValue="300">MaxAllowedPhaseOffset</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MaxNegPhaseCorrection" defaultValue="172800">MaxNegPhaseCorrection</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MaxPosPhaseCorrection" defaultValue="172800">MaxPosPhaseCorrection</decimalTextBox>
+        <decimalTextBox refId="W32TIME_PhaseCorrectRate" defaultValue="1">PhaseCorrectRate</decimalTextBox>
+        <decimalTextBox refId="W32TIME_PollAdjustFactor" defaultValue="5">PollAdjustFactor</decimalTextBox>
+        <decimalTextBox refId="W32TIME_SpikeWatchPeriod" defaultValue="900">SpikeWatchPeriod</decimalTextBox>
+        <decimalTextBox refId="W32TIME_UpdateInterval" defaultValue="100">UpdateInterval</decimalTextBox>
+        <text>Parametri generali</text>
+        <decimalTextBox refId="W32TIME_AnnounceFlags" defaultValue="10">AnnounceFlags</decimalTextBox>
+        <decimalTextBox refId="W32TIME_EventLogFlags" defaultValue="2">EventLogFlags</decimalTextBox>
+        <decimalTextBox refId="W32TIME_LocalClockDispersion" defaultValue="10">LocalClockDispersion</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MaxPollInterval" defaultValue="10">MaxPollInterval</decimalTextBox>
+        <decimalTextBox refId="W32TIME_MinPollInterval" defaultValue="6">MinPollInterval</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ClockHoldoverPeriod" defaultValue="7800">ClockHoldoverPeriod</decimalTextBox>
+        <decimalTextBox refId="W32TIME_RequireSecureTimeSyncRequests" defaultValue="0">RequireSecureTimeSyncRequests</decimalTextBox>
+        <decimalTextBox refId="W32TIME_UtilizeSslTimeData" defaultValue="1">UtilizeSslTimeData</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ClockAdjustmentAuditLimit" defaultValue="800">ClockAdjustmentAuditLimit</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainEntryTimeout" defaultValue="16">ChainEntryTimeout</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainMaxEntries" defaultValue="128">ChainMaxEntries</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainMaxHostEntries" defaultValue="4">ChainMaxHostEntries</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainDisable" defaultValue="0">ChainDisable</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ChainLoggingRate" defaultValue="30">ChainLoggingRate</decimalTextBox>
+      </presentation>
+      <presentation id="W32TIME_POLICY_CONFIGURE_NTPCLIENT">
+        <textBox refId="W32TIME_NtpServer">
+          <label>NtpServer</label>
+          <defaultValue>time.windows.com,0x9</defaultValue>
+        </textBox>
+        <dropdownList refId="W32TIME_Type" noSort="true" defaultItem="2">Tipo</dropdownList>
+        <decimalTextBox refId="W32TIME_CrossSiteSyncFlags" defaultValue="2">CrossSiteSyncFlags</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ResolvePeerBackoffMinutes" defaultValue="15">ResolvePeerBackoffMinutes</decimalTextBox>
+        <decimalTextBox refId="W32TIME_ResolvePeerBackoffMaxTimes" defaultValue="7">ResolvePeerBackoffMaxTimes</decimalTextBox>
+        <decimalTextBox refId="W32TIME_SpecialPollInterval" defaultValue="1024">SpecialPollInterval</decimalTextBox>
+        <decimalTextBox refId="W32TIME_NtpClientEventLogFlags" defaultValue="0">EventLogFlags</decimalTextBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2015 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Microsoft Windows Device Guard</displayName>
+  <description>Windows Device Guard-säkerhet</description>
+  <resources>
+    <stringTable>
+      <string id="DeviceGuard">Device Guard</string>
+      <string id="VirtualizationBasedSecurity">Aktivera virtualiseringsbaserad säkerhet</string>
+      <string id="VirtualizationBasedSecurityHelp">Anger om Virtualiseringsbaserad säkerhet är aktiverat.
+
+Virtualiseringsbaserad säkerhet använder Windows-hypervisorn för att ge stöd åt säkerhetstjänster. Virtualiseringsbaserad säkerhet kräver Säker start, och det kan aktiveras för att användas med DMA-skydd. DMA-skydd kräver maskinvarustöd och det kan endast aktiveras på enheter som är korrekt konfigurerade.
+
+Virtualiseringsbaserat skydd för kodintegritet
+
+Den här inställningen aktiverar virtualiseringsbaserat skydd för kodintegritet i kernelläge. När den är aktiverad framtvingas minnesskydd i kernelläge, och sökvägen för kodintegritetsverifiering skyddas av funktionen Virtualiseringsbaserad säkerhet.
+
+Alternativet Inaktiverad fjärrinaktiverar Virtualiseringsbaserat skydd för kodintegritet om det tidigare var aktiverat med alternativet Aktiverat utan lås.
+ 
+Alternativet Aktiverat med UEFI-lås säkerställer att Virtualiseringsbaserat skydd för kodintegritet inte kan fjärrinaktiveras. Om du vill inaktivera funktionen måste du sätta grupprincipen till Inaktiverad och ta bort säkerhetsfunktionen från alla datorer (med användarna fysiskt närvarande), för att kunna rensa den sparade konfigurationen i UEFI.
+ 
+Alternativet Aktiverat utan lås gör att Virtualiseringsbaserat skydd för kodintegritet kan fjärrinaktiveras med hjälp av en grupprincip. 
+
+Alternativet Inte konfigurerad innebär att principinställningen inte är definierad. Grupprincipen skriver inte principinställningen i registret, vilket innebär att den inte har någon effekt för datorer och användare. Om det redan finns en inställning i registret ändras den inte.
+
+Alternativet Kräv UEFI-stöd för minnesattributtabellen aktiverar endast Virtualiseringsbaserat skydd för kodintegritet på enheter med UEFI-stöd för minnesattributtabellen. Enheter utan UEFI-stöd för minnesattributtabellen kan ha inbyggd programvara som är inkompatibel med Virtualiseringsbaserat skydd för kodintegritet vilket i vissa fall kan leda till krascher eller dataförlust eller inkompatibilitet med vissa plugin-kort. Om den här inställningen inte används bör målenheterna testas för att säkerställa kompatibilitet.
+
+Varning! Alla drivrutiner i systemet måste vara kompatibla med den här funktionen, annars kan systemet krascha. Se till att den här principinställningen endast distribueras på datorer som är kända för att vara kompatibla. 
+
+Credential Guard
+
+Med den här inställningen kan användare aktivera Credential Guard med virtualiseringsbaserad säkerhet för att bättre skydda autentiseringsuppgifter.
+
+Alternativet Inaktiverad fjärrinaktiverar Credential Guard om det tidigare var aktiverat med alternativet Aktiverat utan lås.
+
+Alternativet Aktiverat med UEFI-lås säkerställer att Credential Guard inte kan fjärrinaktiveras. Om du vill inaktivera funktionen måste du sätta grupprincipen till Inaktiverad och ta bort säkerhetsfunktionen från alla datorer (med användarna fysiskt närvarande), för att kunna rensa den sparade konfigurationen i UEFI.
+
+Alternativet Aktiverat utan lås gör att Credential Guard kan fjärrinaktiveras med hjälp av en grupprincip. Windows 10 version 1511 eller senare måste köras på de enheter som använder den här inställningen.
+
+Alternativet Inte konfigurerad innebär att principinställningen inte är definierad. Grupprincipen skriver inte principinställningen i registret, vilket innebär att den inte har någon effekt för datorer och användare. Om det redan finns en inställning i registret ändras den inte.
+      
+Säker start
+
+Med den här inställningen ställs konfigurationen för Säker start in till att säkra startkedjan.
+
+Inställningen Inte konfigurerad är standard och gör att administratörsanvändare kan ställa in funktionen.
+
+Alternativet Aktiverad aktiverar Säker start på maskinvara som stöds.
+
+Alternativet Inaktiverad inaktiverar Säker start oavsett maskinvarustöd.
+      </string>
+      <string id="SecureBoot">Säker start</string>
+      <string id="SecureBootAndDmaProtection">Säker start och DMA-skydd</string>
+      <string id="Disabled">Inaktiverad</string>
+      <string id="Enabled">Aktiverad</string>
+      <string id="EnabledWithoutLock">Aktiverat utan lås</string>
+      <string id="EnabledWithUefiLock">Aktiverat med UEFI-lås</string>
+      <string id="NotConfigured">Inte konfigurerad</string>
+      <string id="ConfigCIPolicy">Distribuera Windows Defender-programreglering</string>
+      <string id="ConfigCIPolicyHelp">Distribuera Windows Defender-programreglering
+
+Med den här principinställningen kan du distribuera en kodintegritetspolicy till en dator för att reglera vad som tillåts köras på den datorn.
+
+Om du distribuerar en kodintegritetspolicy begränsar Windows vad som får köras både i kernelläge och i Windows-skrivbordsläge baserat på principen. Datorn måste startas om för att principen ska aktiveras. 
+
+Filsökvägen måste vara en UNC-sökväg (t.ex. \\servernamn\resursnamn\SIPolicy.p7b), eller en giltig lokal sökväg (t.ex. C:\mappnamn\SIPolicy.p7b).  Det lokala datorkontot (LOKALT SYSTEM) måste ha åtkomstbehörighet till principfilen.
+ 
+Om en signerad och skyddad princip används tas inte funktionen bort från datorn när den här principinställningen inaktiveras. Du behöver göra något av följande för att ta bort den:
+
+   1) Ändra till en oskyddad princip och inaktivera därefter inställningen, eller
+   2) Inaktivera inställningen och ta bort principen från varje dator, där varje användare är fysiskt närvarande.
+      </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="VirtualizationBasedSecurity">
+        <dropdownList refId="RequirePlatformSecurityFeaturesDrop" defaultItem="1">Välj säkerhetsnivå för plattform:</dropdownList>
+        <dropdownList refId="HypervisorEnforcedCodeIntegrityDrop" defaultItem="3">Virtualiseringsbaserat skydd för kodintegritet:</dropdownList>        
+        <checkBox refId="CheckboxMAT">Kräv UEFI-stöd för minnesattributtabellen</checkBox>        
+        <dropdownList refId="CredentialIsolationDrop" defaultItem="3">Konfiguration för Credential Guard:</dropdownList>
+        <dropdownList refId="SystemGuardDrop" defaultItem="2">Konfiguration för säker start:</dropdownList>                
+      </presentation>
+      <presentation id="ConfigCIPolicy">
+        <textBox refId="ConfigCIPolicyFilePathText">
+          <label>Sökväg till principfil för kodintegritet:</label>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

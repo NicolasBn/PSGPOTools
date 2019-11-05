@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2015 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>kirjoita näyttönimi tähän</displayName>
+  <description>kirjoita kuvaus tähän</description>
+  <resources>
+    <stringTable>
+      <string id="AllowTelemetry">Salli telemetria</string>
+      <string id="AllowTelemetry_0">0 – Tietoturva [vain yritys]</string>
+      <string id="AllowTelemetry_1">1 – Perus</string>
+      <string id="AllowTelemetry_2">2 – Laajennetut</string>
+      <string id="AllowTelemetry_3">3 – Täydet</string>
+      <string id="AllowTelemetry_Explain">Tämä käytäntöasetus määrittää Microsoftille lähetettävien Windowsin diagnostiikkatietojen korkeimman tason. Määrittämällä tämän asetuksen et estä ihmisiä muuttamasta telemetria-asetuksiaan, mutta estät heitä kuitenkin valitsemasta korkeampaa tasoa kuin minkä olet organisaatiollesi määrittänyt. Windows 10:n diagnostiikkatietoasetukset koskevat vain Windows-käyttöjärjestelmää ja Windowsiin sisältyviä sovelluksia. Nämä asetukset eivät koske Windows 10:ssä toimivia kolmannen osapuolen sovelluksia.
+
+Jos otat tämän asetuksen käyttöön, voit päättää, minkä tasoisia diagnostiikkatietoja Microsoftille lähetetään:
+
+  - 0 (Suojaus). Lähettää Microsoftille vain niin vähän tietoja kuin mikä on Windowsin turvallisuuden kannalta välttämätöntä. Windowsin tietoturvakomponentit, kuten Haittaohjelmien poistotyökalu (MSRT) ja Windows Defender, voivat lähettää tällä tasolla tietoja Microsoftille, jos ne otetaan käyttöön. Arvon 0 asettaminen koskee vain Enterprise-, Education-, IoT- tai Windows Server -pohjaisia versioita. Arvon 0 asettaminen muille versioille vastaa arvon 1 asettamista.
+  - 1 (Perus). Lähettää samat tiedot kuin 0 sekä erittäin rajoitetusti diagnostiikkatietoja, kuten laitteen perustiedot, laatuun liittyviä tietoja ja sovelluksen yhteensopivuuteen liittyviä tietoja. Huomaa, että arvon 0 tai 1 asettaminen heikentää laitteen joitakin käyttökokemuksia.
+  - 2 (Parannettu). Lähettää samat tiedot kuin 1 sekä muita tietoja, kuten Windowsin, Windows Serverin, System Centerin ja sovellusten käyttöön ja toimintaan liittyviä tietoja sekä edistyksellisiä luotettavuustietoja.
+  - 3 (Täysi). Lähettää samat tiedot kuin 2 sekä edistyksellisiä diagnostiikkatietoja, joiden avulla voidaan määrittää ja korjata laitteissa ilmenneet ongelmat, laitteessa mahdollisesti ongelmia aiheuttaneet tiedostot ja sisällöt mukaan lukien.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, telemetria-asetukset voidaan määrittää yksitellen Asetukset-kohdassa.
+      </string>
+
+      <string id="TelemetryProxy">Määritä yhdistetty käyttökokemus ja telemetria</string>
+      <string id="TelemetryProxy_Explain">Tämän käytäntöasetuksen avulla voit välittää yhdistetyn käyttökokemuksen ja telemetrian pyyntöjä välityspalvelimeen.
+
+Jos otat tämän käytäntöasetuksen käyttöön, voit määrittää organisaation verkossa olevan kohdelaitteen täydellisen toimialuenimen tai IP-osoitteen (ja halutessasi portin numeron). Yhteys muodostetaan SSL (Secure Sockets Layer) -yhteytenä. Jos nimetty välityspalvelin epäonnistuu tai jos poistat tämän käytäntöasetuksen käytöstä tai jätät sen määrittämättä, yhdistetyn käyttökokemuksen ja telemetrian tiedot lähetetään Microsoftille käyttämällä välityspalvelimen oletusmäärityksiä.
+
+Tämän asetuksen muoto on &lt;palvelin&gt;:&lt;portti&gt; 
+      </string>
+
+      <string id="CommercialId">Määritä kaupallinen tunnus</string>
+      <string id="CommercialId_Explain">Tämä käytäntöasetus määrittää tunnuksen, jonka avulla tämän laitteen telemetriatiedot liitetään yksilöllisesti tietylle organisaatiolle kuuluviksi. Jos organisaatiosi osallistuu ohjelmaan, joka edellyttää tämän laitteen määrittämistä organisaatiolle kuuluvaksi, määritä kyseinen tieto tämän asetuksen avulla. Microsoft antaa tämän asetuksen arvon osana ohjelman käyttöönottoprosessia. 
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, Microsoft ei voi liittää tätä laitetta ja sen telemetriatietoja organisaatioosi tämän tunnuksen avulla.
+      </string>
+
+      <string id="DisableEnterpriseAuthProxy">Määritä todennetun välityspalvelimen käyttö yhdistetty käyttökokemus ja telemetria -palvelua varten</string>
+      <string id="DisableEnterpriseAuthProxy_1">Ota käyttöön todennetun välityspalvelimen käyttö</string>
+      <string id="DisableEnterpriseAuthProxy_2">Poista käytöstä todennetun välityspalvelimen käyttö</string>
+      <string id="DisableEnterpriseAuthProxy_Explain">Tämä käytäntöasetus estää yhdistetty käyttökokemus ja telemetria -palvelua käyttämästä automaattisesti todennettua välityspalvelinta tietojen lähettämiseen takaisin Microsoftille Windows 10:ssä. Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, yhdistetty käyttökokemus ja telemetria -palvelu käyttää automaattisesti todennettua välityspalvelinta tietojen lähettämiseen takaisin Microsoftille. Jos otat tämän käytäntöasetuksen käyttöön, tämä käytäntö estää yhdistetty käyttökokemus ja telemetria -palvelua käyttämästä automaattisesti todennettua välityspalvelinta.</string>
+
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics">Rajoita parannettuja diagnostiikkatietoja Windows Analyticsin vaatimaan vähimmäistasoon</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_1">Salli Windows Analyticsin tietojenkeruu</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_2">Poista Windows Analyticsin tietojenkeruu käytöstä</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_Explain">Tämä käytäntöasetus yhdessä Salli telemetria -käytäntöasetuksen kanssa mahdollistaa sen, että organisaatiot voivat lähettää Microsoftille tietyn sarjan diagnostiikkatietoja IT-tietoja varten Windows Analytics -palveluiden kautta. Määrittämällä tämän asetuksen et estä ihmisiä muuttamasta telemetria-asetuksiaan, mutta estät heitä kuitenkin valitsemasta korkeampaa tasoa kuin minkä olet organisaatiollesi määrittänyt.
+
+Voit ottaa tämän käyttöön suorittamalla kaksi vaihetta:
+
+ 1. Ota tämä käytäntöasetus käyttöön
+ 2. Ota Salli telemetria käyttöön tasolla 2 (parannettu)
+
+Jos määrität nämä käytäntöasetukset yhdessä, lähetät Windows Analyticsin vaatimien diagnostiikkatietojen sekä lisätapahtumien perustason tiedot Microsoftille. Lisätapahtumat löytyvät täältä: https://go.Microsoft.com/fwlink/?linked=847594.
+
+Jos otat Parannetut diagnostiikkatiedot käyttöön Salli telemetria -käytäntöasetuksessa, mutta et määritä tätä käytäntöasetusta, lähetät Windows Analyticsin vaatimat tapahtumat sekä parannetun tason telemetriatietoja Microsoftille. Tällä asetuksella ei ole vaikutusta tietokoneisiin, jotka on määritetty lähettämään täydet, perustason tai turvallisuustason diagnostisia tietoja Microsoftille.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, Microsoftille lähetettyjen diagnostisten tietojen taso määrittyy Salli telemetria -käytäntöasetuksen mukaisesti.
+      </string>
+
+      <string id="AllowDeviceNameInDiagnosticData">Salli laitenimen lähettäminen Windowsin diagnostiikkatietojen mukana</string>
+      <string id="AllowDeviceNameInDiagnosticData_Explain">Tämä käytäntö sallii laitenimen lähettämisen Microsoftille Windowsin diagnostiikkatietojen yhteydessä.
+
+Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, laitenimeä ei lähetetä Microsoftille Windowsin diagnostiikkatietojen mukana.
+      </string>
+
+      <string id="ConfigureTelemetryOptInSettingsUx">Määritä telemetrian suostumusasetuksen käyttöliittymä.</string>
+      <string id="ConfigureTelemetryOptInSettingsUx_1">Poista telemetrian suostumusasetukset käytöstä</string>
+      <string id="ConfigureTelemetryOptInSettingsUx_2">Ota telemetrian suostumusasetukset käyttöön</string>
+      <string id="ConfigureTelemetryOptInSettingsUx_Explain">Tämä käytäntöasetus määrittää, voivatko ihmiset muuttaa omia telemetriatasojaan Asetukset-kohdassa. Tätä asetusta tulee käyttää yhdessä Salli telemetria -asetusten kanssa.
+
+Jos määrität käytäntöasetukseksi Poista telemetrian suostumusasetukset käytöstä, telemetriatasot poistetaan Asetukset-kohdassa käytöstä, jolloin ihmiset eivät voi muuttaa niitä.
+
+Jos määrität käytäntöasetukseksi Ota telemetrian suostumusasetukset käyttöön tai et määritä tätä käytäntöasetusta, ihmiset voivat muuttaa omia telemetriatasojaan Asetukset-kohdassa.
+
+Huomautus:
+Määritä Salli telemetria -käytäntöasetus, jotta ihmiset eivät voi lähettää diagnostiikkatietoja Microsoftille muuten kuin organisaatiosi sallimissa rajoissa.
+      </string>
+
+      <string id="ConfigureTelemetryOptInChangeNotification">Määritä telemetrian suostumuksen muutosilmoitukset.</string>
+      <string id="ConfigureTelemetryOptInChangeNotification_1">Poista telemetrian muutosilmoitukset käytöstä</string>
+      <string id="ConfigureTelemetryOptInChangeNotification_2">Ota telemetrian muutosilmoitukset käyttöön</string>
+      <string id="ConfigureTelemetryOptInChangeNotification_Explain">
+          Tämä käytäntöasetus määrittää, näyttääkö laite ihmisille telemetriatasoja koskevia ilmoituksia ensimmäisellä kirjautumiskerralla tai Asetukset-kohdassa muutoksia tehtäessä. 
+          Jos määrität käytäntöasetukseksi Poista telemetrian muutosilmoitukset käytöstä, telemetrian tasoilmoitukset eivät enää tule näyttöön.
+          Jos määrität käytäntöasetukseksi Ota telemetrian muutosilmoitukset käyttöön tai et määritä tätä käytäntöasetusta, telemetrian ilmoitukset tulevat näyttöön ensimmäisellä kirjautumiskerralla ja Asetukset-kohdassa muutoksia tehtäessä.
+      </string>
+
+      <string id="DisableDeviceDelete">Poista diagnostiikkatietojen poistaminen käytöstä </string>
+      <string id="DisableDeviceDelete_Explain">
+          Tämä käytäntöasetus määrittää, otetaanko Diagnostiikka- ja palauteasetukset -sivun Poista diagnostiikkatiedot -painike käyttöön.
+          Jos otat tämän käytäntöasetuksen käyttöön, Poista diagnostiikkatiedot -painike poistetaan käytöstä asetussivulla ja Microsoftin laitteesta keräämien diagnostiikkatietojen poistaminen estetään. 
+          Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, Poista diagnostiikkatiedot -painike otetaan käyttöön asetussivulla, joten käyttäjät pystyvät poistamaan kaikki Microsoftin kyseisestä laitteesta keräämät diagnostiikkatiedot.
+      </string>
+
+      <string id="DisableDiagnosticDataViewer">Poista Diagnostiikkatietojen katseluohjelma käytöstä. </string>
+      <string id="DisableDiagnosticDataViewer_Explain">
+          Tämä käytäntöasetus määrittää, voivatko käyttäjät ottaa Diagnostiikkatietojen katseluohjelman käyttöön ja käynnistää sen Diagnostiikka- ja palauteasetukset -sivulta.
+          Jos otat tämän käytäntöasetuksen käyttöön, Diagnostiikkatietojen katseluohjelmaa ei oteta käyttöön asetussivulla eikä se näytä Microsoftin laitteesta keräämiä diagnostiikkatietoja.  
+          Jos poistat tämän käytäntöasetuksen käytöstä tai et määritä sitä, Diagnostiikkatietojen katseluohjelma otetaan käyttöön asetussivulla.
+      </string>
+
+      <string id="ConfigureMicrosoft365UploadEndpoint">Määritä diagnostiikkatietojen latauksen päätepiste Desktop Analyticsia varten</string>
+      <string id="ConfigureMicrosoft365UploadEndpoint_Explain">
+          Tämä käytäntö määrittää tämän laitteen diagnostiikkatietojen latauksen päätepisteen osana Desktop Analytics -ohjelmaa.
+          Jos organisaatiosi osallistuu ohjelmaan ja on neuvonut määrittämään mukautetun latauksen päätepisteen, määritä kyseinen päätepiste tämän asetuksen avulla.
+          Microsoft antaa tämän asetuksen arvon osana ohjelman käyttöönottoprosessia. 
+      </string>
+
+      <string id="AllowCommercialDataPipeline">Salli kaupallisten tietojen putki</string>
+      <string id="AllowCommercialDataPipeline_Explain">
+          AllowCommercialDataPipeline ottaa Windowsin yritystietojen putken käyttöön tässä laitteessa.
+          Jos otat tämän asetuksen käyttöön, tästä laitteesta kerätyt tiedot sisällytetään Windowsin yritystietojen putkeen.
+          Jos poistat tämän asetuksen käytöstä tai et määritä sitä, kaikki laitteen tiedot kerätään ja käsitellään Windowsin vakiotietojen putken käytäntöjen mukaisesti.
+          Tämän asetuksen määrittäminen ei muuta telemetrian keräystasoa tai käyttäjän mahdollisuutta muuttaa tasoa. Tämä asetus koskee vain Windows-käyttöjärjestelmää ja Windowsiin sisältyvä sovelluksia, ei kolmannen osapuolen sovelluksia tai palveluita, jotka toimivat Windows 10:ssä.
+      </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AllowTelemetry">
+        <dropdownList refId="AllowTelemetry" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="TelemetryProxy">
+        <textBox refId="TelemetryProxyName">
+          <label>Välityspalvelimen nimi:</label>
+        </textBox>
+      </presentation>
+      <presentation id="CommercialID">
+        <textBox refId="CommercialIdValue">
+          <label>Kaupallinen tunnus:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DisableEnterpriseAuthProxy">
+        <dropdownList refId="DisableEnterpriseAuthProxy" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="LimitEnhancedDiagnosticDataWindowsAnalytics">
+        <dropdownList refId="LimitEnhancedDiagnosticDataWindowsAnalytics" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureTelemetryOptInSettingsUx">
+        <dropdownList refId="ConfigureTelemetryOptInSettingsUx" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureTelemetryOptInChangeNotification">
+        <dropdownList refId="ConfigureTelemetryOptInChangeNotification" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureMicrosoft365UploadEndpoint">
+        <textBox refId="ConfigureMicrosoft365UploadEndpointValue">
+          <label>Desktop Analyticsin mukautetun latauksen päätepiste:</label>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

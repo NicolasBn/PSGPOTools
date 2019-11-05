@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>buraya görünen adı girin</displayName>
+  <description>buraya tanımı girin</description>
+  <resources>
+    <stringTable>
+      <string id="DeviceInstall_AllowAdminInstall">Yöneticilerin Aygıt Yükleme Kısıtlaması ilkelerini geçersiz kılmasına izin ver</string>
+      <string id="DeviceInstall_AllowAdminInstall_Help">Bu ilke, Yönetici grubu üyelerinin, diğer ilke ayarlarına bakmaksızın, herhangi bir aygıt sürücüsünü yüklemelerine ve güncelleştirmelerine izin verip vermeyeceğinizi belirlemenizi sağlar.
+
+Bu ilke ayarını etkinleştirirseniz Yönetici grubu üyeleri herhangi bir aygıt sürücüsünü yüklemek veya güncelleştirmek için Donanım Ekleme Sihirbazı veya Sürücü Güncelleştirme Sihirbazı öğelerini kullanabilirler. Bu ilke ayarını bir uzak masaüstü sunucusunda etkinleştirirseniz ilke ayarı, belirtilen aygıtların bir uzak masaüstü istemcisinden uzak masaüstü sunucusuna yönlendirilmesini etkiler.
+
+Bu ilke ayarını devre dışı bırakır ya da yapılandırmazsanız Yönetici grubu üyeleri, aygıt yüklemeyi sınırlandıran tüm ilke ayarlarına karşı karşıya kalır.</string>
+      <string id="DeviceInstall_AllSigningEqual">Sürücü sıralama ve seçme işlemi sırasında dijital olarak imzalanmış tüm sürücülere öncelik ver</string>
+      <string id="DeviceInstall_AllSigningEqual_Help">Bu ilke ayarı sürücü yükleme ve kurulum işlemi sırasında Microsoft Windows Publisher sertifikası tarafından imzalanmış sürücülerin başka geçerli Authenticode imzaları tarafından imzalanmış sürücüler ile nasıl sıralanacağını belirlemenizi sağlar. Not: Saat dilimi, yalnızca RDP 5.1 veya üstünü kullanan bir istemciye sahip en azından Microsoft Windows Server 2003 olan bir terminal sunucusuna bağlanırken yeniden yönlendirilebilir.
+
+Bu ilke ayarını etkinleştirirseniz veya yapılandırmazsanız Microsoft Windows Publisher sertifikası tarafından imzalanmış sürücüler ile başka Authenticode imzaları tarafından imzalanmış sürücülere, sürücü seçim işlemi sırasında eşit öncelik verilir. Seçim, sürüm numarası veya sürücünün ne zaman oluşturulduğu gibi diğer kriterlere göre yapılır. 
+
+Bu ayarı devre dışı bırakırsanız, Microsoft Windows Publisher sertifikası tarafından imzalanmış sürücüler yükleme için diğer Authenticode sertifikaları tarafından imzalanmış sürücülerden önce seçilir.</string>
+      <string id="DeviceInstall_Category">Aygıt Yükleme</string>
+      <string id="DeviceInstall_Classes_Allow">Bu aygıt kurulum sınıflarıyla eşleşen sürücüleri kullanan aygıtların yüklenmesine izin ver</string>
+      <string id="DeviceInstall_Classes_Allow_Help">Bu ilke ayarı, Windows'un yüklemesine izin verilen aygıt sürücüleri için bir aygıt kurulum sınıfı evrensel tek kimliği (GUID) listesi belirlemenize izin verir. Bu ilke ayarını yalnızca "Başka ilke ayarları tarafından açıklanmayan aygıtların yüklenmesini engelle" ilke ayarı etkinleştirildiğinde kullanın. Aygıt yüklemesini engelleyen diğer ilke ayarları bundan önce gelir.
+
+Bu ilke ayarını etkinleştirirseniz başka bir ilke ayarı ("Bu aygıt kimlikleri ile eşleşen aygıtların yüklenmesini engelle" ilke ayarı, "Bu aygıt sınıfının aygıtlarını yüklemeyi engelle" ilke ayarı ya da "Kaldırılabilir aygıtların yüklemesini engelle" ilke ayarı gibi) yüklemeyi özellikle engellemedikçe Windows'un, aygıt kurulum sınıfı GUID'leri oluşturduğunuz listede görülen aygıt sünücülerini yükleme ya da güncelleştirmesine izin verilir. Bu ilke ayarını bir uzak masaüstü sunucusunda etkinleştirirseniz ilke ayarı belirtilen aygıtların bir uzak masaüstü istemcisinden uzak masaüstü sunucusuna yönlendirilmesini etkiler.
+
+Bu ilke ayarını devre dışı bırakır ya da yapılandırmazsanız Windows, diğer ilke ayarları tarafından izin verilen ya da engellenen aygıtları yükleyebilir ya da engelleyebilir.</string>
+      <string id="DeviceInstall_Classes_Deny">Bu aygıt kurulum sınıflarıyla eşleşen sürücüleri kullanan aygıtların yüklenmesini engelle</string>
+      <string id="DeviceInstall_Classes_Deny_Help">Bu ilke ayarı, Windows'un yüklemesinin engellendiği aygıt sürücüleri için bir aygıt kurulum sınıfı evrensel tek kimlik (GUID) listesi belirlemenize izin verir. bu ilke ayarı Windows'un bir aygıt yüklemesine izin veren diğer tüm ilke ayarlarından önce gelir.
+ 
+Bu ilke ayarını etkinleştirirseniz Windows'un, aygıt kurulum sınıfı GUID'leri oluşturduğunuz listede görülen aygıt sürücülerini yüklemesi ya da güncelleştirmesi engellenir. Bu ilke ayarını bir uzak masaüstü sunucusunda etkinleştirirseniz ilke ayarı belirtilen aygıtların bir uzak masaüstü istemcisinden uzak masaüstü sunucusuna yönlendirilmesini etkiler.
+
+Bu ilke ayarını devre dışı bırakır ya da yapılandırmazsanız Windows, diğer ilke ayarları tarafından izin verilen ya da engellenen aygıtları yükleyebilir ya da engelleyebilir.</string>
+      <string id="DeviceInstall_Help">Aygıtların yüklenmesini denetleyen ilke ayarları.</string>
+      <string id="DeviceInstall_IDs_Allow">Bu aygıt Kimliklerinden herhangi biriyle eşleşen aygıtların yüklenmesine izin ver</string>
+      <string id="DeviceInstall_IDs_Allow_Help">Bu ilke ayarı, Windows'un yüklemesine izin verilen aygıtlar için bir Tak ve Çalıştır donanım kimlikleri ve uyumlu kimlikler listesi belirlemenizi sağlar. Bu ilke ayarını yalnızca, "Başka ilke ayarları ile açıklanmamış aygıtların yüklenmesini engelle" ilke ayarı etkin olduğunda kullanın. Aygıt yüklemesini engelleyen diğer ilke ayarları bu ilke ayarından önce gelir.
+
+Bu ilke ayarını etkinleştirirseniz başka bir ilke ayarı ("Bu Aygıt Kimliklerinden herhangi biriyle eşleşen aygıtların yüklenmesini engelle" ilke ayarı, "Bu aygıt sınıflarının aygıtlarının yüklenmesini engelle" ilke ayarı ya da "Kaldırılabilir aygıtların yüklenmesini engelle" ilke ayarı gibi) yüklemeyi özel olarak engellemedikçe Windows'un, Tak ve Çalıştır donanım kimliği ya da uyumlu kimliği oluşturduğunuz listede görünen tüm aygıtları yüklemesine ya da güncelleştirmesine izin verilir. Bu ilke ayarını bir uzak masaüstü sunucusunda etkinleştirirseniz ilke ayarı belirtilen aygıtların bir uzak masaüstü istemcisinden uzak masaüstü sunucusuna yönlendirilmesini etkiler.
+
+Bu ilke ayarını devre dışı bırakır ya da yapılandırmazsanız ve aygıtı açıklayan başka ilke ayarı yoksa, "Başka ilke ayarları tarafından açıklanmayan aygıtların yüklenmesini engelle" ilke ayarı, aygıtın yüklenip yüklenmeyeceğini belirler.</string>
+      <string id="DeviceInstall_IDs_Deny">Bu aygıt kimliklerinden herhangi biriyle eşleşen aygıtların yüklenmesini engelle</string>
+      <string id="DeviceInstall_IDs_Deny_Help">Bu ilke ayarı, Windows'un yüklemesinin engellendiği aygıtlar için bir Tak ve Çalıştır donanım kimliği ve uyumlu kimlik listesi belirlemenizi sağlar. Bu ilke ayarı, Windows'un bir aygıt yüklemesine izin veren diğer tüm ilke ayarlarından önce gelir.
+
+Bu ilke ayarını etkinleştirirseniz Windows'un, donanım kimliği ya da uyumlu kimliği oluşturduğunuz listede görünen bir aygıtı yüklemesi engellenir. Bu ilke ayarını bir uzak masaüstü sunucusunda etkinleştirirseniz ilke ayarı, belirtilen aygıtların bir uzak masaüstü istemcisinden uzak masaüstü sunucusuna yönlendirilmesini etkiler.
+
+Bu ilke ayarını devre dışı bırakırsanız ya da yapılandırmazsanız diğer ilke ayarları tarafından izin verilen ya da engellenen aygıtlar yüklenebilir ya da güncellenebilir.</string>
+      <string id="DeviceInstall_InstallTimeout">Aygıt yüklemesi zaman aşımını yapılandır</string>
+      <string id="DeviceInstall_InstallTimeout_Help">Bu ilke ayarı, bir cihaz yükleme görevinin tamamlanması için Windows'un beklediği zamanı saniye cinsinden yapılandırmanıza izin verir. 
+
+Bu ilke ayarını etkinleştirirseniz Windows, yüklemeyi sonlandırmadan önce saniye cinsinden belirttiğiniz süre kadar bekler.
+
+Bu ilke ayarını devre dışı bırakır ya da yapılandırmazsanız Windows, yüklemeyi sonlandırmadan önce bir cihaz yükleme görevinin tamamlanması için 240 saniye bekler.</string>
+      <string id="DeviceInstall_Removable_Deny">Çıkarılabilir aygıtların yüklenmesini engelle</string>
+      <string id="DeviceInstall_Removable_Deny_Help">Bu ilke ayarı Windows'un kaldırılabilir aygıtları yüklemesini engellemenizi sağlar. Bir aygıt, aygıta bağlı olan sürücü, aygıtın kaldırılabilir olduğunu belirttiğinde, kaldırılabilir olarak kabul edilir. Örneğin, bir Evrensel Seri Veri Yolu (USB) aygıtı, aygıtın bağlandığı USB hub sürücüleri tarafından kaldırılabilir olarak rapor edilir. Bu ilke ayarı, Windows'un bir aygıt yüklemesine izin veren diğer tim ilke ayarlarında önce gelir.
+
+Bu ilke ayarını etkinleştirirseniz Windows'un kaldırılabilir aygıtları yüklemesi engellenir ve var olan kaldırılabilir aygırların sürücüleri güncelleştirilemez. Bu ilke ayarını bir uzak masaüstü sunucusunda etkinleştirirseniz ilke ayarı, belirtilen aygıtların bir uzak masaüstü istemcisinden uzak masaüstü sunucusuna yönlendirilmesini etkiler.
+
+Bu ilke ayarını devre dışı bırakır ya da yapılandırmazsanız Windows, diğer ilke ayarları tarafından izin verilen ya da engellenen kaldırılabilir aygıtların aygıt sürücülerini yükleyebilir ve güncelleştirebilir.</string>
+      <string id="DeviceInstall_Restrictions_Category">Aygıt Yükleme Kısıtlamaları</string>
+      <string id="DeviceInstall_Restrictions_Help">Hangi aygıtın yüklenip yüklenemeyeceğini açıklayan ilke ayarları.</string>
+      <string id="DeviceInstall_SystemRestore">Normalde bir geri yükleme noktası oluşturulmasını isteyen aygıt etkinliği sırasında bir sistem geri yükleme noktası oluşturulmasını engelle</string>
+      <string id="DeviceInstall_SystemRestore_Help">Bu ilke ayarı, normalde Windows'tan bir sistem geri yükleme noktası isteyen aygıt etkinliği sırasında Windows'un bir sistem geri yükleme noktası oluşturmasını engeller. Windows normalde imzalanmamış bir sürücünün yüklenmesi gibi belirli sürücü etkinliği sırasında geri yükleme noktaları oluşturur. Bir sistem geri yükleme noktası, sisteminizi etkinlik öncesindeki duruma daha kolay geri yüklemenizi sağlar. 
+
+Bu ilke ayarını etkinleştirirseniz Windows, normalde oluşturacağı bir yerde bir sistem geri yükleme noktası oluşturmaz.
+
+Bu ilke ayarını devre dışı bırakır ya da yapılandırmazsanız Windows normalde olması gerektiği şekilde bir sistem geri yükleme noktası oluşturur.</string>
+	  <string id="DeviceManagement_RPCInterface_Allow">Tak ve Çalıştır arabirimine uzaktan erişime izin ver</string>
+      <string id="DeviceManagement_RPCInterface_Allow_Help">Bu ilke ayarı Tak ve Çalıştır arabirimine uzaktan erişime izin vermenizi ya da vermemenizi sağlar. 
+	  
+Bu ilke ayarını etkinleştirirseniz Tak ve Çalıştır arabirimine uzaktan bağlantılara izin verilir.
+	  
+Bu ayarı devre dışı bırakır veya yapılandırmazsanız Tak ve Çalıştır arabirimi uzaktan bağlantılara izin verilmez.</string>
+      <string id="DeviceInstall_Unspecified_Deny">Başka ilke ayarları tarafından açıklanmayan aygıtların yüklenmesini engelle</string>
+      <string id="DeviceInstall_Unspecified_Deny_Help">Bu ilke ayarı, diğer herhangi bir ilke ayarı tarafından özellikle açıklanmayan aygıtların yüklenmesini engellemenizi sağlar.
+
+Bu ilke ayarını etkinleştirirseniz Windows'un, "Bu aygıt kimliklerinden herhangi biriyle eşleşen aygıtların yüklenmesine izin ver" ya da "Bu aygıt sınıflarındaki aygıtların yüklenmesine izin ver" ilke ayarıyla açıklanmayan tüm aygıtların aygıt sürücüsünü yüklemesi ya da güncelleştirmesi engellenir.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız Windows'un, "Bu aygıt kimliklerinden herhangi biriyle eşleşen aygıtların yüklenmesini engelle", "Bu aygıt sınıflarındaki aygıtların yüklenmesini engelle" veya "Çıkarılabilir aygıtların yüklenmesini engelle" ilke ayarıyla açıklanmayan tüm aygıtların aygıt sürücüsünü yüklemesine ve güncelleştirmesine izin verilir.</string>
+      <string id="DeviceInstall_DeniedPolicy_SimpleText">Aygıt yüklemesi bir ilke ayarı tarafından engellendiğinde özel bir ileti başlığı göster</string>
+      <string id="DeviceInstall_DeniedPolicy_SimpleText_Help">Bu ilke ayarı bir aygıt yüklemesi denendiğinde ve bir ilke ayarı bu yüklemeyi engellediğinde bildirimde özel bir ileti başlığı görüntülemenizi sağlar.
+
+Bu ilke ayarını etkinleştirirseniz bir ilke ayarı aygıt yüklenmesini engellediğinde, Windows Ana Metin kutusuna yazdığınız metni bildirimin başlık metni olarak görüntüler.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız bir ilke ayarı aygıt yüklenmesini engellediğinde Windows bildirimde varsayılan başlığı görüntüler.</string>
+      <string id="DeviceInstall_DeniedPolicy_DetailText">Yükleme bir ilke ayarı tarafından engellendiğinde özel ileti görüntüle</string>
+      <string id="DeviceInstall_DeniedPolicy_DetailText_Help">Bu ilke ayarı bir aygıt yüklemesi denendiğinde ve bir ilke ayarı bu yüklemeyi engellediğinde bildirimde kullanıcılara özel bir ileti görüntülemenizi sağlar.
+
+Bu ilke ayarını etkinleştirirseniz Windows, bir ilke ayarı aygıt yüklemesini engellediğinde, Ayrıntı Metni kutusuna yazdığınız metni görüntüler.
+
+Bu ilke ayarını devre dışı bırakır ya da yapılandırmazsanız bir ilke ayarı aygıt yüklemesini engellediğinde Windows bir varsayılan ileti görüntüler.</string>
+      <string id="DriverInstall_Category">Sürücü Yükleme</string>
+      <string id="DriverInstall_Classes_AllowUser">Yönetici olmayanların bu aygıt kurulum sınıflarının sürücülerini yüklemesine izin ver</string>
+      <string id="DriverInstall_Classes_AllowUser_Help">Bu ilke ayarı, yerleşik Users grubunun yönetici olmayan üyelerinin sisteme yükleyebildiği aygıt sürücülerini açıklayan, aygıt kurulumu sınıfı GUID'lerinin listesini belirtir.
+
+Bu ilke ayarını etkinleştirirseniz Users grubunun üyeleri belirtilen aygıt kurulum sınıfları için yeni sürücüleri yükleyebilir. Sürücüler, Windows Sürücü İmzalama İlkesi'ne göre imzalanmalıdırlar veya TrustedPublisher deposunda yayıncılar tarafından zaten imzalanmış olmalıdırlar.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız yalnızca Administrators grubu üyelerinin sisteme yeni aygıt sürücüleri yüklemesine izin verilir.</string>
+      <string id="DriverInstall_Help">Sistemdeki aygıt sürücülerinin yüklenmesini denetleyen ilke ayarları.</string>
+      <string id="DriverSign_Block">Önle</string>
+      <string id="DriverSign_None">Yoksay</string>
+      <string id="DriverSign_Warn">Uyar</string>
+      <string id="DriverSigning">Aygıt sürücüleri için kod imzalama</string>
+      <string id="DriverSigning_Help">Kullanıcı dijital olarak imzalanmamış aygıt sürücüsü dosyalarını yüklemeye çalıştığında, sistemin nasıl yanıt vereceğini belirler.
+
+Bu ayar, gruptaki kullanıcıların sisteminde izin verilen en az güvenli yanıtı belirler. Kullanıcılar, daha güvenli bir ayar seçmek için, Denetim Masası'ndaki Sistem'i kullanabilirler, ancak bu ilke etkinleştirildiğinde, sistem ilkenin belirlediğinden daha az güvenli olan bir ayarı uygulamaz.
+
+Bu ayarı etkinleştirdiğinizde, istenen yanıtı belirtmek için açılan liste kutusunu kullanın.
+
+--   "Yoksay", imzalanmamış dosyalar içerse de sistemi yükleme sürecek şekilde yönlendirir.
+
+--   "Uyar", kullanıcıyı, dosyaların dijital olarak imzalanmadığına dair uyarır ve yüklemeyi durdurma ya da sürdürme ve imzalanmamış dosyaların yüklenmesine izin verip vermeme konusunda kararı kullanıcıya bırakır. "Uyar" varsayılan değerdir.
+
+--   "Önle", sistemi imzalanmamış dosyaları reddedecek şekilde yönlendirir. Sonuç olarak, yükleme durur ve sürücü paketindeki dosyalardan hiçbiri yüklenmez.
+
+Bir ayar belirtmeden sürücü dosyası güvenliğini değiştirmek için, Denetim Masası'ndaki Sistem'i kullanın. Bilgisayarım'ı sağ tıklatın, Özellikler'i ve sonra Donanım sekmesini tıklatın, ardından Sürücü İmzası düğmesini tıklatın.</string>
+      <string id="DeviceInstall_Policy_RebootTime">İlke değişikliklerinin devreye girmesi için gerektiğinde yapılacak yeniden başlatmanın zorlanma süresi (saniye olarak)</string>
+      <string id="DeviceInstall_Policy_RebootTime_Help">Bu ilke ayarı, aygıt yükleme kısıtlaması ilkelerinde bir değişikliği zorunlu tutmak için sistemin yeniden başlatılmayı bekleyeceği süreyi (saniye cinsinden) belirler.
+
+Bu ilke ayarını etkinleştirirseniz sistemin yeniden başlatılmayı beklemesini istediğiniz süreyi saniye cinsinden ayarlayın.
+
+Bu ayarı devre dışı bırakırsanız veya yapılandırmazsanız sistem yeniden başlatmayı zorunlu tutmaz.
+
+Not: Yeniden başlatma zorunlu tutulmazsa, sistem yeniden başlatılana kadar aygıt yükleme kısıtlaması hakkı etkinlik kazanmaz.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="DeviceInstall_Classes_Allow">
+        <listBox refId="DeviceInstall_Classes_Allow_List">Bu aygıt sınıflarının sürücülerini kullanan aygıtların yüklenmesine izin ver:</listBox>
+        <text>Aygıt sınıfları listesi oluşturmak için, Göster'i tıklatın. İçeriği Göster iletişim kutusundan Değer sütununa,</text>
+        <text>bir aygıt kurulum sınıfını temsil eden bir GUID öğesi yazın</text>
+        <text>(örneğin, {25DBCE51-6C8F-4A72-8A6D-B54C2B4FC835}).</text>
+      </presentation>
+      <presentation id="DeviceInstall_Classes_Deny">
+        <listBox refId="DeviceInstall_Classes_Deny_List">Bu aygıt kurulum sınıflarını kullanan sürücülerin yüklenmesini engelle:</listBox>
+        <text>Aygıt sınıfları listesi oluşturmak için, Göster'i tıklatın. İçeriği Göster iletişim kutusundan Değer sütununa,</text>
+        <text>bir aygıt kurulum sınıfını temsil eden bir GUID öğesi yazın</text>
+        <text>(örneğin, {25DBCE51-6C8F-4A72-8A6D-B54C2B4FC835}).</text>
+        <checkBox refId="DeviceInstall_Classes_Deny_Retroactive">Ayrıca zaten yüklü olan eşleşen aygıtlara da uygulayın.</checkBox>
+      </presentation>
+      <presentation id="DeviceInstall_IDs_Allow">
+        <listBox refId="DeviceInstall_IDs_Allow_List">Bu Aygıt Kimliklerinden herhangi biriyle eşleşen aygıtların yüklenmesine izin ver:</listBox>
+        <text>Aygıt listesi oluşturmak için Göster'i tıklatın. İçeriği Göster iletişim kutusundan Değer sütununa,</text>
+        <text>bir Tak ve Kullan donanımı kimliği veya uyumlu bir kimlik yazın</text>
+        <text>(örneğin, gendisk, USB\COMPOSITE, USB\Class_ff).</text>
+      </presentation>
+      <presentation id="DeviceInstall_IDs_Deny">
+        <listBox refId="DeviceInstall_IDs_Deny_List">Bu Aygıt Kimliklerinden herhangi biriyle eşleşen aygıtların yüklenmesini engelle:</listBox>
+        <text>Aygıt listesi oluşturmak için Göster'i tıklatın. İçeriği Göster iletişim kutusundan Değer sütununa,</text>
+        <text>bir Tak ve Kullan donanımı kimliği veya uyumlu bir kimlik yazın</text>
+        <text>(örneğin, gendisk, USB\COMPOSITE, USB\Class_ff).</text>
+        <checkBox refId="DeviceInstall_IDs_Deny_Retroactive">Ayrıca zaten yüklü olan eşleşen aygıtlara da uygulayın.</checkBox>
+      </presentation>
+      <presentation id="DeviceInstall_InstallTimeout">
+        <decimalTextBox refId="DeviceInstall_InstallTimeout_Time" defaultValue="300" spinStep="15">Aygıt Yükleme Zaman Aşımı (saniye olarak)</decimalTextBox>
+      </presentation>
+      <presentation id="DeviceInstall_Policy_RebootTime">
+        <decimalTextBox refId="DeviceInstall_Policy_RebootTime_Time" defaultValue="120" spinStep="10">Yeniden Başlatma Zamanı (saniye olarak)</decimalTextBox>
+      </presentation>
+      <presentation id="DeviceInstall_DeniedPolicy_SimpleText">
+        <text>Kullanıcıların görmesini istediğiniz metni girin (en fazla 63 karakter)</text>
+        <textBox refId="DeviceInstall_DeniedPolicy_SimpleText_Text">
+          <label>Ana Metin</label>
+        </textBox>
+      </presentation>
+      <presentation id="DeviceInstall_DeniedPolicy_DetailText">
+        <text>Kullanıcıların görmesini istediğiniz metni girin (en fazla 128 karakter)</text>
+        <textBox refId="DeviceInstall_DeniedPolicy_DetailText_Text">
+          <label>Ayrıntı Metni</label>
+        </textBox>
+      </presentation>
+      <presentation id="DriverInstall_Classes_AllowUser">
+        <listBox refId="DriverInstall_Classes_AllowUser_List">Kullanıcıların bu sınıflarının sürücülerini yüklemelerine izin ver:</listBox>
+        <text>Aygıt sınıfları listesi oluşturmak için, Göster'i tıklatın. İçeriği Göster iletişim kutusundan Değer sütununa,</text>
+        <text>bir aygıt kurulum sınıfını temsil eden bir GUID öğesi yazın</text>
+        <text>(örneğin, {25DBCE51-6C8F-4A72-8A6D-B54C2B4FC835}).</text>
+      </presentation>
+      <presentation id="DriverSigning">
+        <dropdownList refId="DriverSigningOp" noSort="true" defaultItem="1">Windows, dijital imzası olmayan bir sürücü dosyası algıladığında:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

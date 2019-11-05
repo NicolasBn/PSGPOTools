@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>itt adja meg a megjelenítendő nevet</displayName>
+  <description>itt adja meg a leírást</description>
+  <resources>
+    <stringTable>
+      <string id="WdiScenarioCategory">Microsoft-támogatási diagnosztikai eszköz</string>
+      <string id="WdiScenarioExecutionPolicy">Microsoft-támogatási diagnosztikai eszköz: Végrehajtási szint beállítása</string>
+      <string id="WdiScenarioExecutionPolicyExplain">Ez a házirend-beállítás a Microsoft-támogatási diagnosztikai eszköz végrehajtási szintjét határozza meg.
+
+A Microsoft-támogatási diagnosztikai eszköz (MSDT) segítségével a támogatási szakemberek elemzéshez felhasználható diagnosztikai adatokat gyűjtenek.
+
+Ha engedélyezi ezt a házirend-beállítást, a rendszergazdák az MSDT használatával diagnosztikai adatokat gyűjthetnek, és elküldhetik azokat a támogatási szakembereknek a problémák megoldása érdekében.
+
+Ha letiltja ezt a házirend-beállítást, az MSDT nem tud diagnosztikai adatokat gyűjteni.
+
+Ha nem konfigurálja ezt a házirend-beállítást, az MSDT alapértelmezés szerint be van kapcsolva.
+
+Ez a házirend-beállítás csak akkor lép életbe, ha a diagnosztika egészére érvényes forgatókönyv-végrehajtási házirend nincs konfigurálva.
+
+Ezen házirend-beállítás érvénybe lépéséhez nincs szükség a számítógép vagy a szolgáltatás újraindítására. A módosítások azonnal érvénybe lépnek.
+
+Ez a házirend-beállítás csak a Diagnosztikavezérlő szolgáltatás (DPS) futtatási állapotba kerülése estén lép életbe. A szolgáltatás leállítása vagy letiltása esetén a diagnosztikai forgatókönyv nem kerül végrehajtásra. A DPS a Szolgáltatások beépülő modul használatával állítható be a Microsoft Management Console alkalmazáshoz.</string>
+
+      <string id="MsdtToolDownloadPolicy">Microsoft-támogatási diagnosztikai eszköz: Eszközletöltés korlátozása</string>
+      <string id="MsdtToolDownloadPolicyExplain">Ez a házirend-beállítás a Microsoft-támogatási diagnosztikai eszköz eszközletöltési házirendjét korlátozza.
+
+A Microsoft-támogatási diagnosztikai eszköz (MSDT) segítségével a támogatási szakemberek elemzéshez felhasználható diagnosztikai adatokat gyűjtenek.  Bizonyos problémák esetén előfordul, hogy az MSDT további hibaelhárításra alkalmas eszköz letöltését ajánlja.
+
+Ezek az eszközök rendszerint maradéktalanul elhárítják a problémát.  Az eszközletöltés korlátozásával nem garantált a probléma alapvető okának megtalálása.
+
+Ha engedélyezi a távoli hibaelhárítás ezen házirend-beállítását, akkor az MDST olyan további eszközök letöltésére kéri a felhasználót, amelyek kizárólag a távoli számítógépeken előforduló problémák diagnosztizálására szolgálnak.  Ha engedélyezi ezt a helyi és távoli hibaelhárítást szabályozó házirend-beállítást, az MSDT mindig rákérdez a további eszközök letöltésére.
+
+Ha letiltja ezt a házirend-beállítást, az MSDT soha nem tölt le eszközöket, és nem képes a távoli számítógépek problémáinak diagnosztizálására.
+
+Ha nem konfigurálja ezt a házirend-beállítást, az MSDT minden további eszközletöltés előtt a felhasználó hozzájárulását kéri.
+
+No reboots or service restarts are required for this policy setting to take effect. A módosítások azonnal érvénybe lépnek.
+
+A házirend-beállítás csak az MSDT engedélyezéskor lép életbe.
+
+Ez a házirend-beállítás csak a Diagnosztikavezérlő szolgáltatás (DPS) futtatási állapotba kerülése estén lép életbe.  A szolgáltatás leállítása vagy letiltása esetén a rendszer nem hajt végre diagnosztikai forgatókönyvet.  A DPS a Szolgáltatások beépülő modul használatával állítható be a Microsoft Management Console alkalmazáshoz.</string>
+      <string id="MsdtToolDownloadPolicyLevelRemoteOnly">Csak távoli hibaelhárítás</string>
+      <string id="MsdtToolDownloadPolicyLevelAllowAll">Helyi és távoli hibaelhárítás</string>
+      <string id="MsdtSupportProvider">Microsoft-támogatási diagnosztikai eszköz (MSDT): A támogatásszolgáltatóval való interaktív MSDT-kommunikáció bekapcsolása</string>
+      <string id="MsdtSupportProviderExplain">Ez a házirend-beállítás konfigurálja a Microsoft-támogatási diagnosztikai eszköz (MSDT) interaktív kommunikációját a támogatásszolgáltatóval. Az MSDT segítségével a támogatási szakemberek elemzéshez felhasználható diagnosztikai adatokat gyűjtenek.
+
+Ha engedélyezi ezt a házirend-beállítást, a felhasználók az MSDT használatával diagnosztikai adatokat gyűjthetnek, és elküldhetik azokat a támogatási szakembereknek a problémák megoldása érdekében.
+
+Alapértelmezés szerint a beállított támogatásszolgáltató a Microsoft Corporation.
+
+Ha letiltja ezt a házirend-beállítást, akkor az MSDT nem képes támogatási módban futni, és nem gyűjthetők adatok, illetve nem küldhetők el a támogatásszolgáltatónak.
+
+Ha nem konfigurálja ezt a házirend-beállítást, akkor az MSDT támogatási mód alapértelmezés szerint engedélyezve van.
+
+Ezen házirend-beállítás érvénybe lépéséhez nincs szükség a számítógép vagy a szolgáltatás újraindítására. A módosítások azonnal érvénybe lépnek.
+
+
+
+</string>
+<string id="TroubleshootingAllowRecommendations">Hibaelhárítás: ismert problémák esetén a felhasználók elérhetik az ajánlott hibaelhárítást</string>
+<string id="TroubleshootingAllowRecommendationsExplain">Ez a házirend-beállítás az eszköz ismert problémáira ajánlott hibaelhárítási lépéseket alkalmazza, és lehetővé teszi, hogy a rendszergazdák megadják, hogyan kívánják alkalmazni a beállítást a saját tartományaikra és informatikai környezeteikre.
+Ha nem konfigurálja ezt a házirend-beállítást, akkor a felhasználó megadhatja, hogy a rendszer mikor és hogyan alkalmazza az ajánlott hibaelhárítási lépéseket.
+
+A házirend engedélyezésével megadhatja, hogy a rendszer hogyan alkalmazza az ajánlott hibaelhárítási lépéseket a felhasználó eszközén. Az alábbi értékek közül választhat:
+0 = A funkció kikapcsolása.
+1 = A funkció kikapcsolása, de a fontos hibaelhárítási lépések további alkalmazása.
+2 = A felhasználó értesítése, ha elérhetők az ajánlott hibaelhárítási lépések, majd annak engedélyezése, hogy a felhasználó futtassa vagy mellőzze a szolgáltatást.
+3 = Az ajánlott hibaelhárítási lépések automatikus futtatása és a felhasználó értesítése a sikeres futtatásról.
+4 = Az ajánlott hibaelhárítási lépések automatikus futtatása a felhasználó értesítése nélkül.
+5 = Annak engedélyezése, hogy a felhasználó kiválassza a saját ajánlott hibaelhárítási beállításait.
+
+Az új beállítás megadása után a tartományban lévő eszközökre vonatkozó ajánlott hibaelhárítási lépések megjelenítéséhez kövesse az alábbi utasításokat:
+1. Hozzon létre .bat parancsfájlt az alábbi tartalommal:
+rem Az alábbi kötegfájl elindítja az Ajánlott hibaelhárítási lépések szolgáltatást
+C:\Windows\System32\mitigationscanner.exe
+
+2. Új azonnali feladat létrehozásához navigáljon a Csoportházirend-felügyeleti szerkesztő &gt; Számítógép konfigurációja &gt; Beállítások menüpontra, és válassza a Vezérlőpult-beállítások elemet. 
+3. A Vezérlőpult beállításai területen kattintson a jobb gombbal az Ütemezett feladatok lehetőségre, és válassza az Új lehetőséget. Válassza az Azonnali feladat lehetőséget (legalább Windows 7).
+4. Adja meg a megfelelő nevet és leírást, majd a Biztonsági beállítások csoportban állítsa be a felhasználói fiókhoz a Rendszer értéket, és jelölje be a Futtatás a legmagasabb jogosultságszinten jelölőnégyzetet.
+5. A Műveletek lapon hozzon létre egy új műveletet, a művelet típusaként válassza ki a Program indítása lehetőséget, majd adja meg az 1. lépésben létrehozott fájlt.
+6. Konfigurálja a feladatot a tartományában történő központi telepítésre.</string>
+<string id="RecommendationsDropDown_DoNothing">A funkció kikapcsolása</string>
+<string id="RecommendationsDropDown_ApplyCoreSystemMitigationsOnly">A funkció kikapcsolása, de a fontos hibaelhárítási lépések további alkalmazása.</string>
+<string id="RecommendationsDropDown_AskFirst">A felhasználó értesítése, ha elérhetők az ajánlott hibaelhárítási lépések, majd annak engedélyezése, hogy a felhasználó futtassa vagy mellőzze a szolgáltatást.</string>
+<string id="RecommendationsDropDown_ApplyThenNotify">Az ajánlott hibaelhárítási lépések automatikus futtatása és a felhasználó értesítése a sikeres futtatásról.</string>
+<string id="RecommendationsDropDown_ApplySilently">Az ajánlott hibaelhárítási lépések automatikus futtatása a felhasználó értesítése nélkül.</string>
+<string id="RecommendationsDropDown_DeferToUser">Annak engedélyezése, hogy a felhasználó kiválassza a saját ajánlott hibaelhárítási beállításait.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="MsdtToolDownloadPolicy">
+        <dropdownList refId="MsdtToolDownloadPolicyLevel" noSort="true" defaultItem="1">Eszközletöltés engedélyezve</dropdownList>
+      </presentation>
+      <presentation id="TroubleshootingAllowRecommendations">
+        <dropdownList refId="TroubleshootingAllowRecommendations_Dropdown" noSort="true" defaultItem="0">Ismert problémák esetén a Microsoft által ajánlott hibaelhárítás engedélyezése</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

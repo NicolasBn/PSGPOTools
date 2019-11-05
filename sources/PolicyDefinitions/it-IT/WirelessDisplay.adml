@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://www.microsoft.com/GroupPolicy/PolicyDefinitions">
+  <displayName>Connetti</displayName>
+  <description>Seleziona un elemento per visualizzarne la descrizione</description>
+  <resources>
+    <stringTable>
+      <!-- general -->
+      <string id="Connect">Connetti</string>
+      
+      <!-- prevent file sync-->
+      <string id="AllowProjectionToPC">Non consentire la proiezione di questo PC in</string>
+      <string id="AllowProjectionToPC_help">Questa impostazione dei criteri consente di disattivare la proiezione in un PC.  
+
+ 
+
+Se si abilita questa impostazione dei criteri, il PC non è individuabile e non può essere eseguita alcuna proiezione nel PC, a meno che l'utente non avvii manualmente l'app Connetti.  
+
+ 
+
+Se si disabilita o non si configura questa impostazione dei criteri, il PC è individuabile e possono essere eseguite proiezioni solo sopra la schermata di blocco. L'utente ha inoltre la possibilità di attivare o disattivare sempre l'impostazione, tranne che per l'avvio manuale.</string>
+
+      <string id="RequirePinForPairing">Richiedi PIN per l'associazione</string>
+      <string id="RequirePinForPairing_help">Questa impostazione dei criteri consente di richiedere un PIN per l'associazione.  
+
+Se si imposta su "Mai", non è necessario un PIN per l'associazione.
+
+Se si imposta su "Prima volta", sarà sempre necessario un PIN per la procedura di associazione dei nuovi dispositivi.
+
+Se si imposta su "Sempre", un PIN sarà necessario per tutte le associazioni.</string>
+      <string id="RequirePinForPairing_0">Mai</string>
+      <string id="RequirePinForPairing_1">Prima volta</string>
+      <string id="RequirePinForPairing_2">Sempre</string>
+   </stringTable>
+   <presentationTable>
+      <presentation id="RequirePinForPairing">
+        <dropdownList refId="RequirePinForPairingDropdown" noSort="true" defaultItem="0">Scegli una delle azioni seguenti</dropdownList>
+      </presentation>
+   </presentationTable>
+  </resources>
+</policyDefinitionResources>

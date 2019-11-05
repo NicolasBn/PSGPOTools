@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0">
+  <displayName>傳遞最佳化 GP</displayName>
+  <description>此檔案描述傳遞最佳化 GP 設定</description>
+  <resources>
+    <stringTable>
+      <string id="DeliveryOptimizationCat">傳遞最佳化</string>
+      <string id="DownloadMode">下載模式</string>
+      <string id="DownloadMode_Help">指定「傳遞最佳化」在下載 Windows 更新、應用程式與應用程式更新時可以使用的下載方式。
+      
+下列清單顯示支援的值:
+
+0 = 僅限 HTTP (無對等互連)。
+      
+1 = HTTP 混合 (具有相同 NAT 後方之對等互連)。
+
+2 = HTTP 混合 (具有跨私人群組的對等互連)。根據預設值，對等互連會發生在相同 Active Directory 站台 (若存在) 或相同網域中的裝置上。選取此選項時，對等互連將會跨越 NAT。若要建立自訂群組，請使用「群組識別碼」並搭配「模式 2」。
+      
+3 = HTTP 混合 (具有網際網路對等互連)。
+
+99 = 簡單下載模式 (不含對等互連)。「傳遞最佳化」只會使用 HTTP 來下載，而且不會嘗試聯繫「傳遞最佳化」雲端服務。
+      
+100 = 略過模式。不使用「傳遞最佳化」，而改為使用 BITS。</string>
+      <string id="DownloadMode_CdnOnly">僅限 HTTP (0)</string>
+      <string id="DownloadMode_Lan">LAN (1)</string>
+      <string id="DownloadMode_Group">群組 (2)</string>
+      <string id="DownloadMode_Internet">網際網路 (3)</string>
+      <string id="DownloadMode_Simple">簡單 (99)</string>
+      <string id="DownloadMode_Bypass">略過 (100)</string>
+      <string id="GroupId">群組識別碼</string>
+      <string id="GroupId_Help">「群組識別碼」必須以 GUID 的形式設定。此原則可指定裝置所屬的任意群組識別碼。
+      
+若需要為位於不同網域或並非位於相同 LAN 的分公司建立「區域網路對等互連」的單一群組，請使用此設定。
+      
+注意: 這是盡力而為的最佳化，您不應該仰賴此功能來進行身分識別驗證。</string>
+      <string id="MaxUploadBandwidth">上傳頻寬上限 (KB/秒)</string>
+      <string id="MaxUploadBandwidth_Help">以「KB/秒」為單位指定「傳遞最佳化」跨所有並行上傳活動使用的上傳頻寬上限。
+      
+預設值 0 (零) 允許不受限制的使用，其中系統會動態為上傳進行最佳化，以便將所使用的上傳頻寬降到最低。</string>
+      <string id="MaxCacheSize">快取大小上限 (百分比)</string>
+      <string id="MaxCacheSize_Help">以可用磁碟空間百分比的方式 (1-100) 指定「傳遞最佳化」可以使用的快取大小上限。</string>
+      <string id="AbsoluteMaxCacheSize">快取大小上限的絕對大小 (GB)</string>
+      <string id="AbsoluteMaxCacheSize_Help">以 GB 為單位指定「傳遞最佳化」快取的大小上限。
+      
+此原則會覆寫 DOMaxCacheSize 原則。
+      
+0 (零) 的值表示「無限制的」快取; 當裝置磁碟空間不足時，「傳遞最佳化」將會清除快取。</string>
+      <string id="MaxCacheAge">快取留存時間上限 (秒)</string>
+      <string id="MaxCacheAge_Help">指定每個檔案在順利下載後要保留在「傳遞最佳化」快取中的時間長度上限 (秒)。
+      
+0 (零) 的值表示「無限制」;「傳遞最佳化」會將檔案保留在快取中較長的時間，並讓這些檔案可供上傳到其他裝置 (只要未超出快取大小)。</string>
+      <string id="MonthlyUploadDataCap">每月資料上傳上限 (GB)</string>
+      <string id="MonthlyUploadDataCap_Help">指定每個行事曆月份允許「傳遞最佳化」上傳到網際網路同儕節點的總位元組上限 (GB)。
+      
+值 0 (零) 表示「無限制」; 若設定為 0，不會套用每月上傳限制。</string>
+      <string id="MinBackgroundQos">背景 QoS 下限 (KB/秒)</string>
+      <string id="MinBackgroundQos_Help">以「KB/秒」為單位指定背景下載的下載 QoS (服務品質或速度) 下限。
+      
+此原則會影響同儕節點與 HTTP 來源的混合。「傳遞最佳化」會補足 HTTP 來源的下載，以達到指定的 QoS 值下限。</string>
+      <string id="ModifyCacheDrive">修改快取磁碟機</string>
+      <string id="ModifyCacheDrive_Help">指定「傳遞最佳化」應該為其快取使用的磁碟機。
+      
+根據預設值，會使用 %SystemDrive% 來存放快取。您可以使用環境變數、磁碟機代號或使用完整路徑來指定磁碟機位置。</string>
+      <string id="MaxDownloadBandwidth">下載頻寬上限 (KB/秒)</string>
+      <string id="MaxDownloadBandwidth_Help">指定裝置使用「傳遞最佳化」在所有並行下載活動中可使用的最大下載頻寬 (以「KB/秒」為單位設定)。
+      
+預設值 0 (零) 表示「傳遞最佳化」將動態調整以使用可用的頻寬來下載。</string>
+      <string id="PercentageMaxDownloadBandwidth">下載頻寬上限 (百分比)</string>
+      <string id="PercentageMaxDownloadBandwidth_Help">以可用下載頻寬百分比的形式指定「傳遞最佳化」在所有並行下載活動中使用的最大下載頻寬。
+      
+預設值 0 (零) 表示「傳遞最佳化」將動態調整以使用可用的頻寬來下載。
+
+此原則已被取代，並會在下一版中移除。請改為使用最大前景下載頻寬 (百分比) 或最大背景下載頻寬 (百分比)。</string>
+      <string id="PercentageMaxBackgroundBandwidth">背景下載頻寬上限 (百分比)</string>
+      <string id="PercentageMaxBackgroundBandwidth_Help">以可用下載頻寬百分比的形式指定「傳遞最佳化」在所有並行下載活動中使用的背景下載頻寬上限。
+      
+預設值 0 (零) 表示「傳遞最佳化」將動態調整以使用可用的頻寬來進行背景下載。</string>
+      <string id="PercentageMaxForegroundBandwidth">前景下載頻寬上限 (百分比)</string>
+      <string id="PercentageMaxForegroundBandwidth_Help">以可用下載頻寬百分比的形式指定「傳遞最佳化」在所有並行下載活動中使用的幕前下載頻寬上限。
+      
+預設值 0 (零) 表示「傳遞最佳化」將動態調整以使用可用的頻寬來進行幕前下載。</string>
+      <string id="MinFileSizeToCache">對等快取內容檔案大小下限 (MB)</string>
+      <string id="MinFileSizeToCache_Help">指定若要使用「對等快取」所需啟用的內容檔案大小下限 (MB)。
+      
+建議值: 1 MB 到 100000 MB。</string>
+      <string id="AllowVPNPeerCaching">當裝置透過 VPN 連線時啟用對等快取</string>
+      <string id="AllowVPNPeerCaching_Help">指定 [True] 以允許裝置在透過 VPN 連線到網域網路時參與「對等快取」。
+      
+這表示裝置可以從其他網域網路裝置下載或上傳到其他網域網路裝置，不論裝置是使用 VPN 或公司網域網路。</string>
+      <string id="MinRAMAllowedToPeer">啟用對等快取所需的 RAM 容量下限 (含) (GB)</string>
+      <string id="MinRAMAllowedToPeer_Help">指定使用「對等快取」所需具備的 RAM 大小下限 (GB)。
+      
+例如，若設定的下限是 1 GB，則系統將允許具有 1 GB 或更多 RAM 的裝置使用「對等快取」。
+      
+建議值: 1 GB 到 4 GB。</string>
+      <string id="MinDiskSizeAllowedToPeer">允許使用對等快取的磁碟大小下限 (GB)</string>
+      <string id="MinDiskSizeAllowedToPeer_Help">指定裝置使用「對等快取」所需具備的磁碟大小下限 (以 GB 表示的容量)。將會使用雲端服務所設定的預設值。
+      
+建議值: 64 GB 到 256 GB。
+      
+注意: 若已設定 DOModifyCacheDrive 原則，磁碟大小檢查將套用至此原則所指定的新工作目錄。</string>
+      <string id="MinBatteryPercentageAllowedToUpload">當裝置使用電池時若未低於設定的電池電量 (百分比) 即允許上傳</string>
+      <string id="MinBatteryPercentageAllowedToUpload_Help">指定介於 1 到 100 之間的任何數值 (單位為百分比)，以允許裝置在使用 DC 電源 (電池) 時上傳資料到區域網路和群組同儕節點。
+      
+建議的設定值是電池電量未低於 40 (代表 40%) 即允許上傳。無論此原則如何設定，裝置使用電池時都能從同儕節點下載資料。
+      
+值 0 表示「無限制」; 將使用雲端服務所設定的預設值。</string>
+      <string id="CacheHost">[保留後供未來使用] 快取伺服器主機名稱</string>
+      <string id="CacheHost_Help">[保留後供未來使用]</string>
+      <string id="GroupIdSource">選取群組識別碼的來源</string>
+      <string id="GroupIdSource_Help">設定此原則可限制對特定來源的對等選取。
+      
+可用的選項有: 
+
+1 = AD 站台。
+
+2 = 已驗證網域 SID。
+
+3 = DHCP 選項識別碼。
+
+4 = DNS 尾碼。
+
+5 = AAD 租用戶識別碼。
+
+設定後，會從選取的來源自動指派群組識別碼。如果您設定此原則，則 GroupID 原則將受到忽略。
+      
+在此原則中設定的選項僅適用於群組 (2) 下載模式。若群組 (2) 非設定為下載模式，則此原則會受到忽略。 
+
+關於選項 3 - DHCP 選項識別碼，用戶端會查詢DHCP 選項識別碼 234，並將傳回的 GUID 值用作群組識別碼。</string>
+      <string id="GroupIdSource_Unset">取消設定 (0)</string>
+      <string id="GroupIdSource_AD">AD 站台 (1)</string>
+      <string id="GroupIdSource_SID">已驗證的網域 SID (2)</string>
+      <string id="GroupIdSource_DHCP">DHCP 選項識別碼 (3)</string>
+      <string id="GroupIdSource_DNS">DNS 尾碼 (4)</string>
+      <string id="GroupIdSource_AAD">AAD 租用戶識別碼 (5)</string>
+      <string id="DelayBackgroundDownloadFromHttp">延遲來自 http 的背景下載 (單位為秒)</string>
+      <string id="DelayBackgroundDownloadFromHttp_Help">此原則可讓您在可使用 P2P 的背景下載中延遲使用 HTTP 來源。
+      
+等達到延遲上限後，下載將繼續使用 HTTP，可能是下載完整承載，或補足無法從同儕節點下載的位元組。
+      
+請注意，對終端使用者而言，等候同儕節點來源的下載會呈現停頓的狀態。
+      
+建議值為 1 小時 (3600)。</string>
+      <string id="DelayForegroundDownloadFromHttp">延遲來自 http 的幕前下載 (單位為秒)</string>
+      <string id="DelayForegroundDownloadFromHttp_Help">此原則可讓您在可使用 P2P 的幕前 (互動式) 下載中延遲使用 HTTP 來源。
+      
+等達到延遲上限後，下載將繼續使用 HTTP，可能是下載完整承載，或補足無法從同儕節點下載的位元組。
+      
+請注意，對終端使用者而言，等候同儕節點來源的下載會呈現停頓的狀態。
+      
+建議值為 1 分鐘 (60)。</string>
+      <string id="DelayCacheServerFallbackBackground">延遲背景下載快取伺服器後援 (單位: 秒)</string>
+      <string id="DelayCacheServerFallbackBackground_Help">設定此原則來延遲從快取伺服器到 HTTP 來源的背景內容下載，延遲 X 秒。
+
+注意: 若您設定原則為延遲 http 背景下載，則其會優先套用 (以優先允許來自對等的下載)。</string>
+      <string id="DelayCacheServerFallbackForeground">延遲前景下載快取伺服器後援 (單位: 秒)</string>
+      <string id="DelayCacheServerFallbackForeground_Help">設定此原則來延遲從快取伺服器到 HTTP 來源的前景內容下載，延遲 X 秒。
+
+注意: 若您設定原則為延遲 http 前景下載，則其會優先套用 (以優先允許來自對等的下載)。</string>
+      <string id="RestrictPeerSelectionBy">選取一種方法來限制同儕節點選取項目</string>
+      <string id="RestrictPeerSelectionBy_Help">設定此原則，以限制透過所選選項進行的對等選取。
+      
+可用的選項為: 
+1 = 子網路遮罩 (未來版本將會新增更多選項)。
+      
+選項 1 (子網路遮罩) 同時適用於下載模式 LAN (1) 與群組 (2)。</string>
+      <string id="RestrictPeerSelectionBy_None">無</string>
+      <string id="RestrictPeerSelectionBy_Subnet">子網路</string>
+      <string id="SetHoursToLimitBackgroundDownloadBandwidth">設定上班時間，以限制背景下載頻寬</string>
+      <string id="SetHoursToLimitBackgroundDownloadBandwidth_Help">指定傳遞最佳化在上班時間內、外的所有並行下載活動使用的背景下載頻寬上限 (可用下載頻寬的百分比)。</string>
+      <string id="SetHoursToLimitForegroundDownloadBandwidth">設定上班時間，以限制幕前下載頻寬</string>
+      <string id="SetHoursToLimitForegroundDownloadBandwidth_Help">指定傳遞最佳化在上班時間內、外的所有並行下載活動使用的幕前下載頻寬上限 (可用下載頻寬的百分比)。</string>
+      <string id="Time1AM">上午 1 點</string>
+      <string id="Time1PM">下午 1 點</string>
+      <string id="Time2AM">上午 2 點</string>
+      <string id="Time2PM">下午 2 點</string>
+      <string id="Time3AM">上午 3 點</string>
+      <string id="Time3PM">下午 3 點</string>
+      <string id="Time4AM">上午 4 點</string>
+      <string id="Time4PM">下午 4 點</string>
+      <string id="Time5AM">上午 5 點</string>
+      <string id="Time5PM">下午 5 點</string>
+      <string id="Time6AM">上午 6 點</string>
+      <string id="Time6PM">下午 6 點</string>
+      <string id="Time7AM">上午 7 點</string>
+      <string id="Time7PM">下午 7 點</string>
+      <string id="Time8AM">上午 8 點</string>
+      <string id="Time8PM">下午 8 點</string>
+      <string id="Time9AM">上午 9 點</string>
+      <string id="Time9PM">下午 9 點</string>
+      <string id="Time10AM">上午 10 點</string>
+      <string id="Time10PM">下午 10 點</string>
+      <string id="Time11AM">上午 11 點</string>
+      <string id="Time11PM">下午 11 點</string>
+      <string id="Time12AM">上午 12 點</string>
+      <string id="Time12PM">下午 12 點</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="DownloadMode">
+        <dropdownList defaultItem="1" noSort="true" refId="DownloadMode">下載模式:</dropdownList>
+      </presentation>
+      <presentation id="GroupId">
+        <textBox refId="GroupId">
+          <label>群組識別碼:</label>
+        </textBox>
+      </presentation>
+      <presentation id="MaxUploadBandwidth">
+        <decimalTextBox defaultValue="0" refId="MaxUploadBandwidth">最大上傳頻寬 (KB/秒):</decimalTextBox>
+        <text>預設值是 0 (無限制)</text>
+      </presentation>
+      <presentation id="MaxCacheSize">
+        <decimalTextBox defaultValue="20" refId="MaxCacheSize">快取大小上限 (百分比):</decimalTextBox>
+        <text>預設值是 20%</text>
+      </presentation>
+      <presentation id="AbsoluteMaxCacheSize">
+        <decimalTextBox defaultValue="10" refId="AbsoluteMaxCacheSize">快取大小上限的絕對大小 (GB):</decimalTextBox>
+        <text>預設值是 10GB</text>
+      </presentation>
+      <presentation id="MaxCacheAge">
+        <decimalTextBox defaultValue="259200" refId="MaxCacheAge">快取留存時間上限 (秒):</decimalTextBox>
+        <text>預設值是 3 天</text>
+      </presentation>
+      <presentation id="MonthlyUploadDataCap">
+        <decimalTextBox defaultValue="20" refId="MonthlyUploadDataCap">每月資料上傳上限 (GB):</decimalTextBox>
+        <text>預設值是 20GB</text>
+      </presentation>
+      <presentation id="MinBackgroundQos">
+        <decimalTextBox defaultValue="500" refId="MinBackgroundQos">背景 QoS 下限 (KB/秒):</decimalTextBox>
+        <text>預設值是 500KB/秒</text>
+      </presentation>
+      <presentation id="ModifyCacheDrive">
+        <textBox refId="ModifyCacheDrive">
+          <label>修改快取磁碟機:</label>
+        </textBox>
+      </presentation>
+      <presentation id="MaxDownloadBandwidth">
+        <decimalTextBox defaultValue="0" refId="MaxDownloadBandwidth">下載頻寬上限 (KB/秒):</decimalTextBox>
+        <text>預設值是 0 (無限制)</text>
+      </presentation>
+      <presentation id="PercentageMaxDownloadBandwidth">
+        <decimalTextBox defaultValue="0" refId="PercentageMaxDownloadBandwidth">下載頻寬上限 (百分比):</decimalTextBox>
+        <text>預設值是 0 (無限制)</text>
+      </presentation>
+      <presentation id="PercentageMaxBackgroundBandwidth">
+        <decimalTextBox defaultValue="0" refId="PercentageMaxBackgroundBandwidth">背景下載頻寬上限 (百分比):</decimalTextBox>
+        <text>預設值是 0 (無限制)</text>
+      </presentation>
+      <presentation id="PercentageMaxForegroundBandwidth">
+        <decimalTextBox defaultValue="0" refId="PercentageMaxForegroundBandwidth">前景下載頻寬上限 (百分比):</decimalTextBox>
+        <text>預設值是 0 (無限制)</text>
+      </presentation>
+      <presentation id="MinFileSizeToCache">
+        <decimalTextBox defaultValue="100" refId="MinFileSizeToCache">對等快取內容檔案大小下限 (MB):</decimalTextBox>
+        <text>預設值是 100MB</text>
+      </presentation>
+      <presentation id="AllowVPNPeerCaching">
+        <checkBox defaultChecked="false" refId="AllowVPNPeerCaching">當裝置透過 VPN 連線時啟用對等快取</checkBox>
+      </presentation>
+      <presentation id="MinRAMAllowedToPeer">
+        <decimalTextBox defaultValue="4" refId="MinRAMAllowedToPeer">啟用對等快取所需的 RAM 容量下限 (含) (GB):</decimalTextBox>
+        <text>預設值是 4GB</text>
+      </presentation>
+      <presentation id="MinDiskSizeAllowedToPeer">
+        <decimalTextBox defaultValue="32" refId="MinDiskSizeAllowedToPeer">允許使用對等快取的磁碟大小下限 (GB):</decimalTextBox>
+        <text>預設值是 32GB</text>
+      </presentation>
+      <presentation id="MinBatteryPercentageAllowedToUpload">
+        <decimalTextBox defaultValue="0" refId="MinBatteryPercentageAllowedToUpload">電池電量下限 (百分比):</decimalTextBox>
+        <text>預設值為 0 (無限制)</text>
+      </presentation>
+      <presentation id="CacheHost">
+        <textBox refId="CacheHost">
+          <label>快取伺服器:</label>
+        </textBox>
+      </presentation>
+      <presentation id="GroupIdSource">
+        <dropdownList defaultItem="0" noSort="true" refId="GroupIdSource">群組識別碼的來源:</dropdownList>        
+      </presentation>
+      <presentation id="DelayBackgroundDownloadFromHttp">
+        <decimalTextBox defaultValue="0" refId="DelayBackgroundDownloadFromHttp">延遲來自 http 的背景下載 (單位為秒):</decimalTextBox>
+        <text>預設值為 0 (無延遲)</text>
+      </presentation>
+      <presentation id="DelayForegroundDownloadFromHttp">
+        <decimalTextBox defaultValue="0" refId="DelayForegroundDownloadFromHttp">延遲來自 http 的幕前下載 (單位為秒):</decimalTextBox>
+        <text>預設值為 0 (無延遲)</text>
+      </presentation>
+      <presentation id="DelayCacheServerFallbackBackground">
+        <decimalTextBox defaultValue="0" refId="DelayCacheServerFallbackBackground">延遲背景下載快取伺服器後援 (秒):</decimalTextBox>
+        <text>預設值為 0 (無延遲)</text>
+      </presentation>
+      <presentation id="DelayCacheServerFallbackForeground">
+        <decimalTextBox defaultValue="0" refId="DelayCacheServerFallbackForeground">延遲前景下載快取伺服器後援 (秒):</decimalTextBox>
+        <text>預設值為 0 (無延遲)</text>
+      </presentation>
+      <presentation id="RestrictPeerSelectionBy">
+        <dropdownList defaultItem="0" noSort="true" refId="RestrictPeerSelectionBy">同儕節點選取項目限制依據:</dropdownList>
+      </presentation>
+      <presentation id="SetHoursToLimitBackgroundDownloadBandwidth">
+        <text/>
+        <text>設定上班時間，以限制背景下載頻寬:</text>
+        <dropdownList defaultItem="8" noSort="true" refId="SetHoursToLimitBackgroundDownloadBandwidthFrom">從:</dropdownList>
+        <dropdownList defaultItem="17" noSort="true" refId="SetHoursToLimitBackgroundDownloadBandwidthTo">到:</dropdownList>
+        <text/>
+        <text>上班時間內的背景下載頻寬上限 (百分比):</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitBackgroundDownloadBandwidthIn"/>
+        <text>預設值為 0 (無限制)</text>
+        <text/>
+        <text>上班時間外的背景下載頻寬上限 (百分比):</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitBackgroundDownloadBandwidthOut"/>
+        <text>預設值為 0 (無限制)</text>
+      </presentation>
+      <presentation id="SetHoursToLimitForegroundDownloadBandwidth">
+        <text/>
+        <text>設定上班時間，以限制幕前下載頻寬:</text>
+        <dropdownList defaultItem="8" noSort="true" refId="SetHoursToLimitForegroundDownloadBandwidthFrom">從:</dropdownList>
+        <dropdownList defaultItem="17" noSort="true" refId="SetHoursToLimitForegroundDownloadBandwidthTo">到:</dropdownList>
+        <text/>
+        <text>上班時間內的幕前下載頻寬上限 (百分比):</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitForegroundDownloadBandwidthIn"/>
+        <text>預設值為 0 (無限制)</text>
+        <text/>
+        <text>上班時間外的幕前下載頻寬上限 (百分比):</text>
+        <decimalTextBox defaultValue="0" refId="SetHoursToLimitForegroundDownloadBandwidthOut"/>
+        <text>預設值為 0 (無限制)</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

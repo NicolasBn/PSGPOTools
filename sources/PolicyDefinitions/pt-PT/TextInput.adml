@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Políticas TextInput</displayName>
+  <description>Políticas relacionadas com TextInput.</description>
+  <resources>
+    <stringTable>
+      <string id="TextInput">Introdução de Texto</string>
+      <string id="TextInput_AllowLanguageFeaturesUninstall_Help">Esta definição de política controla se é possível desinstalar do computador algumas funcionalidades linguísticas (por exemplo, dicionários de correção ortográfica, reconhecedores de escrita manual). </string>
+      <string id="TextInput_AllowLanguageFeaturesUninstall">Permitir Desinstalação de Funcionalidades Linguísticas</string>  
+      <string id="TextInput_AllowLinguisticDataCollection_Help">Esta definição de política controla a capacidade de enviar dados de tinta digital e de escrita para a Microsoft, de forma a melhorar as capacidades de reconhecimento e de sugestão das aplicações e serviços executados no Windows. </string>
+      <string id="TextInput_AllowLinguisticDataCollection">Melhorar o reconhecimento da tinta digital e da escrita</string>  
+    </stringTable>
+  </resources>
+</policyDefinitionResources>

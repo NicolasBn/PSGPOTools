@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>ange visningsnamn här</displayName>
+  <description>ange beskrivning här</description>
+  <resources>
+    <stringTable>
+      <string id="DisableSensors">Inaktivera sensorer</string>
+      <string id="DisableSensors_Explain">
+        
+        Den här principinställningen inaktiverar den aktuella datorns sensorfunktion.
+
+        Om du aktiverar den här principinställningen inaktiveras sensorfunktionen och inga program på datorn kan använda funktionen.
+
+        Om du inaktiverar eller låter bli att konfigurera den här principinställningen kan alla program på enheten använda sensorfunktionen.
+      
+      </string>
+      <string id="DisableLocation">Inaktivera plats</string>
+      <string id="DisableLocation_Explain">
+        
+        Den här principinställningen inaktiverar den aktuella datorns platsfunktion.
+
+        Om du aktiverar den här principinställningen inaktiveras platsfunktionen och inga program på datorn kan använda platsinformation från funktionen.
+
+        Om du inaktiverar eller inte konfigurerar den här principinställningen kan alla program på enheten använda platsfunktionen.
+      
+      </string>
+      <string id="DisableLocationScripting">Inaktivera platsskript</string>
+      <string id="DisableLocationScripting_Explain">
+        
+        Den här principinställningen inaktiverar skriptkörning för platsfunktionen.
+
+        Om du aktiverar den här principen körs inga skript för plastfunktionen.
+
+        Om du inaktiverar eller låter bli att konfigurera den här principinställningen körs alla platsskript.
+      
+      </string>
+      <string id="LocationAndSensors">Plats och sensorer</string>
+    </stringTable>
+  </resources>
+</policyDefinitionResources>

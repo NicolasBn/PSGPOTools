@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2015 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>请在此处输入显示名称</displayName>
+  <description>请在此处输入描述</description>
+  <resources>
+    <stringTable>
+      <string id="AllowTelemetry">允许遥测</string>
+      <string id="AllowTelemetry_0">0 - 安全性 [仅企业]</string>
+      <string id="AllowTelemetry_1">1 - 基本</string>
+      <string id="AllowTelemetry_2">2 - 增强</string>
+      <string id="AllowTelemetry_3">3 - 完整</string>
+      <string id="AllowTelemetry_Explain">此策略设置确定向 Microsoft 发送的 Windows 诊断数据的最高级别。通过配置此设置，你不会阻止用户更改其遥测设置；但是，你将阻止他们选择比你为组织设置的级别更高的级别。Windows 10 诊断数据设置仅适用于 Windows 操作系统和 Windows 随附的应用。这些设置不适用于在 Windows 10 上运行的第三方应用。
+
+如果启用此设置，你可以决定向 Microsoft 发送的诊断数据的级别，包括:
+
+  - 0 (安全)。只向 Microsoft 发送所需的少量数据，以帮助确保 Windows 安全。Windows 安全中心组件(如恶意软件删除工具(MSRT)和 Windows Defender)可能会以该级别向 Microsoft 发送数据(如果已启用)。将值设置为 0 适用于仅运行企业版、教育版、IoT 版本或 Windows Server 版本的设备。对于其他版本，将值设置为 0 等同于将值设置为 1。
+  - 1 (基本)。发送与值为 0 时相同的数据，外加数量非常有限的诊断数据，如基本设备信息、质量相关数据和应用兼容性信息。请注意，将值设置为 0 或 1 会降低设备上的某些体验。
+  - 2 (增强)。发送与值为 1 时相同的数据，外加 Windows、Windows Server、System Center 和应用的使用方式、执行方式以及高级可靠性数据等附加数据。
+  - 3 (完全)。发送与值为 2 时相同的数据，外加用于诊断和修复设备问题的高级诊断数据，包括可能导致设备问题的文件和内容。
+
+如果禁用或不配置此策略设置，可以在“设置”中单独配置遥测设置。
+      </string>
+
+      <string id="TelemetryProxy">配置互连用户体验和遥测</string>
+      <string id="TelemetryProxy_Explain">使用此策略设置可将连接用户体验和遥测请求转发到代理服务器。
+
+如果启用此策略设置，则可以指定组织网络中目标设备的 FQDN 或 IP 地址(如果需要，还可以选择性地指定端口号)。将通过安全套接字层(SSL)连接来建立连接。如果指定的代理发生故障或者禁用或未配置此策略设置，则会使用默认代理配置将连接用户体验和遥测数据发送到 Microsoft。
+
+此设置的格式为 &lt;服务器&gt;:&lt;端口&gt; 
+      </string>
+
+      <string id="CommercialId">配置商用 ID</string>
+      <string id="CommercialId_Explain">此策略设置所定义的标识符用于通过唯一方式将该设备的遥测数据进行关联，使之属于给定的组织。如果你的组织参加的计划要求将该设备标识为属于你的组织，则可使用此设置来提供该标识。在加入该计划时，Microsoft 将提供此设置的值。
+
+如果禁用或未配置此策略设置，则 Microsoft 将无法使用该标识符将此计算机及其遥测数据与你的组织关联起来。
+      </string>
+
+      <string id="DisableEnterpriseAuthProxy">为“已连接的用户体验和遥测”服务进行经验证的代理使用配置</string>
+      <string id="DisableEnterpriseAuthProxy_1">允许使用经验证的代理</string>
+      <string id="DisableEnterpriseAuthProxy_2">禁止使用经验证的代理</string>
+      <string id="DisableEnterpriseAuthProxy_Explain">此策略设置阻止“已连接的用户体验和遥测”服务在 Windows 10 上自动使用经验证的代理将数据发送回 Microsoft。如果禁用或未配置此策略设置，“已连接的用户体验和遥测”服务将自动使用经验证的代理将数据发送回 Microsoft。启用此策略将阻止“已连接的用户体验和遥测”服务自动使用经验证的代理。</string>
+
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics">将增强诊断数据限制为 Windows 分析所需的最低水平</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_1">启用 Windows 分析集合</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_2">禁用 Windows 分析集合</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_Explain">此策略设置与“允许遥测”策略设置相结合，使组织能够通过 Windows Analytics 服务向 Microsoft 发送一组特定诊断数据以获取 IT 见解。通过配置此设置，你不会阻止他人更改其遥测设置；但是，你将阻止他们选择比你为组织设置的级别更高的级别。
+
+要启用此行为，必须完成两个步骤:
+
+    1. 启用此策略设置
+    2. 将“允许遥测”设置为级别 2 (增强)
+
+如果将这些策略设置一起配置，你将向 Microsoft 发送基本级别的诊断数据以及 Windows Analytics 所需的任何其他事件。附加事件在此处记录: https://go.Microsoft.com/fwlink/?linked=847594。
+
+如果在“允许遥测”策略设置中启用增强型诊断数据，但不配置此策略设置，你将向 Microsoft 发送 Windows Analytics 所需的事件，外加任何其他增强级别的遥测数据。此设置对配置为向 Microsoft 发送“完全”、“基本”或“安全”级别诊断数据的计算机没有影响。
+
+如果禁用或不配置此策略设置，则发送到 Microsoft 的诊断数据级别由“允许遥测”策略设置确定。
+      </string>
+
+      <string id="AllowDeviceNameInDiagnosticData">允许发送 Windows 诊断数据中的设备名称</string>
+      <string id="AllowDeviceNameInDiagnosticData_Explain">该策略允许将设备名称作为 Windows 诊断数据的一部分发送给 Microsoft。
+
+如果你禁用或未配置此策略设置，那么该设备名称不会作为 Windows 诊断数据的一部分发送到 Microsoft。
+      </string>
+
+      <string id="ConfigureTelemetryOptInSettingsUx">配置遥测选择加入设置用户界面。</string>
+      <string id="ConfigureTelemetryOptInSettingsUx_1">禁用遥测选择加入设置</string>
+      <string id="ConfigureTelemetryOptInSettingsUx_2">启用遥测选择加入设置</string>
+      <string id="ConfigureTelemetryOptInSettingsUx_Explain">此策略设置确定用户是否可以在“设置”中更改其自己的遥测级别。此设置应与“允许遥测”设置一起使用。
+
+如果将此策略设置设为“禁用遥测选择加入设置”，则遥测级别将在“设置”中禁用，以防用户更改它们。
+
+如果将此策略设置设为“启用遥测选择加入设置”或不配置此策略设置，则用户可以在“设置”中更改自己的遥测级别。
+
+注意:
+设置“允许遥测”策略设置，以防止用户向 Microsoft 发送超出组织限制范围的诊断数据。
+      </string>
+
+      <string id="ConfigureTelemetryOptInChangeNotification">配置遥测选择加入更改通知。</string>
+      <string id="ConfigureTelemetryOptInChangeNotification_1">禁用遥测更改通知</string>
+      <string id="ConfigureTelemetryOptInChangeNotification_2">启用遥测更改通知</string>
+      <string id="ConfigureTelemetryOptInChangeNotification_Explain">
+          此策略设置控制设备是在首次登录时还是“设置”发生更改时向用户显示有关遥测级别的通知。
+          如果将此策略设置设为“禁用遥测更改通知”，则遥测级别通知将停止显示。
+          如果将此策略设置设为“启用遥测更改通知”或不配置此策略设置，则在首次登录时以及“设置”发生更改时都会显示遥测通知。
+      </string>
+
+      <string id="DisableDeviceDelete">禁止删除诊断数据 </string>
+      <string id="DisableDeviceDelete_Explain">
+          此策略设置控制“诊断和反馈设置”页面中是否启用了“删除诊断数据”按钮。
+          如果启用此策略设置，则将在“设置”页面中禁用“删除诊断数据”按钮，并阻止删除 Microsoft 从设备中收集的诊断数据。
+          如果你禁用或不配置此策略设置，则将在“设置”页面中启用“删除诊断数据”按钮，从而允许用户擦除 Microsoft 从该设备收集的所有诊断数据。
+      </string>
+
+      <string id="DisableDiagnosticDataViewer">禁用诊断数据查看器。 </string>
+      <string id="DisableDiagnosticDataViewer_Explain">
+          此策略设置控制用户是否能够从“诊断和反馈设置”页面中启用和启动诊断数据查看器。
+          如果启用此策略设置，则将不会在“设置”页面中启用诊断数据查看器，并且将阻止查看器显示 Microsoft 从设备中收集的诊断数据。
+          如果你禁用或不配置此策略设置，则将在“设置”页面中启用诊断数据查看器。
+      </string>
+
+      <string id="ConfigureMicrosoft365UploadEndpoint">配置桌面分析的诊断数据上传终结点</string>
+      <string id="ConfigureMicrosoft365UploadEndpoint_Explain">
+          此策略将此设备诊断数据的上传终结点设置为桌面分析计划的一部分。
+          如果你的组织正在参与该计划，并且已被指示配置自定义上传终结点，则使用此设置来定义该终结点。
+          在加入计划的过程中，此设置的值将由 Microsoft 提供。 
+      </string>
+
+      <string id="AllowCommercialDataPipeline">允许商业数据管道</string>
+      <string id="AllowCommercialDataPipeline_Explain">
+          AllowCommercialDataPipeline 选择将设备导入 Windows 企业数据管道中。
+          如果启用此设置，则会选择将从设备中收集的数据导入到 Windows 企业数据管道中。
+          如果禁用或未配置此设置，则将根据我们的 Windows 标准数据管道策略收集和处理设备中的所有数据。
+          如果配置此设置，则不会更改遥测集合级别或用户更改级别的能力。此设置仅适用于 Windows 操作系统及 Windows 附带的应用，不适用于 Windows 10 中运行的第三方应用或服务。
+      </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AllowTelemetry">
+        <dropdownList refId="AllowTelemetry" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="TelemetryProxy">
+        <textBox refId="TelemetryProxyName">
+          <label>代理服务器名称:</label>
+        </textBox>
+      </presentation>
+      <presentation id="CommercialID">
+        <textBox refId="CommercialIdValue">
+          <label>商用 ID:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DisableEnterpriseAuthProxy">
+        <dropdownList refId="DisableEnterpriseAuthProxy" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="LimitEnhancedDiagnosticDataWindowsAnalytics">
+        <dropdownList refId="LimitEnhancedDiagnosticDataWindowsAnalytics" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureTelemetryOptInSettingsUx">
+        <dropdownList refId="ConfigureTelemetryOptInSettingsUx" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureTelemetryOptInChangeNotification">
+        <dropdownList refId="ConfigureTelemetryOptInChangeNotification" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureMicrosoft365UploadEndpoint">
+        <textBox refId="ConfigureMicrosoft365UploadEndpointValue">
+          <label>桌面分析自定义上传终结点:</label>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

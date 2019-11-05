@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Criteri TextInput</displayName>
+  <description>Criteri correlati a TextInput.</description>
+  <resources>
+    <stringTable>
+      <string id="TextInput">Input di testo</string>
+      <string id="TextInput_AllowLanguageFeaturesUninstall_Help">Questa impostazione determina se alcune funzionalità della lingua (ad esempio, il controllo ortografico dizionari, strumento di riconoscimento grafia) può essere disinstallato dal computer. </string>
+      <string id="TextInput_AllowLanguageFeaturesUninstall">Consenti la disinstallazione di funzionalità della lingua</string>  
+      <string id="TextInput_AllowLinguisticDataCollection_Help">Questa impostazione dei criteri controlla la possibilità di inviare dati di digitazione e input penna a Microsoft per migliorare le funzionalità di riconoscimento e suggerimento della lingua di app e servizi in esecuzione in Windows. </string>
+      <string id="TextInput_AllowLinguisticDataCollection">Migliora il riconoscimento di input penna e digitazione</string>  
+    </stringTable>
+  </resources>
+</policyDefinitionResources>

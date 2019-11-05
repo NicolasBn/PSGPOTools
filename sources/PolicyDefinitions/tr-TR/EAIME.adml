@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>buraya görünen adı girin</displayName>
+  <description>buraya açıklamayı girin</description>
+  <resources>
+    <stringTable>
+      <string id="L_IME">IME</string>
+      <string id="L_TurnOnMisconversionLoggingForMisconversionReport">Parola Eşitleme için kapsamlı günlüğü aç</string>
+      <string id="L_TurnOnMisconversionLoggingForMisconversionReportExplain">Bu ilke ayarı, hatalı dönüştürme raporu için hatalı dönüştürme günlüğünü açmanıza olanak tanır.
+
+Bu ilke ayarını etkinleştirirseniz hatalı dönüştürme günlüğü açılır.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız hatalı dönüştürme günlüğü kapatılır.
+
+Bu ilke ayarı, Japonca Microsoft IME için geçerlidir.</string>
+      <string id="L_TurnOffSavingAutoTuningDataToFile">Otomatik ayar verilerinin dosyaya kaydedilmesini kapat</string>
+      <string id="L_TurnOffSavingAutoTuningDataToFileExplain">Bu ilke ayarı, otomatik ayar sonucunun dosyaya kaydedilmesini kapatmanıza olanak tanır.
+
+Bu ilke ayarını etkinleştirirseniz otomatik ayar verileri dosyaya kaydedilir.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız otomatik ayar verileri varsayılan olarak dosyaya kaydedilir.
+
+Bu ilke ayarı yalnızca Japonca Microsoft IME için geçerlidir.</string>
+      <string id="L_TurnOffHistorybasedPredictiveInput">Geçmiş tabanlı tahmini girişi kapat</string>
+      <string id="L_TurnOffHistorybasedPredictiveInputExplain">Bu ilke ayarı, geçmiş tabanlı tahmini girişi kapatmanızı sağlar.
+
+Bu ilke ayarını etkinleştirirseniz geçmiş tabanlı tahmini giriş kapatılır.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız geçmiş tabanlı tahmini giriş varsayılan olarak açıktır.
+
+Bu ilke ayarı yalnızca Japonca Microsoft IME için geçerlidir.
+
+Not: Bu ayarda yapılan değişiklikler kullanıcı oturumu kapatana kadar etkinleşmez.</string>
+      <string id="L_TurnOffOpenExtendedDictionary">Açık Genişletilmiş Sözlüğü kapat</string>
+      <string id="L_TurnOffOpenExtendedDictionaryExplain">Bu ilke ayarı, Açık Genişletilmiş Sözlük'ü kapatmanıza olanak tanır.
+
+Bu ilke ayarını etkinleştirirseniz Açık Genişletilmiş Sözlük kapatılır. Yeni bir Açık Genişletilmiş Sözlük ekleyemezsiniz.
+
+Japonca Microsoft IME için bu ilke ayarını etkinleştirmeden önce eklenen bir Açık Genişletilmiş Sözlük dönüştürme için kullanılmaz.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız Açık Genişletilmiş Sözlük varsayılan olarak eklenebilir ve kullanılabilir.
+
+Bu ilke ayarı, Japonca Microsoft IME için geçerlidir.</string>
+      <string id="L_TurnOffInternetSearchIntegration">Internet arama tümleştirmesini kapat</string>
+      <string id="L_TurnOffInternetSearchIntegrationExplain">Bu ilke ayarı, İnternet arama tümleştirmesini kapatmanıza olanak tanır.
+
+Arama tümleştirmesi, hem Arama Sağlayıcısı'nı (Japonca Microsoft IME) kullanarak hem de Japonca Microsoft IME için tahmini girişten Bing araması gerçekleştirmeyi içerir.
+
+Bu ilke ayarını etkinleştirirseniz arama tümleştirmesini kullanamazsınız.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız arama tümleştirme işlevi varsayılan olarak kullanılabilir.
+
+Bu ilke ayarı, Japonca Microsoft IME için geçerlidir.
+
+Not: Bu ayarda yapılacak değişiklikler, kullanıcı oturumu kapatıncaya kadar etkili olmayacaktır.</string>
+      <string id="L_TurnOffCustomDictionary">Özel sözlüğü kapat</string>
+      <string id="L_TurnOffCustomDictionaryExplain">Bu ilke ayarı, özel sözlük kullanabilme özelliğini kapatmanıza olanak tanır.
+
+Bu ilke ayarını etkinleştirirseniz GUI araçlarıyla veya API'lerle özel sözlükte sözcük ekleyemez, düzenleyemez ve silemezsiniz. Bu ilke ayarı etkinleştirilmeden önce özel sözlüğe kaydedilmiş bir sözcük, dönüştürme için kullanılmaya devam edilebilir.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız özel sözlük varsayılan olarak kullanılabilir.
+
+Japonca Microsoft IME'de, bu ilke ayarı etkinleştirilmiş olsa bile [Otomatik ayar bilgilerini temizle] kullanılır ve kendiliğinden ayarlanmış sözcükler özel sözlükten temizlenir.
+
+Bu ilke ayarı, Japonca Microsoft IME'ye uygulanır.
+
+Not: Bu ayardaki değişiklikler, kullanıcı oturumu kapatana kadar etkili olmayacaktır.</string>
+      <string id="L_RestrictCharacterCodeRangeOfConversion">Karakter kodu dönüştürme aralığını sınırla</string>
+      <string id="L_RestrictCharacterCodeRangeOfConversionExplain">Bu ilke ayarı, karakter filtresi ayarlayarak karakter kodu dönüştürme aralığını sınırlandırmanıza olanak tanır.
+
+Bu ilke ayarını etkinleştirirseniz IME dönüştürmesinde yalnızca bu ilke ayarı tarafından belirtilen karakter kodu aralıkları kullanılır.  Bit düzeyiyle birleştirilmiş bir değer VEYA aşağıdaki değerlerden birini ayarlayarak, birden çok aralık belirtebilirsiniz:
+
+0x0001 // JIS208 alanı
+0x0002 // NEC özel karakter kodu
+0x0004 // NEC seçili IBM genişletilmiş kodu
+0x0008 // IBM genişletilmiş kodu
+0x0010 // Yarı genişlikte katakana kodu
+0x0100 // EUDC(GAIJI)
+0x0200 // S-JIS eşlenmemiş alanı
+0x0400 // Unicode karakteri
+0x0800 // vekil karakter
+0x1000 // IVS karakteri
+0xFFFF // tanım yok.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız varsayılan olarak hiçbir karakter aralığı filtrelenmez.
+
+Bu ilke ayarı yalnızca Japonca Microsoft IME'ye uygulanır.
+
+Not: Bu ayarda yapılan değişiklikler kullanıcı oturumu kapatana kadar etkinleşmez.</string>
+      <string id="L_DoNotIncludeNonPublishingStandardGlyphInTheCandidateList">Aday listesine Yayımlanmayan Standart Karakter ekleme</string>
+      <string id="L_DoNotIncludeNonPublishingStandardGlyphInTheCandidateListExplain">Bu ilke ayarı, sözcük için Yayımlanan Standart Karakter var olduğunda, aday listesine Yayımlanmayan Standart Karakter eklemenize olanak tanır.
+
+Bu ilke ayarını etkinleştirirseniz sözcük için Yayımlanan Standart Karakter var olduğunda, aday listesine Yayımlanmayan Standart Karakter eklenmez.
+
+Bu ilke ayarını devre dışı bırakırsanız veya yapılandırmazsanız aday listesine hem Yayımlanan Standart Karakter hem de Yayımlanmayan Standart Karakter eklenir.
+
+Bu ilke ayarı yalnızca Japonca Microsoft IME'ye uygulanır.
+
+Not: Bu ayarda yapılan değişiklikler kullanıcı oturumu kapatana kadar etkinleşmez.</string>
+      <string id="L_TurnOnCloudCandidate">Bulut adayını aç</string>
+      <string id="L_TurnOnCloudCandidateExplain">Bu ilke ayarı, bilgisayarın yerel sözlüğünde bulunmayan giriş önerileri sağlamak için bir çevrimiçi hizmeti kullanan bulut adayları özelliğini denetler.
+
+Bu ilke ayarını etkinleştirirseniz bu özellikle ilişkilendirilmiş işlev açılır, öneri oluşturulması için kullanıcının klavye girişi Microsoft'a gönderilir ve kullanıcı bu özelliği kapatamaz.
+
+Bu ilke ayarını devre dışı bırakırsanız bu özellikle ilişkili işlev kapatılır ve kullanıcı bu özelliği açamaz.
+
+Bu ilke ayarını yapılandırmazsanız varsayılan seçenek olarak özellik kapatılır ve kullanıcı bulut adayları özelliğini açabilir ve kapatabilir.
+
+Bu İlke ayarı yalnızca Microsoft CHS Pinyin IME ve JPN IME için geçerlidir.</string>
+      <string id="L_TurnOnCloudCandidateCHS">CHS için bulut adayını aç</string>
+      <string id="L_TurnOnCloudCandidateCHSExplain">Bu ilke ayarı, bilgisayarın yerel sözlüğünde bulunmayan giriş önerileri sağlamak için bir çevrimiçi hizmeti kullanan bulut adayları özelliğini denetler.
+
+Bu ilke ayarını etkinleştirirseniz bu özellikle ilişkilendirilmiş işlev açılır, öneri oluşturulması için kullanıcının klavye girişi Microsoft'a gönderilir ve kullanıcı bu özelliği kapatamaz.
+
+Bu ilke ayarını devre dışı bırakırsanız bu özellikle ilişkili işlev kapatılır ve kullanıcı bu özelliği açamaz.
+
+Bu ilke ayarını yapılandırmazsanız varsayılan seçenek olarak özellik kapatılır ve kullanıcı bulut adayları özelliğini açabilir ve kapatabilir.
+
+Bu İlke ayarı yalnızca Microsoft CHS Pinyin IME için geçerlidir.</string>
+      <string id="L_TurnOnLiveSticker">Canlı Çıkartma'yı aç</string>
+      <string id="L_TurnOnLiveStickerExplain">Bu ilke ayarı, çevrimiçi çıkartmalar sağlamak için çevrimiçi bir hizmet kullanan canlı çıkartma özelliğini denetler.
+
+Bu ilke ayarını etkinleştirirseniz bu özellikle ilişkilendirilmiş işlevsellik açılır, canlı çıkartmalar oluşturmak için kullanıcının klavye girişi Microsoft'a gönderilir ve kullanıcı bunu kapatamaz.
+
+Bu ilke ayarını devre dışı bırakırsanız bu özellikle ilişkilendirilmiş işlevsellik kapatılır ve kullanıcı bunu açamaz.
+
+Bu ilke ayarını yapılandırmazsanız varsayılan olarak devre dışı bırakılır ve kullanıcı, canlı çıkartma özelliğini açabilir ve kapatabilir.
+
+Bu ilke ayarı, yalnızca Microsoft CHS Pinyin IME için geçerlidir.</string>
+      <string id="L_TurnOnLexiconUpdate">Sözlük güncelleştirmesini açın</string>
+      <string id="L_TurnOnLexiconUpdateExplain">Bu ilke ayarı, güncel ve popüler sözcükler sözlüğünü yerel bilgisayara indiren sözlük güncelleştirmesi özelliğini denetler.
+
+Bu ilke ayarını etkinleştirirseniz bu özellikle ilişkilendirilmiş işlevsellik açılacak, güncel ve popüler sözcükler sözlüğü yerel bilgisayara indirilebilecek, kullanıcı bunu ayarlarda açıp kapatabilecektir.
+
+Bu ilke ayarını devre dışı bırakırsanız bu özellikle ilişkilendirilmiş işlevsellik kapatılacak ve kullanıcı bunu açamayacaktır.
+
+Bu ilke ayarını yapılandırmazsanız varsayılan olarak açılacak ve kullanıcı sözlük güncelleştirmesi özelliğini açıp kapatabilecektir.
+
+Bu ilke ayarı, yalnızca Microsoft CHS Pinyin IME için geçerlidir.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="L_RestrictCharacterCodeRangeOfConversion">
+        <textBox refId="L_RestrictCharacterCodeRangeOfConversionID">
+          <label>Karakter kodu aralığı:</label>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

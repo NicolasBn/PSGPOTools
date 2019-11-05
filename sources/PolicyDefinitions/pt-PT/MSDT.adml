@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>introduza o nome a apresentar aqui</displayName>
+  <description>introduza a descrição aqui</description>
+  <resources>
+    <stringTable>
+      <string id="WdiScenarioCategory">Ferramenta de Diagnóstico de Suporte da Microsoft</string>
+      <string id="WdiScenarioExecutionPolicy">Ferramenta de Diagnóstico de Suporte da Microsoft: configurar nível de execução</string>
+      <string id="WdiScenarioExecutionPolicyExplain">Esta definição de política determina o nível de execução para a Ferramenta de Diagnóstico de Suporte da Microsoft.
+
+A Ferramenta de Diagnóstico de Suporte da Microsoft (MSDT) reúne dados de diagnóstico para análise por profissionais de suporte.
+
+Se ativar esta definição de política, os administradores podem utilizar a MSDT para recolher e enviar dados de diagnóstico para um profissional de suporte para resolver um problema.
+
+Se desativar esta definição de política, a MSDT não consegue recolher dados de diagnóstico.
+
+Se não configurar esta definição de política, a MSDT é ativada por predefinição.
+
+Esta definição de política só produz efeitos se a política de execução de cenário a nível de diagnósticos não estiver configurada.
+
+Não são necessários reinícios de sistema ou de serviços para que esta definição de política produza efeitos. As alterações produzem efeitos imediatamente.
+
+Esta definição de política só produzirá efeitos quando o Serviço de Políticas de Diagnóstico (DPS) estiver no estado Em execução. Quando o serviço for parado ou desativado, não serão executados cenários de diagnóstico. O DPS pode ser configurado com o snap-in Serviços na Consola de Gestão da Microsoft.</string>
+
+      <string id="MsdtToolDownloadPolicy">Ferramenta de Diagnóstico de Suporte da Microsoft: restringir transferências da ferramenta</string>
+      <string id="MsdtToolDownloadPolicyExplain">Esta definição de política restringe a política de transferências para a Ferramenta de Diagnóstico de Suporte da Microsoft.
+
+A Ferramenta de Diagnóstico de Suporte da Microsoft (MSDT) reúne dados de diagnóstico para análise por profissionais de suporte.  Para alguns problemas, a MSDT poderá pedir ao utilizador para transferir ferramentas adicionais para resolução de problemas.
+
+Estas ferramentas são necessárias para concluir a resolução do problema.  Se as transferências de ferramentas estiverem restringidas, poderá não ser possível determinar a causa principal do problema.
+
+Se ativar esta definição de política para resolução de problemas remota, a MSDT pede ao utilizador para transferir ferramentas adicionais apenas para diagnosticar problemas em computadores remotos.  Se ativar esta definição de política para resolução de problemas local e remota, a MSDT pede sempre a transferência de ferramentas adicionais.
+
+Se desativar esta definição de política, a MSDT nunca transfere ferramentas, pelo que não consegue diagnosticar problemas em computadores remotos.
+
+Se não configurar esta definição de política, a MSDT avisa o utilizador antes de transferir quaisquer ferramentas adicionais.
+
+Não são necessários reinícios de sistema ou de serviços para que esta definição de política produza efeitos. As alterações produzem efeitos imediatamente.
+
+Esta definição de política só produzirá efeitos quando a MSDT estiver ativada.
+
+Esta definição de política só produzirá efeitos quando o Serviço de Políticas de Diagnóstico (DPS) estiver no estado Em execução.  Quando o serviço está parado ou desativado, não são executados cenários de diagnóstico.  O DPS pode ser configurado com o snap-in Serviços na Consola de Gestão da Microsoft.</string>
+      <string id="MsdtToolDownloadPolicyLevelRemoteOnly">Apenas resolução de problemas remota</string>
+      <string id="MsdtToolDownloadPolicyLevelAllowAll">Resolução de problemas local e remota</string>
+      <string id="MsdtSupportProvider">Ferramenta de Diagnóstico de Suporte da Microsoft: ativar comunicação interativa MSDT com Fornecedor de Suporte</string>
+      <string id="MsdtSupportProviderExplain">Esta definição de política configura a comunicação interativa da Ferramenta de Diagnóstico de Suporte da Microsoft (MSDT) com o fornecedor de suporte. A MSDT reúne dados de diagnóstico para análise por profissionais de suporte.
+
+Se ativar esta definição de política, os utilizadores podem usar a MSDT para recolher e enviar dados de diagnóstico para um profissional de suporte para resolver um problema.
+
+Por predefinição, o fornecedor de suporte está definido como Microsoft Corporation.
+
+Se desativar esta definição de política, não é possível executar a MSDT em modo de suporte, pelo que não serão recolhidos ou enviados dados para o fornecedor de suporte.
+
+Se não configurar esta definição de política, o modo de suporte da MSDT é ativado por predefinição.
+
+Não são necessários reinícios de sistema ou de serviços para que esta definição de política produza efeitos. As alterações produzem efeitos imediatamente.
+
+
+
+</string>
+<string id="TroubleshootingAllowRecommendations">Resolução de problemas: permitir que os utilizadores acedam à resolução de problemas recomendada para problemas conhecidos</string>
+<string id="TroubleshootingAllowRecommendationsExplain">Esta definição de política aplica a resolução de problemas recomendada a problemas conhecidos no dispositivo e permite que os administradores configurem a forma como é aplicada aos seus domínios/ambientes de TI.
+A não configuração desta definição de política permitirá que o utilizador configure a forma de aplicação da resolução de problemas recomendada.
+
+A ativação desta política permite-lhe configurar a forma como a resolução de problemas recomendada é aplicada no dispositivo do utilizador. Pode selecionar um dos seguintes valores:
+0 = Desativar esta funcionalidade.
+1 = Desativar esta funcionalidade, mas continuar a aplicar a resolução de problemas críticos.
+2 = Notificar os utilizadores quando a resolução de problemas recomendada estiver disponível e, em seguida, permitir que o utilizador execute ou ignore a mesma.
+3 = Executar a resolução de problemas recomendada automaticamente e notificar o utilizador após ter sido executada com êxito.
+4 = Executar a resolução de problemas recomendada automaticamente sem notificar o utilizador.
+5 = Permitir que o utilizador escolha as suas próprias definições de resolução de problemas recomendada.
+
+Após definir esta nova definição, para ativar a resolução de problemas recomendada para dispositivos no seu domínio, siga estas instruções:
+1. Crie um script bat com o seguinte conteúdo:
+rem O seguinte ficheiro batch aciona a Resolução de Problemas Recomendada
+C:\Windows\System32\mitigationscanner.exe
+
+2. Para criar uma nova tarefa imediata, navegue até ao Editor de Gestão de Políticas de Grupo &gt; Configuração do Computador &gt; Preferências e selecione Definições do Painel de Controlo. 
+3. Nas definições do Painel de Controlo, clique com o botão direito do rato em Tarefas Agendadas e selecione Nova. Selecione Tarefa Imediata (Windows 7, no mínimo).
+4. Forneça o nome e a descrição conforme necessário e, em seguida, em Opções de segurança, defina a conta de utilizador para o Sistema e selecione a caixa de verificação Executar com os privilégios máximos.
+5. No separador Ações, crie uma nova ação, selecione Iniciar um Programa e, em seguida, introduza o ficheiro criado no passo 1.
+6. Configure a tarefa para implementação no seu domínio.</string>
+<string id="RecommendationsDropDown_DoNothing">Desativar esta funcionalidade</string>
+<string id="RecommendationsDropDown_ApplyCoreSystemMitigationsOnly">Desativar esta funcionalidade, mas continuar a aplicar a resolução de problemas críticos.</string>
+<string id="RecommendationsDropDown_AskFirst">Notificar os utilizadores quando a resolução de problemas recomendada estiver disponível e, em seguida, permitir que o utilizador a execute ou ignore.</string>
+<string id="RecommendationsDropDown_ApplyThenNotify">Executar a resolução de problemas recomendada automaticamente e notificar o utilizador após ter sido executada com êxito.</string>
+<string id="RecommendationsDropDown_ApplySilently">Executar a resolução de problemas recomendada automaticamente sem notificar o utilizador.</string>
+<string id="RecommendationsDropDown_DeferToUser">Permitir que o utilizador escolha as suas próprias definições de resolução de problemas recomendada.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="MsdtToolDownloadPolicy">
+        <dropdownList refId="MsdtToolDownloadPolicyLevel" noSort="true" defaultItem="1">Transferências de ferramentas permitidas</dropdownList>
+      </presentation>
+      <presentation id="TroubleshootingAllowRecommendations">
+        <dropdownList refId="TroubleshootingAllowRecommendations_Dropdown" noSort="true" defaultItem="0">Permitir solução recomendada da Microsoft para problemas conhecidos</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

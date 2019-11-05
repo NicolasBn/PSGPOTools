@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2015 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>表示名をここに入力する</displayName>
+  <description>説明をここに入力する</description>
+  <resources>
+    <stringTable>
+      <string id="AllowTelemetry">利用統計情報の許可</string>
+      <string id="AllowTelemetry_0">0 - セキュリティ [Enterprise のみ]</string>
+      <string id="AllowTelemetry_1">1 - 基本</string>
+      <string id="AllowTelemetry_2">2 - 拡張</string>
+      <string id="AllowTelemetry_3">3 - フル</string>
+      <string id="AllowTelemetry_Explain">このポリシー設定では、マイクロソフトに送信される Windows 診断データの最大レベルを決定します。この設定を構成した場合、ユーザーは製品利用統計情報の設定を変更できますが、組織に対して設定されたレベルよりも上のレベルに変更することはできません。Windows 10 診断データの設定は、Windows オペレーティング システムと Windows の付属アプリだけに適用されます。Windows 10 で実行されるサードパーティのアプリには適用されません。
+
+この設定を有効にすると、どのレベルの診断データをマイクロソフトに送信するかを決定できます。次のレベルがあります。
+
+  - 0 (セキュリティ)。Windows の安全性を維持するために必要な最小限の量のデータだけをマイクロソフトに送信します。悪意のあるソフトウェアの削除ツール (MSRT) や Windows Defender などの Windows セキュリティ コンポーネントにより (有効であれば)、このレベルでマイクロソフトにデータが送信されることもあります。値 0 の設定は、Enterprise、Education、IoT、Windows Server のいずれかのエディションを実行しているデバイスだけに適用されます。その他のエディションで値 0 を設定した場合は、値 1 を設定した場合と同じ結果になります。
+  - 1 (基本)。値が 0 の場合と同じデータに加えて、ごく限られた量の診断データ (基本的なデバイス情報、品質に関連するデータ、アプリの互換性情報など) が送信されます。値を 0 または 1 に設定すると、デバイスで特定のエクスペリエンスが低下することにご注意ください。
+  - 2 (拡張)。値が 1 の場合と同じデータに加えて、Windows、Windows Server、System Center、アプリの使用状況、パフォーマンス、詳細な信頼性データなどの追加データが送信されます。
+  - 3 (完全)。値が 2 の場合と同じデータに加えて、デバイスの診断と問題解決に使用される詳細な診断データが送信されます。これには、デバイスでの問題の原因となった可能性があるファイルやコンテンツが含まれます。
+
+このポリシー設定を無効にした場合または構成しなかった場合、製品利用統計情報の設定は [設定] で個別に構成することができます。
+      </string>
+
+      <string id="TelemetryProxy">接続ユーザーのエクスペリエンスと利用統計情報を構成する</string>
+      <string id="TelemetryProxy_Explain">このポリシー設定では、接続ユーザー エクスペリエンスとテレメトリ要求をプロキシ サーバーに転送できます。
+
+このポリシー設定を有効にした場合、組織のネットワーク内にある宛先デバイスの FQDN または IP アドレスを指定できます (必要に応じてポート番号も指定できます)。接続は、Secure Sockets Layer (SSL) 接続を経由して確立されます。指定されたプロキシが失敗した場合、またはこのポリシー設定を無効にしたか構成しなかった場合は、接続ユーザー エクスペリエンスとテレメトリ データは、既定のプロキシ構成を使って Microsoft に送られます。
+
+この設定の形式は、&lt;サーバー&gt;:&lt;ポート&gt; です。 
+      </string>
+
+      <string id="CommercialId">業務用 ID を構成します</string>
+      <string id="CommercialId_Explain">このポリシー設定では、このデバイスの製品利用統計情報データを、指定した組織に属するデータとして一意に関連付けるために使用する識別子を定義します。組織が参加していて、そのプログラムで、このデバイスを組織に属するデバイスとして識別することが必要な場合は、この設定を使用してその識別情報を提供します。この設定の値は、プログラムのオンボード プロセスの一部として Microsoft によって提供されます。
+
+このポリシー設定を無効にするか構成しなかった場合、Microsoft がこの識別子を使用して、このコンピューターとその製品利用統計情報データを組織に関連付けることはできません。
+      </string>
+
+      <string id="DisableEnterpriseAuthProxy">接続ユーザー エクスペリエンスとテレメトリ サービスでの認証済みプロキシの使用を構成する</string>
+      <string id="DisableEnterpriseAuthProxy_1">認証済みプロキシの使用を有効にする</string>
+      <string id="DisableEnterpriseAuthProxy_2">認証済みプロキシの使用を無効にする</string>
+      <string id="DisableEnterpriseAuthProxy_Explain">このポリシー設定は、Windows 10 で接続ユーザー エクスペリエンスとテレメトリ サービスが自動的に認証済みプロキシを使用して Microsoft にデータを返送するのをブロックします。このポリシー設定を無効にするか構成しないと、接続ユーザー エクスペリエンスとテレメトリ サービスは自動的に認証済みプロキシを使用してデータを Microsoft に返送します。このポリシーを有効にすると、接続ユーザー エクスペリエンスとテレメトリ サービスは認証済みプロキシを自動的に使用しなくなります。</string>
+
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics">拡張レベルの診断データを Windows Analytics の最小要件に制限する</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_1">Windows Analytics による収集を有効にする</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_2">Windows Analytics による収集を無効にする</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_Explain">このポリシー設定を [利用統計情報の許可] ポリシー設定と組み合わせることで、組織が Windows Analytics サービスを使ってマイクロソフトに特定の診断データのセットを送信し、IT に関する洞察を得ることができます。この設定を構成した場合、ユーザーは製品利用統計情報の設定を変更できますが、組織に対して設定されたレベルよりも上のレベルに変更することはできません。
+
+この動作を有効にするには、次の 2 つの手順を完了してください。
+
+    1. このポリシー設定を有効にする
+    2. [利用統計情報の許可] をレベル 2 (拡張) に設定する
+
+これらのポリシー設定を一緒に構成すると、基本レベルの診断データのほかに、Windows Analytics が必要とする追加のイベントもマイクロソフトに送信されます。追加のイベントは https://go.Microsoft.com/fwlink/?linked=847594 に記載されています。
+
+[利用統計情報の許可] ポリシー設定で拡張診断データを有効にして、このポリシー設定を構成しなかった場合は、Windows Analytics に必要なイベントと、拡張レベルの追加の製品利用統計情報がマイクロソフトに送信されます。この設定は、完全、基本、またはセキュリティ レベルの診断データをマイクロソフトに送信するように構成されているコンピューターには影響しません。
+
+このポリシー設定を無効にした場合または構成しなかった場合は、マイクロソフトに送信される診断データのレベルは [利用統計情報の許可] ポリシーによって決まります。
+      </string>
+
+      <string id="AllowDeviceNameInDiagnosticData">Windows 診断データでデバイス名の送信を許可します</string>
+      <string id="AllowDeviceNameInDiagnosticData_Explain">このポリシーでは、Windows 診断データの一部としてデバイス名を Microsoft に送信することを許可します。
+
+このポリシー設定を無効にした場合、または構成しなかった場合、デバイス名は Windows 診断データの一部として Microsoft に送信されません。
+      </string>
+
+      <string id="ConfigureTelemetryOptInSettingsUx">製品利用統計情報のオプトイン設定のユーザー インターフェイスを構成します。</string>
+      <string id="ConfigureTelemetryOptInSettingsUx_1">製品利用統計情報のオプトイン設定を無効にする</string>
+      <string id="ConfigureTelemetryOptInSettingsUx_2">製品利用統計情報のオプトイン設定を有効にする</string>
+      <string id="ConfigureTelemetryOptInSettingsUx_Explain">このポリシー設定では、ユーザーが各自の製品利用統計情報レベルを [設定] で変更できるかどうかを決定します。この設定は、[利用統計情報の許可] の設定と組み合わせて使用します。
+
+このポリシー設定を [製品利用統計情報のオプトイン設定を無効にする] に設定した場合、[設定] の製品利用統計情報のレベルは無効になり、ユーザーはレベルを変更できません。
+
+このポリシー設定を [製品利用統計情報のオプトイン設定を有効にする] に設定した場合、またはこのポリシー設定を構成しなかった場合、ユーザーは各自の製品統計情報レベルを [設定] で変更することができます。
+
+注:
+[利用統計情報の許可] 設定は、ユーザーが組織の制限を超えた診断データをマイクロソフトに送信できないように設定してください。
+      </string>
+
+      <string id="ConfigureTelemetryOptInChangeNotification">製品利用統計情報のオプトイン変更通知を構成します。</string>
+      <string id="ConfigureTelemetryOptInChangeNotification_1">製品利用統計情報の変更通知を無効にする</string>
+      <string id="ConfigureTelemetryOptInChangeNotification_2">製品利用統計情報の変更通知を有効にする</string>
+      <string id="ConfigureTelemetryOptInChangeNotification_Explain">
+          このポリシー設定では、デバイスで最初のログオン時、または [設定] で変更が行われたときに、製品利用統計情報レベルに関する通知をユーザーに対して表示するかどうかを制御します。
+          このポリシー設定を "製品利用統計情報の変更通知を無効にする" に設定すると、製品利用統計情報レベルの通知が表示されなくなります。
+          このポリシー設定を "製品利用統計情報の変更通知を有効にする" に設定した場合、またはこのポリシー設定を構成しなかった場合は、最初のログオン時と [設定] で変更が行われたときに、製品利用統計情報の通知が表示されます。
+      </string>
+
+      <string id="DisableDeviceDelete">診断データの削除を許可しません。 </string>
+      <string id="DisableDeviceDelete_Explain">
+          このポリシー設定では、[診断とフィードバックの設定] ページで [診断データの削除] ボタンを有効にするかどうかを制御します。
+          このポリシー設定を有効にすると、[設定] ページで [診断データの削除] ボタンが無効になり、デバイスから Microsoft によって収集された診断データを削除することはできなくなります。
+          このポリシー設定を無効にするか、未構成にした場合、[設定] ページで [診断データの削除] ボタンが有効になり、ユーザーはそのデバイスから Microsoft が収集したすべての診断データを消去できます。
+      </string>
+
+      <string id="DisableDiagnosticDataViewer">診断データ ビューアーを無効にする。 </string>
+      <string id="DisableDiagnosticDataViewer_Explain">
+          このポリシー設定では、[診断とフィードバックの設定] ページから診断データ ビューアーを有効にして起動できるかどうかを制御します。
+          このポリシー設定を有効にすると、[設定] ページで診断データ ビューアーが有効にならず、デバイスから Microsoft によって収集された診断データをビューアーに表示することはできなくなります。
+          このポリシー設定を無効にするか、未構成にした場合は、[設定] ページで診断データ ビューアーが有効になります。
+      </string>
+
+      <string id="ConfigureMicrosoft365UploadEndpoint">Desktop Analytics の診断データのアップロード エンドポイントを構成します</string>
+      <string id="ConfigureMicrosoft365UploadEndpoint_Explain">
+          このポリシーでは、Desktop Analytics プログラムの一部として、このデバイスの診断データのアップロード エンドポイントを設定します。
+          組織がそのプログラムに参加しようとしており、カスタム アップロード エンドポイントを構成するように指示されている場合は、この設定を使用してそのエンドポイントを定義します。
+          この設定の値は、プログラムのオンボード プロセスの一部として Microsoft から提供されます。 
+      </string>
+
+      <string id="AllowCommercialDataPipeline">商用データ パイプラインを許可する</string>
+      <string id="AllowCommercialDataPipeline_Explain">
+          AllowCommercialDataPipeline は、デバイスを Windows エンタープライズ データ パイプラインにオプトインできます。
+          この設定を有効にした場合、デバイスから収集したデータが Windows エンタープライズ データ パイプラインにオプトインされます。
+          この設定を無効にした場合または構成しなかった場合は、Windows 標準データ パイプラインのポリシーに従って、デバイスのすべてのデータが収集されて処理されます。
+          この設定を構成しても、利用統計情報の収集レベルや、ユーザーがレベルを変更できるかどうかは変わりません。この設定は、Windows オペレーティング システムおよび Windows に含まれているアプリのみに適用され、Windows 10 で実行されているサード パーティのアプリやサービスには適用されません。
+      </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AllowTelemetry">
+        <dropdownList refId="AllowTelemetry" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="TelemetryProxy">
+        <textBox refId="TelemetryProxyName">
+          <label>プロキシ サーバー名:</label>
+        </textBox>
+      </presentation>
+      <presentation id="CommercialID">
+        <textBox refId="CommercialIdValue">
+          <label>業務用 ID:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DisableEnterpriseAuthProxy">
+        <dropdownList refId="DisableEnterpriseAuthProxy" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="LimitEnhancedDiagnosticDataWindowsAnalytics">
+        <dropdownList refId="LimitEnhancedDiagnosticDataWindowsAnalytics" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureTelemetryOptInSettingsUx">
+        <dropdownList refId="ConfigureTelemetryOptInSettingsUx" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureTelemetryOptInChangeNotification">
+        <dropdownList refId="ConfigureTelemetryOptInChangeNotification" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureMicrosoft365UploadEndpoint">
+        <textBox refId="ConfigureMicrosoft365UploadEndpointValue">
+          <label>Desktop Analytics カスタム アップロード エンドポイント:</label>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

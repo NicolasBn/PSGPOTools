@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2015 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>introduza o nome a apresentar aqui</displayName>
+  <description>introduza a descrição aqui</description>
+  <resources>
+    <stringTable>
+      <string id="AllowTelemetry">Permitir Telemetria</string>
+      <string id="AllowTelemetry_0">0 - Segurança [Apenas Empresa]</string>
+      <string id="AllowTelemetry_1">1 - Básico</string>
+      <string id="AllowTelemetry_2">2 - Melhorado</string>
+      <string id="AllowTelemetry_3">3 - Completo</string>
+      <string id="AllowTelemetry_Explain">Esta definição de política determina o nível máximo de dados de diagnóstico do Windows enviados à Microsoft. Ao configurar esta definição, não impede que outras pessoas alterem as respetivas Definições de Telemetria; no entanto, impede que escolham um nível mais elevado do que aquele que definiu para a organização. As definições de dados de diagnóstico do Windows 10 só se aplicam ao sistema operativo Windows e às aplicações incluídas no Windows. Estas definições não se aplicam a aplicações de terceiros em execução no Windows 10.
+
+Se ativar esta definição, pode decidir qual o nível de dados de diagnóstico a enviar à Microsoft, incluindo:
+
+  - 0 (Segurança). Envia apenas uma quantidade mínima de dados à Microsoft, necessária para ajudar a manter o Windows seguro. Neste nível, os componentes de segurança do Windows, como a Ferramenta de Remoção de Software Malicioso (MSRT) e o Windows Defender, podem enviar dados à Microsoft, se estiverem ativados. O valor 0 aplica-se apenas a dispositivos que executam as edições Enterprise, Education, IoT ou Windows Server. Definir um valor igual a 0 noutras edições é equivalente a definir um valor igual a 1.
+  -1 (Básico). Envia os mesmos dados que um valor de 0, bem como uma quantidade muito limitada de dados de diagnóstico, como informações básicas do dispositivo, dados relacionados com a qualidade e informações de compatibilidade de aplicações. Tenha em atenção que definir valores de 0 ou 1 degrada determinadas experiências no dispositivo.
+  - 2 (Melhorado). Envia os mesmos dados que um valor de 1, bem como dados adicionais, como a forma como o Windows, o Windows Server, o System Center e as aplicações são utilizadas, como se comportam e dados de fiabilidade avançados.
+  - 3 (Completo). Envia os mesmos dados que um valor de 2, bem como dados de diagnóstico avançados utilizados para diagnosticar e corrigir problemas com dispositivos, incluindo os ficheiros e o conteúdo que possam ter causado um problema com o dispositivo.
+
+Se desativar ou não configurar esta definição de política, as definições de telemetria podem ser configuradas individualmente em Definições.
+      </string>
+
+      <string id="TelemetryProxy">Configurar Experiência de Utilizador e Telemetria Interligadas</string>
+      <string id="TelemetryProxy_Explain">Com esta definição de política, pode reencaminhar pedidos de Experiência de Utilizador e Telemetria Interligadas para um servidor proxy.
+
+Se ativar esta definição de política, pode especificar o endereço IP ou FQDN do dispositivo de destino na rede da sua organização (e, como opção, um número de porta). A ligação será estabelecida através de uma ligação SSL (Secure Sockets Layer). Se ocorrer uma falha no proxy nomeado ou se desativar ou não configurar esta definição de política, os dados de Experiência de Utilizador e Telemetria Interligadas serão enviados para a Microsoft utilizando a configuração de proxy predefinida.
+
+O formato desta definição é &lt;servidor&gt;:&lt;porta&gt; 
+      </string>
+
+      <string id="CommercialId">Configurar o ID Comercial</string>
+      <string id="CommercialId_Explain">Esta definição de política define o identificador utilizado para associar unicamente dados de telemetria deste dispositivo como pertencendo a uma determinada organização. Se a sua organização está a participar num programa que requer que este dispositivo seja identificado como pertencente à sua organização, utilize esta definição para fornecer essa identificação. O valor desta definição será fornecido pela Microsoft como parte do processo de integração do programa. 
+
+Se desativar ou não configurar esta definição de política, a Microsoft não poderá utilizar este identificador para associar esta máquina e respetivos dados de telemetria à sua organização.
+      </string>
+
+      <string id="DisableEnterpriseAuthProxy">Configurar a utilização de Proxy Autenticado para o serviço de Experiência de Utilizador e Telemetria Interligadas</string>
+      <string id="DisableEnterpriseAuthProxy_1">Ativar utilização de Proxy Autenticado</string>
+      <string id="DisableEnterpriseAuthProxy_2">Desativar utilização de Proxy Autenticado</string>
+      <string id="DisableEnterpriseAuthProxy_Explain">Esta definição de política impede que o serviço de Experiência de Utilizador e Telemetria Interligadas utilize automaticamente um proxy autenticado para enviar dados à Microsoft no Windows 10. Se desativar ou não configurar esta definição de política, o serviço de Experiência de Utilizador e Telemetria Interligadas irá utilizar automaticamente um proxy autenticado para enviar dados à Microsoft. Ativar esta política irá impedir o serviço de Experiência de Utilizador e Telemetria Interligadas de utilizar automaticamente um proxy autenticado.</string>
+
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics">Limitar os dados de diagnóstico Melhorados para os valores mínimos requeridos pela Análise do Windows</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_1">Ativar a coleção da Análise do Windows</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_2">Desativar a coleção da Análise do Windows</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_Explain">Esta definição de política, em combinação com a definição de política Permitir Telemetria, permite às organizações enviar à Microsoft um conjunto específico de dados de diagnóstico relativo a informações de TI através dos serviços Windows Analytics. Ao configurar esta definição, não impede que outras pessoas alterem as respetivas Definições de Telemetria; no entanto, impede que escolham um nível mais elevado do que aquele que definiu para a organização.
+
+Para ativar este comportamento, tem de seguir dois passos:
+
+    1. Ativar esta definição de política
+    2. Definir Permitir Telemetria para o nível 2 (Melhorado)
+
+Se configurar estas definições de política em conjunto, envia à Microsoft o nível Básico de dados de diagnóstico, bem como quaisquer eventos adicionais necessários para a Análise do Windows. Os eventos adicionais encontram-se documentados aqui: https://go.Microsoft.com/fwlink/?linked=847594.
+
+Se ativar os dados de diagnóstico Melhorados na definição de política Permitir Telemetria, mas não configurar esta definição de política, envia para a Microsoft eventos necessários para a Análise do Windows, bem como quaisquer dados adicionais de telemetria do nível Melhorado. Esta definição não tem qualquer efeito em computadores configurados para enviar dados de diagnóstico de nível Completo, Básico ou Segurança à Microsoft.
+
+Se desativar ou não configurar esta definição de política, o nível de dados de diagnóstico enviados à Microsoft é determinado pela definição de política Permitir Telemetria.
+      </string>
+
+      <string id="AllowDeviceNameInDiagnosticData">Permitir que o nome do dispositivo seja enviado em dados de diagnóstico do Windows</string>
+      <string id="AllowDeviceNameInDiagnosticData_Explain">Esta política permite que o nome do dispositivo para serem enviados para a Microsoft como parte de dados de diagnóstico do Windows.
+
+Se desativar ou não configurar esta definição de política, em seguida, o nome do dispositivo não será enviado para a Microsoft como parte de dados de diagnóstico do Windows.
+      </string>
+
+      <string id="ConfigureTelemetryOptInSettingsUx">Configure a interface de utilizador de definição de opção ativa de participação em telemetria.</string>
+      <string id="ConfigureTelemetryOptInSettingsUx_1">Desativar as Definições de opção ativa de participação em telemetria</string>
+      <string id="ConfigureTelemetryOptInSettingsUx_2">Ativar as Definições de opção ativa de participação em telemetria</string>
+      <string id="ConfigureTelemetryOptInSettingsUx_Explain">Esta definição de política determina se as pessoas podem alterar os respetivos níveis de telemetria em Definições. Esta definição deve ser utilizada juntamente com as definições Permitir Telemetria.
+
+Se definir esta definição de política para "Desativar as Definições de opção ativa de participação em Telemetria", os níveis de telemetria são desativados em Definições, impedindo que sejam alterados.
+
+Se definir esta definição de política para "Ativar as Definições de opção ativa de participação em Telemetria" ou não configurar esta definição de política, as pessoas podem alterar os respetivos níveis de telemetria em Definições.
+
+Nota:
+Configure a definição de política Permitir Telemetria para impedir que as pessoas enviem dados de diagnóstico à Microsoft que excedam o limite da organização.
+      </string>
+
+      <string id="ConfigureTelemetryOptInChangeNotification">Configure as notificações de alteração de opção ativa de participação em telemetria.</string>
+      <string id="ConfigureTelemetryOptInChangeNotification_1">Desativar as notificações de alteração de telemetria</string>
+      <string id="ConfigureTelemetryOptInChangeNotification_2">Ativar as notificações de alteração de telemetria</string>
+      <string id="ConfigureTelemetryOptInChangeNotification_Explain">
+          Esta definição de política controla se um dispositivo apresenta notificações sobre os níveis de telemetria no primeiro início de sessão ou quando ocorrem alterações em Definições. 
+          Se definir esta definição de política para "Desativar as notificações de alteração de telemetria", as notificações de nível de telemetria deixam de ser apresentadas.
+          Se definir esta definição de política para "Ativar as notificações de alteração de telemetria" ou não configurar esta definição de política, as notificações de telemetria são apresentadas no primeiro início de sessão e quando ocorrem alterações em Definições.
+      </string>
+
+      <string id="DisableDeviceDelete">Desativar a eliminação de dados de diagnóstico </string>
+      <string id="DisableDeviceDelete_Explain">
+          Esta definição de política controla se o botão Eliminar dados de diagnóstico está ativado na página de Definições de Comentários e Diagnósticos.
+          Se ativar esta definição de política, o botão Eliminar dados de diagnóstico será desativado na página de Definições, evitando a eliminação de dados de diagnóstico recolhidos do dispositivo pela Microsoft. 
+          Se desativar ou não configurar esta definição de política, o botão Eliminar dados de diagnóstico será ativado na página de Definições, o que permite às pessoas eliminarem todos os dados de diagnóstico recolhidos desse dispositivo pela Microsoft.
+      </string>
+
+      <string id="DisableDiagnosticDataViewer">Desative o visualizador de dados de diagnóstico. </string>
+      <string id="DisableDiagnosticDataViewer_Explain">
+          Esta definição de política controla se os utilizadores podem ativar e iniciar o Visualizador de Dados de Diagnóstico na página de Definições de Comentários e Diagnósticos.
+          Se ativar esta definição de política, o Visualizador de Dados de Diagnóstico não será ativado na página de Definições e impedirá o visualizador de apresentar dados de diagnóstico recolhidos do dispositivo pela Microsoft.  
+          Se desativar ou não configurar esta definição de política, o Visualizador de Dados de Diagnóstico será ativado na página de Definições.
+      </string>
+
+      <string id="ConfigureMicrosoft365UploadEndpoint">Configurar o ponto final de carregamento de dados de diagnóstico para Análise de Computadores</string>
+      <string id="ConfigureMicrosoft365UploadEndpoint_Explain">
+          Esta política define o ponto final de carregamento de dados de diagnóstico deste dispositivo como parte do programa Análise de Computadores.
+          Se a sua organização está a participar no programa e recebeu instruções para configurar um ponto final de carregamento personalizado, então, utilize esta definição para definir esse ponto final.
+          O valor desta definição será fornecido pela Microsoft como parte do processo de inclusão do programa. 
+      </string>
+
+      <string id="AllowCommercialDataPipeline">Permitir pipeline de dados comerciais</string>
+      <string id="AllowCommercialDataPipeline_Explain">
+          AllowCommercialDataPipeline ativa o dispositivo no pipeline de dados do Windows Enterprise.
+          Se ativar esta definição, os dados recolhidos do dispositivo serão ativados no pipeline de dados do Windows Enterprise.
+          Se desativar ou não configurar esta definição, todos os dados do dispositivo serão recolhidos e processados de acordo com as nossas políticas para o pipeline de dados do Windows Standard.
+          A configuração desta definição não altera o nível de recolha de telemetria ou a capacidade do utilizador de alterar o nível. Esta definição só é aplicável ao sistema operativo Windows e às aplicações incluídas com o Windows, não a serviços ou aplicações de terceiros que executem o Windows 10.
+      </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AllowTelemetry">
+        <dropdownList refId="AllowTelemetry" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="TelemetryProxy">
+        <textBox refId="TelemetryProxyName">
+          <label>Nome do Servidor Proxy:</label>
+        </textBox>
+      </presentation>
+      <presentation id="CommercialID">
+        <textBox refId="CommercialIdValue">
+          <label>ID Comercial:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DisableEnterpriseAuthProxy">
+        <dropdownList refId="DisableEnterpriseAuthProxy" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="LimitEnhancedDiagnosticDataWindowsAnalytics">
+        <dropdownList refId="LimitEnhancedDiagnosticDataWindowsAnalytics" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureTelemetryOptInSettingsUx">
+        <dropdownList refId="ConfigureTelemetryOptInSettingsUx" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureTelemetryOptInChangeNotification">
+        <dropdownList refId="ConfigureTelemetryOptInChangeNotification" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureMicrosoft365UploadEndpoint">
+        <textBox refId="ConfigureMicrosoft365UploadEndpointValue">
+          <label>Ponto Final de Carregamento Personalizado de Análise de Computadores:</label>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

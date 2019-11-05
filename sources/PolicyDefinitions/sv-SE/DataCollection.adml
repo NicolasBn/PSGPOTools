@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  (c) 2015 Microsoft Corporation  -->
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>ange visningsnamn här</displayName>
+  <description>ange beskrivning här</description>
+  <resources>
+    <stringTable>
+      <string id="AllowTelemetry">Tillåt telemetri</string>
+      <string id="AllowTelemetry_0">0 - Säkerhet [endast företag]</string>
+      <string id="AllowTelemetry_1">1 - Grundläggande</string>
+      <string id="AllowTelemetry_2">2 - Utökad</string>
+      <string id="AllowTelemetry_3">3 - Fullständig</string>
+      <string id="AllowTelemetry_Explain">Den här principinställningen fastställer den högsta nivån av Windows-diagnostikdata som skickas till Microsoft. Genom att konfigurera den här inställningen hindrar du inte användarna från att ändra sina telemetriinställningar, men du hindrar dem från välja en högre nivå än den du ställt in för organisationen. Inställningarna för Windows 10-diagnostikdata gäller endast för Windows-operativsystemet och apparna som ingår i Windows. De gäller inte för tredjepartsappar som körs i Windows 10.
+
+Om du aktiverar den här inställningen kan du bestämma vilken nivå av diagnostikdata som ska skickas till Microsoft. Nivåer:
+
+  - 0 (Säkerhet). Skickar endast minimalt med data till Microsoft för att skydda Windows. Windows säkerhetskomponenter som Borttagning av skadlig programvara (MSRT) och Windows Defender kan skicka data till Microsoft på den här nivån. Nivå 0 gäller bara för enheter som kör Enterprise-, Education-, IoT- eller Windows Server-utgåvor. Om du anger nivå 0 för andra utgåvor är det samma sak som att ange nivå 1.
+  - 1 (Grundläggande). Skickar samma data som nivå 0 plus en mycket begränsad mängd diagnostikdata som grundläggande enhetsinformation, kvalitetsrelaterade data och information om appkompatibilitet. Observera att användningen av nivå 0 eller 1 kan göra att vissa funktioner på enheten begränsas.
+  - 2 (Utökad). Skickar samma data som nivå 1 plus ytterligare data som hur Windows, Windows Server, System Center och appar används, hur de presterar samt avancerade tillförlitlighetsdata.
+  - 3 (Fullständig). Skickar samma data som nivå 2 plus avancerade diagnostikdata som används för att diagnostisera och åtgärda problem med enheter, vilket omfattar filerna och innehållet som kan ha orsakat ett problem.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen går det att ställa in telemetriinställningar i Inställningar.
+      </string>
+
+      <string id="TelemetryProxy">Konfigurera Enhetlig användarupplevelse och telemetri</string>
+      <string id="TelemetryProxy_Explain">Med den här principinställningen kan du överföra begäranden om Enhetlig användarupplevelse och telemetri till en proxyserver.
+
+Om du aktiverar principinställningen kan du ange FQDN eller IP-adressen för målenheten i din organisations nätverk (och ett portnummer om det behövs). Anslutningen görs via en SSL-anslutning (Secure Sockets Layer). Om den namngivna proxyn misslyckas eller om du inaktiverar eller inte konfigurerar den här principinställningen, överförs data för Enhetlig användarupplevelse och telemetri till Microsoft via standardproxykonfigurationen.
+
+Formatet för den här inställningen är &lt;server&gt;:&lt;port&gt; 
+      </string>
+
+      <string id="CommercialId">Konfigurera kommersiellt ID</string>
+      <string id="CommercialId_Explain">Den här principinställningen definierar identifieraren som används för att unikt associera enhetens telemetridata som tillhörande en viss organisation. Om din organisation deltar i ett program som kräver att enheten ska identifieras som tillhörande din organisation använder du den här inställningen. Värdet för inställningen tillhandahålls av Microsoft som en del av den inledande processen för programmet. 
+
+Om du inaktiverar eller inte konfigurerar den här principinställningen kan Microsoft inte använda identifieraren för att associera den här datorn och dess telemetridata med din organisation.
+      </string>
+
+      <string id="DisableEnterpriseAuthProxy">Konfigurera användning av autentiserad proxy för tjänsten Enhetlig användarupplevelse och telemetri</string>
+      <string id="DisableEnterpriseAuthProxy_1">Aktivera användning av autentiserad proxy</string>
+      <string id="DisableEnterpriseAuthProxy_2">Inaktivera användning av autentiserad proxy</string>
+      <string id="DisableEnterpriseAuthProxy_Explain">Den här principinställningen hindrar tjänsten Enhetlig användarupplevelse och telemetri från att automatiskt använda en autentiserad proxy för att skicka tillbaka data till Microsoft på Windows 10. Om du inaktiverar eller låter bli att konfigurera principinställningen använder tjänsten Enhetlig användarupplevelse och telemetri automatiskt en autentiserad proxy för att skicka tillbaka data till Microsoft. Om du aktiverar principen hindrar du tjänsten Enhetlig användarupplevelse och telemetri från att automatiskt använda en autentiserad proxy.</string>
+
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics">Begränsa utökade diagnostikdata till minimikraven för Windows Analytics</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_1">Aktivera Windows Analytics-insamling</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_2">Inaktivera Windows Analytics-insamling</string>
+      <string id="LimitEnhancedDiagnosticDataWindowsAnalytics_Explain">Den här principinställningen i kombination med principinställningen Tillåt telemetri gör att organisationer kan skicka en specifik uppsättning diagnostikdata till Microsoft för analys med Windows Analytics-tjänster. Genom att konfigurera den här inställningen hindrar du inte användarna från att ändra sina telemetriinställningar, men du hindrar dem från välja en högre nivå än den du ställt in för organisationen.
+
+För att aktivera detta måste du slutföra följande två steg:
+
+    1. Aktivera principinställningen
+    2. Sätt Tillåt telemetri till nivå 2 (utökad)
+
+Om du konfigurerar de här principinställningarna ihop skickas den grundläggande nivån av diagnostikdata plus eventuella ytterligare händelser som krävs för Windows Analytics till Microsoft. De ytterligare händelserna beskrivs här: https://go.Microsoft.com/fwlink/?linked=847594.
+
+Om du aktiverar utökade diagnostikdata i principinställningen Tillåt telemetri och du inte konfigurerar den här principinställningen skickas även de diagnostikhändelser som krävs för Windows Analytics, plus ytterligare telemetridata på den utökade nivån till Microsoft. Den här inställningen har ingen verkan på datorer som är konfigurerade att skicka diagnostikdata på nivåerna Fullständig, Grundläggande eller Säkerhet till Microsoft.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen bestäms vilken nivå av diagnostikdata som skickas till Microsoft av principinställningen Tillåt telemetri.
+      </string>
+
+      <string id="AllowDeviceNameInDiagnosticData">Tillåt att enhetsnamnet skickas i Windows-diagnostikdata</string>
+      <string id="AllowDeviceNameInDiagnosticData_Explain">Den här principen tillåter att enhetsnamnet skickas till Microsoft som del av Windows-diagnostikdata.
+
+Om du inaktiverar eller låter bli att konfigurera den här principinställningen skickas inte enhetsnamnet till Microsoft som del av Windows-diagnostikdata.
+      </string>
+
+      <string id="ConfigureTelemetryOptInSettingsUx">Konfigurera gränssnittet för val av telemetriinställning.</string>
+      <string id="ConfigureTelemetryOptInSettingsUx_1">Inaktivera val av telemetri i Inställningar</string>
+      <string id="ConfigureTelemetryOptInSettingsUx_2">Aktivera val av telemetri i Inställningar</string>
+      <string id="ConfigureTelemetryOptInSettingsUx_Explain">Den här principinställningen avgör om användarna kan ändra sina telemetrinivåer i Inställningar. Den här inställningen bör användas ihop med inställningarna för Tillåt telemetri.
+
+Om du väljer "Inaktivera val av telemetri i Inställningar" i den här principinställningen så inaktiveras telemetrinivåer i Inställningar vilket innebär att användarna inte kan ändra dem.
+
+Om du väljer "Aktivera val av telemetri i Inställningar" i den här principinställningen, eller inte konfigurerar den, kan användarna ändra sina telemetrinivåer i Inställningar.
+
+Obs!
+Ställ in principinställningen Tillåt telemetri för att hindra användarna från att skicka diagnostikdata till Microsoft som överstiger din organisations gräns.
+      </string>
+
+      <string id="ConfigureTelemetryOptInChangeNotification">Konfigurera ändringsmeddelanden för telemetri.</string>
+      <string id="ConfigureTelemetryOptInChangeNotification_1">Inaktivera ändringsmeddelanden för telemetri</string>
+      <string id="ConfigureTelemetryOptInChangeNotification_2">Aktivera ändringsmeddelanden för telemetri</string>
+      <string id="ConfigureTelemetryOptInChangeNotification_Explain">
+          Den här principinställningen avgör om en enhet visar meddelanden om telemetrinivåer för användarna när de loggar in första gången eller när ändringar görs i Inställningar. 
+          Om du väljer "Inaktivera ändringsmeddelanden för telemetri" i den här principinställningen visas inte meddelanden om telemetrinivåer.
+          Om du väljer "Aktivera ändringsmeddelanden för telemetri", eller inte konfigurerar den här principinställningen, visas meddelanden om telemetrinivåer när användarna loggar in första gången eller när ändringar görs i Inställningar.
+      </string>
+
+      <string id="DisableDeviceDelete">Inaktivera borttagning av diagnostikdata </string>
+      <string id="DisableDeviceDelete_Explain">
+          Med den här principinställningen bestämmer du om knappen Radera diagnostikdata är aktiverad eller inte i inställningarna för Diagnostik &amp; feedback.
+          Om du aktiverar principinställningen så inaktiveras knappen Radera diagnostikdata i inställningarna vilket hindrar användarna från att radera diagnostikdata som Microsoft samlat in från enheten. 
+          Om du inaktiverar eller låter bli att konfigurera principinställningen så aktiveras knappen Radera diagnostikdata i inställningarna vilket gör att användarna kan radera alla diagnostikdata som Microsoft samlat in från enheten.
+      </string>
+
+      <string id="DisableDiagnosticDataViewer">Inaktivera Visningsprogram för diagnostikdata. </string>
+      <string id="DisableDiagnosticDataViewer_Explain">
+          Med den här principinställningen bestämmer du om användarna kan aktivera och starta Visningsprogram för diagnostikdata i inställningarna för Diagnostik &amp; feedback.
+          Om du aktiverar principinställningen så aktiveras inte Visningsprogram för diagnostikdata i inställningarna och användarna hindras från att se diagnostikdata som Microsoft samlat in från enheten.  
+          Om du inaktiverar eller låter bli att konfigurera principinställningen så aktiveras Visningsprogram för diagnostikdata i inställningarna.
+      </string>
+
+      <string id="ConfigureMicrosoft365UploadEndpoint">Ange uppladdningsslutpunkt för diagnostikdata för Desktop Analytics</string>
+      <string id="ConfigureMicrosoft365UploadEndpoint_Explain">
+          Med den här principen anger du uppladdningsslutpunkten för enhetens diagnostikdata som del i Desktop Analytics-programmet.
+          Om din organisation deltar i programmet och har anvisats att konfigurera en anpassad uppladdningsslutpunkt kan du med den här inställningen ange den slutpunkten.
+          Värdet för den här inställningen tillhandahålls av Microsoft som del i registreringsprocessen för programmet. 
+      </string>
+
+      <string id="AllowCommercialDataPipeline">Tillåt datapipeline för kommersiella enheter</string>
+      <string id="AllowCommercialDataPipeline_Explain">
+          AllowCommercialDataPipeline registrerar enheten för Windows företagsdatapipeline.
+          Om du aktiverar den här inställningen registreras data som samlas in från enheten i Windows företagsdatapipeline.
+          Om du inaktiverar eller låter bli att konfigurera den här inställningen samlas alla data från enheten in och hanteras enligt våra principer för Windows standarddatapipeline.
+          Konfigurationen av den här inställningen förändrar inte telemetriinsamlingsnivån eller användarens möjligheter att ändra nivån. Den här inställningen gäller bara Windows-operativsystemet och apparna i Windows. Den gäller inte appar eller tjänster från tredje part som körs på Windows 10.
+      </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AllowTelemetry">
+        <dropdownList refId="AllowTelemetry" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="TelemetryProxy">
+        <textBox refId="TelemetryProxyName">
+          <label>Proxyservernamn:</label>
+        </textBox>
+      </presentation>
+      <presentation id="CommercialID">
+        <textBox refId="CommercialIdValue">
+          <label>Kommersiellt ID:</label>
+        </textBox>
+      </presentation>
+      <presentation id="DisableEnterpriseAuthProxy">
+        <dropdownList refId="DisableEnterpriseAuthProxy" noSort="true" defaultItem="1"></dropdownList>
+      </presentation>
+      <presentation id="LimitEnhancedDiagnosticDataWindowsAnalytics">
+        <dropdownList refId="LimitEnhancedDiagnosticDataWindowsAnalytics" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureTelemetryOptInSettingsUx">
+        <dropdownList refId="ConfigureTelemetryOptInSettingsUx" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureTelemetryOptInChangeNotification">
+        <dropdownList refId="ConfigureTelemetryOptInChangeNotification" noSort="true" defaultItem="0"></dropdownList>
+      </presentation>
+      <presentation id="ConfigureMicrosoft365UploadEndpoint">
+        <textBox refId="ConfigureMicrosoft365UploadEndpointValue">
+          <label>Egen uppladdningsslutpunkt för Desktop Analytics:</label>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

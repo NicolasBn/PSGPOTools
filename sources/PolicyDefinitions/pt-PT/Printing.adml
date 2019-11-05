@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--  (c) 2006 Microsoft Corporation  -->
+<policyDefinitionResources xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0">
+  <displayName>introduza o nome a apresentar aqui</displayName>
+  <description>introduza a descrição aqui</description>
+  <resources>
+    <stringTable>
+      <string id="AllowWebPrinting">Ativar a impressão através da Internet</string>
+      <string id="AllowWebPrinting_Help">A impressão através da Internet permite-lhe visualizar impressoras em páginas Web de modo a poder ver, gerir e utilizar impressoras através da Internet ou de uma intranet.
+
+          Se ativar esta definição de política, a impressão através da Internet é ativada neste servidor.
+
+          Se desativar ou não configurar esta definição de política, a impressão através da Internet não é ativada.
+
+          A impressão através da Internet é uma extensão dos Serviços de Informação Internet (ISS). Para utilizar a impressão através da Internet, tem de ser instalado o IIS e o suporte de impressão e esta definição têm de ser ativados.
+
+          Nota: esta definição só afeta o lado do servidor da impressão através da Internet. Não impede que o cliente de impressão no computador imprima através da Internet.
+
+          Consulte também a definição "URL de suporte personalizado, no painel esquerdo da pasta Impressoras" existente nesta pasta e a definição "Verificar um Web site comum para localizar impressoras" em Configuração do Utilizador\Modelos Administrativos\Painel de Controlo\Impressoras.</string>
+      <string id="ApplicationDriverIsolation">Isolar controladores de impressão das aplicações</string>
+      <string id="ApplicationDriverIsolation_Help">Determina se os componentes do controlador de impressão são isolados das aplicações, em vez de serem carregados nas aplicações. Isolar os controladores de impressão reduz significativamente o risco de uma falha de controlador de impressão causar uma falha de aplicação.
+
+Nem todas as aplicações suportam o isolamento de controladores. Por predefinição, o Microsoft Excel 2007, Excel 2010, Word 2007, Word 2010 e outras aplicações estão configurados para suportarem esta funcionalidade. Outras aplicações também poderão estar aptas a isolar controladores de impressão, dependendo de terem sido ou não configuradas para o efeito.
+
+Se ativar ou não configurar esta definição de política, as aplicações configuradas para suportarem isolamento de controladores serão isoladas.
+
+Se desativar esta definição de política, os controladores de impressão serão carregados em todos os processos de aplicação associados.
+
+Notas:
+-Esta definição de política aplica-se apenas às aplicações que tenham optado pelo isolamento.
+-Esta definição de política aplica-se apenas aos controladores de impressão carregados pelas aplicações. Os controladores de impressão carregados pelo spooler de impressão não são afetados.
+-Esta definição de política só é selecionada uma vez durante a duração de um processo. Após alterar a política, uma aplicação em execução tem de ser reiniciada para que as definições produzam efeitos.</string>
+      <string id="CplPrinters">Impressoras</string>
+      <string id="CplPrinters_Help">Gere as opções de configuração e publicação da impressora de rede.</string>
+      <string id="CustomizedSupportUrl">URL de suporte personalizado, no painel esquerdo da pasta Impressoras</string>
+      <string id="CustomizedSupportUrl_Help">Por predefinição, a pasta Impressoras inclui uma ligação para a página Web de Suporte da Microsoft denominada "Obter ajuda para impressão". Também pode incluir uma ligação para uma página Web fornecida pelo fabricante da impressora atualmente selecionada.
+
+          Se ativar esta definição de política, substitui a ligação predefinida "Obter ajuda para impressão" por uma ligação a uma página Web personalizada para a sua empresa.
+
+          Se desativar esta definição ou não a configurar, ou se não introduzir um endereço Internet alternativo, a ligação predefinida será apresentada na pasta Impressoras.
+
+          Nota: as ligações a páginas Web só serão apresentadas na pasta Impressoras quando a vista Web estiver ativada. Se a vista Web estiver desativada, a definição não tem efeito. (Para ativar a vista Web, abra a pasta Impressoras e, no menu Ferramentas, clique em Opções de Pastas, clique no separador Geral e, em seguida, clique em "Ativar conteúdo Web em pastas".)
+
+          Consulte também a definição "Ativar a impressão através da Internet" desta pasta de definições e a definição "Verificar um Web site comum para localizar impressoras" em Configuração do Utilizador\Modelos Administrativos\Painel de Controlo\Impressoras.
+
+          A vista Web é afetada pelas definições "Ativar a Shell Clássica" e "Não permitir a abertura de Opções de Pastas a partir do botão Opções no separador Ver do friso" em Configuração do Utilizador\Modelos Administrativos\Componentes do Windows\Explorador do Windows e pela definição "Ativar o Active Desktop" em Configuração do Utilizador\Modelos Administrativos\Ambiente de Trabalho\Active Desktop.</string>
+      <string id="DomainDisplayPrinters_Help">Se ativar esta definição de política, a mesma define o número máximo de impressoras (de cada tipo) que o assistente Adicionar Impressora apresentará num computador numa rede gerida (quando o computador consegue alcançar um controlador de domínio, por exemplo, um portátil associado a um domínio numa rede empresarial).
+
+          Se esta definição de política for desativada, a página de análise de rede não será apresentada.
+
+          Se esta definição de política não for configurada, o assistente Adicionar Impressora apresentará o número predefinido de impressoras de cada tipo:
+          Impressoras de diretório: 20
+          Impressoras TCP/IP: 0
+          Impressoras de Serviços Web: 0
+          Impressoras Bluetooth: 10
+          Impressoras partilhadas: 0
+
+          Para ver as impressoras de Serviços Web disponíveis na rede, certifique-se de que a deteção de redes está ativada. Para ligar a deteção de redes, clique em "Iniciar", clique em "Painel de Controlo" e, em seguida, clique em "Rede e Internet". Na página "Rede e Internet", clique em "Centro de Rede e Partilha". Na página Centro de Rede e Partilha, clique em "Alterar definições de partilha avançadas". Na página Definições de partilha avançadas, clique na seta junto à seta "Domínio", clique em "Ativar deteção de rede" e, em seguida, clique em "Guardar alterações".
+
+          Se não quiser apresentar impressoras de um determinado tipo, ative esta política e defina o número de impressoras a apresentar para 0.
+
+          No Windows 10 e posteriores, apenas as impressoras TCP/IP podem ser apresentadas no assistente. Se ativar esta definição de política, apenas são aplicáveis os limites de impressoras TCP/IP. Apenas no Windows 10, se desativar ou não configurar esta definição de política, o limite predefinido é aplicado.
+          
+          No Windows 8 e posteriores, as impressoras Bluetooth não são apresentadas, pelo que os respetivos limites não se aplicam a essas versões do Windows.
+      </string>
+      <string id="DomainPrinters">Assistente para Adicionar Impressoras - Página de procura de rede (Rede gerida)</string>
+      <string id="DownlevelBrowse">Procurar impressoras na rede</string>
+      <string id="DownlevelBrowse_Help">Permite aos utilizadores utilizarem o Assistente para Adicionar Impressoras para procurar impressoras partilhadas na rede.
+
+Se ativar esta definição ou não a configurar, quando os utilizadores optarem por adicionar uma impressora de rede selecionando o botão de opção "Uma impressora de rede ou uma impressora ligada a outro computador" na página 2 do Assistente para Adicionar Impressoras e também marcarem o botão de rádio "Ligar a esta impressora (ou p/ procurar uma impres, selec esta opção e clique em Seguinte)" na página 3 do Assistente para Adicionar Impressoras e não especificarem um nome de impressora na caixa de edição "Nome" adjacente, o Assistente para Adicionar Impressoras apresentará a lista de impressoras partilhadas na rede e solicitará a seleção de uma impressora na lista apresentada.
+
+Se desativar esta definição, a página de pesquisa da impressora de rede será removida do Assistente para Adicionar Impressoras e os utilizadores não poderão efetuar pesquisas na rede e terão de escrever o nome de uma impressora.
+
+Nota: esta definição afeta apenas o Assistente para Adicionar Impressoras. Não impede os utilizadores de utilizarem outros programas para pesquisar impressoras partilhadas ou de se ligarem a impressoras de rede.</string>
+      <string id="EMFDespooling">Submeter sempre tarefas de impressão no servidor</string>
+      <string id="EMFDespooling_Help">Ao imprimir através de um servidor de impressão, determina se o spooler de impressão no cliente irá processar as tarefas de impressão ou transmiti-las ao servidor para efetuar a operação de impressão.
+
+Esta definição de política só afeta a impressão para um servidor de impressão Windows.
+
+Se ativar esta definição de política num computador cliente, o spooler do cliente não processará tarefas de impressão antes de enviá-las para o servidor de impressão. Este procedimento diminui a carga de trabalho no cliente, ma aumenta a carga no servidor.
+
+Se desativar esta definição de política num computador cliente, o próprio cliente processará as tarefas de impressão para comandos do dispositivo de impressora. Estes comandos serão enviados para o servidor de impressão e o servidor só terá de transmiti-los à impressora. Este procedimento aumenta a carga de trabalho no cliente diminuindo simultaneamente a carga no servidor.
+
+Se não ativar esta definição de política, o comportamento é idêntico à respetiva desativação.
+
+Nota: esta política não determina se a impressão offline estará disponível para o cliente. O spooler de impressão cliente pode sempre colocar tarefas de impressão em fila quando não está ligado ao servidor de impressão. Depois de restabelecer a ligação ao servidor, o cliente irá submeter quaisquer tarefas de impressão pendentes.
+
+Nota: alguns controladores de impressão necessitam de um processador de impressão personalizado. Em determinados casos, não é possível instalar o processador de impressão personalizado no computador cliente, quando, por exemplo, o servidor de impressão não suporta a transferência de processadores de impressão durante a ação de apontar e imprimir. No caso de uma incompatibilidade de processador de impressão, o spooler de cliente irá sempre enviar tarefas para o servidor de impressão para composição. A desativação da definição de política anterior não substitui este comportamento.
+
+Nota: nos casos em que o controlador da impressora do cliente não corresponde ao controlador da impressora do servidor (ligação sem correspondência), o cliente processará sempre a tarefa de impressão, independentemente da definição desta política.</string>
+      <string id="ForceSWRas">Rasterizar sempre o conteúdo a imprimir utilizando um rasterizador de software</string>
+      <string id="ForceSWRas_Help">Determina se o Serviço de Rasterização XPS ou a conversão XPS para GDI (XGC) é forçado a utilizar um rasterizador de software em vez da Unidade de Processamento Gráfico (GPU) para rasterizar as páginas.
+
+Esta definição pode melhorar o desempenho do Serviço de Rasterização XPS ou a conversão XPS para GDI (XGC) em computadores com uma CPU relativamente potente quando comparada com a GPU do computador.</string>
+      <string id="IntranetPrintersUrl">Verificar um Web site comum para localizar impressoras</string>
+      <string id="IntranetPrintersUrl_Help">Adiciona uma ligação a uma página Web da Internet ou intranet ao Assistente para Adicionar Impressoras.
+
+          Pode utilizar esta definição para encaminhar os utilizadores para uma página Web, a partir da qual podem instalar impressoras.
+
+          Se ativar esta definição e escrever um endereço de Internet ou intranet na caixa de texto, o sistema adicionará um botão Procurar à página "Especificar uma impressora" no Assistente para Adicionar Impressoras. O botão Procurar é apresentado junto da opção "Ligar a uma impressora na Internet ou numa rede empresarial ou doméstica". Quando os utilizadores clicam em Procurar, o sistema abre um browser e navega para o endereço de URL especificado para apresentar as impressoras disponíveis.
+
+          Esta definição torna mais fácil aos utilizadores localizarem as impressoras que pretende que adicionem.
+
+          Além disso, consulte as definições "URL de suporte personalizado, no painel esquerdo da pasta Impressoras" e "Ativar a impressão através da Internet" em Configuração do Computador\Modelos Administrativos\Impressoras.</string>
+      <string id="KMPrintersAreBlocked">Não permitir a instalação de impressoras com controladores de modo kernel</string>
+      <string id="KMPrintersAreBlocked_Help">Determina se as impressoras que utilizam controladores de modo kernel podem ser instaladas no computador local.  Os controladores de modo kernel têm acesso a memória a nível do sistema e, por conseguinte, os controladores de modo kernel incorretamente escritos podem causar erros de paragem.
+
+Se desativar ou não configurar esta definição, as impressoras que utilizam controladores de modo kernel podem ser instaladas no computador local com o Windows XP Home Edition e o Windows XP Professional.
+
+Se não configurar esta definição nos produtos da família Windows Server 2003, a instalação dos controladores de impressão de modo kernel será bloqueada.
+
+Se ativar esta definição, a instalação de uma impressora utilizando um controlador de modo kernel não será permitida.
+
+Nota: ao aplicar esta política, os controladores de modo kernel existentes serão desativados aquando da instalação de service packs ou reinstalação do sistema operativo Windows XP. Esta política não se aplica a controladores de impressão de modo kernel de 64 bits, pois estes não podem ser instalados e associados a uma fila de impressão.</string>
+      <string id="NoAddPrinter">Impedir a adição de impressoras</string>
+      <string id="NoAddPrinter_Help">Impede que os utilizadores utilizem métodos familiares para adicionarem impressoras locais e de rede.
+
+          Se esta definição de política estiver ativada, removerá a opção Adicionar Impressora do menu Iniciar. (Para localizar a opção Adicionar Impressora, clique em Iniciar, clique em Impressoras e, em seguida, clique em Adicionar Impressora.) Esta definição removerá também Adicionar Impressora da pasta Impressoras no Painel de Controlo.
+
+          Além disso, os utilizadores não poderão adicionar impressoras arrastando e largando um ícone de impressora na pasta Impressoras. Se tentarem, será apresentada uma mensagem explicando que a definição impede a ação.
+
+          No entanto, esta definição não impedirá que os utilizadores utilizem o Assistente para Adicionar Hardware para adicionarem uma impressora. Nem impedirá os utilizadores de executarem outros programas para adicionarem impressoras.
+
+          Esta definição não eliminará impressoras anteriormente adicionadas pelos utilizadores. No entanto, se os utilizadores não tiverem uma impressora adicionada quando esta definição for aplicada, não poderão imprimir.
+
+          Nota: pode utilizar permissões sobre a impressora para restringir a utilização de impressoras sem especificar uma definição. Na pasta Impressoras, clique com o botão direito do rato numa impressora, clique em Propriedades e, em seguida, clique no separador Segurança.
+
+          Se esta política estiver desativada ou não tiver sido configurada, os utilizadores podem adicionar impressoras utilizando os métodos descritos anteriormente.</string>
+      <string id="NoDeletePrinter">Impedir a eliminação de impressoras</string>
+      <string id="NoDeletePrinter_Help">Se esta definição de política estiver ativada, impede os utilizadores de eliminarem impressoras locais e de rede.
+
+          Se um utilizador tentar eliminar uma impressora, por exemplo, utilizando a opção Eliminar em Impressoras no Painel de Controlo, é apresentada uma mensagem explicando que uma definição impede a ação.
+
+          Esta definição não impede que os utilizadores executem outros programas para eliminar uma impressora.
+
+          Se esta política estiver desativada ou não tiver sido configurada, os utilizadores podem eliminar impressoras utilizando os métodos descritos anteriormente.</string>
+      <string id="NonDomainDisplayPrinters_Help">Esta política define o número máximo de impressoras (de cada tipo) que o assistente Adicionar Impressora apresentará num computador numa rede não gerida (quando o computador não consegue alcançar um controlador de domínio, por exemplo, um portátil associado a um domínio numa rede doméstica.)
+
+Se esta definição for desativada, a página de análise de rede não será apresentada.
+
+Se esta definição não for configurada, o assistente Adicionar Impressora apresentará o número predefinido de impressoras de cada tipo:
+Impressoras TCP/IP: 50
+Impressoras de Serviços Web: 50
+Impressoras Bluetooth: 10
+Impressoras partilhadas: 50
+
+Se não quiser apresentar impressoras de um determinado tipo, ative esta política e defina o número de impressoras a apresentar para 0.
+
+No Windows 10 e posteriores, apenas as impressoras TCP/IP podem ser apresentadas no assistente. Se ativar esta definição de política, apenas são aplicáveis os limites de impressoras TCP/IP. Apenas no Windows 10, se desativar ou não configurar esta definição de política, o limite predefinido é aplicado.
+          
+No Windows 8 e posteriores, as impressoras Bluetooth não são apresentadas, pelo que os respetivos limites não se aplicam a essas versões do Windows.</string>
+      <string id="NonDomainPrinters">Assistente para Adicionar Impressoras - Página de pesquisa de rede (Rede não gerida)</string>
+      <string id="PackagePointAndPrintOnly">Utilizar apenas Apontar e Imprimir Pacote</string>
+      <string id="PackagePointAndPrintOnly_Help">Esta política restringe os computadores cliente a só apontarem e imprimirem pacotes.
+
+Se esta definição estiver ativada, os utilizadores apenas poderão apontar e imprimir para impressoras com suporte para deteção de pacotes. Quando utilizarem a funcionalidade de apontar e imprimir pacotes, os computadores cliente verificarão a assinatura de controlador de todos os controladores que são transferidos a partir de servidores de impressão.
+
+Se esta definição estiver desativada ou não tiver sido configurada, os utilizadores não estarão restringidos apenas a apontar e imprimir com deteção de pacotes.</string>
+      <string id="SUPPORTED_XPSP1_through_Server_2008_RTM">Windows XP SP1 suportado até ao Windows Server 2008 RTM</string>
+      <string id="PackagePointAndPrintServerList">Apontar e imprimir pacotes - Servidores aprovados</string>
+      <string id="PackagePointAndPrintServerList_Help">Restringe a funcionalidade de apontar e imprimir pacotes a servidores aprovados.
+
+Esta definição de política restringe ligações de apontar e imprimir pacotes a servidores aprovados. Esta definição aplica-se apenas a ligações Apontar e Imprimir Pacotes e é completamente independente da política "Restrições de Apontar e Imprimir" que determina o comportamento de ligações de imprimir e apontar sem pacotes.
+
+O Windows Vista e clientes posteriores tentarão criar uma ligação de apontar e imprimir sem pacotes sempre que uma ligação de apontar e imprimir pacotes falha, incluindo tentativas que são bloqueadas pela política. Os administradores podem ter de definir ambas as políticas para bloquear todas as ligações de imprimir para um servidor de impressão específico.
+
+Se esta definição estiver ativada, os utilizadores apenas poderão apontar e imprimir pacotes para servidores de impressão aprovados pelo administrador de rede. Quando utilizarem a funcionalidade de apontar e imprimir pacotes, os computadores cliente verificarão a assinatura de controlador de todos os controladores que são transferidos a partir de servidores de impressão.
+
+Se esta definição estiver desativada ou não tiver sido configurada, a funcionalidade de apontar e imprimir pacotes não se restringe a servidores de impressão específicos.</string>
+      <string id="PhysicalLocation">Localização do computador</string>
+      <string id="PhysicalLocation_Help">Se esta definição de política estiver ativada, especifica os critérios de localização predefinida utilizados durante a pesquisa das impressoras.
+
+          Esta definição é um componente da funcionalidade Controlo de Localizações das impressoras Windows. Para utilizar esta definição, ative o Controlo de Localizações ativando a definição "Preencher previamente o texto de pesquisa para localização da impressora".
+
+          Quando o Controlo de Localizações está ativado, o sistema utiliza a localização especificada como critério quando os utilizadores procuram impressoras. O valor que escrever aqui substitui a localização real do computador que está a efetuar a pesquisa.
+
+          Escreva a localização do computador do utilizador. Quando os utilizadores procurarem impressoras, o sistema utiliza a localização especificada (e outros critérios de pesquisa) para localizar uma impressora vizinha. Também pode utilizar esta definição para direcionar os utilizadores para uma impressora ou um grupo de impressoras específico que pretenda que estes utilizem.
+
+          Se desativar esta definição ou não a configurar e se o utilizador não especificar uma localização como critério de pesquisa, o sistema procura uma impressora próxima com base no endereço IP e na máscara de sub-rede do computador do utilizador.</string>
+      <string id="PhysicalLocationSupport">Preencher previamente o texto de pesquisa para localização da impressora</string>
+      <string id="PhysicalLocationSupport_Help">Ativa a definição física de Controlo de Localizações para impressoras Windows.
+
+Utilize o Controlo de Localizações para estruturar um esquema de localização para a sua empresa e atribuir computadores e impressoras no esquema. O Controlo de Localizações substitui o método padrão utilizado para localizar e associar computadores e impressoras. O método padrão utiliza o endereço IP e a máscara de sub-rede de uma impressora para calcular a sua localização física e proximidade com outros computadores.
+
+Se ativar esta definição, os utilizadores podem procurar impressoras por localização sem conhecer a localização ou o esquema de nomenclatura de localização da impressora. A ativação do Controlo de Localizações adiciona um botão Procurar ao ecrã Nome da Impressora e Localização de Partilha do Assistente para Adicionar Impressoras e ao separador Geral na caixa de diálogo Propriedades da Impressora. Se ativar a definição de localização Computador de Política de Grupo, a localização predefinida que introduziu é apresentada por predefinição no campo Localização.
+
+Se desativar esta definição ou não a configurar, o Controlo de Localizações é desativado. A proximidade das impressoras é calculada utilizando o método padrão (ou seja, com base no endereço IP e na máscara de sub-rede).</string>
+      <string id="PointAndPrint_Restrictions">Restrições de Apontar e Imprimir</string>
+      <string id="PointAndPrint_Restrictions_Help">Esta definição de política controla o comportamento Apontar e Imprimir do cliente, incluindo os pedidos de segurança para computadores com o Windows Vista. A definição de política aplica-se apenas a clientes sem Administrador de Impressão e a computadores que são membros de um domínio.
+
+          Se ativar esta definição de política:
+          -O Windows XP e os clientes posteriores apenas transferirão componentes de controlador de impressão a partir de uma lista de servidores explicitamente nomeados. Se estiver disponível um controlador de impressão compatível no cliente, será estabelecida uma ligação de impressora. Se não estiver disponível um controlador de impressão compatível no cliente, não será estabelecida nenhuma ligação.
+          -Pode configurar clientes Windows Vista de modo a que os avisos de segurança e as linhas de comandos elevadas não sejam apresentados quando os utilizadores recorrerem a Apontar e Imprimir ou quando for necessário atualizar os controladores de ligações de impressora.
+
+          Se não configurar esta definição de política:
+          -Os computadores cliente com Windows Vista podem apontar e imprimir para qualquer servidor.
+          -Os computadores com Windows Vista apresentarão um aviso e uma linha de comandos elevada quando os utilizadores criarem uma ligação de impressora a qualquer servidor utilizando Apontar e Imprimir.
+          -Os computadores com Windows Vista apresentarão um aviso e uma linha de comandos elevada quando for necessário atualizar um controlador de ligações de impressora existente.
+          -Os computadores cliente com Windows Server 2003 e Windows XP podem criar uma ligação de impressora a qualquer servidor na sua floresta utilizando Apontar e Imprimir.
+
+          Se desativar esta definição de política:
+          -Os computadores cliente com Windows Vista podem criar uma ligação de impressora a qualquer servidor utilizando Apontar e Imprimir.
+          -Os computadores com Windows Vista não apresentarão um aviso ou uma linha de comandos elevada quando os utilizadores criarem uma ligação de impressora a qualquer servidor utilizando Apontar e Imprimir.
+          -Os computadores com Windows Vista não apresentarão um aviso e uma linha de comandos elevada quando for necessário atualizar um controlador de ligações de impressora existente.
+          -Os computadores cliente com Windows Server 2003 e Windows XP podem criar uma ligação de impressora a qualquer servidor utilizando Apontar e Imprimir.
+          -A definição "Os utilizadores apenas podem apontar e imprimir para computadores na sua floresta" aplica-se apenas ao Windows Server 2003 e Windows XP SP1 (e service packs posteriores).</string>
+      <string id="WarnAndElevateOnUpdate">Mostrar aviso e pedido de elevação</string>
+      <string id="NoWarningNoElevationOnUpdate">Não mostrar aviso ou pedido de elevação</string>
+      <string id="WarningNoElevationOnUpdate">Mostrar só aviso</string>
+      <string id="PrinterDirectorySearchScope">Caminho predefinido do Active Directory ao procurar impressoras</string>
+      <string id="PrinterDirectorySearchScope_Help">Especifica a localização do Active Directory onde a pesquisa de impressoras é iniciada.
+
+          O Assistente para Adicionar Impressoras dá aos utilizadores a opção para procurarem uma impressora partilhada no Active Directory.
+
+          Se ativar esta definição de política, estas pesquisas são iniciadas na localização especificada na caixa "Caminho predefinido do Active Directory". Caso contrário, as pesquisas serão iniciadas na raiz do Active Directory.
+
+          Esta definição só fornece um ponto de partida para pesquisas de impressoras no Active Directory. Não restringe as pesquisas do utilizador no Active Directory.</string>
+      <string id="PrinterServerThread">Procura de impressora</string>
+      <string id="PrinterServerThread_Help">Anuncia a presença de impressoras partilhadas a servidores mestres de pesquisa de impressão para o domínio.
+
+Em domínios com Active Directory, os recursos de impressora partilhada estão disponíveis no Active Directory e não são anunciados.
+
+Se ativar esta definição, o spooler de impressão anuncia as impressoras partilhadas aos servidores mestres de pesquisa de impressão.
+
+Se desativar esta definição, as impressoras partilhadas não são anunciadas aos servidores mestres de pesquisa de impressoras, mesmo que o Active Directory não esteja disponível.
+
+Se não configurar esta definição, as impressoras partilhadas só são anunciadas aos servidores mestres de pesquisa quando o Active Directory não está disponível.
+
+Nota: é utilizada uma licença de cliente sempre que um computador cliente anuncia uma impressora a um servidor mestre de pesquisa de impressão no domínio.</string>
+      <string id="PrintDriverIsolationExecutionPolicy">Executar controladores de impressão em processos isolados</string>
+      <string id="PrintDriverIsolationExecutionPolicy_Help">Esta definição de política determina se o spooler de impressão executará controladores de impressão num processo isolado ou separado. Quando os controladores de impressão são carregados num processo isolado (ou processos isolados), uma falha de controlador de impressão não causará uma falha do serviço de spooler de impressão.
+
+Se ativar ou não configurar esta definição de política, o spooler de impressão executará os controladores de impressão num processo isolado por predefinição.
+
+Se desativar esta definição de política, o spooler de impressão executará controladores de impressão no processo de spooler de impressão.
+
+
+Notas:
+-Outras definições de política de sistema ou controlador podem alterar o processo no qual um controlador de impressão é executado.
+-Esta definição de política aplica-se apenas aos controladores de impressão carregados pelo spooler de impressão. Os controladores de impressão carregados por aplicações não são afetados.
+-Esta definição de política produz efeitos sem reiniciar o serviço do spooler de impressão.</string>
+      <string id="PrintDriverIsolationOverrideCompat">Substituir a definição de compatibilidade de execução do controlador de impressão reportada pelo controlador de impressão</string>
+      <string id="PrintDriverIsolationOverrideCompat_Help">Esta definição de política determina se o spooler de impressão substituirá a compatibilidade de Isolamento do Controlador reportada pelo controlador de impressão. Isto permite a execução de controladores de impressão num processo isolado, mesmo que o controlador não reporte compatibilidade.
+
+Se ativar esta definição de política, o spooler de impressão isola todos os controladores de impressão que não optam ativamente por não participar explicitamente no Isolamento do Controlador.
+
+Se desativar ou não configurar esta definição de política, o spooler de impressão utiliza o valor do sinalizador de compatibilidade Isolamento de Controlador reportado pelo controlador de impressão.
+
+Notas:
+-Outras definições de política de sistema ou controlador podem alterar o processo no qual um controlador de impressão é executado.
+-Esta definição de política aplica-se apenas aos controladores de impressão carregados pelo spooler de impressão. Os controladores de impressão carregados por aplicações não são afetados.
+-Esta definição de política produz efeitos sem reiniciar o serviço do spooler de impressão.</string>
+      <string id="ShowJobTitleInEventLogs">Permitir nome da tarefa nos registos de eventos</string>
+      <string id="ShowJobTitleInEventLogs_Help">
+        Esta tarefa controla se o nome da tarefa de impressão será incluído nos registos de eventos de impressão.
+
+        Se desativar ou não configurar esta definição de política, o nome da tarefa de impressão não será incluído.
+
+        Se ativar esta definição de política, o nome da tarefa de impressão será incluído nas entradas de novos registos.
+
+        Nota: esta definição não se aplica às tarefas de Impressão Direta por Sucursal.
+      </string>
+      <string id="DoNotInstallCompatibleDriverFromWindowsUpdate">Expandir ligação Apontar e Imprimir para procurar no Windows Update</string>
+      <string id="DoNotInstallCompatibleDriverFromWindowsUpdate_Help">Esta definição de política permite gerir onde os computadores cliente procuram controladores Apontar e Imprimir.
+
+Se ativar esta definição de política, o computador cliente continuará a procurar controladores Apontar e Imprimir compatíveis a partir do Windows Update após não conseguir localizar o controlador compatível a partir do arquivo de controladores local e da cache do controlador do servidor.
+
+Se desativar esta definição de política, o computador cliente só procurará controladores Apontar e Imprimir compatíveis no arquivo de controladores local e na cache do controlador do servidor. Se não conseguir localizar um controlador compatível, a ligação Apontar e Imprimir falhará.
+
+Esta definição de política não é configurada por predefinição e o comportamento depende da versão do Windows que está a utilizar.
+Por predefinição e desde que necessário, os SKUs do Windows Ultimate, Professional e Home continuarão a procurar os controladores Apontar e Imprimir compatíveis no Windows Update. No entanto, tem de explicitamente ativar esta definição de política para que outras versões do Windows (por exemplo, Windows Enterprise e todas as versões do Windows Server 2008 R2 e posteriores) tenham o mesmo comportamento.</string>
+      <string id="V4DriverDisallowPrinterExtension">Não permitir que os controladores de impressão v4 mostrem extensões de impressora</string>
+      <string id="V4DriverDisallowPrinterExtension_Help">Esta política determina se os controladores de impressão v4 podem executar extensões de impressora.
+
+        Os controladores de impressão V4 podem incluir uma interface de utilizador personalizada opcional conhecida como extensão de impressora. Estas extensões podem fornecer acesso a mais funcionalidades do dispositivo, mas tal poderá não ser aceite em todas as empresas.
+
+        Se ativar esta definição de política, a execução de todas as extensões de impressora não será permitida.
+
+        Se desativar ou não configurar esta definição de política, todas as extensões de impressora instaladas poderão ser executadas.</string>
+      <string id="MXDWUseLegacyOutputFormatMSXPS">Alterar o formato de saída Microsoft XPS Document Writer (MXDW) predefinido para o formato Microsoft XPS (*.xps) legado</string>
+      <string id="MXDWUseLegacyOutputFormatMSXPS_Help">Por predefinição, o Microsoft XPS Document Writer (MXDW) gera ficheiros OpenXPS (*.oxps) no Windows 10, Windows 10 e Windows Server 2019.
+
+          Se ativar esta definição de política de grupo, o formato de saída MXDW predefinido será o Microsoft XPS (*.xps) legado.
+
+          Se desativar ou não configurar esta definição de política, o formato de saída MXDW predefinido será o OpenXPS (*.oxps).</string>
+      <string id="SetDefaultPrinterMRUModeOff">Desativar a gestão de impressoras predefinidas do Windows</string>
+      <string id="SetDefaultPrinterMRUModeOff_Help">Esta preferência permite alterar a gestão de impressoras predefinidas.
+
+Se ativar esta definição, o Windows não irá gerir a impressora predefinida.
+ 
+Se desativar esta definição, o Windows irá gerir a impressora predefinida.
+
+Se não configurar esta definição, a gestão de impressoras predefinidas não será alterada. </string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="CustomizedSupportUrl">
+        <text>Especifique o URL. Por exemplo, o URL deve ser: http://www.microsoft.com/portugal/suporte</text>
+        <textBox refId="CustomizedSupportUrl_Link">
+          <label>URL</label>
+        </textBox>
+      </presentation>
+      <presentation id="DomainPrinters">
+        <decimalTextBox defaultValue="20" refId="ADprinters">Número de impressoras de diretório</decimalTextBox>
+        <decimalTextBox defaultValue="0" refId="IPprinters">Número de impressoras TCP/IP</decimalTextBox>
+        <decimalTextBox defaultValue="0" refId="WSDprinters">Número de Impressoras de Serviços Web</decimalTextBox>
+        <decimalTextBox defaultValue="10" refId="Bluetoothprinters">Número de impressoras Bluetooth</decimalTextBox>
+        <decimalTextBox defaultValue="0" refId="Shareprinters">Número de impressoras partilhadas</decimalTextBox>
+      </presentation>
+      <presentation id="IntranetPrintersUrl">
+        <text>Ativar esta opção para adicionar um botão de pesquisa de impressoras da Internet</text>
+        <text>no Assistente para Adicionar Impressora. Utilize esta definição para permitir que os utilizadores procurem</text>
+        <text>impressoras na Intranet da empresa. Por exemplo, pode</text>
+        <text>especificar um URL como: http://www.empresas.com/impressoras.</text>
+        <text>Para ativar este opção, a caixa de edição que se segue não deve estar vazia.</text>
+        <textBox refId="IntranetPrintersUrl_Link">
+          <label>URL de página de impressoras</label>
+        </textBox>
+      </presentation>
+      <presentation id="NonDomainPrinters">
+        <decimalTextBox defaultValue="50" refId="IPprinters">Número de impressoras TCP/IP</decimalTextBox>
+        <decimalTextBox defaultValue="50" refId="WSDprinters">Número de Impressoras de Serviços Web</decimalTextBox>
+        <decimalTextBox defaultValue="10" refId="Bluetoothprinters">Número de impressoras Bluetooth</decimalTextBox>
+        <decimalTextBox defaultValue="50" refId="Shareprinters">Número de impressoras partilhadas</decimalTextBox>
+      </presentation>
+      <presentation id="PackagePointAndPrintServerList">
+        <listBox refId="PackagePointAndPrintServerList_Edit">Introduza nomes de servidor completamente qualificados</listBox>
+      </presentation>
+      <presentation id="PhysicalLocation">
+        <text>Introduza a localização deste computador</text>
+        <text>Por exemplo: Localidade/Edifício 2/1º andar/Sala 1800</text>
+        <textBox refId="PhysicalLocation_Name">
+          <label>Localização</label>
+        </textBox>
+      </presentation>
+      <presentation id="PointAndPrint_Restrictions">
+        <checkBox refId="PointAndPrint_TrustedServers_Chk">Os utilizadores apenas podem apontar e imprimir para estes servidores:</checkBox>
+        <textBox refId="PointAndPrint_TrustedServers_Edit">
+          <label>Introduza nomes de servidor completamente qualificados separados por ponto e vírgula</label>
+        </textBox>
+        <checkBox refId="PointAndPrint_TrustedForest_Chk">Os utilizadores apenas podem apontar e imprimir para computadores na sua floresta</checkBox>
+        <text/>
+        <text>Pedidos de Segurança:</text>
+        <dropdownList noSort="true" refId="PointAndPrint_NoWarningNoElevationOnInstall_Enum">Quando instalar controladores para uma nova ligação:</dropdownList>
+        <dropdownList noSort="true" refId="PointAndPrint_NoWarningNoElevationOnUpdate_Enum">Quando atualizar controladores para uma ligação existente:</dropdownList>
+        <text>Esta definição apenas se aplica a:</text>
+        <text>Windows Vista e posterior</text>
+      </presentation>
+      <presentation id="PrinterDirectorySearchScope">
+        <textBox refId="PrinterDirectorySearchScope_Name">
+          <label>Caminho predefinido do Active Directory</label>
+        </textBox>
+        <text>exemplo --&gt; LDAP://DC=Dominio1,DC=AMinhaEmpresa,DC=com.</text>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

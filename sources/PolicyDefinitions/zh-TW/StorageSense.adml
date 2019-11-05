@@ -1,0 +1,106 @@
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+<displayName>儲存空間感知器</displayName>
+<description>儲存空間感知器的 ADMX 檔案</description>
+<resources>
+    <stringTable>
+    <string id="StorageSense">儲存空間感知器</string>
+    <string id="SS_AllowStorageSenseGlobal">允許儲存空間感知器</string>
+    <string id="SS_AllowStorageSenseGlobal_Explain">
+儲存空間感知器可自動清除使用者的部分檔案來釋放磁碟空間。根據預設，儲存空間感知器會在電腦磁碟空間不足，且感知器設定為每當電腦出現儲存空間壓力時執行的條件下自動開啟。這項排程可透過進行 [儲存空間] 設定或設定「儲存空間感知器排程」群組原則變更。
+
+已啟用:
+電腦的儲存空間感知器會開啟，預設排程為「可用磁碟空間不足時」。使用者無法停用儲存空間感知器，但可以調整排程 (除非另有設定「儲存空間感知器排程」群組原則)。
+
+已停用:
+電腦的儲存空間感知器會關閉。使用者無法啟用儲存空間感知器。
+
+未設定:
+根據預設，除非使用者的磁碟空間不足或是使用者手動啟用，否則儲存空間感知器排程不會開啟。使用者可以在 [儲存空間] 設定中進行此設定。
+    </string>
+    <string id="SS_ConfigStorageSenseGlobalCadence">設定儲存空間感知器排程</string>
+    <string id="SS_ConfigStorageSenseGlobalCadence_Explain">
+儲存空間感知器可自動清除使用者的部分檔案來釋放磁碟空間。
+
+如果停用群組原則「允許儲存空間感知器」，則此原則不會有任何影響。
+
+已啟用:
+您必須提供想要的儲存空間感知器排程。支援的選項有: 每日、每週、每月和可用磁碟空間不足時。預設為 0 (可用磁碟空間不足時)。
+
+已停用或未設定:
+根據預設，儲存空間感知器排程會設定為「可用磁碟空間不足時」。使用者可以在 [儲存空間] 設定中進行此設定。
+    </string>
+    <string id="SS_StorageSenseGlobalCadence_Daily">每日</string>
+    <string id="SS_StorageSenseGlobalCadence_Weekly">每週</string>
+    <string id="SS_StorageSenseGlobalCadence_Monthly">每月</string>
+    <string id="SS_StorageSenseGlobalCadence_DuringLowFreeDiskSpace">可用磁碟空間不足時</string>
+    <string id="SS_AllowStorageSenseTemporaryFilesCleanup">允許儲存空間感知器暫存檔案清除</string>
+    <string id="SS_AllowStorageSenseTemporaryFilesCleanup_Explain">
+儲存空間感知器執行時，能夠將使用者的未使用暫存檔案刪除。
+
+如果停用群組原則「允許儲存空間感知器」，則此原則不會有任何影響。
+
+已啟用:
+儲存空間感知器會刪除使用者的未使用暫存檔案。使用者無法在 [儲存空間] 設定中停用此設定。
+
+已停用:
+儲存空間感知器不會刪除使用者的暫存檔案。使用者無法在 [儲存空間] 設定中啟用此設定。
+
+未設定:
+根據預設，儲存空間感知器會刪除使用者的暫存檔案。使用者可以在 [儲存空間] 設定中進行此設定。
+    </string>
+    <string id="SS_ConfigStorageSenseRecycleBinCleanupThreshold">設定儲存空間感知器資源回收筒清除閾值</string>
+    <string id="SS_ConfigStorageSenseRecycleBinCleanupThreshold_Explain">
+儲存空間感知器執行時，能夠將使用者資源回收筒中經過特定天數的未使用檔案刪除。
+
+如果停用群組原則「允許儲存空間感知器」，則此原則不會有任何影響。
+
+已啟用:
+您必須提供儲存空間感知器進行刪除前，檔案在資源回收筒中的最低使用期限閾值 (天)。支援的值為: 0 - 365。
+如果您將此值設為零，則儲存空間感知器將不會刪除使用者資源回收筒中的檔案。預設為 30 天。
+
+已停用或未設定:
+根據預設，儲存空間感知器會將使用者資源回收筒中，未使用超過 30 天的檔案刪除。使用者可以在 [儲存空間] 設定中進行此設定。
+    </string>
+    <string id="SS_ConfigStorageSenseDownloadsCleanupThreshold">設定儲存體儲存體下載清除閾值</string>
+    <string id="SS_ConfigStorageSenseDownloadsCleanupThreshold_Explain">
+儲存空間感知器執行時，能夠將使用者 [下載] 資料夾中經過特定天數的未使用檔案刪除。
+
+如果停用群組原則「允許儲存空間感知器」，則此原則不會有任何影響。
+
+已啟用:
+您必須提供儲存空間感知器進行刪除前，檔案在 [下載] 資料夾中的最低使用期限閾值 (天)。支援的值為: 0 - 365。
+如果您將此值設為零，則儲存空間感知器將不會刪除使用者 [下載] 資料夾中的檔案。預設為 0 (即永不刪除 [下載] 資料夾中的檔案)。
+
+已停用或未設定:
+根據預設，儲存空間感知器將不會刪除使用者 [下載] 資料夾中的檔案。使用者可以在 [儲存空間] 設定中進行此設定。
+    </string>
+    <string id="SS_ConfigStorageSenseCloudContentDehydrationThreshold">設定儲存空間感知器雲端內容凍結閾值</string>
+    <string id="SS_ConfigStorageSenseCloudContentDehydrationThreshold_Explain">
+儲存空間感知器執行時，能夠將特定天數內未開啟的雲端備份內容凍結。
+
+如果停用群組原則「允許儲存空間感知器」，則此原則不會有任何影響。
+
+已啟用:
+您必須提供儲存空間感知器進行凍結前，雲端檔案開啟後經過的天數。支援的值為: 0 - 365。
+如果您將此值設為零，則儲存空間感知器將不會凍結任何雲端備份內容。預設值為 0 (即一律不凍結雲端備份內容)。
+
+已停用或未設定:
+根據預設，儲存空間感知器不會凍結任何雲端備份內容。使用者可以在 [儲存空間] 設定中進行此設定。
+    </string>
+    </stringTable>
+    <presentationTable>
+    <presentation id="SS_ConfigStorageSenseGlobalCadence_Presentation">
+        <dropdownList refId="StorageSenseGlobalCadence" noSort="true" defaultItem="3">執行儲存空間感知器:</dropdownList>
+    </presentation>
+    <presentation id="SS_ConfigStorageSenseRecycleBinCleanupThreshold_Presentation">
+        <decimalTextBox refId="StorageSenseRecycleBinCleanupThreshold" defaultValue="30">儲存空間感知器進行刪除前，檔案在 [資源回收筒] 資料夾中的最短使用期限 (天)，0 代表永不刪除檔案:</decimalTextBox>
+    </presentation>
+    <presentation id="SS_ConfigStorageSenseDownloadsCleanupThreshold_Presentation">
+        <decimalTextBox refId="StorageSenseDownloadsCleanupThreshold" defaultValue="0">儲存空間感知器進行刪除前，檔案在 [下載] 資料夾中的最短使用期限 (天)，0 代表永不刪除檔案:</decimalTextBox>
+    </presentation>
+    <presentation id="SS_ConfigStorageSenseCloudContentDehydrationThreshold_Presentation">
+        <decimalTextBox refId="StorageSenseCloudContentDehydrationThreshold" defaultValue="0">儲存空間感知器進行凍結前，雲端備份檔案經過開啟後的天數 (0 代表永不凍結檔案):</decimalTextBox>
+    </presentation>
+    </presentationTable>
+</resources>
+</policyDefinitionResources>
