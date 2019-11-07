@@ -1,5 +1,5 @@
 stages:
-  build
+  - build
 
 build:
   script: tasks/build.ps1
