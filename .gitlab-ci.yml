@@ -2,4 +2,5 @@ stages:
   - build
 
 build:
+  stage : build
   script: powershell tasks/build.ps1
