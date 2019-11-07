@@ -6,6 +6,6 @@ build:
   stage : build
   script: powershell tasks/build.ps1
 
-test
+test:
   stage : test
-  script: powershell teste/GPOToolsUtility.tests.ps1
+  script: powershell tests/GPOToolsUtility.tests.ps1
