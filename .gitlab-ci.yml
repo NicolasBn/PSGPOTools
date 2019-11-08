@@ -4,8 +4,11 @@ stages:
 
 build:
   stage : build
-  script: powershell invoke-Pester -path tasks/build.ps1
+  script: tasks/build.ps1
 
 test:
   stage : test
-  script: powershell tests/GPOToolsUtility.tests.ps1
+  script: invoke-Pester -path tests/GPOToolsUtility.tests.ps1
+
+tags:
+  - windows
