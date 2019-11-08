@@ -190,7 +190,69 @@ Describe "Test GpoToolsAdmx class" {
     }
 }
 
-#Describe "Test GPOToolsADML class"
+Describe "Test GPOToolsADML class"{
+    Context "Test constructor method"{
+        $UICulture = [cultureinfo]::CurrentCulture
+        $ADMLFile = Get-Item -Path "..\sources\PolicyDefinitions\$UICulture\WindowsBackup.adml"
+        $ADMLPath = $ADMLFile.FullName
+        $StringTableTest = @{
+            # Warning to encoding script for special caractere
+            AllowOnlySystemBackup = 'Autoriser uniquement la sauvegarde du système'
+            DisallowLocallyAttachedStorageAsBackupTarget = 'Ne pas autoriser un périphérique de stockage connecté localement à faire office de cible de sauvegarde'
+            Backup = 'Sauvegarde'
+            windowscomponents = 'Composants Windows'
+        }
+
+        $ADML = [GPOToolsAdml]::new($ADMLPath)
+        It "Test GPOToolsADML type"{
+            $ADML -is [GPOToolsADML] | Should Be $true
+        }
+
+        It "Test GPOToolsADML properties"{
+            $ADML.FilePath | Should Be $ADMLPath
+            $ADML.BaseName | Should Be $ADMLFile.BaseName
+        }
+
+        It 'Test GPOToolsADML StringTable'{
+            $StringTableTest.GetEnumerator() | Foreach-Object {
+                $ADML.StringTable.ContainsKey($_.Key) | Should Be $true
+                $ADML.StringTable."$($_.Key)" | Should Be $_.Value
+            }
+        }
+    }
+}
+
+Describe "Test GPOToolsSupportedOn class" {
+    Context "Test method constructor" {
+        $ADMXFile = Get-Item -Path "..\sources\PolicyDefinitions\Windows.admx"
+        $ADMLFile = Get-Item -Path "..\sources\PolicyDefinitions\$([cultureinfo]::CurrentUICulture)\Windows.adml"
+        $ADMX = [GpoToolsAdmx]::new($ADMXFile)
+        $ADML = [GpoToolsAdml]::new($ADMLFile)
+        $Support = [GPOToolsSupportedOn]::new($ADMX.SupportedOnDefinition[0],$ADML)
+        $LoadAdm = [GPOToolsSupportedOn]::LoadAdmxAdml($ADMX,$ADML)
+        $TestSup = @(
+            [PScustomObject]@{
+                Name = 'SUPPORTED_AllowWebPrinting'
+                DisplayNamePattern = "Windows\s2000\sou\sversion\sultérieure,\sexécutant\sIIS.\sNon\spris\sen\scharge\spar\sWindows\sServer\s2003"
+            },
+            [PScustomObject]@{
+                Name = 'SUPPORTED_WindowsServer_And_XPproTo7'
+                DisplayNamePattern = "Windows\sServer\s2003\set\sles\sversions\sde\sWindows\sà\spartir\sde\sWindows\sXP\sProfessionnel\sjusqu'à\sWindows\s7\."
+            }
+        )
+
+
+        It "Test constructor method"{
+            $Support -is [GPOToolsSupportedOn] | Should be $true
+            $Support.Name | Should be 'SUPPORTED_AllowWebPrinting'
+            $Support.DisplayName -match "Windows\s2000\sou\sversion\sultérieure,\sexécutant\sIIS.\sNon\spris\sen\scharge\spar\sWindows\sServer\s2003" | should be $true
+        }
+
+        It "Test LoadAdmxAdml static method" {
+
+        }
+    }
+}
 
 Describe "Test GPOToolsUtility class" {
     Context "Test static method" {
@@ -221,5 +283,7 @@ Describe "Test GPOToolsUtility class" {
             $null -eq [GPOToolsUtility]::Policies | Should Be $true
             $null -eq [GPOToolsUtility]::TargetLoad | Should Be $true
         }
+
+        [GpotoolsUtility]::InitiateAdmxAdml($ADMXFile,[cultureinfo]::CurrentCulture)
     }
 }
