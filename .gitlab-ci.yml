@@ -4,7 +4,7 @@ stages:
 
 build:
   stage : build
-  script: powershell tasks/build.ps1
+  script: powershell invoke-Pester -path tasks/build.ps1
 
 test:
   stage : test
