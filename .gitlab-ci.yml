@@ -10,6 +10,10 @@ build:
 
 test:
   stage : test
-  script: invoke-Pester -path tests/GPOToolsUtility.tests.ps1
+  script:
+  - $Result = invoke-Pester -path tests/GPOToolsUtility.tests.ps1 -PassThru
+  - if ($Result.FailedCount -ne 0){
+  - Throw ("{0} Test Failed" -f $Result.FailedCount)
+  - }
   tags:
   - PowerShell
