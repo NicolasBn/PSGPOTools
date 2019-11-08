@@ -2,7 +2,7 @@ class GPOToolsUtility {
     static [System.Collections.Generic.List[GpoToolsSupportedOn]]$SupportOnTable
     static [System.Collections.Generic.List[GpoToolsCategory]]$Categories
     static [System.Collections.Generic.List[GpoToolsPolicy]]$Policies
-    static [System.Collections.ArrayList]$TargetLoad
+    static [System.Collections.ArrayList]$TargetLoad = @()
 
     static [void]InitiateAdmxAdml(
         [System.IO.DirectoryInfo]$Folder,
@@ -33,7 +33,7 @@ class GPOToolsUtility {
         [cultureinfo]$UICulture
     ){
         if((Test-Path -Path $File.FullName) -and ($File.Name -Like '*.admx')){
-            If (![GPOToolsUtility]::TargetLoad.Contains($File.BaseName)){
+            If (![GPOToolsUtility]::TargetLoad.Contains([GPOToolsUtility]::GetNamespaceAdmx($File))){
                 Write-Verbose "Initialization of $File"
                 #Création de l'objet ADMX
                 $ADMX = [GpoToolsAdmx]::New($File.FullName)
@@ -48,12 +48,11 @@ class GPOToolsUtility {
                 $ADML = [GpoToolsAdml]::New($ADMLPath)
 
                 #On crée les objets SupportedOn
-                $Support = [GPOToolsSupportedOn]::New($ADMX,$ADML)
+                $Support = $ADMX.SupportedOnDefinition | Foreach-Object { [GPOToolsSupportedOn]::New($_,$ADML) }
 
                 #On crée les objets Category
 
                 #On crée les objet Policy
-
 
                 #On incrémente les objets dans les propriétés statiques
                 $Support | Foreach-Object {[GPOToolsutility]::SupportOnTable.Add($_)}
@@ -67,6 +66,12 @@ class GPOToolsUtility {
         }
     }
 
+    static [string]GetNamespaceAdmx(
+        [System.IO.FileInfo]$AdmxFile
+    ){
+        [xml]$Xml = Get-Content -Path $AdmxFile.FullName -Encoding UTF8
+        return $Xml.policyDefinitions.policyNamespaces.target.namespace
+    }
     static [string]GetADMLPathFromADMX(
         [System.IO.FileInfo]$AdmxFile,
         [cultureinfo]$UICulture
@@ -105,8 +110,7 @@ class GPOToolsUtility {
         $FolderPath = Split-Path -Path $Path
         $Files = Get-ChildItem -Path $FolderPath -Filter *.admx -Exclude $Path.Name
         $File = $Files | Foreach-Object {
-            [xml]$Content = Get-Content -Path $_.FullName -Encoding UTF8
-            if($Content.policyDefinitions.policyNamespaces.target.namespace -eq $namespace){
+            if([GPOToolsUtility]::GetNamespaceAdmx($_) -eq $namespace){
                 $_
             }
         }
@@ -153,13 +157,14 @@ class GPOToolsSupportedOn {
         $this.DisplayName = $Adml.StringTable."$($Support.DisplayName)"
     }
 
-    [void]LoadAdmxAdml(
+    static [Array]LoadAdmxAdml(
         [GpoToolsAdmx]$Admx,
         [GpoToolsAdml]$Adml
     ){
-        $Admx.SupportedOnDefinition | Foreach-Object {
+        $Result = $Admx.SupportedOnDefinition | Foreach-Object {
             [GPOToolsSupportedOn]::New($_,$Adml)
         }
+        return $Result
     }
 }
 <#
@@ -312,7 +317,8 @@ class GpoToolsAdml {
         $This.BaseName = $File.BaseName
         $this.StringTable = @{}
 
-        $xml.policyDefinitionResources.resources.StringTable.string | Foreach-Object {
+        $xml.policyDefinitionResources.resources.stringTable.string | Foreach-Object {
+            Write-Verbose ('Ajout du champ {0} dans la table StringTable pour le fichier {1}' -f $_.id,$File.BaseName)
             $this.StringTable.Add($_.id,$_.'#Text')
         }
     }
