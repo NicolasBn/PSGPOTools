@@ -6,12 +6,10 @@ build:
   stage : build
   script: tasks/build.ps1
   tags:
-  - windows
-  - powershell
+  - PowerShell
 
 test:
   stage : test
   script: invoke-Pester -path tests/GPOToolsUtility.tests.ps1
   tags:
-  - windows
-  - powershell
+  - PowerShell
