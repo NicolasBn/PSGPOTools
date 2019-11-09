@@ -192,8 +192,8 @@ Describe "Test GpoToolsAdmx class" {
 
 Describe "Test GPOToolsADML class"{
     Context "Test constructor method"{
-        $UICulture = [cultureinfo]::CurrentCulture
-        $ADMLFile = Get-Item -Path "..\sources\PolicyDefinitions\$UICulture\WindowsBackup.adml"
+        $Culture = [cultureinfo]'fr-FR'
+        $ADMLFile = Get-Item -Path "..\sources\PolicyDefinitions\$Culture\WindowsBackup.adml"
         $ADMLPath = $ADMLFile.FullName
         $StringTableTest = @{
             # Warning to encoding script for special caractere
@@ -224,8 +224,9 @@ Describe "Test GPOToolsADML class"{
 
 Describe "Test GPOToolsSupportedOn class" {
     Context "Test method constructor" {
+        $Culture = [cultureinfo]'fr-FR'
         $ADMXFile = Get-Item -Path "..\sources\PolicyDefinitions\Windows.admx"
-        $ADMLFile = Get-Item -Path "..\sources\PolicyDefinitions\$([cultureinfo]::CurrentUICulture)\Windows.adml"
+        $ADMLFile = Get-Item -Path "..\sources\PolicyDefinitions\$Culture\Windows.adml"
         $ADMX = [GpoToolsAdmx]::new($ADMXFile)
         $ADML = [GpoToolsAdml]::new($ADMLFile)
         $Support = [GPOToolsSupportedOn]::new($ADMX.SupportedOnDefinition[0],$ADML)
@@ -256,6 +257,7 @@ Describe "Test GPOToolsSupportedOn class" {
 
 Describe "Test GPOToolsUtility class" {
     Context "Test static method" {
+        $Culture = [cultureinfo]'fr-FR'
         $ADMXFile = Get-Item -Path "..\sources\PolicyDefinitions\WindowsBackup.admx"
         $ADMXPath = $ADMXFile.FullName
         $ParentPath = Split-Path -Path $ADMXPath
@@ -263,9 +265,9 @@ Describe "Test GPOToolsUtility class" {
         #$Dep2 = [GPOToolsUtility]::FindDependancyFile($ADMXPath,'Microsoft.Policies.Backup') # Dependancy not found
         $Dep2 = [GPOToolsUtility]::FindDependancyFile($ADMXPath,'Microsoft.Policies.Server')
 
-        $AdmlPath = [GPOToolsUtility]::GetADMLPathFromADMX($ADMXFile,[cultureinfo]::CurrentCulture)
+        $AdmlPath = [GPOToolsUtility]::GetADMLPathFromADMX($ADMXFile,$Culture)
         It "Test GetADMLPathFromADMX"{
-            $AdmlPath | Should be "$ParentPath\$([cultureinfo]::CurrentCulture)\WindowsBackup.adml"
+            $AdmlPath | Should be "$ParentPath\$Culture)\WindowsBackup.adml"
         }
 
         It "Test FindDependancyFile"{
@@ -284,6 +286,6 @@ Describe "Test GPOToolsUtility class" {
             [GPOToolsUtility]::TargetLoad | Should BeNullOrEmpty
         }
 
-        #[GpotoolsUtility]::InitiateAdmxAdml($ADMXFile,[cultureinfo]::CurrentCulture)
+        #[GpotoolsUtility]::InitiateAdmxAdml($ADMXFile,$Culture)
     }
 }
