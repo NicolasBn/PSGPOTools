@@ -278,12 +278,12 @@ Describe "Test GPOToolsUtility class" {
 
         It "Test RemoveAll"{
             [GPOToolsUtility]::RemoveAll()
-            $null -eq [GPOToolsUtility]::SupportOnTable | Should Be $true
-            $null -eq [GPOToolsUtility]::Categories | Should Be $true
-            $null -eq [GPOToolsUtility]::Policies | Should Be $true
-            $null -eq [GPOToolsUtility]::TargetLoad | Should Be $true
+            [GPOToolsUtility]::SupportOnTable.count | Should Be 0
+            [GPOToolsUtility]::Categories.count | Should Be 0
+            [GPOToolsUtility]::Policies.count | Should Be 0
+            [GPOToolsUtility]::TargetLoad.count | Should Be 0
         }
 
-        [GpotoolsUtility]::InitiateAdmxAdml($ADMXFile,[cultureinfo]::CurrentCulture)
+        #[GpotoolsUtility]::InitiateAdmxAdml($ADMXFile,[cultureinfo]::CurrentCulture)
     }
 }
