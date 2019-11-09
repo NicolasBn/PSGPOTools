@@ -133,11 +133,14 @@ class GPOToolsUtility {
     }
 
     static [void]RemoveAll(){
-        @([GPOToolsUtility]::SupportOnTable,[GPOToolsUtility]::Categories,[GPOToolsUtility]::Policies,[GPOToolsUtility]::TargetLoad) | ForEach-Object {
-            if ($_.count -eq 0){
-                Write-Verbose "$_ is already empty"
+        foreach($Property in @([GPOToolsUtility]::SupportOnTable,[GPOToolsUtility]::Categories,[GPOToolsUtility]::Policies,[GPOToolsUtility]::TargetLoad) ){
+
+            if ($Property.count -eq 0){
+                Write-Verbose "$Property is already empty"
             }Else{
-                $_::RemoveAll()
+                $Property | Foreach-Object {
+                    $Property.Remove($_)
+                }
             }
         }
     }
