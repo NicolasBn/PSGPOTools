@@ -267,7 +267,7 @@ Describe "Test GPOToolsUtility class" {
 
         $AdmlPath = [GPOToolsUtility]::GetADMLPathFromADMX($ADMXFile,$Culture)
         It "Test GetADMLPathFromADMX"{
-            $AdmlPath | Should be "$ParentPath\$Culture)\WindowsBackup.adml"
+            $AdmlPath | Should be "$ParentPath\$Culture\WindowsBackup.adml"
         }
 
         It "Test FindDependancyFile"{
