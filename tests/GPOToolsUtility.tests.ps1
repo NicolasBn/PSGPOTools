@@ -233,11 +233,11 @@ Describe "Test GPOToolsSupportedOn class" {
         $TestSup = @(
             [PScustomObject]@{
                 Name = 'SUPPORTED_AllowWebPrinting'
-                DisplayNamePattern = "Windows\s2000\sou\sversion\sultérieure,\sexécutant\sIIS.\sNon\spris\sen\scharge\spar\sWindows\sServer\s2003"
+                DisplayNamePattern = "Windows\s2000\sou\sversion\sult\xE9rieure,\sex\xE9cutant\sIIS.\sNon\spris\sen\scharge\spar\sWindows\sServer\s2003"
             },
             [PScustomObject]@{
                 Name = 'SUPPORTED_WindowsServer_And_XPproTo7'
-                DisplayNamePattern = "Windows\sServer\s2003\set\sles\sversions\sde\sWindows\sà\spartir\sde\sWindows\sXP\sProfessionnel\sjusqu'à\sWindows\s7\."
+                DisplayNamePattern = "Windows\sServer\s2003\set\sles\sversions\sde\sWindows\s\xE0\spartir\sde\sWindows\sXP\sProfessionnel\sjusqu'\xE0\sWindows\s7\."
             }
         )
 
@@ -245,7 +245,7 @@ Describe "Test GPOToolsSupportedOn class" {
         It "Test constructor method"{
             $Support -is [GPOToolsSupportedOn] | Should be $true
             $Support.Name | Should be 'SUPPORTED_AllowWebPrinting'
-            $Support.DisplayName -match "Windows\s2000\sou\sversion\sultérieure,\sexécutant\sIIS.\sNon\spris\sen\scharge\spar\sWindows\sServer\s2003" | should be $true
+            $Support.DisplayName -match "Windows\s2000\sou\sversion\sult\xE9rieure,\sex\xE9cutant\sIIS.\sNon\spris\sen\scharge\spar\sWindows\sServer\s2003" | should be $true
         }
 
         It "Test LoadAdmxAdml static method" {
