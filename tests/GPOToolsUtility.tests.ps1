@@ -244,8 +244,8 @@ Describe "Test GPOToolsSupportedOn class" {
 
         It "Test constructor method"{
             $Support -is [GPOToolsSupportedOn] | Should be $true
-            $Support.Name | Should be 'SUPPORTED_AllowWebPrinting'
-            $Support.DisplayName -match "Windows\s2000\sou\sversion\sult\xE9rieure,\sex\xE9cutant\sIIS.\sNon\spris\sen\scharge\spar\sWindows\sServer\s2003" | should be $true
+            $Support.Name | Should Be 'SUPPORTED_AllowWebPrinting'
+            $Support.DisplayName | should Match "Windows\s2000\sou\sversion\sult\xE9rieure,\sex\xE9cutant\sIIS.\sNon\spris\sen\scharge\spar\sWindows\sServer\s2003"
         }
 
         It "Test LoadAdmxAdml static method" {
@@ -278,10 +278,10 @@ Describe "Test GPOToolsUtility class" {
 
         It "Test RemoveAll"{
             [GPOToolsUtility]::RemoveAll()
-            [GPOToolsUtility]::SupportOnTable.count | Should Be 0
-            [GPOToolsUtility]::Categories.count | Should Be 0
-            [GPOToolsUtility]::Policies.count | Should Be 0
-            [GPOToolsUtility]::TargetLoad.count | Should Be 0
+            [GPOToolsUtility]::SupportOnTable | Should BeNullOrEmpty
+            [GPOToolsUtility]::Categories | Should BeNullOrEmpty
+            [GPOToolsUtility]::Policies | Should BeNullOrEmpty
+            [GPOToolsUtility]::TargetLoad | Should BeNullOrEmpty
         }
 
         #[GpotoolsUtility]::InitiateAdmxAdml($ADMXFile,[cultureinfo]::CurrentCulture)
