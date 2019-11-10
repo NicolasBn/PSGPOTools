@@ -250,7 +250,55 @@ Describe "Test GPOToolsSupportedOn class" {
         }
 
         It "Test LoadAdmxAdml static method" {
+            $LoadAdm | Should BeOfType System.Array
+            for ($i = 0 ; $i -lt $TestSup.count; $i++){
+                $LoadAdm[$i].Name | Should be $TestSup[$i].Name
+                $LoadAdm[$i].DisplayName | Should be $TestSup[$i].DisplayName
+            }
+        }
+    }
+}
 
+Describe "Test GPOToolsCategory class" {
+    Context "Test method constructor" {
+        $Culture = [cultureinfo]'fr-FR'
+        $ADMXFile = Get-Item -Path "..\sources\PolicyDefinitions\Windows.admx"
+        $ADMLFile = Get-Item -Path "..\sources\PolicyDefinitions\$Culture\Windows.adml"
+        $ADMX = [GpoToolsAdmx]::new($ADMXFile)
+        $ADML = [GpoToolsAdml]::new($ADMLFile)
+        $Support = [GPOToolsCategory]::new($ADMX.Categories[0],$ADMX.Categories,$ADML)
+        $LoadAdm = [GPOToolsCategory]::LoadAdmxAdml($ADMX,$ADML)
+        $CatTab = @(
+            [PScustomObject]@{
+                Name = 'System'
+                DisplayNamePattern = "Syst\xE8me"
+                ExplainText = 'Autorise\sla\sconfiguration\sde\sdivers\sparam\xE8tres\sde\scomposants\ssyst\xE8me.'
+            },
+            [PScustomObject]@{
+                Name = 'InternetManagement'
+                DisplayNamePattern = "Gestion\sde\sla\scommunication\sInternet"
+            }
+        )
+
+        It "Test constructor method"{
+            $Support -is [GPOToolsCategory] | Should be $true
+            $Support.Name | Should Be $TestSup[0].Name
+            $Support.DisplayName | should Match $TestSup[0].DisplayName
+        }
+
+        It "Test LoadAdmxAdml static method" {
+            $LoadAdm | Should BeOfType System.Array
+            for ($i = 0 ; $i -lt $LoadAdm.count; $i++){
+                $LoadAdm[$i].Name | Should be $CatTab[$i].Name
+                $LoadAdm[$i].DisplayName | Should be $CatTab[$i].DisplayName
+                if($null -eq $CatTab[$i].ExplainText){
+                    $LoadAdm[$i].ExplainText | Should be $CatTab[$i].ExplainText
+                }
+                if($null -eq $CatTab[$i].ParentCategory){
+                    $LoadAdm[$i].ParentCategory | Should BeOfType GPOToolsCategory
+                    $LoadAdm[$i].ParentCategory.Name | Should be $CatTab[$i].ParentCategoryName
+                }
+            }
         }
     }
 }

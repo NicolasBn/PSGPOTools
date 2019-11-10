@@ -51,11 +51,13 @@ class GPOToolsUtility {
                 $Support = $ADMX.SupportedOnDefinition | Foreach-Object { [GPOToolsSupportedOn]::New($_,$ADML) }
 
                 #On crée les objets Category
+                $Cat = $ADMX.Categories | Foreach-Object { [GPOToolsCategory]::New($_,$ADML) }
 
                 #On crée les objet Policy
 
                 #On incrémente les objets dans les propriétés statiques
                 $Support | Foreach-Object {[GPOToolsutility]::SupportOnTable.Add($_)}
+                $Cat | ForEach-Object {[GPOToolsutility]::Categories.Add($_)}
                 [GPOToolsutility]::TargetLoad.Add($ADMX.Target.namespace)
 
             }Else{
@@ -133,7 +135,7 @@ class GPOToolsUtility {
     }
 
     static [void]RemoveAll(){
-        foreach($Property in @([GPOToolsUtility]::SupportOnTable,[GPOToolsUtility]::Categories,[GPOToolsUtility]::Policies,[GPOToolsUtility]::TargetLoad) ){
+        foreach($Property in @([GPOToolsUtility]::SupportOnTable,[GPOToolsUtility]::Categories,[GPOToolsUtility]::Policies,[GPOToolsUtility]::TargetLoad,[GPOToolsCategory]::AllParentCategory) ){
 
             if ($Property.count -eq 0){
                 Write-Verbose "$Property is already empty"
@@ -181,7 +183,84 @@ class GPOToolsSupportedOnProduct : GPOToolsSupportedOn {
 #>
 #Classe Category
 class GPOToolsCategory {
+    [string]$Name
+    [string]$DisplayName
+    [string]$ExplainText
+    [GPOToolsCategory]$ParentCategory
 
+    static hidden [System.Collections.Generic.List[GpoToolsCategory]]$AllParentCategory = @()
+
+    GPOToolsCategory(
+        [AdmxCategory]$Category,
+        [System.Collections.ArrayList]$AllCat,
+        [GpoToolsAdml]$Adml
+    ){
+
+        if ([GPOToolsCategory]::AllParentCategory.Name -notcontains $Category.Name){
+            Write-Verbose "[GPOToolsCategory]Loading of $($Category.Name) Category"
+            $this.Name = $Category.Name
+            $this.DisplayName = $Adml.StringTable."$($Category.DisplayName)"
+            if ($null -ne $Category.explainText){
+                $this.ExplainText = $Adml.StringTable."$($Category.ExplainText)"
+            }
+
+            #Gestion du Parent
+            if ($null -ne $Category.ParentCategoryName){
+                $this.ParentCategory = [GPOToolsCategory]::FindParentCategory($Category,$AllCat,$Adml)
+            }Else{
+                Write-Verbose "[GPOToolsCategory] $($Category.Name) Category doesn't have parent"
+            }
+            [GPOToolsCategory]::AllParentCategory.Add($this)
+
+        }Else{
+            Write-Verbose "[GPOToolsCategory] $($Category.Name) Category is already load"
+            $Cat = [GPOToolsCategory]::AllParentCategory | Where-Object {$_.Name -eq $Category.Name}
+            $this.Name = $Cat.Name
+            $this.DisplayName = $Cat.DisplayName
+            if ($null -ne $Cat.explainText){
+                $this.ExplainText = $Cat.explainText
+            }
+            if ($null -ne $Cat.ParentCategory){
+                $this.ParentCategory = $Cat.ParentCategory
+            }
+
+        }
+    }
+
+    static [GPOToolsCategory]FindParentCategory(
+        [AdmxCategory]$Cat,
+        [AdmxCategory[]]$Categories,
+        [GpoToolsAdml]$Adml
+    ){
+        $ParentCat = [GPOToolsCategory]::AllParentCategory | Where-Object {$_.Name -eq $Cat.ParentCategoryName}
+        if ($null -eq $ParentCat.count){
+            Write-Verbose "[GPOToolsCategory](FindParentCategory) No ParentCategory found for $($Cat.Name) in [GPOToolsCategory]::AllParentCategory static property"
+            if($Categories.Name -contains $Cat.ParentCategoryName){
+                $ParentCat = $Categories.Name | Where-Object {$_.Name -eq $Category.ParentCategoryName}
+                if ($ParentCat -eq 1) {
+                    return [GPOToolsCategory]::New($ParentCat,$Categories,$Adml)
+                }Else{
+                    Throw "[GPOToolsCategory](FindParentCategory) To many ParentCategory found for $($Cat.Name) in ADMX file"
+                }
+            }Else{
+                throw ('[GPOToolsCategory](FindParentCategory) No category parent {0} found for {1} category in [GPOToolsCategory]::AllParentCategory static property and ADMX file' -f $Cat.ParentCategoryName,$Cat.Name)
+            }
+        }ElseIf($ParentCat.count -ge 2){
+            Throw "[GPOToolsCategory](FindParentCategory) To many ParentCategory found for $($Cat.Name)"
+        }Else{
+            return $ParentCat
+        }
+    }
+
+    static [Array]LoadAdmxAdml(
+        [GpoToolsAdmx]$Admx,
+        [GpoToolsAdml]$Adml
+    ){
+        $Result = $Admx.Categories | Foreach-Object {
+            [GPOToolsCategory]::New($_,$Admx.Categories,$Adml)
+        }
+        return $Result
+    }
 }
 
 #Classe Policy
