@@ -135,7 +135,7 @@ class GPOToolsUtility {
     }
 
     static [void]RemoveAll(){
-        foreach($Property in @([GPOToolsUtility]::SupportOnTable,[GPOToolsUtility]::Categories,[GPOToolsUtility]::Policies,[GPOToolsUtility]::TargetLoad,[GPOToolsCategory]::AllParentCategory) ){
+        foreach($Property in @([GPOToolsUtility]::SupportOnTable,[GPOToolsUtility]::Categories,[GPOToolsUtility]::Policies,[GPOToolsUtility]::TargetLoad) ){
 
             if ($Property.count -eq 0){
                 Write-Verbose "$Property is already empty"
@@ -145,6 +145,7 @@ class GPOToolsUtility {
                 }
             }
         }
+        [GPOToolsCategory]::AllParentCategory.Clear()
     }
 
 }# End GPOToolsUtility
@@ -195,26 +196,38 @@ class GPOToolsCategory {
         [System.Collections.ArrayList]$AllCat,
         [GpoToolsAdml]$Adml
     ){
+        if ([GPOToolsUtility]::Categories.Name -notcontains $Category.Name){
+            if ([GPOToolsCategory]::AllParentCategory.Name -notcontains $Category.Name){
+                Write-Verbose "[GPOToolsCategory]Loading of $($Category.Name) Category"
+                $this.Name = $Category.Name
+                $this.DisplayName = $Adml.StringTable."$($Category.DisplayName)"
+                if ($null -ne $Category.explainText){
+                    $this.ExplainText = $Adml.StringTable."$($Category.ExplainText)"
+                }
 
-        if ([GPOToolsCategory]::AllParentCategory.Name -notcontains $Category.Name){
-            Write-Verbose "[GPOToolsCategory]Loading of $($Category.Name) Category"
-            $this.Name = $Category.Name
-            $this.DisplayName = $Adml.StringTable."$($Category.DisplayName)"
-            if ($null -ne $Category.explainText){
-                $this.ExplainText = $Adml.StringTable."$($Category.ExplainText)"
-            }
+                #Gestion du Parent
+                if ($null -ne $Category.ParentCategoryName){
+                    $this.ParentCategory = [GPOToolsCategory]::FindParentCategory($Category,$AllCat,$Adml)
+                }Else{
+                    Write-Verbose "[GPOToolsCategory] $($Category.Name) Category doesn't have parent"
+                }
+                [GPOToolsCategory]::AllParentCategory.Add($this)
 
-            #Gestion du Parent
-            if ($null -ne $Category.ParentCategoryName){
-                $this.ParentCategory = [GPOToolsCategory]::FindParentCategory($Category,$AllCat,$Adml)
             }Else{
-                Write-Verbose "[GPOToolsCategory] $($Category.Name) Category doesn't have parent"
+                Write-Verbose "[GPOToolsCategory] $($Category.Name) Category is already load"
+                $Cat = [GPOToolsCategory]::AllParentCategory | Where-Object {$_.Name -eq $Category.Name}
+                $this.Name = $Cat.Name
+                $this.DisplayName = $Cat.DisplayName
+                if ($null -ne $Cat.explainText){
+                    $this.ExplainText = $Cat.explainText
+                }
+                if ($null -ne $Cat.ParentCategory){
+                    $this.ParentCategory = $Cat.ParentCategory
+                }
             }
-            [GPOToolsCategory]::AllParentCategory.Add($this)
-
         }Else{
-            Write-Verbose "[GPOToolsCategory] $($Category.Name) Category is already load"
-            $Cat = [GPOToolsCategory]::AllParentCategory | Where-Object {$_.Name -eq $Category.Name}
+            Write-Verbose "[GPOToolsCategory] $($Category.Name) Category is already load in [GPOToolsUtility]::Categories"
+            $Cat = [GPOToolsUtility]::Categories | Where-Object {$_.Name -eq $Category.Name}
             $this.Name = $Cat.Name
             $this.DisplayName = $Cat.DisplayName
             if ($null -ne $Cat.explainText){
@@ -223,7 +236,6 @@ class GPOToolsCategory {
             if ($null -ne $Cat.ParentCategory){
                 $this.ParentCategory = $Cat.ParentCategory
             }
-
         }
     }
 
@@ -260,6 +272,7 @@ class GPOToolsCategory {
             [GPOToolsCategory]::New($_,$Admx.Categories,$Adml)
         }
         return $Result
+        #[GPOToolsCategory]::AllParentCategory.Clear()
     }
 }
 

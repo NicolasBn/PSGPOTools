@@ -237,8 +237,8 @@ Describe "Test GPOToolsSupportedOn class" {
                 DisplayNamePattern = "Windows\s2000\sou\sversion\sult\xE9rieure,\sex\xE9cutant\sIIS.\sNon\spris\sen\scharge\spar\sWindows\sServer\s2003"
             },
             [PScustomObject]@{
-                Name = 'SUPPORTED_WindowsServer_And_XPproTo7'
-                DisplayNamePattern = "Windows\sServer\s2003\set\sles\sversions\sde\sWindows\s\xE0\spartir\sde\sWindows\sXP\sProfessionnel\sjusqu'\xE0\sWindows\s7\."
+                Name = 'SUPPORTED_IE6SP1'
+                DisplayNamePattern = "Au\sminimum\sInternet\sExplorer\s6\sService\sPack\s1"
             }
         )
 
@@ -250,10 +250,11 @@ Describe "Test GPOToolsSupportedOn class" {
         }
 
         It "Test LoadAdmxAdml static method" {
-            $LoadAdm | Should BeOfType System.Array
+            $LoadAdm.Gettype().BaseType.Name | Should Be 'Array'
+            $LoadAdm | Should BeOfType System.Object
             for ($i = 0 ; $i -lt $TestSup.count; $i++){
                 $LoadAdm[$i].Name | Should be $TestSup[$i].Name
-                $LoadAdm[$i].DisplayName | Should be $TestSup[$i].DisplayName
+                $LoadAdm[$i].DisplayName | Should Match $TestSup[$i].DisplayNamePattern
             }
         }
     }
@@ -282,20 +283,21 @@ Describe "Test GPOToolsCategory class" {
 
         It "Test constructor method"{
             $Support -is [GPOToolsCategory] | Should be $true
-            $Support.Name | Should Be $TestSup[0].Name
-            $Support.DisplayName | should Match $TestSup[0].DisplayName
+            $Support.Name | Should Be $CatTab[0].Name
+            $Support.DisplayName | should Match $CatTab[0].DisplayNamePattern
+            $Support.ExplainText | should Match $CatTab[0].ExplainText
         }
 
         It "Test LoadAdmxAdml static method" {
-            $LoadAdm | Should BeOfType System.Array
-            for ($i = 0 ; $i -lt $LoadAdm.count; $i++){
+            $LoadAdm.Gettype().BaseType.Name | Should Be 'Array'
+            for ($i = 0 ; $i -lt $CatTab.count; $i++){
                 $LoadAdm[$i].Name | Should be $CatTab[$i].Name
-                $LoadAdm[$i].DisplayName | Should be $CatTab[$i].DisplayName
-                if($null -eq $CatTab[$i].ExplainText){
-                    $LoadAdm[$i].ExplainText | Should be $CatTab[$i].ExplainText
+                $LoadAdm[$i].DisplayName | Should Match $CatTab[$i].DisplayNamePattern
+                if($null -ne $CatTab[$i].ExplainText){
+                    $LoadAdm[$i].ExplainText | Should Match $CatTab[$i].ExplainText
                 }
-                if($null -eq $CatTab[$i].ParentCategory){
-                    $LoadAdm[$i].ParentCategory | Should BeOfType GPOToolsCategory
+                if($null -ne $CatTab[$i].ParentCategory){
+                    $LoadAdm[$i].ParentCategory -is [GPOToolsCategory] | Should Be $true
                     $LoadAdm[$i].ParentCategory.Name | Should be $CatTab[$i].ParentCategoryName
                 }
             }
@@ -310,7 +312,6 @@ Describe "Test GPOToolsUtility class" {
         $ADMXPath = $ADMXFile.FullName
         $ParentPath = Split-Path -Path $ADMXPath
         $Dep1 = [GPOToolsUtility]::FindDependancyFile($ADMXPath,'Microsoft.Policies.Windows')
-        #$Dep2 = [GPOToolsUtility]::FindDependancyFile($ADMXPath,'Microsoft.Policies.Backup') # Dependancy not found
         $Dep2 = [GPOToolsUtility]::FindDependancyFile($ADMXPath,'Microsoft.Policies.Server')
 
         $AdmlPath = [GPOToolsUtility]::GetADMLPathFromADMX($ADMXFile,$Culture)
