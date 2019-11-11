@@ -326,6 +326,10 @@ Describe "Test GPOToolsUtility class" {
             $Dep2.FullName | Should Be "$ParentPath\WindowsServer.admx"
         }
 
+        It "Test FindDependancyFile fail"{
+            {[GPOToolsUtility]::FindDependancyFile($ADMXPath,'Microsoft.Policies.Backup')} | Should Throw "No dependancy file found for Microsoft.Policies.Backup"
+        }
+
         It "Test RemoveAll"{
             [GPOToolsUtility]::RemoveAll()
             [GPOToolsUtility]::SupportOnTable | Should BeNullOrEmpty
