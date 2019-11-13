@@ -1,7 +1,7 @@
 class GPOToolsUtility {
-    static [System.Collections.Generic.List[GpoToolsSupportedOn]]$SupportOnTable
-    static [System.Collections.Generic.List[GpoToolsCategory]]$Categories
-    static [System.Collections.Generic.List[GpoToolsPolicy]]$Policies
+    static [System.Collections.Generic.List[GpoToolsSupportedOn]]$SupportOnTable = @()
+    static [System.Collections.Generic.List[GpoToolsCategory]]$Categories = @()
+    static [System.Collections.Generic.List[GpoToolsPolicy]]$Policies = @()
     static [System.Collections.ArrayList]$TargetLoad = @()
 
     static [void]InitiateAdmxAdml(
@@ -51,13 +51,17 @@ class GPOToolsUtility {
                 $Support = $ADMX.SupportedOnDefinition | Foreach-Object { [GPOToolsSupportedOn]::New($_,$ADML) }
 
                 #On crée les objets Category
-                $Cat = $ADMX.Categories | Foreach-Object { [GPOToolsCategory]::New($_,$ADML) }
+                $Cat = [GPOToolsCategory]::LoadAdmxAdml($Admx,$Adml)
 
                 #On crée les objet Policy
 
                 #On incrémente les objets dans les propriétés statiques
-                $Support | Foreach-Object {[GPOToolsutility]::SupportOnTable.Add($_)}
-                $Cat | ForEach-Object {[GPOToolsutility]::Categories.Add($_)}
+                if ($Support.count -gt 0){
+                    $Support | Foreach-Object {[GPOToolsutility]::SupportOnTable.Add($_)}
+                }
+                if ($Cat.count -gt 0){
+                    $Cat | ForEach-Object {[GPOToolsutility]::Categories.Add($_)}
+                }
                 [GPOToolsutility]::TargetLoad.Add($ADMX.Target.namespace)
 
             }Else{
@@ -135,17 +139,9 @@ class GPOToolsUtility {
     }
 
     static [void]RemoveAll(){
-        foreach($Property in @([GPOToolsUtility]::SupportOnTable,[GPOToolsUtility]::Categories,[GPOToolsUtility]::Policies,[GPOToolsUtility]::TargetLoad) ){
-
-            if ($Property.count -eq 0){
-                Write-Verbose "$Property is already empty"
-            }Else{
-                $Property | Foreach-Object {
-                    $Property.Remove($_)
-                }
-            }
+        foreach($Property in @([GPOToolsUtility]::SupportOnTable,[GPOToolsUtility]::Categories,[GPOToolsUtility]::Policies,[GPOToolsUtility]::TargetLoad,[GPOToolsCategory]::AllParentCategory) ){
+            $Property.Clear()
         }
-        [GPOToolsCategory]::AllParentCategory.Clear()
     }
 
 }# End GPOToolsUtility
@@ -315,7 +311,7 @@ class GpoToolsAdmx {
 
         if ($null -ne $PolicyDefinitions.categories){
             $PolicyDefinitions.categories.Category | Foreach-Object {
-                $this.Categories.Add($([AdmxCategory]::New($_)))
+                $this.Categories.Add($([AdmxCategory]::New($_,$This.Target)))
             }
         }
 
@@ -361,12 +357,14 @@ class AdmxPolicy {
 class AdmxCategory {
     [string]$Name
     [string]$DisplayName
+    [AdmxNamespace]$namespace
     [string]$explainText
     [string]$ParentCategoryName
 
-    AdmxCategory ($Category){
+    AdmxCategory ($Category,$namespace){
         $this.Name = $Category.Name
         $this.DisplayName = $Category.DisplayName -replace '\$\(string\.(.*)\)', '$1'
+        $this.namespace = $namespace
         $this.explainText = $Category.explainText -replace '\$\(string\.(.*)\)', '$1'
         $this.ParentCategoryName = $Category.parentcategory.ref
     }

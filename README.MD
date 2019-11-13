@@ -67,12 +67,12 @@ Cette classe est utilisée pour joindre les information des classes GPOToolsAdmx
 
 ### On casse tous et on recommence
 * [ ]  On créé un classe GPOToolsUtility à peu prês semblable à GPOToolsPolicy
-    * [ ]  Cette classe contiendra des membres static qui auront pour but :
+    * [x]  Cette classe contiendra des membres static qui auront pour but :
         * [x]  Méthode de chargement à partir d'un dossier comme PolicyDefinitions
         * [x]  Méthode de chargement à parti d'un fichier seul avec prise en compte des dépendance
         * [x]  Méthode de vérification des dépendances et de chargement si jamais elles existent
-        * [ ]  La classe disposera de l'ensemble des catégories dans une propriété statique et invisible
-        * [ ]  Les objets categories devront avoir une notion de parent enfant
+        * [x]  La classe disposera de l'ensemble des catégories dans une propriété statique et invisible
+        * [x]  Les objets categories devront avoir une notion de parent enfant
         * [x]  La classe disposera de l'ensemble des SupportedOn dans une propriété statique et invisible
         * [ ]  La classe disposera de l'ensemble des Policy dans une propriété statique et invisible
         * [x]  La classe pourra recharger un ou plusieurs fichier et donc écraser ses données
@@ -82,6 +82,7 @@ Cette classe est utilisée pour joindre les information des classes GPOToolsAdmx
     * [x] CheckAndInitiateDependency
     * [x] FindDependancyFile
     * [ ]
+* [ ] Prise en compte des champs namespace dans les categories parents
 
 * [ ]  Créer une classe enum pour chaque option de chaque élément ?
 

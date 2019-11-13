@@ -332,13 +332,15 @@ Describe "Test GPOToolsUtility class" {
         }
 
         It "Test RemoveAll"{
-            [GPOToolsUtility]::RemoveAll()
+            [GPOToolsUtility]::RemoveAll() | Should Not Throw ''
             [GPOToolsUtility]::SupportOnTable | Should BeNullOrEmpty
             [GPOToolsUtility]::Categories | Should BeNullOrEmpty
             [GPOToolsUtility]::Policies | Should BeNullOrEmpty
             [GPOToolsUtility]::TargetLoad | Should BeNullOrEmpty
+            [GPOToolsCategory]::AllParentCategory | Should BeNullOrEmpty
         }
 
-        #[GpotoolsUtility]::InitiateAdmxAdml($ADMXFile,$Culture)
+        #$ADMXFolder = Get-Item -Path "..\sources\PolicyDefinitions\"
+        #[GpotoolsUtility]::InitiateAdmxAdml($ADMXFolder,$Culture)
     }
 }
