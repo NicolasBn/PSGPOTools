@@ -340,7 +340,10 @@ Describe "Test GPOToolsUtility class" {
             [GPOToolsCategory]::AllParentCategory | Should BeNullOrEmpty
         }
 
-        #$ADMXFolder = Get-Item -Path "..\sources\PolicyDefinitions\"
-        #[GpotoolsUtility]::InitiateAdmxAdml($ADMXFolder,$Culture)
+        It "Test InitiateAdmxAdml static method"{
+            $ADMXFolder = Get-Item -Path "..\sources\PolicyDefinitions\"
+            [GpotoolsUtility]::InitiateAdmxAdml($ADMXFolder,$Culture) | Should Not Throw ''
+        }
     }
+
 }
