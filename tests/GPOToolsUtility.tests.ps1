@@ -32,12 +32,18 @@ Describe "Test GpoToolsAdmx class" {
             [PscustomObject]@{
                 Name = 'Backup'
                 DisplayName = 'Backup'
-                ParentCategoryName = 'windows:WindowsComponents'
+                ParentCategory = @{
+                    prefix = 'windows'
+                    name = 'WindowsComponents'
+                }
             },
             [PscustomObject]@{
                 Name = 'BackupServer'
                 DisplayName = 'BackupServer'
-                ParentCategoryName = 'backup:Backup'
+                ParentCategory = @{
+                    prefix = 'backup'
+                    name = 'Backup'
+                }
             }
         )
         It "Test object type"{
@@ -81,7 +87,8 @@ Describe "Test GpoToolsAdmx class" {
             for ($i = 0 ; $i -lt $ADMX.Categories.count; $i++){
                 $ADMX.Categories[$i].Name | Should be $CatTab[$i].Name
                 $ADMX.Categories[$i].DisplayName | Should be $CatTab[$i].DisplayName
-                $ADMX.Categories[$i].ParentCategoryName | Should be $CatTab[$i].ParentCategoryName
+                $ADMX.Categories[$i].ParentCategory.prefix | Should be $CatTab[$i].ParentCategory.prefix
+                $ADMX.Categories[$i].ParentCategory.name | Should be $CatTab[$i].ParentCategory.name
                 #$ADMX.Categories[$i].ExplainText
             }
         }
@@ -128,12 +135,18 @@ Describe "Test GpoToolsAdmx class" {
             [Pscustomobject]@{
                 Name = 'WindowsUpdateCat'
                 DisplayName = 'WindowsUpdateCat'
-                ParentCategoryName = 'windows:WindowsComponents'
+                ParentCategory = @{
+                    prefix = 'windows'
+                    name = 'WindowsComponents'
+                }
             },
             [Pscustomobject]@{
                 Name = 'DeferUpdateCat'
                 DisplayName = 'DeferUpdateCat'
-                ParentCategoryName = 'WindowsUpdateCat'
+                ParentCategory = @{
+                    prefix = 'wuau'
+                    name = 'WindowsUpdateCat'
+                }
             }
         )
         It "Test object type"{
@@ -181,7 +194,8 @@ Describe "Test GpoToolsAdmx class" {
             for ($i = 0 ; $i -lt $ADMX.Categories.count; $i++){
                 $ADMX.Categories[$i].Name | Should be $CatTab[$i].Name
                 $ADMX.Categories[$i].DisplayName | Should be $CatTab[$i].DisplayName
-                $ADMX.Categories[$i].ParentCategoryName | Should be $CatTab[$i].ParentCategoryName
+                $ADMX.Categories[$i].ParentCategory.prefix | Should be $CatTab[$i].ParentCategory.prefix
+                $ADMX.Categories[$i].ParentCategory.Name | Should be $CatTab[$i].ParentCategory.Name
                 #$ADMX.Categories[$i].ExplainText
             }
         }
@@ -197,8 +211,8 @@ Describe "Test GPOToolsADML class"{
         $ADMLPath = $ADMLFile.FullName
         $StringTableTest = @{
             # Warning to encoding script for special caractere
-            AllowOnlySystemBackup = 'Autoriser uniquement la sauvegarde du système'
-            DisallowLocallyAttachedStorageAsBackupTarget = 'Ne pas autoriser un périphérique de stockage connecté localement à faire office de cible de sauvegarde'
+            AllowOnlySystemBackup = 'Autoriser\suniquement\sla\ssauvegarde\sdu\ssyst\xE8me'
+            DisallowLocallyAttachedStorageAsBackupTarget = 'Ne\spas\sautoriser\sun\sp\xE9riph\xE9rique\sde\sstockage\sconnect\xE9\slocalement\s\xE0\sfaire\soffice\sde\scible\sde\ssauvegarde'
             Backup = 'Sauvegarde'
             windowscomponents = 'Composants Windows'
         }
@@ -216,7 +230,7 @@ Describe "Test GPOToolsADML class"{
         It 'Test GPOToolsADML StringTable'{
             $StringTableTest.GetEnumerator() | Foreach-Object {
                 $ADML.StringTable.ContainsKey($_.Key) | Should Be $true
-                $ADML.StringTable."$($_.Key)" | Should Be $_.Value
+                $ADML.StringTable."$($_.Key)" | Should Match $_.Value
             }
         }
     }
@@ -298,7 +312,8 @@ Describe "Test GPOToolsCategory class" {
                 }
                 if($null -ne $CatTab[$i].ParentCategory){
                     $LoadAdm[$i].ParentCategory -is [GPOToolsCategory] | Should Be $true
-                    $LoadAdm[$i].ParentCategory.Name | Should be $CatTab[$i].ParentCategoryName
+                    $LoadAdm[$i].ParentCategory.prefix | Should be $CatTab[$i].ParentCategory.prefix
+                    $LoadAdm[$i].ParentCategory.Name | Should be $CatTab[$i].ParentCategory.Name
                 }
             }
         }
