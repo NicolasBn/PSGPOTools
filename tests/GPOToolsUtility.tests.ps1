@@ -281,7 +281,7 @@ Describe "Test GPOToolsCategory class" {
         $ADMLFile = Get-Item -Path "..\sources\PolicyDefinitions\$Culture\Windows.adml"
         $ADMX = [GpoToolsAdmx]::new($ADMXFile)
         $ADML = [GpoToolsAdml]::new($ADMLFile)
-        $Support = [GPOToolsCategory]::new($ADMX.Categories[0],$ADMX.Categories,$ADML)
+        $Category = [GPOToolsCategory]::new($ADMX.Categories[0],$ADMX.Categories,$ADML)
         $LoadAdm = [GPOToolsCategory]::LoadAdmxAdml($ADMX,$ADML)
         $CatTab = @(
             [PScustomObject]@{
@@ -292,14 +292,18 @@ Describe "Test GPOToolsCategory class" {
             [PScustomObject]@{
                 Name = 'InternetManagement'
                 DisplayNamePattern = "Gestion\sde\sla\scommunication\sInternet"
+                ParentCategory= @{
+                    Name = 'System'
+                    DisplayNamePattern = "Syst\xE8me"
+                }
             }
         )
 
         It "Test constructor method"{
-            $Support -is [GPOToolsCategory] | Should be $true
-            $Support.Name | Should Be $CatTab[0].Name
-            $Support.DisplayName | should Match $CatTab[0].DisplayNamePattern
-            $Support.ExplainText | should Match $CatTab[0].ExplainText
+            $Category -is [GPOToolsCategory] | Should be $true
+            $Category.Name | Should Be $CatTab[0].Name
+            $Category.DisplayName | should Match $CatTab[0].DisplayNamePattern
+            $Category.ExplainText | should Match $CatTab[0].ExplainText
         }
 
         It "Test LoadAdmxAdml static method" {
@@ -312,8 +316,9 @@ Describe "Test GPOToolsCategory class" {
                 }
                 if($null -ne $CatTab[$i].ParentCategory){
                     $LoadAdm[$i].ParentCategory -is [GPOToolsCategory] | Should Be $true
-                    $LoadAdm[$i].ParentCategory.prefix | Should be $CatTab[$i].ParentCategory.prefix
-                    $LoadAdm[$i].ParentCategory.Name | Should be $CatTab[$i].ParentCategory.Name
+                    #$LoadAdm[$i].ParentCategory.prefix | Should be $CatTab[$i].ParentCategory.prefix
+                    $LoadAdm[$i].ParentCategory.Name | Should Match $CatTab[$i].ParentCategory.Name
+                    $LoadAdm[$i].ParentCategory.DisplayName | Should Match $CatTab[$i].ParentCategory.DisplayNamePattern
                 }
             }
         }
