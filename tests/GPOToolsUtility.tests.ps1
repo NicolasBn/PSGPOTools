@@ -282,7 +282,9 @@ Describe "Test GPOToolsCategory class" {
         $ADMX = [GpoToolsAdmx]::new($ADMXFile)
         $ADML = [GpoToolsAdml]::new($ADMLFile)
         $Category = [GPOToolsCategory]::new($ADMX.Categories[0],$ADMX.Categories,$ADML)
-        $LoadAdm = [GPOToolsCategory]::LoadAdmxAdml($ADMX,$ADML)
+        #Tester la methode create()
+        [GPOToolsCategory]::LoadAdmxAdml($ADMX,$ADML)
+        $LoadAdm = [GPOToolsUtility]::Categories
         $CatTab = @(
             [PScustomObject]@{
                 Name = 'System'
@@ -307,7 +309,8 @@ Describe "Test GPOToolsCategory class" {
         }
 
         It "Test LoadAdmxAdml static method" {
-            $LoadAdm.Gettype().BaseType.Name | Should Be 'Array'
+            $LoadAdm.Gettype().Name | Should Be 'List`1'
+            $LoadAdm.Gettype().BaseType.Name | Should Be 'Object'
             for ($i = 0 ; $i -lt $CatTab.count; $i++){
                 $LoadAdm[$i].Name | Should be $CatTab[$i].Name
                 $LoadAdm[$i].DisplayName | Should Match $CatTab[$i].DisplayNamePattern
@@ -352,7 +355,7 @@ Describe "Test GPOToolsUtility class" {
         }
 
         It "Test RemoveAll"{
-            [GPOToolsUtility]::RemoveAll() | Should Not Throw ''
+            {[GPOToolsUtility]::RemoveAll()} | Should -Not -Throw
             [GPOToolsUtility]::SupportOnTable | Should BeNullOrEmpty
             [GPOToolsUtility]::Categories | Should BeNullOrEmpty
             [GPOToolsUtility]::Policies | Should BeNullOrEmpty
@@ -362,7 +365,7 @@ Describe "Test GPOToolsUtility class" {
 
         It "Test InitiateAdmxAdml static method"{
             $ADMXFolder = Get-Item -Path "..\sources\PolicyDefinitions\"
-            [GpotoolsUtility]::InitiateAdmxAdml($ADMXFolder,$Culture) | Should Not Throw ''
+            {[GpotoolsUtility]::InitiateAdmxAdml($ADMXFolder,$Culture)} | Should -Not -Throw
         }
     }
 
