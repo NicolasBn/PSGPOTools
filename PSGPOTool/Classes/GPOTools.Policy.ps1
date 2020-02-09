@@ -72,16 +72,7 @@ class GpoToolsPolicy {
     }
 }
 
-class GpoToolscategory {
-    [string]$Name
-    [string]$DisplayName
-    [GpoToolscategory]$ParentCategory
 
-    #Générer le path dans les classe du dessus
-    GeneratePath() {
-
-    }
-}
 
 class GpoToolsPolicyOptions {
     $Name
