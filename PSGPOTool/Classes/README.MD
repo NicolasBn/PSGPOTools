@@ -57,7 +57,6 @@ Section que l'on retrouve dans un fichier Admx :
             - explainText
             - key
             - [valueName]
-            - [presentation] : presentation="$(presentation.ProfileDlgTimeOut)"
             - parentCategory
                 - ref
             - supportedOn
@@ -68,7 +67,7 @@ Section que l'on retrouve dans un fichier Admx :
             - [disabledValue]
                 - decimal
                     - value
-            - [presentation] : Variable (presentation.[..]) sans doute quelque chose en rapport avec l'affichage
+            - [presentation] : Variable (presentation.[..]) sans doute quelque chose en rapport avec l'affichage ex : "$(presentation.ProfileDlgTimeOut)"
             - [clientExtension] : GUID
             - [elements]
                 - [list]
