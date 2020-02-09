@@ -64,6 +64,7 @@ Cette classe est utilisée pour joindre les information des classes GPOToolsAdmx
 * [ ]  rendre compatible avec Transaction sur le registre pour faciliter le retour arriere.
 * [ ]  donner un avertissement a l'utilisateur quand le paramètre que l'on cherche a configurer n'est pas supporté.
 * [ ]  Prévoir une fonction qui listes toutes les catégories
+* [ ]  Améliorer le temps de traitement de parsing des fichiers et de la construction des objets.
 
 ### On casse tous et on recommence
 * [ ]  On créé un classe GPOToolsUtility à peu prês semblable à GPOToolsPolicy
