@@ -1,4 +1,4 @@
-using module '..\PSGPOTool\Classes\GPOToolsUtility.psm1'
+using module '..\PSGPOTools\Classes\GPOToolsUtility.psm1'
 
 $TestPath = Split-Path $MyInvocation.MyCommand.Path
 

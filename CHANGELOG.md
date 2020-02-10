@@ -1,4 +1,4 @@
-# PSGPOTool Release History
+# PSGPOTools Release History
 
 ## Version Number - Release Date
 
