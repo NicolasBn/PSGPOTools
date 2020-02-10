@@ -12,7 +12,7 @@
 RootModule = 'PSGPOTools.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.1.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -30,7 +30,7 @@ CompanyName = 'NicolasBn'
 Copyright = '(c) 2019 NicolasBn. Tous droits réservés.'
 
 # Description of the functionality provided by this module
-Description = 'This module administrate the local GPO and the export of domain GPO'
+Description = 'This module read the content of ADMX and ADML files. It instantiate object with GPOTools* classes. You can search a policy parameter with PowerShell functions and find the registry key.'
 
 # Minimum version of the Windows PowerShell engine required by this module
 # PowerShellVersion = ''
@@ -111,7 +111,7 @@ PrivateData = @{
         # ReleaseNotes = ''
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'alpha'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
