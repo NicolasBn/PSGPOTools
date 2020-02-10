@@ -709,8 +709,9 @@ function Initialize-PSGPOAdmx {
     )
 
     ### VAR ###
+    $Item = Get-Item -Path $Path
     ### MAIN ###
     # Empty Statics properties
     [GPOToolsUtility]::RemoveAll()
-    [GpotoolsUtility]::InitiateAdmxAdml($ADMXFolder,$Culture)
+    [GpotoolsUtility]::InitiateAdmxAdml($Item,$UICulture)
 }
