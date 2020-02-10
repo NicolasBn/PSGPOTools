@@ -1,81 +1,40 @@
-# PSGPOTool
+# PSGPOTools
 
 ![Build Status](https://build.status.url.here)
 
 ## Description
 
-This module administrate the local GPO and the export of domain GPO
+This module read the content of ADMX and ADML files. It instantiate object with GPOTools* classes.
+You can search a policy parameter with PowerShell functions and find the registry key.
 
 Authored by NicolasBn
 
 ## RoadMap
-On référence ici les éléments les plus importants à prendre en compte pour une première version.
-### Classe GPOToolsAdmx
-* [x]  La classe récupère bien le FilePath
-* [x]  La classe contient le nom du fichier en BaseName
-* [x]  La classe contient le Target : Utilisation de la classe [AdmxNamespace]
-* [x]  La classe contient le using : Utilisation de la classe [AdmxNamespace]
-* [ ]  La classe récupère bien les éléments SupportedOn du fichier
-Utilisation de la classe [AdmxSupportedOn]
-    * [x]  Name
-    * [x]  displayName
-    * [ ]  or
-* [x]  La classe récupère bien les éléments Categories
-Utilisation de la classe [AdmxCategory]
-    * [x]  Name
-    * [x]  displayName
-    * [x]  ParentCategory
-    * [x]  explaintext
-* [ ]  La classe récupère bien les éléments policy constants
-Utilisation de la classe [AdmxPolicy]
-    * [x]  Name
-    * [x]  Classe
-    * [x]  displayName
-    * [x]  explainText
-    * [ ]  key
-    * [x]  parentCategory
-    * [x]  SupportedOn
 
-### Classe GPOToolsAdml
-* [x]  La classe récupère bien le FilePath
-* [x]  La classe contient le nom du fichier en BaseName
-* [x]  La classe récupère bien les éléments de StringTable
-    * [x]  id
-    * [x]  #text
-La prise en compte de la section presentation peut avoir un intérêt ?
+What do we want for the first version ?
+Checklist :
+
+* [x]  Have the simpliest policies with thier key
+* [x]  Check if the simpliest policies are configured
+* [x]  Cover a minimum of code with pester test
+* [ ]  Have a CI
+* [ ]  ...
+
+What do we want in futures versions ?
+
+* [ ]  Read the content of .pol file to compare with ADMX content and determine the configured paramter in .pol file.
+* [ ]  Have a provider to explore the parameters like than gpedit.msc
+* [ ]  Experiment the module to compare hundred GPO in .pol files
+* [ ]  Have a provider to explorer the domain GPO
+* [ ]  Transaction compatibility for to easy rollback
+* [ ]  Warn the user when the parameter is not compatible with de target system
+* [ ]  Better speed the initialization of admx/adml (multi runspace ?)
+
+Another ideas are welcome.
 
 
-
-### Futur upates
-* [ ]  Prevoir la mise en place d'un provider pour explorer les parametres de maniere simple, commes un systeme de fichier.
-* [ ]  Lire le contenu d'un fichier .pol et interpreter les clefs qu'il contient en fonction des admx et adml.
-* [ ]  etre capable de comparer plusieurs centaines de gpo .pol
-* [ ]  pouvoir explorer les gpos de domaine simplement avec un provider
-* [ ]  rendre compatible avec Transaction sur le registre pour faciliter le retour arriere.
-* [ ]  donner un avertissement a l'utilisateur quand le paramètre que l'on cherche a configurer n'est pas supporté.
-* [ ]  Prévoir une fonction qui listes toutes les catégories
-* [ ]  Améliorer le temps de traitement de parsing des fichiers et de la construction des objets.
-
-### On casse tous et on recommence
-* [ ]  On créé un classe GPOToolsUtility à peu prês semblable à GPOToolsPolicy
-    * [x]  Cette classe contiendra des membres static qui auront pour but :
-        * [x]  Méthode de chargement à partir d'un dossier comme PolicyDefinitions
-        * [x]  Méthode de chargement à parti d'un fichier seul avec prise en compte des dépendance
-        * [x]  Méthode de vérification des dépendances et de chargement si jamais elles existent
-        * [x]  La classe disposera de l'ensemble des catégories dans une propriété statique et invisible
-        * [x]  Les objets categories devront avoir une notion de parent enfant
-        * [x]  La classe disposera de l'ensemble des SupportedOn dans une propriété statique et invisible
-        * [x]  La classe disposera de l'ensemble des Policy dans une propriété statique et invisible
-        * [x]  La classe pourra recharger un ou plusieurs fichier et donc écraser ses données
-* [ ] Mise en place de script de test pour valider les différentes méthodes
-    * [x] InitiateAdmxAdml Folder/File
-    * [x] GetADMLPathFromADMX
-    * [x] CheckAndInitiateDependency
-    * [x] FindDependancyFile
-* [x] Prise en compte des champs namespace dans les categories parents
-
-* [ ]  Créer une classe enum pour chaque option de chaque élément ?
 ## Testing Module
+
 At this state of developpement, there are no task to build the module.
 If you want to test it, you need to download the source. Adn then do this :
 ```Powershell
@@ -194,43 +153,43 @@ SUPPORTED_Win2kSP3                                           At least Windows 20
 ...
 ```
 
-## Installing
+## Installing (Not supported today)
 
-~~The easiest way to get PSGPOTool is using the [PowerShell Gallery](https://powershellgallery.com/packages/PSGPOTool/)!~~
+~~The easiest way to get PSGPOTools is using the [PowerShell Gallery](https://powershellgallery.com/packages/PSGPOTool/)!~~
 
-### Inspecting the module
+### Inspecting the module (Not supported today)
 
 ~~Best practice is that you inspect modules prior to installing them. You can do this by saving the module to a local path:~~
 
 ``` PowerShell
-PS> Save-Module -Name PSGPOTool -Path <path>
+PS> Save-Module -Name PSGPOTools -Path <path>
 ```
 
-### Installing the module
+### Installing the module (Not supported today)
 
 ~~Once you trust a module, you can install it using:~~
 
 ``` PowerShell
-PS> Install-Module -Name PSGPOTool
+PS> Install-Module -Name PSGPOTools
 ```
 
-### Updating PSGPOTool
+### Updating PSGPOTool (Not supported today)
 
 ~~Once installed from the PowerShell Gallery, you can update it using:~~
 
 ``` PowerShell
-PS> Update-Module -Name PSGPOTool
+PS> Update-Module -Name PSGPOTools
 ```
 
-### Uninstalling PSGPOTool
+### Uninstalling PSGPOTools (Not supported today)
 
-~~To uninstall PSGPOTool:~~
+~~To uninstall PSGPOTools:~~
 
 ``` PowerShell
-PS> Uninstall-Module -Name PSGPOTool
+PS> Uninstall-Module -Name PSGPOTools
 ```
 
-## Contributing to PSGPOTool
+## Contributing to PSGPOTools (Need update)
 
 Interested in contributing? Read how you can [Contribute](contributing.md) to PSGPOTool
 
@@ -242,4 +201,4 @@ A detailed release history is contained in the [Change Log](CHANGELOG.md).
 
 ## License
 
-PSGPOTool is provided under the [MIT license](LICENSE.md).
+PSGPOTools is provided under the [MIT license](LICENSE.md).

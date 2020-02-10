@@ -1,19 +1,20 @@
 # PSGPOTools Release History
 
-## Version Number - Release Date
+## 0.01.0 - Beta
 
-### Fixed
+### Feature's Module
 
-* First item fixed
-* Second item fixed
+  *[ ] Read the principal content of ADMX and ADML files
+    *[ ] Categories
+    *[ ] SupportedOn
+    *[ ] Policy
+    *[ ] Simple Policy's key
+  *[ ] Choice the UICulture
 
-### Added
+### Features Repository
 
-* New item added
-* Another new item added
-
-### Changed
-
-* Feature changed
-* Tests added
+  *[ ] CI Task
+    *[ ] Build module
+    *[ ] Test Module
+    *[ ] Publish Module
 
