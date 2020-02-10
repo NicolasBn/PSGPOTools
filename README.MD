@@ -36,19 +36,20 @@ Another ideas are welcome.
 ## Testing Module
 
 At this state of developpement, there are no task to build the module.
-If you want to test it, you need to download the source. Adn then do this :
+If you want to test it, you need to download the source. And import the module :
 ```Powershell
-    cd .\PSGPOTools\
-    using module '.\Classes\GPOToolsUtility.psm1'
-    $Culture = [cultureinfo]'en-US'
-    $ADMXFolder = Get-Item -Path "..\sources\PolicyDefinitions\"
-    [GpotoolsUtility]::InitiateAdmxAdml($ADMXFolder,$Culture)
+    Import-Module .\PSGPOTools\PSGPOTools.psm1
+    # Initialization of ADMX and ADML files
+    Initialize-PSGPOAdmx -UICulture 'en-US'
+WARNING: No dependancy file found for Microsoft.Policies.Server target in C:\WINDOWS\PolicyDefinitions\ServerManager.admx ADMX file
+WARNING: No dependancy file found for Microsoft.Policies.Backup target in C:\WINDOWS\PolicyDefinitions\WindowsBackup.admx ADMX file
+WARNING: No dependancy file found for Microsoft.Policies.Server target in C:\WINDOWS\PolicyDefinitions\WindowsBackup.admx ADMX file
 ```
 
 After that, the static properties of GPOToolsUtility Class stock the ADMX elements :
 ```Powershell
 # The policies :
-[GPOToolsUtility]::Policies
+Get-PSGPOPolicy
 Path        : Machine\Windows Components\ActiveX Installer Service\
 Name        : Approved Installation Sites for ActiveX Controls
 DisplayName : Approved Installation Sites for ActiveX Controls
@@ -124,7 +125,7 @@ FileName    : AddRemovePrograms.admx
 ...
 
 # The Categories :
-[GPOToolsUtility]::Categories
+Get-PSGPOCategory
 Name                                            DisplayName                                                        ExplainText
 ----                                            -----------                                                        -----------
 System                                          System                                                             Allows configuration of various system component settings.
@@ -139,7 +140,7 @@ Network                                         Network                         
 ...
 
 #The SupportedOn :
-[GPOToolsUtility]::SupportOnTable
+Get-PSGPOPolicySupportedOn
 Name                                                         DisplayName
 ----                                                         -----------
 SUPPORTED_Win2KWithWindowsInstaller20                        Windows 2000 with Windows Installer v2
@@ -152,6 +153,40 @@ SUPPORTED_Win2kSP1                                           At least Windows 20
 SUPPORTED_Win2kSP3                                           At least Windows 2000 Service Pack 3
 ...
 ```
+
+You want to see if the parameter is configured in your system ?
+```PowerShell
+$Pol = Get-PSGPOPolicy
+$Pol[0]
+
+
+Path        : Machine\Composants Windows\Service d’installation ActiveX\
+Name        : Sites d’installation approuvés pour les contrôles ActiveX
+DisplayName : Sites d’installation approuvés pour les contrôles ActiveX
+Description : Ce paramètre de stratégie détermine quels sites d’installation ActiveX les utilisateurs standard de votre organisation peuvent utiliser pour installer des contrôles ActiveX
+              sur leur ordinateur. Lorsque ce paramètre est activé, l’administrateur peut créer une liste des sites d’installation ActiveX approuvés spécifiés par l’URL hôte.
+
+              Si vous activez ce paramètre, l’administrateur peut créer une liste des sites d’installation ActiveX approuvés spécifiés par l’URL hôte.
+
+              Si vous désactivez ou ne configurez pas ce paramètre de stratégie, les contrôles ActiveX invitent l’utilisateur à spécifier des informations d’identification d’administration
+              avant l’installation.
+
+              Remarque : vous ne pouvez pas utiliser de caractères génériques pour indiquer des URL hôtes.
+
+
+ID          : ApprovedActiveXInstallSites
+Registry    : GPOToolsRegistry
+Scope       : Machine
+FileName    : ActiveXInstallService.admx
+
+$Pol[0].GetPolicyState()
+NotConfigured
+```
+You want to see the registry key ?
+```PowerShell
+$Pol[0].Registry
+```
+
 
 ## Installing (Not supported today)
 
