@@ -1,15 +1,15 @@
 # PSGPOTools Release History
 
-## 0.01.0 - Beta
+## 0.01.0 - alpha
 
 ### Feature's Module
 
-  *[ ] Read the principal content of ADMX and ADML files
-    *[ ] Categories
-    *[ ] SupportedOn
-    *[ ] Policy
-    *[ ] Simple Policy's key
-  *[ ] Choice the UICulture
+  *[x] Read the principal content of ADMX and ADML files
+    *[x] Categories
+    *[x] SupportedOn
+    *[x] Policy
+    *[x] Simple Policy's key
+  *[x] Choice the UICulture
 
 ### Features Repository
 
