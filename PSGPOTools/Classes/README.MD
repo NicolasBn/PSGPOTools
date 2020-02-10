@@ -157,3 +157,37 @@ Section que l'on retrouve dans un fichier Adml :
                     - refId
                     - #text
                     - [required] valeur true/false
+
+## Classe GPOToolsUtility
+The utility class groups static member to manage the other classes.
+  - Properties
+    - SupportOnTable : Contains all Support reference in ADMX files
+    - Categories : Contains all Category reference in ADMX files
+    - Policies : Contains all Policies reference un ADMX files
+    - TargetLoad : Contains all ADMX files initiate by InitiateAdmxAdml method
+  - Method
+    - InitiateAdmxAdml ([System.IO.DirectoryInfo], [cultureinfo])
+    - InitiateAdmxAdml ([System.IO.FileInfo], [cultureinfo])
+    - GetNamespaceAdmx ([System.IO.FileInfo])
+    - GetADMLPathFromADMX ([System.IO.FileInfo], [cultureinfo])
+    - CheckAndInitiateDependancy ([GpoToolsAdmx], [cultureinfo])
+    - FindDependancyFile ([string], [string])
+    - CheckCategoryPresence ([string], [hashtable])
+    - CheckCategoryPresence ([string], [string])
+    - RemoveAll() : Empty static Properties : SupportOnTable, Categories, Policies, TargetLoad
+
+
+## Classe GPOToolsCategory
+
+## Classe GPOToolsSupportedOn
+
+## Classe GPOToolsPolicy
+Cette classe est utilisée pour joindre les information des classes GPOToolsAdmx et GPOToolsADML.
+* [x]  creation du champ Name avec l'affichage contenu dans le fichier adml
+* [x]  Le champ Path devra contenir l'arborescence des categories au format string
+* [x]  on peut rajouter dans le champ path le scope : user/computer
+* [ ]  le champ FullName contiendra le path + le Name
+* [x]  le champ state permettra de voir si le parametre est desactivé\acrivé ou non configuré. Pour ce cas il sera necessaire de créer une méthode capable de checker la conf en fonction des elements de la policy
+* [x]  le champ id contiendra l'id du parametre
+* [x]  le champ category contiendra la category d'apartenance du parametre. L'objet category devra contenir son objet parent pour pouvoir determiner son path complet. Pour cela, la propriete static Categories contiendra l'ensemble des categorie des fichier admx.
+* [ ]  Voir si la proprietes Registry son adapté pour tous les cas et si il ne faut pas adapter en fonction. Traité en premier lieu les cas les plus simples

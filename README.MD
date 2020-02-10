@@ -6,7 +6,7 @@
 
 This module administrate the local GPO and the export of domain GPO
 
-Authored by NicolasB
+Authored by NicolasBn
 
 ## RoadMap
 On référence ici les éléments les plus importants à prendre en compte pour une première version.
@@ -44,16 +44,6 @@ Utilisation de la classe [AdmxPolicy]
     * [x]  #text
 La prise en compte de la section presentation peut avoir un intérêt ?
 
-### Classe GPOToolsPolicy
-Cette classe est utilisée pour joindre les information des classes GPOToolsAdmx et GPOToolsADML.
-* [ ]  creation du champ Name avec l'affichage contenu dans le fichier adml
-* [ ]  Le champ Path devra contenir l'arborescence des categories au format string
-* [ ]  on peut rajouter dans le champ path le scope : user/computer
-* [ ]  le champ FullName contiendra le path + le Name
-* [ ]  le champ state permettra de voir si le parametre est desactivé\acrivé ou non configuré. Pour ce cas il sera necessaire de créer une méthode capable de checker la conf en fonction des elements de la policy
-* [ ]  le champ id contiendra l'id du parametre
-* [ ]  le champ category contiendra la category d'apartenance du parametre. L'objet category devra contenir son objet parent pour pouvoir determiner son path complet. Pour cela, la propriete static Categories contiendra l'ensemble des categorie des fichier admx.
-* [ ]  Voir si les proprietes Options et Registry son adapté pour tous les cas et si il ne faut pas adapter en fonction. Traité en premier lieu les cas les plus simples
 
 
 ### Futur upates
@@ -75,15 +65,14 @@ Cette classe est utilisée pour joindre les information des classes GPOToolsAdmx
         * [x]  La classe disposera de l'ensemble des catégories dans une propriété statique et invisible
         * [x]  Les objets categories devront avoir une notion de parent enfant
         * [x]  La classe disposera de l'ensemble des SupportedOn dans une propriété statique et invisible
-        * [ ]  La classe disposera de l'ensemble des Policy dans une propriété statique et invisible
+        * [x]  La classe disposera de l'ensemble des Policy dans une propriété statique et invisible
         * [x]  La classe pourra recharger un ou plusieurs fichier et donc écraser ses données
 * [ ] Mise en place de script de test pour valider les différentes méthodes
     * [x] InitiateAdmxAdml Folder/File
     * [x] GetADMLPathFromADMX
     * [x] CheckAndInitiateDependency
     * [x] FindDependancyFile
-    * [ ]
-* [ ] Prise en compte des champs namespace dans les categories parents
+* [x] Prise en compte des champs namespace dans les categories parents
 
 * [ ]  Créer une classe enum pour chaque option de chaque élément ?
 ## Testing Module
