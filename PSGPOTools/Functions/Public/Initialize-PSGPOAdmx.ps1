@@ -9,5 +9,7 @@ function Initialize-PSGPOAdmx {
 
     ### VAR ###
     ### MAIN ###
+    # Empty Statics properties
+    [GPOToolsUtility]::RemoveAll()
     [GpotoolsUtility]::InitiateAdmxAdml($ADMXFolder,$Culture)
 }
