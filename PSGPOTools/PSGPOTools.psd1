@@ -9,7 +9,7 @@
 @{
 
 # Module de script ou fichier de module binaire associé à ce manifeste
-RootModule = 'PSGPOTool\PSGPOTool.psm1'
+RootModule = 'PSGPOTools\PSGPOTools.psm1'
 
 # Numéro de version de ce module.
 ModuleVersion = '0.0.1'
