@@ -1,4 +1,4 @@
-enum StatePolicy {
+﻿enum StatePolicy {
     Enabled
     Disabled
     NotConfigured
@@ -20,11 +20,11 @@ class GPOToolsUtility {
         [cultureinfo]$UICulture
     ){
         #Importer l'ensemble des fichiers admx
-        #Importer les dépendances en premier lieu !
+        #Importer les dependances en premier lieu !
         #Pour chaque fichier ADMX on importe le fichier AMDL correspondant
-        #On incrémente les catégories
-        #Comment valider que les dépendances sont bien déjà présents et pas nécessaire de les recharger ?
-        #noter un élément unique (nom du fichier ?) hashtable ?
+        #On incremente les categories
+        #Comment valider que les dependances sont bien deja presents et pas necessaire de les recharger ?
+        #noter un element unique (nom du fichier ?) hashtable ?
 
         #On passe en revu chaque fichier admx
         if (Test-Path -Path $Folder.FullName){
@@ -47,28 +47,28 @@ class GPOToolsUtility {
             #On verifie que le fichier AMDX n'a pas deja ete charge.
             If (![GPOToolsUtility]::TargetLoad.Contains([GPOToolsUtility]::GetNamespaceAdmx($File))){
                 Write-Verbose "Initialization of $File"
-                #Création de l'objet ADMX
+                #Creation de l'objet ADMX
                 $ADMX = [GpoToolsAdmx]::New($File.FullName)
 
-                #On vérifie si il a besoin de dépendance et on les charges
+                #On verifie si il a besoin de dependance et on les charges
                 [GPOToolsUtility]::CheckAndInitiateDependancy($ADMX,$UICulture)
 
-                #On détermine le fichier ADML correspondant
+                #On determine le fichier ADML correspondant
                 $ADMLPath = [GPOToolsUtility]::GetADMLPathFromADMX($File,$UICulture)
 
                 #On charge le fichier ADML correspondant
                 $ADML = [GpoToolsAdml]::New($ADMLPath)
 
-                #On crée les objets SupportedOn
+                #On cree les objets SupportedOn
                 $Support = $ADMX.SupportedOnDefinition | Foreach-Object { [GPOToolsSupportedOn]::New($_,$ADML) }
 
                 #On initialise les objets Category
                 [GPOToolsCategory]::LoadAdmxAdml($Admx,$Adml)
 
-                #On crée les objet Policy
+                #On cree les objet Policy
                 $Pols = $ADMX.Policies | Foreach-Object {[GPOToolsPolicy]::New($_,$ADML)}
 
-                #On incrémente les objets dans les propriétés statiques
+                #On incremente les objets dans les proprietes statiques
                 if ($Support.count -gt 0){
                     $Support | Foreach-Object {[GPOToolsutility]::SupportOnTable.Add($_)}
                 }
@@ -110,11 +110,11 @@ class GPOToolsUtility {
         [cultureinfo]$UICulture
     ){
         $ADMX.Using | Foreach-Object {
-            #On verifie si la dépendance est déjà chargé ou si il s'agit de product
+            #On verifie si la dependance est deja charge ou si il s'agit de product
             if (![GPOToolsUtility]::TargetLoad.Contains($_.namespace) -and $($ADMX.Target.namespace -ne 'Microsoft.Policies.Products')){
                 Write-Verbose ('The ADMX {0} need {1} dependancy' -f $ADMX.FilePath,$_.namespace)
                 #on determine de fichier ADMX dont le premier depend
-                #Rajouter un trycatch en cas de génération d'erreur et mise en place d'un warning
+                #Rajouter un trycatch en cas de generation d'erreur et mise en place d'un warning
                 Try{
                     $DepFile = [GPOToolsUtility]::FindDependancyFile($ADMX.FilePath,$_.namespace)
                 }
@@ -122,7 +122,7 @@ class GPOToolsUtility {
                     Write-Warning $_.Exception.message
                     $DepFile = $null
                 }
-                #On charge la dépendance si il y en a une
+                #On charge la dependance si il y en a une
                 if ($null -ne $DepFile){
                     [GPOToolsUtility]::InitiateAdmxAdml($DepFile,$UICulture)
                 }
@@ -189,7 +189,7 @@ class GPOToolsUtility {
 
     <# Surcharge de Methode pour verifier la presence d'une category dans la
      propriete static de la classe GPOToolsUtility. Cette surcharge se base seulement
-     sur le nom du prefix et pas sur le namespace. Cela réduit le précision de la
+     sur le nom du prefix et pas sur le namespace. Cela reduit le precision de la
      verification.
      Use :
         [GPOToolsCategory]::Create()
@@ -338,7 +338,7 @@ class GPOToolsCategory {
         # Pour chaque category de Categories
         $ParentCat = [GPOToolsUtility]::Categories |
             Where-Object {
-                    #Si la categorie a le meme nom que celle recherché
+                    #Si la categorie a le meme nom que celle recherche
                     $_.Name -eq $Cat.ParentCategory.Name -and
                     (# Et que son prefix est similaire a celui de la category parent recherchee
                         $_.target.prefix -eq $Cat.ParentCategory.prefix -or
@@ -370,7 +370,7 @@ class GPOToolsCategory {
         [GpoToolsAdmx]$Admx,
         [GpoToolsAdml]$Adml
     ){
-        $Result = $Admx.Categories | Foreach-Object {
+        [void]$Admx.Categories | Foreach-Object {
             [GPOToolsCategory]::Create($_,$Admx.Categories,$Adml)
         }
     }
@@ -433,7 +433,7 @@ class GPOToolsPolicy {
         # Pour chaque category de Categories
         $ParentCat = [GPOToolsUtility]::Categories |
             Where-Object {
-                    #Si la categorie a le meme nom que celle recherché
+                    #Si la categorie a le meme nom que celle recherche
                     $_.Name -eq $Pol.ParentCategory.Name -and
                     (# Et que son prefix est similaire a celui de la category parent recherchee
                         $_.target.prefix -eq $Pol.ParentCategory.prefix -or
@@ -474,7 +474,7 @@ class GPOToolsPolicy {
 class GPOToolsRegistry {
     $Path
     $Key
-    $Value #Activé/Désactivé
+    $Value #Active/Desactive
     $DefaultValue
 
     GPOToolsRegistry([AdmxPolicy]$Pol) {
@@ -491,7 +491,7 @@ class GPOToolsRegistry {
     }
 }
 
-#Classe de récupération des informations contenues dans les fichiers amdx
+#Classe de recuperation des informations contenues dans les fichiers amdx
 class GpoToolsAdmx {
     [string]$FilePath
     [string]$BaseName
@@ -538,7 +538,7 @@ class GpoToolsAdmx {
         }
     }
 }
-#Classe utilisée dans GPOToolsAdmx  pour lire les policy
+#Classe utilisee dans GPOToolsAdmx  pour lire les policy
 class AdmxPolicy {
     $Name
     $Class
@@ -584,7 +584,7 @@ class AdmxPolicy {
     }
 }
 
-#Classe utilisé dans GPOToolsAdmx pour les catégories des fichiers admx
+#Classe utilise dans GPOToolsAdmx pour les categories des fichiers admx
 class AdmxCategory {
     [string]$Name
     [string]$DisplayName
@@ -637,7 +637,7 @@ class AdmxNamespace {
 }
 
 
-#Classe de récupération des informations contenues dans les fichiers admx
+#Classe de recuperation des informations contenues dans les fichiers admx
 class GpoToolsAdml {
     [string]$FilePath
     [string]$BaseName
