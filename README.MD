@@ -22,7 +22,7 @@ Checklist :
 
 What do we want in futures versions ?
 
-* [ ]  Read the content of .pol file to compare with ADMX content and determine the configured paramter in .pol file.
+* [ ]  Read the content of .pol file to compare with ADMX content and determine the configured paramter in .pol file. Possibility with the [GPRegistryPolicy](https://github.com/PowerShell/GPRegistryPolicy) module.
 * [ ]  Have a provider to explore the parameters like than gpedit.msc
 * [ ]  Experiment the module to compare hundred GPO in .pol files
 * [ ]  Have a provider to explorer the domain GPO
@@ -32,15 +32,51 @@ What do we want in futures versions ?
 
 Another ideas are welcome.
 
+## Installing
+
+The easiest way to get PSGPOTools is using the [PowerShell Gallery](https://powershellgallery.com/packages/PSGPOTools/)!
+
+### Inspecting the module
+
+Best practice is that you inspect modules prior to installing them. You can do this by saving the module to a local path:
+
+``` PowerShell
+PS> Save-Module -Name PSGPOTools -Path <path> -AllowPrerelease
+```
+
+### Installing the module
+
+Once you trust a module, you can install it using:
+
+``` PowerShell
+PS> Install-Module -Name PSGPOTools -AllowPrerelease
+```
+
+### Updating PSGPOTool
+
+Once installed from the PowerShell Gallery, you can update it using:
+
+``` PowerShell
+PS> Update-Module -Name PSGPOTools -AllowPrerelease
+```
+
+### Uninstalling PSGPOTools
+
+To uninstall PSGPOTools:
+
+``` PowerShell
+PS> Uninstall-Module -Name PSGPOTools
+```
 
 ## Testing Module
 
 At this state of developpement, there are no task to build the module.
 If you want to test it, you need to download the source. And import the module :
 ```Powershell
-    Import-Module .\PSGPOTools\PSGPOTools.psm1
-    # Initialization of ADMX and ADML files
-    Initialize-PSGPOAdmx -UICulture 'en-US'
+Import-Module PSGPOTools
+
+# Initialization of ADMX and ADML files
+Initialize-PSGPOAdmx -UICulture 'en-US'
 WARNING: No dependancy file found for Microsoft.Policies.Server target in C:\WINDOWS\PolicyDefinitions\ServerManager.admx ADMX file
 WARNING: No dependancy file found for Microsoft.Policies.Backup target in C:\WINDOWS\PolicyDefinitions\WindowsBackup.admx ADMX file
 WARNING: No dependancy file found for Microsoft.Policies.Server target in C:\WINDOWS\PolicyDefinitions\WindowsBackup.admx ADMX file
@@ -185,43 +221,6 @@ NotConfigured
 You want to see the registry key ?
 ```PowerShell
 $Pol[0].Registry
-```
-
-
-## Installing (Not supported today)
-
-~~The easiest way to get PSGPOTools is using the [PowerShell Gallery](https://powershellgallery.com/packages/PSGPOTool/)!~~
-
-### Inspecting the module (Not supported today)
-
-~~Best practice is that you inspect modules prior to installing them. You can do this by saving the module to a local path:~~
-
-``` PowerShell
-PS> Save-Module -Name PSGPOTools -Path <path>
-```
-
-### Installing the module (Not supported today)
-
-~~Once you trust a module, you can install it using:~~
-
-``` PowerShell
-PS> Install-Module -Name PSGPOTools
-```
-
-### Updating PSGPOTool (Not supported today)
-
-~~Once installed from the PowerShell Gallery, you can update it using:~~
-
-``` PowerShell
-PS> Update-Module -Name PSGPOTools
-```
-
-### Uninstalling PSGPOTools (Not supported today)
-
-~~To uninstall PSGPOTools:~~
-
-``` PowerShell
-PS> Uninstall-Module -Name PSGPOTools
 ```
 
 ## Contributing to PSGPOTools (Need update)
