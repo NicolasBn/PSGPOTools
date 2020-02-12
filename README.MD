@@ -70,8 +70,9 @@ PS> Uninstall-Module -Name PSGPOTools
 
 ## Testing Module
 
-At this state of developpement, there are no task to build the module.
-If you want to test it, you need to download the source. And import the module :
+After the installation with the PowerShellGallery, import the module with Import-Module cmdlet.
+At the first, you need to use the Initialize-PSGPOAdmx. This command will read the default admx/adml files present in your system. After that, it creates and stocks the objets in static properties of [GPOToolsUtility] class.
+
 ```Powershell
 Import-Module PSGPOTools
 
@@ -82,7 +83,7 @@ WARNING: No dependancy file found for Microsoft.Policies.Backup target in C:\WIN
 WARNING: No dependancy file found for Microsoft.Policies.Server target in C:\WINDOWS\PolicyDefinitions\WindowsBackup.admx ADMX file
 ```
 
-After that, the static properties of GPOToolsUtility Class stock the ADMX elements :
+Then, to read the static properties of GPOToolsUtility Class, use those commands :
 ```Powershell
 # The policies :
 Get-PSGPOPolicy
@@ -218,9 +219,41 @@ FileName    : ActiveXInstallService.admx
 $Pol[0].GetPolicyState()
 NotConfigured
 ```
+
 You want to see the registry key ?
+
 ```PowerShell
 $Pol[0].Registry
+```
+
+You need to search a particular parameter by the registry key :
+
+```PowerShell
+Get-PSGPOPolicy | ? {$_.Registry.Path -like "*SOFTWARE\Policies\Microsoft\Windows Defender" -and $_.Registry.Key -like 'DisableAntispyware'}
+
+
+Path        : Machine\Windows Components\Windows Defender Antivirus\
+Name        : Turn off Windows Defender Antivirus
+DisplayName : Turn off Windows Defender Antivirus
+Description : This policy setting turns off Windows Defender Antivirus.
+
+                  If you enable this policy setting, Windows Defender Antivirus does not run, and will not scan computers for
+              malware or other potentially unwanted software.
+
+                  If you disable this policy setting, Windows Defender Antivirus will run regardless of any other installed
+              antivirus product.
+
+                  If you do not configure this policy setting, Windows will internally manage Windows Defender Antivirus. If you
+              install another antivirus program, Windows automatically disables Windows Defender Antivirus. Otherwise, Windows
+              Defender Antivirus will scan your computers for malware and other potentially unwanted software.
+
+                  Enabling or disabling this policy may lead to unexpected or unsupported behavior. It is recommended that you leave
+              this policy setting unconfigured.
+ID          : DisableAntiSpywareDefender
+Registry    : GPOToolsRegistry
+Scope       : Machine
+FileName    : WindowsDefender.admx
+
 ```
 
 ## Contributing to PSGPOTools (Need update)
