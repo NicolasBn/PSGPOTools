@@ -49,28 +49,99 @@ InModuleScope -ModuleName PSGPOTools {
                     }
                 }
             )
-            It "Test object type"{
+            $PolTab = @(
+                [PscustomObject]@{
+                    Name = 'AllowOnlySystemBackup'
+                    Class = 'Machine'
+                    DisplayName = 'AllowOnlySystemBackup'
+                    Regkey = 'Software\Policies\Microsoft\Windows\Backup\Server'
+                    valueName = 'OnlySystemBackup'
+                    ParentCategory = @{
+                        prefix = 'windowsbackup'
+                        name = 'BackupServer'
+                    }
+                    EnableValue = 1
+                    DisableValue = 0
+                },[PscustomObject]@{
+                    Name = 'DisallowLocallyAttachedStorageAsBackupTarget'
+                    Class = 'Machine'
+                    DisplayName = 'DisallowLocallyAttachedStorageAsBackupTarget'
+                    Regkey = 'Software\Policies\Microsoft\Windows\Backup\Server'
+                    valueName = 'NoBackupToDisk'
+                    ParentCategory = @{
+                        prefix = 'windowsbackup'
+                        name = 'BackupServer'
+                    }
+                    EnableValue = '1'
+                    DisableValue = '0'
+                },[PscustomObject]@{
+                    Name = 'DisallowNetworkAsBackupTarget'
+                    Class = 'Machine'
+                    DisplayName = 'DisallowNetworkAsBackupTarget'
+                    Regkey = 'Software\Policies\Microsoft\Windows\Backup\Server'
+                    valueName = 'NoBackupToNetwork'
+                    ParentCategory = @{
+                        prefix = 'windowsbackup'
+                        name = 'BackupServer'
+                    }
+                    EnableValue = 1
+                    DisableValue = 0
+                },[PscustomObject]@{
+                    Name = 'DisallowOpticalMediaAsBackupTarget'
+                    Class = 'Machine'
+                    DisplayName = 'DisallowOpticalMediaAsBackupTarget'
+                    Regkey = 'Software\Policies\Microsoft\Windows\Backup\Server'
+                    valueName = 'NoBackupToOptical'
+                    ParentCategory = @{
+                        prefix = 'windowsbackup'
+                        name = 'BackupServer'
+                    }
+                    EnableValue = 1
+                    DisableValue = 0
+                },[PscustomObject]@{
+                    Name = 'DisallowRunOnceBackups'
+                    Class = 'Machine'
+                    DisplayName = 'DisallowRunOnceBackups'
+                    Regkey = 'Software\Policies\Microsoft\Windows\Backup\Server'
+                    valueName = 'NoRunNowBackup'
+                    ParentCategory = @{
+                        prefix = 'windowsbackup'
+                        name = 'BackupServer'
+                    }
+                    EnableValue = 1
+                    DisableValue = 0
+                }
+            )
+            It "Test ADMX object type"{
                 $ADMX -is [GPOToolsAdmx] | Should be $true
             }
 
-            It "Test FilePath property"{
+            It "Test FilePath property type"{
                 $ADMX.FilePath -is [string] | Should be $true
+            }
+            It "Test FilePath proprerty value"{
                 $ADMX.FilePath | Should be $ADMXPath
             }
 
-            It "Test BaseName Property"{
+            It "Test BaseName Property type"{
                 $ADMX.BaseName -is [string] | Should be $true
+            }
+            It "Test BaseName Property Value"{
                 $ADMX.BaseName | Should be "WindowsBackup"
             }
 
-            It "Test Target Property" {
+            It "Test Target Property Type" {
                 $ADMX.Target -is [AdmxNamespace] | Should be $true
+            }
+            It "Test Target SubProperty Value" {
                 $ADMX.Target.prefix | Should be 'windowsbackup'
                 $ADMX.Target.Namespace | Should be 'Microsoft.Policies.WindowsBackup'
             }
 
-            It "Test Using Property" {
+            It "Test Using Property Type" {
                 $ADMX.Using -is [System.Collections.ArrayList] | Should be $true
+            }
+            It "Test Using Property Value"{
                 $ADMX.Using.count | Should be $UsingTab.Count
                 for ($i = 0 ; $i -lt $ADMX.Using.count; $i++){
                     $ADMX.Using[$i] -is [AdmxNamespace] | should be $true
@@ -79,13 +150,17 @@ InModuleScope -ModuleName PSGPOTools {
                 }
             }
 
-            It "Test SupportedOnDefinition" {
+            It "Test SupportedOnDefinition Type" {
                 $ADMX.SupportedOnDefinition -is [System.Collections.ArrayList] | Should be $true
+            }
+            It "Test SupportedOnDefinition Value" {
                 $ADMX.SupportedOnDefinition.count | Should be 0
             }
 
-            It "Test Category" {
+            It "Test Category Type" {
                 $ADMX.Categories -is [System.Collections.ArrayList] | Should be $true
+            }
+            It "Test Category Value" {
                 $ADMX.Categories.count | Should be 2
                 for ($i = 0 ; $i -lt $ADMX.Categories.count; $i++){
                     $ADMX.Categories[$i].Name | Should be $CatTab[$i].Name
@@ -96,7 +171,21 @@ InModuleScope -ModuleName PSGPOTools {
                 }
             }
 
-            #It "Test policy"
+            It "Test policy" {
+                $ADMX.Policies -is [System.Collections.ArrayList] | Should be $true
+                $ADMX.Policies.count | Should be $PolTab.Count
+                for ($i = 0 ; $i -lt $ADMX.Policies.count; $i++){
+                    $ADMX.Policies[$i].Name | Should be $PolTab[$i].Name
+                    $ADMX.Policies[$i].Class | Should be $PolTab[$i].Class
+                    $ADMX.Policies[$i].DisplayName | Should be $PolTab[$i].DisplayName
+                    $ADMX.Policies[$i].RegKey | Should be $PolTab[$i].RegKey
+                    $ADMX.Policies[$i].ValueName | Should be $PolTab[$i].ValueName
+                    $ADMX.Policies[$i].ParentCategory.prefix | Should be $PolTab[$i].ParentCategory.prefix
+                    $ADMX.Policies[$i].ParentCategory.name | Should be $PolTab[$i].ParentCategory.name
+                    $ADMX.Policies[$i].enableValue | Should be $PolTab[$i].enableValue
+                    $ADMX.Policies[$i].disableValue | Should be $PolTab[$i].disableValue
+                }
+            }
         }
 
         Context "Test constructor method for Admx WindowsUpdate" {
@@ -152,6 +241,36 @@ InModuleScope -ModuleName PSGPOTools {
                     }
                 }
             )
+
+            $PolTab = @(
+                [PscustomObject]@{
+                    Name = 'NoAutoUpdate'
+                    Class = 'User'
+                    DisplayName = 'NoAutoUpdate'
+                    Regkey = 'Software\Microsoft\Windows\CurrentVersion\Policies\Explorer'
+                    valueName = 'NoAutoUpdate'
+                    ParentCategory = @{
+                        prefix = 'windows'
+                        name = 'System'
+                    }
+                    EnableValue = 1
+                    DisableValue = 0
+                },[PscustomObject]@{
+                    Name = 'AUDontShowUasPolicy'
+                    Class = 'Both'
+                    DisplayName = 'AUDontShowUasPolicy'
+                    Regkey = 'Software\Policies\Microsoft\Windows\WindowsUpdate\AU'
+                    valueName = 'NoAUShutdownOption'
+                    ParentCategory = @{
+                        prefix = 'wuau'
+                        name = 'WindowsUpdateCat'
+                    }
+                    EnableValue = 1
+                    DisableValue = 0
+                }
+            )
+
+            #IT blocks
             It "Test object type"{
                 $ADMX -is [GPOToolsAdmx] | Should be $true
             }
@@ -203,7 +322,21 @@ InModuleScope -ModuleName PSGPOTools {
                 }
             }
 
-            #It "Test policy"
+            It "Test policy" {
+                $ADMX.Policies -is [System.Collections.ArrayList] | Should be $true
+                $ADMX.Policies.count | Should be 40
+                for ($i = 0 ; $i -lt $ADMX.Policies.count; $i++){
+                    $ADMX.Policies[$i].Name | Should be $PolTab[$i].Name
+                    $ADMX.Policies[$i].Class | Should be $PolTab[$i].Class
+                    $ADMX.Policies[$i].DisplayName | Should be $PolTab[$i].DisplayName
+                    $ADMX.Policies[$i].RegKey | Should be $PolTab[$i].RegKey
+                    $ADMX.Policies[$i].ValueName | Should be $PolTab[$i].ValueName
+                    $ADMX.Policies[$i].ParentCategory.prefix | Should be $PolTab[$i].ParentCategory.prefix
+                    $ADMX.Policies[$i].ParentCategory.name | Should be $PolTab[$i].ParentCategory.name
+                    $ADMX.Policies[$i].enableValue | Should be $PolTab[$i].enableValue
+                    $ADMX.Policies[$i].disableValue | Should be $PolTab[$i].disableValue
+                }
+            }
         }
     }
 
@@ -334,6 +467,74 @@ InModuleScope -ModuleName PSGPOTools {
         }
     }
 
+    <#Describe "Test GPOToolsPolicy Class" {
+                    $PolTab = @(
+                [PscustomObject]@{
+                    Name = 'AllowOnlySystemBackup'
+                    Classe = 'Machine'
+                    DisplayName = 'Autoriser\suniquement\sla\ssauvegarde\sdu\ssyst\xE8me'
+                    Regkey = 'Software\Policies\Microsoft\Windows\Backup\Server'
+                    valueName = 'OnlySystemBackup'
+                    ParentCategory = @{
+                        prefix = 'windowsbackup'
+                        name = 'BackupServer'
+                    }
+                    EnableValue = 1
+                    DisableValue = 0
+                },[PscustomObject]@{
+                    Name = 'DisallowLocallyAttachedStorageAsBackupTarget'
+                    Classe = 'Machine'
+                    DisplayName = 'Ne\spas\sautoriser\sun\sp\xE9riph\xE9rique\sde\sstockage\sconnect\xE9\slocalement\s\xE0\sfaire\soffice\sde\scible\sde\ssauvegarde'
+                    Regkey = 'Software\Policies\Microsoft\Windows\Backup\Server'
+                    valueName = 'NoBackupToDisk'
+                    ParentCategory = @{
+                        prefix = 'windowsbackup'
+                        name = 'BackupServer'
+                    }
+                    EnableValue = '1'
+                    DisableValue = '0'
+                },[PscustomObject]@{
+                    Name = 'DisallowNetworkAsBackupTarget'
+                    Classe = 'Machine'
+                    DisplayName = 'Ne\spas\sautoriser\sun\sr\xE9seau\s\xE0\sfaire\soffice\sde\scible\sde\ssauvegarde'
+                    Regkey = 'Software\Policies\Microsoft\Windows\Backup\Server'
+                    valueName = 'NoBackupToNetwork'
+                    ParentCategory = @{
+                        prefix = 'windowsbackup'
+                        name = 'BackupServer'
+                    }
+                    EnableValue = 1
+                    DisableValue = 0
+                },[PscustomObject]@{
+                    Name = 'DisallowOpticalMediaAsBackupTarget'
+                    Classe = 'Machine'
+                    DisplayName = 'Ne\spas\sautoriser\sun\sm\xE9dia\soptique\s\xE0\sfaire\soffice\sde\scible\sde\ssauvegarde'
+                    Regkey = 'Software\Policies\Microsoft\Windows\Backup\Server'
+                    valueName = 'NoBackupToOptical'
+                    ParentCategory = @{
+                        prefix = 'windowsbackup'
+                        name = 'BackupServer'
+                    }
+                    EnableValue = 1
+                    DisableValue = 0
+                },[PscustomObject]@{
+                    Name = 'DisallowRunOnceBackups'
+                    Classe = 'Machine'
+                    DisplayName = 'Ne\spas\sautoriser\sles\ssauvegardes\s\xE0\sex\xE9cution\sunique'
+                    Regkey = 'Software\Policies\Microsoft\Windows\Backup\Server'
+                    valueName = 'NoRunNowBackup'
+                    ParentCategory = @{
+                        prefix = 'windowsbackup'
+                        name = 'BackupServer'
+                    }
+                    EnableValue = 1
+                    DisableValue = 0
+                }
+            )
+    }
+
+    #>
+
     Describe "Test GPOToolsUtility class" {
 
         Context "Test static method" {
@@ -349,10 +550,12 @@ InModuleScope -ModuleName PSGPOTools {
                 $AdmlPath | Should be "$ParentPath\$Culture\WindowsBackup.adml"
             }
 
-            It "Test FindDependancyFile"{
+            It "Test FindDependancyFile for windows namespace"{
                 $Dep1 -is [System.IO.FileInfo] | Should Be $True
                 $Dep1.FullName | Should Be "$ParentPath\Windows.admx"
+            }
 
+                It "Test FindDependancyFile for WindowsServer namespace"{
                 $Dep2 -is [System.IO.FileInfo] | Should Be $True
                 $Dep2.FullName | Should Be "$ParentPath\WindowsServer.admx"
             }
