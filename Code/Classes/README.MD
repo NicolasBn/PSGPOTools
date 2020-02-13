@@ -86,6 +86,20 @@ XML section cover by the class in ADMX file :
         * [x]  ref
       * [x]  supportedOn
         * [x]  ref
+      * [ ]  [enabledList]
+        * [ ]  item
+        * [ ]  Key
+        * [ ]  valueName
+        * [ ]  value
+          * [ ]  decimal
+            * [ ]  value
+      * [ ]  [disabledList]
+        * [ ]  item
+        * [ ]  Key
+        * [ ]  valueName
+        * [ ]  value
+          * [ ]  decimal
+            * [ ]  value
       * [x]  [enabledValue]
         * [x]  decimal
           * [x]  value
@@ -184,6 +198,20 @@ Section que l'on retrouve dans un fichier Adml :
           * [ ]  refId
           * [ ]  #text
           * [ ]  [required] valeur true/false
+
+## Relation between xml presentation section in ADMX and AMDL Files
+
+ADMX | ADML
+--- | ---
+list | listbox
+text | textbox
+decimal | decimaltextbox
+enum | dropdownlist
+multiText | multitextbox
+boolean | checkbox
+
+The 'text' champ in ADML file is hazardous. It's not referring a registry key or other xml section listed in the table. And it can place after or before the xml section that his concerned.
+Look at [#issue4](https://github.com/NicolasBn/PSGPOTools/issues/4)
 
 ## Classe GPOToolsUtility
 
