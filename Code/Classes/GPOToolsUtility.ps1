@@ -225,7 +225,6 @@ class GPOToolsUtility {
                 [GPOToolsUtility]::Categories,
                 [GPOToolsUtility]::Policies,
                 [GPOToolsUtility]::TargetLoad
-                #[GPOToolsCategory]::AllParentCategory
             )
         ){
             $Property.Clear()
@@ -370,7 +369,7 @@ class GPOToolsCategory {
         [GpoToolsAdmx]$Admx,
         [GpoToolsAdml]$Adml
     ){
-        [void]$Admx.Categories | Foreach-Object {
+        $Admx.Categories | Foreach-Object {
             [GPOToolsCategory]::Create($_,$Admx.Categories,$Adml)
         }
     }
@@ -384,11 +383,14 @@ class GPOToolsPolicy {
     #[string]$State # Mettre une enumeration? Mettre simplement une methode, l'interrogation de l'ensemble du registre va prendre du temps
     [string]$Description
     [string]$ID
-    [GpoToolsRegistry]$Registry
+    [System.Collections.ArrayList]$Options = @()
+    [System.Collections.Generic.List[GpoToolsRegistry]]$Registry
     [ScopePolicy]$Scope
     [string]$FileName
+
     Hidden [GpoToolscategory]$Category
     Hidden [GPOToolsSupportedOn]$SupportedOn
+
 
     GPOToolsPolicy([AdmxPolicy]$Policy,[GpoToolsAdml]$ADMLPol){
         $this.ID = $Policy.Name
@@ -405,6 +407,75 @@ class GPOToolsPolicy {
         $this.Path = $this.GeneratePath()
 
         $this.Registry = [GPOToolsRegistry]::New($Policy)
+
+        if ($null -ne $Policy.elements){
+            $Pres = $ADMLPol.PresentationTable."$($Policy.presentation)"
+            $Pos = 0
+            # A completer
+            Switch ($Pres) {
+                {$_ -is [AdmlPresentationText]} {
+                    $This.Options.Add([GPOToolsOptionText]::New($_,$Pos))
+                    $Pos++
+                    continue
+                }
+                {$_ -is [AdmlPresentationCheckbox]} {
+                    $This.Options.Add([GPOToolsOptionCheckBox]::New(
+                        [GPOToolsOption]::GetElementByID($Policy.elements.Boolean,$_.ID),
+                        $_,
+                        $Pos
+                    ))
+                    $Pos++
+                    continue
+                }
+                {$_ -is [AdmlPresentationDropdownList]} {
+                    # Les items qui se trouvent dans la liste vont chercher leur ecriture dans sctring table
+                    $This.Options.Add([GPOToolsOptionDropDownList]::New(
+                        [GPOToolsOption]::GetElementByID($Policy.elements.enum,$_.ID),
+                        $_,
+                        $Pos,
+                        $ADMLPol.StringTable
+                    ))
+                    $Pos++
+                    continue
+                }
+                {$_ -is [AdmlPresentationTextbox]} {
+                    $This.Options.Add([GPOToolsOptionTextBox]::New(
+                        [GPOToolsOption]::GetElementByID($Policy.elements.Text,$_.ID),
+                        $_,
+                        $Pos
+                    ))
+                    $Pos++
+                    continue
+                }
+                {$_ -is [AdmlPresentationDecimalTextbox]} {
+                    $This.Options.Add([GPOToolsOptionDecimal]::New(
+                        [GPOToolsOption]::GetElementByID($Policy.elements.decimal,$_.ID),
+                        $_,
+                        $Pos
+                    ))
+                    $Pos++
+                    continue
+                }
+                {$_ -is [AdmlPresentationMultiTextbox]} {
+                    $This.Options.Add([GPOToolsOptionMultiTextBox]::New(
+                        [GPOToolsOption]::GetElementByID($Policy.elements.multiText,$_.ID),
+                        $_,
+                        $Pos
+                    ))
+                    $Pos++
+                    continue
+                }
+                {$_ -is [AdmlPresentationListbox]} {
+                    $This.Options.Add([GPOToolsOptionList]::New(
+                        [GPOToolsOption]::GetElementByID($Policy.elements.list,$_.ID),
+                        $_,
+                        $Pos
+                    ))
+                    $Pos++
+                    continue
+                }
+            }
+        }
     }
 
     [string]GeneratePath(){
@@ -469,25 +540,238 @@ class GPOToolsPolicy {
 
         return $State
     }
+    [System.Object[]]FormatCustom() {
+        return $this | Format-Custom
+    }
 }
 
 class GPOToolsRegistry {
-    $Path
+    [string[]]$Path
     $Key
     $Value #Active/Desactive
     $DefaultValue
 
     GPOToolsRegistry([AdmxPolicy]$Pol) {
-        if ($Pol.Class -eq 'Machine'){
-            $this.Path = 'HKLM:\{0}' -f $Pol.RegKey
-        }Else{
-            $this.Path = 'HKCU:\{0}' -f $Pol.RegKey
+        Switch ($Pol.Class){
+            'Machine' {
+                $this.Path = 'HKLM:\{0}' -f $Pol.RegKey
+                break
+            }
+            'User' {
+                $this.Path = 'HKCU:\{0}' -f $Pol.RegKey
+                break
+            }
+            'Both' {
+                $this.Path = 'HKLM:\{0}', 'HKCU:\{0}' | Foreach-Object {$_ -f $Pol.RegKey}
+                break
+            }
         }
         $this.Key = $Pol.ValueName
         $this.Value = @{
             Enable = $Pol.enableValue
             Disable = $pol.disableValue
         }
+    }
+}
+
+class GPOToolsOption {
+    Hidden [String]$ID
+    Hidden [int]$Position
+    [string]$Text
+    [String]$Key
+    [string]$ValueName
+
+    static [System.Xml.XmlElement]GetElementByID(
+        $XML,
+        [string]$ID
+    ){
+        return $($XML | Where-Object {$_.ID -eq $ID})
+    }
+}
+
+class GPOToolsOptionItemList {
+    [String]$DisplayName
+    [long]$Value
+
+    GPOToolsOptionItemList([System.Xml.XmlElement]$Item,[hashtable]$StrTbl){
+        $this.DisplayName = $StrTbl."$($Item.DisplayName -replace '\$\(string\.(.*)\)', '$1')"
+        $this.Value = $Item.Value.Decimal.Value
+    }
+}
+
+class GPOToolsOptionText {
+    [String]$Text
+    Hidden [Int]$Position
+
+    GPOToolsOptionText ([AdmlPresentationText]$PresTest,[int]$Pos) {
+        $this.Text = $PresTest.Text
+        $this.Position = $Pos
+    }
+}
+
+class GPOToolsOptionCheckBox:GPOToolsOption {
+    $FalseValue
+    $TrueValue
+    [boolean]$DefaultCheck
+
+    GPOToolsOptionCheckBox (
+        [System.Xml.XmlElement]$Element,
+        [AdmlPresentationCheckbox]$PresCheckbox,
+        [int]$Pos
+    ){
+
+        $this.ID = $PresCheckbox.ID
+        $this.Position = $Pos
+        $this.Text = $PresCheckbox.Text
+        $this.ValueName = $Element.ValueName
+
+        #Optional
+        $this.Key = $Element.Key
+        $this.FalseValue = $Element.FalseValue
+        $this.TrueValue = $Element.TrueValue
+        $this.DefaultCheck = $PresCheckbox.DefaultCheck # Remplacer par l'objet
+    }
+}
+
+class GPOToolsOptionDropDownList:GPOToolsOption {
+    [boolean]$Required
+    $ClientExtension # ???
+    [boolean]$Sort # Optional
+    [int]$DefaultItem # Optional
+    [System.Collections.Generic.List[GPOToolsOptionItemList]]$Items
+
+    GPOToolsOptionDropDownList(
+        [System.Xml.XmlElement]$Element,
+        [AdmlPresentationDropdownList]$PresDropDownList,
+        [int]$Pos,
+        [hashtable]$StringTable
+    ){
+
+        $this.ID = $PresDropDownList.ID
+        $this.Position = $Pos
+        $this.Text = $PresDropDownList.Text
+        $this.ValueName = $Element.ValueName
+
+        $this.Items = $Element.Item | Foreach-Object{
+            [GPOToolsOptionItemList]::New($_,$StringTable)
+        }
+
+        #Optional
+        $this.Key = $Element.Key
+        $this.Required = $Element.Required
+        $this.ClientExtension = $Element.ClientExtension
+        $this.DefaultItem = $PresDropDownList.DefaultItem # Remplacer par l'objet
+        $this.Sort = $PresDropDownList.Sort
+    }
+}
+
+class GPOToolsOptionTextBox:GPOToolsOption {
+    [boolean]$Required
+    $Expandable # Need to determine the type of data
+    [int]$MaxLength
+    [string]$DefaultValue
+
+    GPOToolsOptionTextBox(
+        [System.Xml.XmlElement]$Element,
+        [AdmlPresentationTextbox]$PresTextBox,
+        [int]$Pos
+    ){
+        $Elem = $Element.Text | Where-Object { $_.ID -eq $PresTextBox.ID }
+
+        $this.ID = $PresTextBox.ID
+        $this.Position = $Pos
+        $this.Text = $PresTextBox.Text
+        $this.ValueName = $Elem.ValueName
+
+        #Optional
+        $this.Key = $Elem.Key
+        $this.Required = $Elem.Required
+        $this.expandable = $Elem.expandable
+        $this.maxLength = $Elem.maxLength
+        $this.DefaultValue = $PresTextBox.DefaultValue # remplacer par l'objet
+    }
+}
+
+class GPOToolsOptionDecimal:GPOToolsOption {
+    [boolean]$Required
+    [long]$MinValue
+    [long]$MaxValue
+    [boolean]$StoreAsText # Need to verify the type of data and to see in the registry
+    $ClientExtension # ???
+    [long]$DefaultValue
+
+    GPOToolsOptionDecimal (
+        [System.Xml.XmlElement]$Element,
+        [AdmlPresentationDecimalTextbox]$PresDecimal,
+        [int]$Pos
+    ){
+        $Elem = $Element.Decimal | Where-Object { $_.ID -eq $PresDecimal.ID }
+
+        $this.ID = $PresDecimal.ID
+        $this.Position = $Pos
+        $this.Text = $PresDecimal.Text
+        $this.ValueName = $Elem.ValueName
+
+        #Optional
+        $this.Key = $Elem.Key
+        $this.Required = $Elem.Required
+        $this.MinValue = $Elem.MinValue
+        $this.MaxValue = $Elem.MaxValue
+        $this.StoreAsText = $Elem.StoreAsText
+        $this.ClientExtension = $Elem.ClientExtension
+        $this.DefaultValue = $PresDecimal.DefaultValue # remplacer par l'objet
+    }
+}
+
+class GPOToolsOptionMultiTextBox:GPOToolsOption {
+    [boolean]$Required
+    [int]$MaxLength
+    [int]$MaxStrings
+    #[String]$DefaultValue
+
+    GPOToolsOptionMultiTextBox (
+        [System.Xml.XmlElement]$Element,
+        [AdmlPresentationMultiTextbox]$PresMultiText,
+        [int]$Pos
+     ){
+        $Elem = $Element.multiText | Where-Object { $_.ID -eq $PresMultiText.ID }
+
+        $this.ID = $PresMultiText.ID
+        $this.Position = $Pos
+        $this.Text = $PresMultiText.Text
+        $this.ValueName = $Elem.ValueName
+
+        #Optional
+        $this.Key = $Elem.Key
+        $this.Required = $Elem.Required
+        $this.MaxLength = $Elem.MaxLength
+        $this.MaxStrings = $Elem.MaxStrings
+     }
+}
+
+class GPOToolsOptionList:GPOToolsOption {
+    [boolean]$Additive
+    [boolean]$ExplicitValue
+    [string]$ValuePrefix # Need to see in the registry
+    [boolean]$Required
+
+    GPOToolsOptionList (
+        [System.Xml.XmlElement]$Element,
+        [AdmlPresentationListbox]$PresListbox,
+        [int]$Pos
+    ){
+        $Elem = $Element.list | Where-Object { $_.ID -eq $PresListbox.ID }
+
+        $this.ID = $PresListbox.ID
+        $this.Position = $Pos
+        $this.Text = $PresListbox.Text
+        $this.ValueName = $Elem.ValueName
+
+        #Optional
+        $this.Additive = $Elem.Additive
+        $this.ExplicitValue = $Elem.ExplicitValue
+        $this.ValuePrefix = $Elem.ValuePrefix
+        $this.Required = '' # ADML
     }
 }
 
@@ -550,7 +834,10 @@ class AdmxPolicy {
     $SupportedOn
     $enableValue
     $disableValue
+    $presentation
     $elements
+    #Enabledlist
+    #disabledlist
 
     AdmxPolicy ($Policy,[AdmxNamespace]$target){
         $this.Name = $policy.Name
@@ -562,6 +849,7 @@ class AdmxPolicy {
         $this.SupportedOn = $policy.SupportedOn
         $this.enableValue = $policy.enabledValue.decimal.Value
         $this.disableValue = $policy.disabledValue.decimal.Value
+        $this.presentation = $policy.presentation -replace '\$\(presentation\.(.*)\)', '$1'
         if ($policy.ParentCategory.ref -ne $null){
             $SplitResult = $policy.ParentCategory.ref -split ':'
             if ($SplitResult.count -eq 1){
@@ -578,9 +866,7 @@ class AdmxPolicy {
         }Else{
             Write-Verbose ("[AdmxPolicy] No parent category found for {0} policy" -f $policy.Name)
         }
-        #$this.elements = $policy.elements
-
-
+        $this.elements = $policy.elements
     }
 }
 
@@ -642,6 +928,7 @@ class GpoToolsAdml {
     [string]$FilePath
     [string]$BaseName
     [Hashtable]$StringTable
+    [Hashtable]$PresentationTable
 
     #presentationTable
 
@@ -652,10 +939,116 @@ class GpoToolsAdml {
         $This.FilePath = $File.FullName
         $This.BaseName = $File.BaseName
         $this.StringTable = @{}
+        $this.PresentationTable = @{}
 
         $xml.policyDefinitionResources.resources.stringTable.string | Foreach-Object {
             Write-Verbose ('Ajout du champ {0} dans la table StringTable pour le fichier {1}' -f $_.id,$File.BaseName)
             $this.StringTable.Add($_.id,$_.'#Text')
+        }
+
+        if ($null -ne $xml.policyDefinitionResources.resources.presentationTable){
+            foreach ($Presentation in $xml.policyDefinitionResources.resources.presentationTable.presentation) {
+                [System.Collections.ArrayList]$GenericCollection = @()
+                Write-Verbose ('Ajout de la presentation {0} dans la table presentationTable pour le fichier {1}' -f $Presentation.id,$File.BaseName)
+                Switch ($Presentation.get_ChildNodes()){
+                    {$_.Name -eq 'text'} { [void]$GenericCollection.Add([AdmlPresentationText]::New($_)) ; continue }
+                    {$_.Name -eq 'checkbox'} { [void]$GenericCollection.Add([AdmlPresentationCheckbox]::New($_)) ; continue }
+                    {$_.Name -eq 'dropdownList'} { [void]$GenericCollection.Add([AdmlPresentationDropdownList]::New($_)) ; continue }
+                    {$_.Name -eq 'textbox'} { [void]$GenericCollection.Add([AdmlPresentationTextbox]::New($_)) ; continue }
+                    {$_.Name -eq 'decimalTextBox'} { [void]$GenericCollection.Add([AdmlPresentationDecimalTextbox]::New($_)) ; continue }
+                    {$_.Name -eq 'multitextbox'} { [void]$GenericCollection.Add([AdmlPresentationMultiTextbox]::New($_)) ; continue }
+                    {$_.Name -eq 'listbox'} { [void]$GenericCollection.Add([AdmlPresentationListbox]::New($_)) ; continue }
+                }
+                $this.PresentationTable.Add($Presentation.id, $GenericCollection)
+            }
+        }
+    }
+}
+
+class AdmlPresentation {
+    [string]$Text
+    [string]$ID
+}
+
+class AdmlPresentationText:AdmlPresentation {
+
+    AdmlPresentationText ([System.Xml.XmlElement]$Pres) {
+        $this.Text = $Pres.InnerText
+        $this.ID = $Null
+    }
+}
+
+class AdmlPresentationCheckbox:AdmlPresentation {
+    [boolean]$DefaultCheck
+
+    AdmlPresentationCheckbox([System.Xml.XmlElement]$Pres) {
+        $this.Text = $Pres.InnerText
+        $this.ID = $Pres.refID
+        If ($Pres.DefaultChecked){
+            $this.DefaultCheck = $Pres.DefaultChecked
+        }
+    }
+}
+
+class AdmlPresentationDropdownList:AdmlPresentation {
+    [int]$DefaultItem
+    [boolean]$Sort = $False
+
+    AdmlPresentationDropdownList([System.Xml.XmlElement]$Pres) {
+        $this.Text = $Pres.InnerText
+        $this.ID = $Pres.refID
+        If ($Pres.DefaultItem){
+            $this.DefaultItem = $Pres.DefaultItem
+        }
+        If ($null -ne $Pres.Sort){
+            $this.Sort = $Pres.Sort
+        }ElseIf($null -ne $Pres.NoSort){
+            $this.Sort = !$Pres.NoSort
+        }ElseIf($null -ne $Pres.OSort){
+            $this.Sort = !$Pres.OSort
+        }
+    }
+}
+
+class AdmlPresentationTextbox:AdmlPresentation {
+    [String]$DefaultValue
+
+    AdmlPresentationTextbox([System.Xml.XmlElement]$Pres) {
+        $this.Text = $Pres.Label
+        $this.ID = $Pres.refID
+        If ($Pres.DefaultValue){
+            $this.DefaultValue = $Pres.DefaultValue
+        }
+    }
+}
+
+class AdmlPresentationDecimalTextbox:AdmlPresentation {
+    [long]$DefaultValue
+
+    AdmlPresentationDecimalTextbox([System.Xml.XmlElement]$Pres) {
+        $this.Text = $Pres.InnerText
+        $this.ID = $Pres.refID
+        If ($Pres.DefaultValue){
+            $this.DefaultValue = $Pres.DefaultValue
+        }
+    }
+}
+
+class AdmlPresentationMultiTextbox:AdmlPresentation {
+    AdmlPresentationMultiTextbox ([System.Xml.XmlElement]$Pres) {
+        $this.Text = $Pres.InnerText
+        $this.ID = $Pres.refID
+    }
+}
+
+class AdmlPresentationListbox:AdmlPresentation {
+    [boolean]$Required
+
+    AdmlPresentationListbox([System.Xml.XmlElement]$Pres) {
+        $this.Text = $Pres.InnerText
+        $this.ID = $Pres.refID
+        If ($Pres.required){
+            $this.Required = $Pres.Required
         }
     }
 }
