@@ -106,56 +106,60 @@ XML section cover by the class in ADMX file :
       * [x]  [disabledValue]
         * [x]  decimal
           * [x]  value
-      * [ ]  [presentation] : Variable (presentation.[..]) sans doute quelque chose en rapport avec l'affichage ex : "$(presentation.ProfileDlgTimeOut)"
+      * [x]  [presentation] : Variable (presentation.[..]) sans doute quelque chose en rapport avec l'affichage ex : "$(presentation.ProfileDlgTimeOut)"
       * [ ]  [clientExtension] : GUID
-      * [ ]  [elements]
-        * [ ]  [list]
-          * [ ]  [additive]
-          * [ ]  [explicitValue]
-          * [ ]  id
-          * [ ]  [key]
-          * [ ]  [valuePrefix]
-          * [ ]  [valueName]
-        * [ ]  [text]
-          * [ ]  id
-          * [ ]  valueName
-          * [ ]  [required]
-          * [ ]  [expandable]
-          * [ ]  [maxLength]
-          * [ ]  [key]
-        * [ ]  [decimal]
-          * [ ]  id
-          * [ ]  valueName
-          * [ ]  [required]
-          * [ ]  [minValue]
-          * [ ]  [maxValue]
-          * [ ]  [storeAsText]
-          * [ ]  [clientExtension]
-          * [ ]  [key]
-        * [ ]  [enum]
-          * [ ]  id
-          * [ ]  valueName
-          * [ ]  [required]
-          * [ ]  [clientExtension]
-          * [ ]  [key]
-        * [ ]  [multiText]
-          * [ ]  id
-          * [ ]  valueName
-          * [ ]  [required]
-          * [ ]  [maxLength]
-          * [ ]  [maxStrings]
-        * [ ]  [boolean]
-          * [ ]  id
-          * [ ]  valueName
-          * [ ]  [key]
-          * [ ]  [falseValue]
-            * [ ]  decimal
-              * [ ]  value
-            * [ ]  [delete]
-          * [ ]  [trueValue]
-            * [ ]  decimal
-              * [ ]  value
-          * [ ]  [key]
+      * [x]  [elements]
+        * [x]  [list]
+          * [x]  [additive]
+          * [x]  [explicitValue]
+          * [x]  id
+          * [x]  [key] # If no key, that is the key of policy who content the list value in property
+          * [x]  [valuePrefix] # Need to see in the registry
+          * [x]  [valueName]
+        * [x]  [text]
+          * [x]  id
+          * [x]  valueName
+          * [x]  [required]
+          * [x]  [expandable]
+          * [x]  [maxLength]
+          * [x]  [key]
+        * [x]  [decimal]
+          * [x]  id
+          * [x]  valueName
+          * [x]  [required]
+          * [x]  [minValue]
+          * [x]  [maxValue]
+          * [x]  [storeAsText]
+          * [x]  [clientExtension] # ???
+          * [x]  [key]
+        * [x]  [enum]
+          * [x]  id
+          * [x]  valueName
+          * [x]  [required]
+          * [x]  [clientExtension] # ???
+          * [x]  [key]
+          * [x] item
+            * [x] displayName
+              *[x] value
+                *[x] decimal
+                  *[x] value
+        * [x]  [multiText]
+          * [X]  id
+          * [X]  valueName
+          * [X]  [required]
+          * [X]  [maxLength]
+          * [X]  [maxStrings]
+        * [x]  [boolean]
+          * [X]  id
+          * [X]  valueName
+          * [X]  [key]
+          * [X]  [falseValue]
+            * [X]  decimal
+              * [X]  value
+            * [X]  [delete]
+          * [X]  [trueValue]
+            * [X]  decimal
+              * [X]  value
 
 ## Classe [GPOToolsADML]
 
@@ -166,38 +170,39 @@ Section que l'on retrouve dans un fichier Adml :
   * [ ]  displayName
   * [ ]  description
   * [ ]  resources
-    * [ ]  stringTable
-      * [ ]  string
-        * [ ]  id
-        * [ ]  #text
+    * [x]  stringTable
+      * [x]  string
+        * [x]  id
+        * [x]  #text
     * [ ]  [presentationTable]
       * [ ]  presentation
-        * [ ]  id
-        * [ ]  [checkbox] (Object[] ou XmlElement)
-          * [ ]  #text
-          * [ ]  [defaultchecked] : valeur true/false
-          * [ ]  refid
-        * [ ]  [dropdownlist] (Object[] ou XmlElement)
-          * [ ]  #text
-          * [ ]  refid
-          * [ ]  [defaultItem]
+        * [x]  id
+        * [x]  [checkbox] (Object[] ou XmlElement)
+          * [x]  #text
+          * [x]  [defaultchecked] : valeur true/false
+          * [x]  refid
+        * [x]  [dropdownlist] (Object[] ou XmlElement)
+          * [x]  #text
+          * [x]  refid
+          * [x]  [defaultItem]
           * [ ]  [noSort] : valeur true/false
           * [ ]  [oSort] : valeur true/false
           * [ ]  [Sort] : valeur true/false
-        * [ ]  [text] ( string ou Object[])
-        * [ ]  [textbox] (Object[] ou XmlElement)
-          * [ ]  label
-          * [ ]  refId
-          * [ ]  [defaultValue]
-        * [ ]  [decimalTextBox] (Object[] ou XmlElement)
-          * [ ]  [#cdata-section]
-        * [ ]  [multitextbox] (Object[] ou XmlElement)
-          * [ ]  refId
-          * [ ]  #text
-        * [ ]  [listbox]
-          * [ ]  refId
-          * [ ]  #text
-          * [ ]  [required] valeur true/false
+        * [x]  [text] ( string ou Object[])
+        * [x]  [textbox] (Object[] ou XmlElement)
+          * [x]  label
+          * [x]  refId
+          * [x]  [defaultValue]
+        * [x]  [decimalTextBox] (Object[] ou XmlElement)
+          * [x]  [defaultValue]
+          * [x]  [#cdata-section]
+        * [x]  [multitextbox] (Object[] ou XmlElement)
+          * [x]  refId
+          * [x]  #text
+        * [x]  [listbox]
+          * [x]  refId
+          * [x]  #text
+          * [x]  [required] valeur true/false
 
 ## Relation between xml presentation section in ADMX and AMDL Files
 
@@ -216,21 +221,22 @@ Look at [#issue4](https://github.com/NicolasBn/PSGPOTools/issues/4)
 ## Classe GPOToolsUtility
 
 The utility class groups static member to manage the other classes.
+
 * [ ]  Properties
-  * [ ]  SupportOnTable : Contains all Support reference in ADMX files
-  * [ ]  Categories : Contains all Category reference in ADMX files
-  * [ ]  Policies : Contains all Policies reference un ADMX files
-  * [ ]  TargetLoad : Contains all ADMX files initiate by InitiateAdmxAdml method
+  * [x]  SupportOnTable : Contains all Support reference in ADMX files
+  * [x]  Categories : Contains all Category reference in ADMX files
+  * [x]  Policies : Contains all Policies reference un ADMX files
+  * [x]  TargetLoad : Contains all ADMX files initiate by InitiateAdmxAdml method
 * [ ]  Method
-  * [ ]  InitiateAdmxAdml ([System.IO.DirectoryInfo], [cultureinfo])
-  * [ ]  InitiateAdmxAdml ([System.IO.FileInfo], [cultureinfo])
-  * [ ]  GetNamespaceAdmx ([System.IO.FileInfo])
-  * [ ]  GetADMLPathFromADMX ([System.IO.FileInfo], [cultureinfo])
-  * [ ]  CheckAndInitiateDependancy ([GpoToolsAdmx], [cultureinfo])
-  * [ ]  FindDependancyFile ([string], [string])
-  * [ ]  CheckCategoryPresence ([string], [hashtable])
-  * [ ]  CheckCategoryPresence ([string], [string])
-  * [ ]  RemoveAll() : Empty static Properties : SupportOnTable, Categories, Policies, TargetLoad
+  * [x]  InitiateAdmxAdml ([System.IO.DirectoryInfo], [cultureinfo])
+  * [x]  InitiateAdmxAdml ([System.IO.FileInfo], [cultureinfo])
+  * [x]  GetNamespaceAdmx ([System.IO.FileInfo])
+  * [x]  GetADMLPathFromADMX ([System.IO.FileInfo], [cultureinfo])
+  * [x]  CheckAndInitiateDependancy ([GpoToolsAdmx], [cultureinfo])
+  * [x]  FindDependancyFile ([string], [string])
+  * [x]  CheckCategoryPresence ([string], [hashtable])
+  * [x]  CheckCategoryPresence ([string], [string])
+  * [x]  RemoveAll() : Empty static Properties : SupportOnTable, Categories, Policies, TargetLoad
 
 
 ## Classe GPOToolsCategory

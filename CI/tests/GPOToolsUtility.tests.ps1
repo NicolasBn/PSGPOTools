@@ -325,7 +325,7 @@ InModuleScope -ModuleName PSGPOTools {
             It "Test policy" {
                 $ADMX.Policies -is [System.Collections.ArrayList] | Should be $true
                 $ADMX.Policies.count | Should be 40
-                for ($i = 0 ; $i -lt $ADMX.Policies.count; $i++){
+                for ($i = 0 ; $i -lt 2; $i++){
                     $ADMX.Policies[$i].Name | Should be $PolTab[$i].Name
                     $ADMX.Policies[$i].Class | Should be $PolTab[$i].Class
                     $ADMX.Policies[$i].DisplayName | Should be $PolTab[$i].DisplayName
