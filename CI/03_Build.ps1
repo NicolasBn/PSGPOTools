@@ -83,7 +83,8 @@ Write-Host "[BUILD][START][PSD1] Adding functions to export" -ForegroundColor RE
 $FunctionsToExport = $PublicFunctions.BaseName
 $Manifest = Join-Path -Path $ModuleFolderPath -ChildPath "$($ModuleName).psd1"
 $Tags = @( 'PSEdition_Core','PSEdition_Desktop','psgpotools','gpo','admx','adml' )
-Update-ModuleManifest -Path $Manifest -FunctionsToExport $FunctionsToExport -Tags $Tags
+$Formats = @( 'PSGPOTools.format.ps1xml' )
+Update-ModuleManifest -Path $Manifest -FunctionsToExport $FunctionsToExport -Tags $Tags -FormatsToProcess $Formats
 
 Write-Host "[BUILD][END][MAIN PSM1] building main PSM1 " -ForegroundColor RED -BackgroundColor White
 
