@@ -33,8 +33,7 @@ If applicable, add screenshots or PowerShell transcripts to help explain your pr
 - Operating System Version (Version and Build, eg Windows 10 Build 1709):
 - PowerShell Version: [Use ```Get-Host```]
 - Architecture for PowerShell Session: [64bit | 32bit]
-- Is this system an Azure Automation Worker?: [No, Hybrid Worker, Azure Worker]
-- Other loaded modules: [Include the output of ```Get-Module```]
+- ADMX/ADML Version : [ Windows7/Windows2008R2, Office 2013, Firefox, ... ]
 
 **Additional context**
 Add any other context about the problem here. Is there any other information like system configuration or data that might help us understand the problem.
