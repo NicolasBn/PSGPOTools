@@ -1,4 +1,4 @@
-﻿#Generated at 02/19/2020 00:09:29 by Nicolas BAUDIN
+﻿#Generated at 02/19/2020 12:42:51 by Nicolas BAUDIN
 enum StatePolicy {
     Enabled
     Disabled
@@ -1068,16 +1068,36 @@ function Get-PSGPOCategory {
 }
 function Get-PSGPOPolicy {
     [cmdletbinding()]
-    Param()
+    Param(
+        [Parameter (Mandatory = $false)]
+        [ValidateSet('Machine','User')]
+        [string]$Scope
 
-    ### VAR ###
-    ### MAIN ###
+    )
+
+   begin
+   {
     $Policies =  [GpoToolsUtility]::Policies
+   }
+   process{
+
+    if ( $PsBoundParameters.ContainsKey('Scope') ) {
+
+        switch ($Scope) {
+            'Machine' {  $Policies = $Policies| Where-Object {$_.Scope -eq 'Machine'} }
+            'User'{ $Policies = $Policies| Where-Object {$_.Scope -eq 'User'} }
+            Default {}
+        }
+
+    }
+
     If ($null -eq $Policies){
         Write-Warning "Initiate ADMX and ADML files with Initialize-PSGPOAdmx cmdlet."
-    }Else{
-        return $Policies
     }
+
+   }
+   end{return $Policies}
+
 }
 function Get-PSGPOSupportedOn {
     [cmdletbinding()]
