@@ -594,8 +594,8 @@ class GPOToolsOptionItemList {
     [long]$Value
 
     GPOToolsOptionItemList([System.Xml.XmlElement]$Item,[hashtable]$StrTbl){
-        $this.DisplayName = $StrTbl."$($Item.DisplayName -replace '\$\(string\.(.*)\)', '$1')"
-        $this.Value = $Item.Value.Decimal.Value
+        $this.DisplayName = $StrTbl."$($Item.displayName -replace '\$\(string\.(.*)\)', '$1')"
+        $this.Value = $Item.value.decimal.value
     }
 }
 
@@ -606,6 +606,10 @@ class GPOToolsOptionText {
     GPOToolsOptionText ([AdmlPresentationText]$PresTest,[int]$Pos) {
         $this.Text = $PresTest.Text
         $this.Position = $Pos
+    }
+
+    [string[]]FormatOptionsControl(){
+        return $this.Text
     }
 }
 
@@ -627,17 +631,22 @@ class GPOToolsOptionCheckBox:GPOToolsOption {
 
         #Optional
         $this.Key = $Element.Key
-        $this.FalseValue = $Element.FalseValue
-        $this.TrueValue = $Element.TrueValue
-        $this.DefaultCheck = $PresCheckbox.DefaultCheck # Remplacer par l'objet
+        if ($Element.HasAttribute('FalseValue')){$this.FalseValue = $Element.FalseValue}
+        if ($Element.HasAttribute('TrueValue')){$this.TrueValue = $Element.TrueValue}
+        if ($Element.HasAttribute('DefaultCheck')){$this.DefaultCheck = $Element.DefaultCheck}
+    }
+
+    [string[]]FormatOptionsControl(){
+        $Format = "[CHECKBOX] {0} [ ]" -f $this.Text
+        return $Format
     }
 }
 
 class GPOToolsOptionDropDownList:GPOToolsOption {
     [boolean]$Required
     $ClientExtension # ???
-    [boolean]$Sort # Optional
-    [int]$DefaultItem # Optional
+    [boolean]$Sort
+    $DefaultItem
     [System.Collections.Generic.List[GPOToolsOptionItemList]]$Items
 
     GPOToolsOptionDropDownList(
@@ -658,10 +667,28 @@ class GPOToolsOptionDropDownList:GPOToolsOption {
 
         #Optional
         $this.Key = $Element.Key
-        $this.Required = $Element.Required
+        if ($Element.HasAttribute('Required')){$this.Required = $Element.Required}
         $this.ClientExtension = $Element.ClientExtension
-        $this.DefaultItem = $PresDropDownList.DefaultItem # Remplacer par l'objet
+        if($PresDropDownList.DefaultItem){
+            $this.DefaultItem = $this.Items | Where-Object {$_.Value -eq $PresDropDownList.DefaultItem}
+        }
         $this.Sort = $PresDropDownList.Sort
+    }
+
+    [string[]]FormatOptionsControl(){
+        $Format = "[DROPDOWNLIST] {0} [" -f $this.Text
+        $this.Items | ForEach-Object -Process {
+            $Format = $Format + $(
+                if($_.Value -eq $this.DefaultItem.Value){
+                    '{1}     [{2}] {0} [DefaultValue]'
+                }Else{
+                    '{1}     [{2}] {0}'
+                }
+            ) -f $_.DisplayName,[System.Environment]::NewLine,$_.Value
+        } -End {
+            $Format = $Format + [System.Environment]::NewLine + "]"
+        }
+        return $Format
     }
 }
 
@@ -676,50 +703,70 @@ class GPOToolsOptionTextBox:GPOToolsOption {
         [AdmlPresentationTextbox]$PresTextBox,
         [int]$Pos
     ){
-        $Elem = $Element.Text | Where-Object { $_.ID -eq $PresTextBox.ID }
 
         $this.ID = $PresTextBox.ID
         $this.Position = $Pos
         $this.Text = $PresTextBox.Text
-        $this.ValueName = $Elem.ValueName
+        $this.ValueName = $Element.ValueName
 
         #Optional
-        $this.Key = $Elem.Key
-        $this.Required = $Elem.Required
-        $this.expandable = $Elem.expandable
-        $this.maxLength = $Elem.maxLength
-        $this.DefaultValue = $PresTextBox.DefaultValue # remplacer par l'objet
+        $this.Key = $Element.Key
+        if ($Element.HasAttribute('Required')){$this.Required = $Element.Required}
+        if ($Element.HasAttribute('maxLength')) {$this.maxLength = $Element.maxLength}
+        $this.expandable = $Element.expandable
+        if ($PresTextBox.DefaultValue){$this.DefaultValue = $PresTextBox.DefaultValue}
+    }
+
+    [string[]]FormatOptionsControl(){
+        $Format = "[TEXTBOX] {0} [ ]" -f $this.Text
+        if ($this.DefaultValue) {$Format = $Format + "{4}     DefaultValue [{1}]"}
+        if ($this.Required) {$Format = $Format + "{4}     Required [{2}]"}
+        if ($this.maxLength) {$Format = $Format + "{4}     maxLength [{3}]"}
+        $Format = $Format -f $this.Text,$this.DefaultValue,$this.Required,$this.maxLength,[System.Environment]::NewLine
+        return $Format
     }
 }
 
 class GPOToolsOptionDecimal:GPOToolsOption {
     [boolean]$Required
-    [long]$MinValue
-    [long]$MaxValue
+    $MinValue
+    $MaxValue
     [boolean]$StoreAsText # Need to verify the type of data and to see in the registry
     $ClientExtension # ???
-    [long]$DefaultValue
+    $DefaultValue
 
     GPOToolsOptionDecimal (
         [System.Xml.XmlElement]$Element,
         [AdmlPresentationDecimalTextbox]$PresDecimal,
         [int]$Pos
     ){
-        $Elem = $Element.Decimal | Where-Object { $_.ID -eq $PresDecimal.ID }
 
         $this.ID = $PresDecimal.ID
         $this.Position = $Pos
         $this.Text = $PresDecimal.Text
-        $this.ValueName = $Elem.ValueName
+        $this.ValueName = $Element.ValueName
 
         #Optional
-        $this.Key = $Elem.Key
-        $this.Required = $Elem.Required
-        $this.MinValue = $Elem.MinValue
-        $this.MaxValue = $Elem.MaxValue
-        $this.StoreAsText = $Elem.StoreAsText
-        $this.ClientExtension = $Elem.ClientExtension
-        $this.DefaultValue = $PresDecimal.DefaultValue # remplacer par l'objet
+        $this.Key = $Element.Key
+        $this.Required = $Element.Required
+        if ($Element.HasAttribute('minValue')){
+            $this.MinValue = $Element.minValue
+        }
+        if ($Element.HasAttribute('maxValue')){
+            $this.MaxValue = $Element.maxValue
+        }
+        $this.StoreAsText = $Element.StoreAsText
+        $this.ClientExtension = $Element.ClientExtension
+        $this.DefaultValue = $PresDecimal.DefaultValue
+    }
+
+    [string[]]FormatOptionsControl(){
+        $Format = "[DECIMAL] {0} [ ]"
+        if ($this.DefaultValue) {$Format = $Format + "{4}     DefaultValue [{1}]"}
+        if ($this.MinValue) {$Format = $Format + "{4}     MinimumValue [{2}]"}
+        if ($this.MaxValue) {$Format = $Format + "{4}     MaximumValue [{3}]"}
+        $Format = $Format -f $($this.Text -Replace '\n\s*$'),$this.DefaultValue,$this.MinValue,$this.MaxValue,[System.Environment]::NewLine
+        return $Format
     }
 }
 
@@ -734,19 +781,23 @@ class GPOToolsOptionMultiTextBox:GPOToolsOption {
         [AdmlPresentationMultiTextbox]$PresMultiText,
         [int]$Pos
      ){
-        $Elem = $Element.multiText | Where-Object { $_.ID -eq $PresMultiText.ID }
 
         $this.ID = $PresMultiText.ID
         $this.Position = $Pos
         $this.Text = $PresMultiText.Text
-        $this.ValueName = $Elem.ValueName
+        $this.ValueName = $Element.ValueName
 
         #Optional
-        $this.Key = $Elem.Key
-        $this.Required = $Elem.Required
-        $this.MaxLength = $Elem.MaxLength
-        $this.MaxStrings = $Elem.MaxStrings
+        $this.Key = $Element.Key
+        $this.Required = $Element.Required
+        $this.MaxLength = $Element.MaxLength
+        $this.MaxStrings = $Element.MaxStrings
      }
+
+     [string[]]FormatOptionsControl(){
+        $Format = "[MULTITEXT] {0}: [ ]" -f $this.Text
+        return $Format
+    }
 }
 
 class GPOToolsOptionList:GPOToolsOption {
@@ -760,18 +811,22 @@ class GPOToolsOptionList:GPOToolsOption {
         [AdmlPresentationListbox]$PresListbox,
         [int]$Pos
     ){
-        $Elem = $Element.list | Where-Object { $_.ID -eq $PresListbox.ID }
 
         $this.ID = $PresListbox.ID
         $this.Position = $Pos
         $this.Text = $PresListbox.Text
-        $this.ValueName = $Elem.ValueName
+        $this.ValueName = $Element.ValueName
 
         #Optional
-        $this.Additive = $Elem.Additive
-        $this.ExplicitValue = $Elem.ExplicitValue
-        $this.ValuePrefix = $Elem.ValuePrefix
+        $this.Additive = $Element.Additive
+        $this.ExplicitValue = $Element.ExplicitValue
+        $this.ValuePrefix = $Element.ValuePrefix
         $this.Required = '' # ADML
+    }
+
+    [string[]]FormatOptionsControl(){
+        $Format = "[LIST] {0} [ ]" -f $this.Text
+        return $Format
     }
 }
 
@@ -984,27 +1039,27 @@ class AdmlPresentationCheckbox:AdmlPresentation {
     AdmlPresentationCheckbox([System.Xml.XmlElement]$Pres) {
         $this.Text = $Pres.InnerText
         $this.ID = $Pres.refID
-        If ($Pres.DefaultChecked){
+        If ($Pres.HasAttribute('defaultValue')){
             $this.DefaultCheck = $Pres.DefaultChecked
         }
     }
 }
 
 class AdmlPresentationDropdownList:AdmlPresentation {
-    [int]$DefaultItem
+    [string]$DefaultItem
     [boolean]$Sort = $False
 
     AdmlPresentationDropdownList([System.Xml.XmlElement]$Pres) {
         $this.Text = $Pres.InnerText
         $this.ID = $Pres.refID
-        If ($Pres.DefaultItem){
+        If ($Pres.HasAttribute('defaultItem')){
             $this.DefaultItem = $Pres.DefaultItem
         }
-        If ($null -ne $Pres.Sort){
+        If ($Pres.HasAttribute('Sort')){
             $this.Sort = $Pres.Sort
-        }ElseIf($null -ne $Pres.NoSort){
+        }ElseIf($Pres.HasAttribute('NoSort')){
             $this.Sort = !$Pres.NoSort
-        }ElseIf($null -ne $Pres.OSort){
+        }ElseIf($Pres.HasAttribute('OSort')){
             $this.Sort = !$Pres.OSort
         }
     }
@@ -1016,20 +1071,20 @@ class AdmlPresentationTextbox:AdmlPresentation {
     AdmlPresentationTextbox([System.Xml.XmlElement]$Pres) {
         $this.Text = $Pres.Label
         $this.ID = $Pres.refID
-        If ($Pres.DefaultValue){
-            $this.DefaultValue = $Pres.DefaultValue
+        If ($Pres.HasAttribute('defaultValue')){
+            $this.DefaultValue = $Pres.defaultValue
         }
     }
 }
 
 class AdmlPresentationDecimalTextbox:AdmlPresentation {
-    [long]$DefaultValue
+    [string]$DefaultValue
 
     AdmlPresentationDecimalTextbox([System.Xml.XmlElement]$Pres) {
         $this.Text = $Pres.InnerText
         $this.ID = $Pres.refID
-        If ($Pres.DefaultValue){
-            $this.DefaultValue = $Pres.DefaultValue
+        If ($Pres.HasAttribute('defaultValue')){
+            $this.DefaultValue = $Pres.defaultValue
         }
     }
 }

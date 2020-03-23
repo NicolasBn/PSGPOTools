@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Configuration>
   <Controls>
+    <Control>
+      <Name>GPOOptionControl</Name>
+        <CustomControl>
+          <CustomEntries>
+            <CustomEntry>
+              <CustomItem>
+                <Frame>
+                  <LeftIndent>4</LeftIndent>
+                  <CustomItem>
+                    <ExpressionBinding>
+                      <ScriptBlock>
+                        $_.FormatOptionsControl()
+                      </ScriptBlock>
+                    </ExpressionBinding>
+                    <NewLine/>
+                    <NewLine/>
+                  </CustomItem>
+                </Frame>
+              </CustomItem>
+            </CustomEntry>
+          </CustomEntries>
+        </CustomControl>
+    </Control>
   </Controls>
   <ViewDefinitions>
     <View>
@@ -34,6 +57,49 @@
               </TableColumnItem>
               <TableColumnItem>
                   <PropertyName>Scope</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>ArrayOfOptionsPolicy</Name>
+      <ViewSelectedBy>
+        <TypeName>GPOToolsOptionText</TypeName>
+        <TypeName>GPOToolsOptionCheckBox</TypeName>
+        <TypeName>GPOToolsOptionDropDownList</TypeName>
+        <TypeName>GPOToolsOptionTextBox</TypeName>
+        <TypeName>GPOToolsOptionDecimal</TypeName>
+        <TypeName>GPOToolsOptionMultiTextBox</TypeName>
+        <TypeName>GPOToolsOptionList</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Text</Label>
+            <Alignment>left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ValueName</Label>
+            <Alignment>left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Key</Label>
+            <Alignment>right</Alignment>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                  <PropertyName>Text</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                  <PropertyName>ValueName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                  <PropertyName>Key</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -89,6 +155,19 @@
                   <CustomItem>
                     <ExpressionBinding>
                       <PropertyName>Description</PropertyName>
+                    </ExpressionBinding>
+                    <NewLine/>
+                  </CustomItem>
+                </Frame>
+                <Text>OPTIONS</Text>
+                <NewLine/>
+                <Frame>
+                  <LeftIndent>4</LeftIndent>
+                  <CustomItem>
+                    <ExpressionBinding>
+                      <PropertyName>Options</PropertyName>
+                      <EnumerateCollection/>
+                      <CustomControlName>GPOOptionControl</CustomControlName>
                     </ExpressionBinding>
                     <NewLine/>
                   </CustomItem>
