@@ -177,7 +177,7 @@ Network                                         Network                         
 ...
 
 #The SupportedOn :
-Get-PSGPOPolicySupportedOn
+Get-PSGPOSupportedOn
 Name                                                         DisplayName
 ----                                                         -----------
 SUPPORTED_Win2KWithWindowsInstaller20                        Windows 2000 with Windows Installer v2
