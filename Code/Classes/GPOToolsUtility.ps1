@@ -633,11 +633,13 @@ class GPOToolsOptionCheckBox:GPOToolsOption {
         $this.Key = $Element.Key
         if ($Element.HasAttribute('FalseValue')){$this.FalseValue = $Element.FalseValue}
         if ($Element.HasAttribute('TrueValue')){$this.TrueValue = $Element.TrueValue}
-        if ($Element.HasAttribute('DefaultCheck')){$this.DefaultCheck = $Element.DefaultCheck}
+        if ($PresCheckbox.DefaultCheck){$this.DefaultCheck = $PresCheckbox.DefaultCheck}
     }
 
     [string[]]FormatOptionsControl(){
-        $Format = "[CHECKBOX] {0} [ ]" -f $this.Text
+        $Format = "[CHECKBOX] {0} [ ]"
+        $Format = $Format + "{2}     DefaultCheck [{1}]"
+        $Format = $Format -f $this.Text,$this.DefaultCheck,[System.Environment]::NewLine
         return $Format
     }
 }
@@ -684,9 +686,10 @@ class GPOToolsOptionDropDownList:GPOToolsOption {
                 }Else{
                     '{1}     [{2}] {0}'
                 }
-            ) -f $_.DisplayName,[System.Environment]::NewLine,$_.Value
+            )
         } -End {
-            $Format = $Format + [System.Environment]::NewLine + "]"
+            $Format = $Format + "{1}]"
+            $Format = $Format -f $_.DisplayName,[System.Environment]::NewLine,$_.Value
         }
         return $Format
     }
@@ -1039,7 +1042,7 @@ class AdmlPresentationCheckbox:AdmlPresentation {
     AdmlPresentationCheckbox([System.Xml.XmlElement]$Pres) {
         $this.Text = $Pres.InnerText
         $this.ID = $Pres.refID
-        If ($Pres.HasAttribute('defaultValue')){
+        If ($Pres.HasAttribute('defaultChecked')){
             $this.DefaultCheck = $Pres.DefaultChecked
         }
     }

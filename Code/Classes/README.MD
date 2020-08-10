@@ -106,7 +106,7 @@ XML section cover by the class in ADMX file :
       * [x]  [disabledValue]
         * [x]  decimal
           * [x]  value
-      * [x]  [presentation] : Variable (presentation.[..]) sans doute quelque chose en rapport avec l'affichage ex : "$(presentation.ProfileDlgTimeOut)"
+      * [x]  [presentation] : Variable (presentation.[..])
       * [ ]  [clientExtension] : GUID
       * [x]  [elements]
         * [x]  [list]
@@ -169,13 +169,13 @@ Section que l'on retrouve dans un fichier Adml :
 * [ ]  PolicyDefinitionResources
   * [ ]  displayName
   * [ ]  description
-  * [ ]  resources
+  * [x]  resources
     * [x]  stringTable
       * [x]  string
         * [x]  id
         * [x]  #text
-    * [ ]  [presentationTable]
-      * [ ]  presentation
+    * [x]  [presentationTable]
+      * [x]  presentation
         * [x]  id
         * [x]  [checkbox] (Object[] ou XmlElement)
           * [x]  #text
@@ -185,9 +185,9 @@ Section que l'on retrouve dans un fichier Adml :
           * [x]  #text
           * [x]  refid
           * [x]  [defaultItem]
-          * [ ]  [noSort] : valeur true/false
-          * [ ]  [oSort] : valeur true/false
-          * [ ]  [Sort] : valeur true/false
+          * [x]  [noSort] : valeur true/false
+          * [x]  [oSort] : valeur true/false
+          * [x]  [Sort] : valeur true/false
         * [x]  [text] ( string ou Object[])
         * [x]  [textbox] (Object[] ou XmlElement)
           * [x]  label
