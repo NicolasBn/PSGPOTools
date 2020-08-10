@@ -428,7 +428,7 @@ class GPOToolsPolicy {
                     continue
                 }
                 {$_ -is [AdmlPresentationDropdownList]} {
-                    # Les items qui se trouvent dans la liste vont chercher leur ecriture dans sctring table
+                    # Les items qui se trouvent dans la liste vont chercher leur ecriture dans string table
                     $This.Options.Add([GPOToolsOptionDropDownList]::New(
                         [GPOToolsOption]::GetElementByID($Policy.elements.enum,$_.ID),
                         $_,
