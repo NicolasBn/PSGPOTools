@@ -1,6 +1,6 @@
 # PSGPOTools
 
-![Build Status](https://build.status.url.here)
+[![Azure DevOps builds](https://img.shields.io/azure-devops/build/nicolasBN/425d0027-2c71-4c42-8934-75b49132a4a2/1)](https://dev.azure.com/nicolasBN/PSGPOTools/_build?definitionId=1&_a=summary)
 
 ## Description
 
