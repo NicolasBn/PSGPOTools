@@ -1,5 +1,5 @@
 TOPIC
-    about_TestSampleModule
+    about_PSGPOTools
 
 SHORT DESCRIPTION
     testing module
