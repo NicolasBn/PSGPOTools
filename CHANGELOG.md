@@ -1,6 +1,6 @@
 # PSGPOTools Release History
 
-## 0.01.1 - alpha.2
+## [Unreleased]
 
 ### Fixed
 
@@ -35,7 +35,7 @@
     *[ ] Test Module
     *[ ] Publish Module
 
-## 0.01.1 - alpha
+## [0.01.1] - alpha
 
 ### Fixed
 
@@ -61,7 +61,7 @@
     *[ ] Test Module
     *[ ] Publish Module
 
-## 0.01.0 - alpha
+## [0.01.0] - alpha
 
 ### Feature's Module
 
