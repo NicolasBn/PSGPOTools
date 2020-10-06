@@ -6,18 +6,18 @@
 
 ### Added
 
-*Add format for GPOPolicy object
-+Custom
-+Table
-*Get-PSGPOPolicy function
-+Add param
-+Add Scope Machine and User
-*Remove french accent to the comments
+* Add format for GPOPolicy object
+  * Custom
+  * Table
+* Get-PSGPOPolicy function
+  * Add param
+  * Add Scope Machine and User
+* Remove french accent to the comments
 
 ### Changed
 
-*Change description manifeste
-*Using Sampler architecture for the repository and CI/CD
+* Change description manifeste
+* Using Sampler architecture for the repository and CI/CD
 
 ### Feature's Module
 
@@ -35,7 +35,7 @@
     *[ ] Test Module
     *[ ] Publish Module
 
-## [0.01.1] - alpha
+## [0.01.1-alpha] - 2020-02-11
 
 ### Fixed
 
@@ -43,7 +43,7 @@
 
 ### Changed
 
-*Change description manifeste
+* Change description manifeste
 
 ### Feature's Module
 
@@ -61,7 +61,7 @@
     *[ ] Test Module
     *[ ] Publish Module
 
-## [0.01.0] - alpha
+## [0.01.0-alpha] - 2020-01-18
 
 ### Feature's Module
 
