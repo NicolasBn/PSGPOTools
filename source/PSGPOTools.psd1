@@ -87,7 +87,7 @@ AliasesToExport = @()
 PrivateData = @{
 
     #Prerelease of this module
-    Prerelease = 'alpha.2'
+    Prerelease = ''
 
     PSData = @{
 
